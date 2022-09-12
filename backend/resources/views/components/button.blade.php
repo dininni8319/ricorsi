@@ -1,0 +1,1 @@
+<button type="submit"  class="btn btn-dark px-3 my-2">{{$title}}</button>

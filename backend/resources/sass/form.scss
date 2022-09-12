@@ -1,0 +1,43 @@
+.form-control-custom {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #212529;
+    background-color: #f8fafc;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.wrapper {
+    border-bottom: 1px solid var(--borderGrayColor);
+}
+
+/* .input-background-custom {
+    margin-left: 2px;
+    border-radius: 5px;
+} */
+
+.btn-delete {
+    background-color: #ed9133;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: poiter;
+    padding: 0.5rem 2rem;
+}
+
+.class-custom-form-edit {
+    display: flex;
+    align-items: center;
+    background-color: white !important;
+}
+
+.icon-custom {
+    color: #f307079d;;
+}
