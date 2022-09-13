@@ -1,12 +1,11 @@
-
-const About = () => {
+const Ricorsi = () => {
     return (
         <div>
             <h1>
-                About
+            Ricorsi
             </h1>
         </div>
     )
 }
 
-export default About;
+export default Ricorsi;

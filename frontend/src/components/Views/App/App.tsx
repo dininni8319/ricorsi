@@ -1,16 +1,18 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '../Home';
-import About from '../About';
+import { Homepage, WorkFlow, Ricorsi } from '../index';
+import Navbar from '../../UI/Navbar/index';
 
 const App = () => {
 
   return (
     <BrowserRouter>
+        <Navbar />
         <Routes>
-            <Route path='/' element={<Home />}/>
-            <Route path='/about' element={<About />} />
-            <Route />
+            <Route path='/' element={<Homepage />}/>
+            <Route path='/ricorsi' element={<Ricorsi />}/>
+            <Route path='/work_flow' element={<WorkFlow />} />
         </Routes>
     </BrowserRouter>
   );
