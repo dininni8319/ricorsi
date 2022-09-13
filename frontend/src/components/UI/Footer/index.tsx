@@ -12,7 +12,7 @@
           <footer className={`text-start ${classes['footer-backgroud-color']}`}>
               <section>
                 <div className="p-3 flex column">
-                    <LogoComponent imageUrl={logo} />
+                    <LogoComponent imageUrl={logo} w='200px' h="200px" />
                     <FontAwesomeComponent href="https://www.linkedin.com" fontIcon={faEnvelope} />
                     <FontAwesomeComponent href="https://www.linkedin.com" fontIcon={faLink} />  
                 </div>
