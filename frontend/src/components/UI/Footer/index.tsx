@@ -9,38 +9,32 @@
   const Footer = () => {
 
       return (
-          <footer className={`text-start ${classes['footer-backgroud-color']}`}>
-              <section>
-                <div className="p-3 flex column">
-                    <LogoComponent imageUrl={logo} w='200px' h="200px" />
-                    <FontAwesomeComponent href="https://www.linkedin.com" fontIcon={faEnvelope} />
-                    <FontAwesomeComponent href="https://www.linkedin.com" fontIcon={faLink} />  
+          <footer className={`${classes['footer-backgroud-color']}`}>
+              <section className='md:flex items-center justify-around pt-5'>
+                <div className="flex flex-col text-white">
+                  <h5 className="capitalize font-bold py-2">credit network & finance</h5>
+                  <p className="text-small py-2">Sede legale e amministrativa:</p>
+                  <p className="text-small">Via Flavio Gioia 39 37135 Verona P.IVA: 05863840962</p>  
                 </div>
       
-                <div className="mb-2 flex column">
-                
-                  <h5 className="text-capitalize fw-bold mb-1">
-                    <i className="fas fa-gem"></i> Credit Network & Finance
-                  </h5>
-                  <p className="text-small">Sede legale e amministrativa:</p>
-                  <p className="text-small">Via Flavio Gioia 39 37135 Verona P.IVA: 05863840962</p>
-                  
-                  <h5 className="text-capitalize fw-bold mb-2">Contatti</h5>
-                  <p className="text-white"><i className="fa-solid fa-house-user  pe-1"></i>Cap. Soc. 10.000.000</p>
-              
-                  
+               <div className="flex flex-col">
+                  <h5 className="font-bold">Contatti</h5>
+                  <p className="text-white my-2"><i className="fa-solid fa-house-user "></i>Cap. Soc. 10.000.000</p>
                   <h5>Informazioni</h5>
-                  <FontAwesomeComponent href="https://reclami@cienneffe.com/" fontIcon={faEnvelope} />
-                  
-                  <h5 className="mt-2">Reclami</h5> 
-                  <FontAwesomeComponent href="https://reclami@cienneffe.com/" fontIcon={faEnvelope} />
+                  <FontAwesomeComponent href="https://reclami@cienneffe.com/" fontIcon={faEnvelope}></FontAwesomeComponent>
+                  <h5 className="">Reclami</h5> 
+                  {/* <FontAwesomeComponent href="https://reclami@cienneffe.com/" fontIcon={faEnvelope} /> */}
                </div>
-      
+               
+               <div className="flex flex-col">
+                    <LogoComponent imageUrl={logo} w='200px' h="200px" />
+                    <FontAwesomeComponent href="https://www.linkedin.com" fontIcon={faEnvelope} />
+                </div>
               </section>
       
-              <section className="col-12 text-center text-white p-4">
+              <section className="col-12 text-center text-white px-1 py-2">
                   © 2015 CNF - Credit Network & Finance S.p.A. a socio unico Cap. Soc. 10.000.000 i.v. - All rights reserved | P.IVA: 05863840962 | Privacy Sito
-                <a className="text-success" href="https://www.cienneffe.com/" target="blank">www.cienneffe.com</a>
+                <a className="text-success px-2 mt-10" href="https://www.cienneffe.com/" target="blank">www.cienneffe.com</a>
               </section>
           </footer>
       )

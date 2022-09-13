@@ -10,7 +10,7 @@ interface Props {
 const FontAwesomeComponent: React.FC<Props> = ({ href, fontIcon }) => {
   return (
       <>
-        <a href={href} className="me-5 text-decoration-none" target='blank'>
+        <a href={href} className="me-5 text-decoration-none text-white" target='blank'>
              <FontAwesomeIcon icon={fontIcon} />
         </a>
       </>
