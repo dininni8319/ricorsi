@@ -1,4 +1,13 @@
 .navbar-custom {
     width: 100vw;
     min-height: 10vh;
+    border: 1px solid #E6E6E6;
+    background-color: #cc1b3c;
 }
+
+@media only screen and (max-width: 765px) {
+    .navbar-custom {
+        background-color: transparent;
+        border: none;
+    }
+  }
