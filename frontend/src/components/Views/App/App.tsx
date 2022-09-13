@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Homepage, WorkFlow, Ricorsi } from '../index';
 import Navbar from '../../UI/Navbar/index';
+import Footer from '../../UI/Footer/index';
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
             <Route path='/ricorsi' element={<Ricorsi />}/>
             <Route path='/work_flow' element={<WorkFlow />} />
         </Routes>
+        <Footer />
     </BrowserRouter>
   );
 }

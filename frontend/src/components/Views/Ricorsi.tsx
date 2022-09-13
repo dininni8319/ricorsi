@@ -1,6 +1,6 @@
 const Ricorsi = () => {
     return (
-        <div>
+        <div className="height-custom">
             <h1>
             Ricorsi
             </h1>
