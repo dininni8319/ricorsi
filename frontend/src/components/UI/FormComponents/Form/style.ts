@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.form `
-    width: 100%;
-    height: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     
     .form-row {
+        width: 50vw;
         display: flex;
         flex-direction: column;
         margin: 30px;

@@ -2,14 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:ital,wght@0,100;0,336;0,546;1,100&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400&family=Roboto+Condensed&family=Roboto:wght@400;500&display=swap');
 
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        /* font-family: 'Roboto', sans-serif; */
-        font-family: 'Roboto Mono', monospace;
+        font-family: 'Roboto', sans-serif;
     }
 
     body {
