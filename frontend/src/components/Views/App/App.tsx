@@ -4,7 +4,6 @@ import { Homepage, Ricorsi } from '../index';
 import Navbar from '../../UI/Navbar/index';
 import Footer from '../../UI/Footer/index';
 
-
 const App = () => {
 
   return (

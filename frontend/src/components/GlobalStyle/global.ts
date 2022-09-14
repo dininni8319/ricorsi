@@ -1,12 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-
   
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    body {
+        background-color: #F7F8FA;
+    }
 
     h5{
-        color: white;
+       color: white;
     }
 
     * {
@@ -36,7 +39,7 @@ export const Theme = {
       blueColor: '#8338ec',
       blueLightColor: '#a3e6f5',
       transparent: 'trnasparent',
-  
+      colorWhite: 'white',
       //Box-shadow
       boxShadow: 'none',
   
