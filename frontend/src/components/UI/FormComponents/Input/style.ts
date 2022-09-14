@@ -4,7 +4,12 @@ export const InputSection = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
-
+ 
+    .input-label {
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+    
     .input-style {
         margin-top: 5px;
         border-bottom: 1px solid ${props => props.theme.borderGrayColor};

@@ -21,7 +21,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn/*  onSubmit, redi
                         </>
                     )
                 })}
-
+            <div className='flex'>
                 <SelectInput
                 selectProps={selectPropsTributi}
                 />
@@ -32,6 +32,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn/*  onSubmit, redi
                 <SelectInput
                 selectProps={selectPropsEsito}
                 />
+            </div>
                 
                 <button>{subMitBtn}</button>
 

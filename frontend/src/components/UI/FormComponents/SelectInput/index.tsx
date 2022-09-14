@@ -1,22 +1,24 @@
 import { ObjSelectType } from "../../../interfaces/interfaces";
-import { SelectComponent } from "./style";
+import { SelectComponent, Wrapper } from "./style";
 
 const SelectInput = ({ selectProps }: { selectProps:ObjSelectType }) => {
     return (
-        <div>
-                <h3>{selectProps?.name}</h3> 
-                <SelectComponent
-                    name='tributo'
-                    required>
-                        {
-                            selectProps?.values.map(({ value },index: number)  => {
-                                return (
-                                    <option value={value} key={index}>{value}</option>
-                                );
-                            })
-                        }
-                </SelectComponent>
-        </div>
+        <Wrapper>
+            <label htmlFor='tributo' className='input-label'>{selectProps?.name}</label> 
+            <SelectComponent
+                name='tributo'
+                id='tributo'
+                required
+                >
+                    {
+                        selectProps?.values.map(({ value },index: number)  => {
+                            return (
+                                <option value={value} key={index}>{value}</option>
+                            );
+                        })
+                    }
+            </SelectComponent>
+        </Wrapper>
     )
 }
 
