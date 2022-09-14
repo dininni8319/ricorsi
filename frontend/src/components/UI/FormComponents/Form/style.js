@@ -15,6 +15,4 @@ export const FormContainer = styled.form `
         padding: 20px;
         box-shadow: ${props => props.theme.boxShadow};
     }
-
-
 `

@@ -97,8 +97,6 @@ export const defaultProps = {
             type: 'checkbox',
       }, 
     ],
-
-
      subMitBtn: 'Sign In',
     /* onSubmit: ((form: any) => console.log(form)), */
   /*   redirect: {

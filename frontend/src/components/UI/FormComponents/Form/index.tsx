@@ -1,4 +1,4 @@
-import { string } from "yup";
+// import { string } from "yup";
 import Input from '../Input/index';
 import { FormContainer } from "./style";
 import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../selectPropsTributi";
