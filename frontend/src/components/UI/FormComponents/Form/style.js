@@ -6,13 +6,14 @@ export const FormContainer = styled.form `
     padding: 20px;
     display: flex;
     flex-direction: column;
-
+    
     .form-row {
         display: flex;
         flex-direction: column;
         margin: 30px;
         background: ${(props) => props.theme.colorWhite};
         padding: 20px;
+        box-shadow: ${props => props.theme.boxShadow};
     }
 
 

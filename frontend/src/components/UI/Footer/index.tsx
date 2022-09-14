@@ -3,7 +3,6 @@ import { FormContainer } from "./style";
 import logo from '../../../assets/icons/logo_inv2.png';
 import { faEnvelope, faLink } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-
 import FontAwesomeComponent from './FontAwesomeComponent';
 
   const Footer = () => {
@@ -11,7 +10,7 @@ import FontAwesomeComponent from './FontAwesomeComponent';
       return (
           <FormContainer>
               <section className='md:flex items-center justify-around pt-5'>
-                <div className="flex flex-col text-white">
+                <div className="flex flex-col ">
                   <h5 className="capitalize font-bold py-2">credit network & finance</h5>
                   <p className="text-small py-2">Sede legale e amministrativa:</p>
                   <p className="text-small">Via Flavio Gioia 39 37135 Verona P.IVA: 05863840962</p>  

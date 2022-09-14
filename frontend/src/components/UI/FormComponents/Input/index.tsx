@@ -1,14 +1,16 @@
 import { PropsInput } from "../../../interfaces/interfaces";
+import { InputSection } from './style';
 
 const Input: React.FC<PropsInput> = ({ typeIn, name, label }) => {
     return (
-        <div>
-            <label htmlFor={name}>{label}</label>
+        <InputSection>
+            <label htmlFor={name} className='font-bold input-label'>{label}</label>
             <input 
-                type={typeIn}   
+                type={typeIn} 
+                className='input-style'  
             />
            
-        </div>
+        </InputSection>
     ) 
 }
 
