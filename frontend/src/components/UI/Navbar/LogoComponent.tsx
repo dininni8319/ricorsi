@@ -1,11 +1,6 @@
+import { LogoProps } from "../../interfaces/interfaces";
 
-interface Props {
-    imageUrl: string | undefined;
-    w: string,
-    h: string
-};
-
-const LogoComponent: React.FC<Props> = ({ imageUrl, w, h}) => {
+const LogoComponent: React.FC<LogoProps> = ({ imageUrl, w, h}) => {
     return (
         <>
             <a href="https://www.cienneffe.com/" target='blank' className=" transparent">

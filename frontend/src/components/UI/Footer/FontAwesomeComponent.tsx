@@ -1,13 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { PropsIcons } from "../../interfaces/interfaces";
 import React from 'react';
 
-interface Props {
-  fontIcon: IconProp,
-  href: string
-}
-
-const FontAwesomeComponent: React.FC<Props> = ({ href, fontIcon }) => {
+const FontAwesomeComponent: React.FC<PropsIcons> = ({ href, fontIcon }) => {
   return (
       <>
         <a href={href} className="me-5 text-decoration-none text-white" target='blank'>

@@ -22,3 +22,7 @@ install: ## performs initial setup
 	@echo "Installing libraries"
 	@cd backend && composer update && composer install && cp .env.example .env
 	@cd frontend && npm install
+i: ## performs initial setup
+	@echo "Installing libraries"
+	@cd backend && composer update && composer install
+	@cd frontend && npm install
