@@ -1,7 +1,9 @@
 export const selectPropsTributi = {
-    title: '',
-    name: '',
-    select: [
+   
+    title: 'Tributo',
+    name: 'tributo',
+    values: 
+    [
         {
             value: 'Imu' 
         },
@@ -32,5 +34,69 @@ export const selectPropsTributi = {
         {
             value: 'Tasi' 
         },
+    ]     
+}
+
+export const selectPropsTipologiaAtto = {
+    title: "Tipologia dell'Atto",
+    name: 'tipologia_atto',
+    values: 
+    [
+        {
+            value: 'Accertamento' 
+        },
+        {
+            value: 'Fermo Amministrativo' 
+        },
+        {
+            value: 'Ingiunzione' 
+        },
+        {
+            value: 'Intimazione' 
+        },
+        {
+            value: 'Liquidazione' 
+        },
+        {
+            value: 'Pignoramento' 
+        },
+        {
+            value: 'Preavviso' 
+        },
+        {
+            value: 'Preavviso fermo' 
+        },
+        {
+            value: 'Rimborso' 
+        },
+        {
+            value: 'Riscossione' 
+        },
+        {
+            value: 'Sollecito' 
+        },
+    ]          
+}
+
+export const selectPropsEsito = {
+
+    title: "Esito",
+    name: 'esito',
+    values: 
+    [
+        {
+            value: 'Aperto' 
+        },
+        {
+            value: 'Vinto' 
+        },
+        {
+            value: 'Perso' 
+        },
+        {
+            value: 'Chiuso' 
+        },    
     ]
 }
+
+

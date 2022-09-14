@@ -1,15 +1,15 @@
-  import LogoComponent from '../Navbar/LogoComponent';
-  import classes from './style.module.css';
-  import logo from '../../../assets/icons/logo_inv2.png';
-  import { faEnvelope, faLink } from "@fortawesome/free-solid-svg-icons";
-  import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import LogoComponent from '../Navbar/LogoComponent';
+import { FormContainer } from "./style";
+import logo from '../../../assets/icons/logo_inv2.png';
+import { faEnvelope, faLink } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-  import FontAwesomeComponent from './FontAwesomeComponent';
+import FontAwesomeComponent from './FontAwesomeComponent';
 
   const Footer = () => {
 
       return (
-          <footer className={`${classes['footer-backgroud-color']}`}>
+          <FormContainer>
               <section className='md:flex items-center justify-around pt-5'>
                 <div className="flex flex-col text-white">
                   <h5 className="capitalize font-bold py-2">credit network & finance</h5>
@@ -36,7 +36,7 @@
                   © 2015 CNF - Credit Network & Finance S.p.A. a socio unico Cap. Soc. 10.000.000 i.v. - All rights reserved | P.IVA: 05863840962 | Privacy Sito
                 <a className="text-success px-2 mt-10" href="https://www.cienneffe.com/" target="blank">www.cienneffe.com</a>
               </section>
-          </footer>
+          </FormContainer>
       )
   }
 

@@ -24,3 +24,9 @@ export interface LogoProps {
     w: string,
     h: string
 };
+
+export type ObjSelectType = {
+    title: string,
+    name: string,
+    values: {value: string}[]
+}

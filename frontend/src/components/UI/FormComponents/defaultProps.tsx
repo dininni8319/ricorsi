@@ -78,12 +78,26 @@ export const defaultProps = {
       },
       {
             label: 'Oggetto Ricorso textarea',
-            name: 'oggetto_ricorso ',
+            name: 'oggetto_ricorso',
             type: 'text',
-      },
-
-      
+      }, 
+      {
+            label: 'Anno Imposta',
+            name: 'anno_imposta',
+            type: 'text',
+      }, 
+      {
+            label: 'Importo Atto €',
+            name: 'importo_atto ',
+            type: 'number',
+      }, 
+      {
+            label: 'Notifica tramite Email',
+            name: 'email_notification',
+            type: 'checkbox',
+      }, 
     ],
+
 
      subMitBtn: 'Sign In',
     /* onSubmit: ((form: any) => console.log(form)), */

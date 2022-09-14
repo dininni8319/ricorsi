@@ -1,35 +1,37 @@
 import { string } from "yup";
 import Input from '../Input/index';
-import { selectPropsTributi } from "../selectPropsTributi";
+import classes from './style.module.css';
+import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../selectPropsTributi";
 import { FormProps, PropsInput } from "../../../interfaces/interfaces";
+import SelectInput from '../SelectInput/index';
 
 const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn/*  onSubmit, redirect */ }) => {
     return (
-        <form className="">
-             {formArr.map(({ label, name, typeIn }:PropsInput , index: number) =>{
+        <form className={`${classes['form-container']}`}>
+            {formArr.map(({ label, name, typeIn }:PropsInput , index: number) =>{
                 return (
-                    <Input
-                       key={index}
-                       label={label}
-                       name={name}
-                       typeIn={typeIn}
-                    />
+                    <>
+                        <Input
+                            key={index}
+                            label={label}
+                            name={name}
+                            typeIn={typeIn}
+                        />
+                    </>
                 )
-             })}
-              {selectPropsTributi?.title}
-                <select
-                    name='tributo'
-                    id="Esito"
-                    className="form-control"
-                    required>
-                        {
-                            selectPropsTributi?.select.map(({ value }: {value: string},index: number)  => {
-                                return (
-                                    <option value={value} key={index}>{value}</option>
-                                );
-                            })
-                        }
-                </select>
+            })}
+
+            <SelectInput
+               selectProps={selectPropsTributi}
+            />
+
+            <SelectInput
+               selectProps={selectPropsTipologiaAtto}
+            />
+             <SelectInput
+               selectProps={selectPropsEsito}
+            />
+             
             <button>{subMitBtn}</button>
         </form>
     )
