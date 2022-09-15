@@ -28,7 +28,7 @@ export const Theme = {
       //Colors
       backgroundColor: '#F2F2F2',
       goldColor: 'gold',
-      textWhiteColor: 'white',
+      footerColor: '#272D36',
       textColorGrey: '#808080',
       borderColor: '#FCEADE',
       buttoncolor: '#A56FF8',
