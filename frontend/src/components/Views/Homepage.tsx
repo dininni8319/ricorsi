@@ -1,9 +1,9 @@
-import Loader2 from '../UI/Loaders/Loader2/index';
+import Loader3 from '../UI/Loaders/Loader3/index';
 
 const Homepage = () => {
     return (
         <div className="height-custom">
-            <Loader2 />
+            <Loader3 />
         </div>
     )
 }
