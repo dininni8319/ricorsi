@@ -1,10 +1,13 @@
+import { LoaderStyleComponent } from './style';
 
 const Loader1 = () => {
   return (
-    <div className='loader1'>
-      <div className="circle"></div>
-      <div className="circle"></div>
-    </div>
+    <LoaderStyleComponent>
+      <div className="loader1">
+        <div className="circle"></div>
+        <div className="circle"></div>
+      </div>
+    </LoaderStyleComponent>
   );
 }
 

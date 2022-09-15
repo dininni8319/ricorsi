@@ -7,18 +7,6 @@ export const SelectComponent = styled.select`
       --select-arrow: var(--select-border);
     }
 
-    /* appearance: none;
-    background-color: transparent;
-    border: none;
-    padding: 0 1em 0 0;
-    margin: 0;
-    width: 100%;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: inherit;
-    outline: none;
-    line-height: inherit; */
-
     width: 100%;
     min-width: 15ch;
     max-width: 30ch;
