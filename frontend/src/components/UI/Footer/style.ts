@@ -4,7 +4,7 @@ export const FormContainer = styled.form`
     background-color: ${props => props.theme.footerColor};
     color: ${props => props.theme.colorWhite};
     width: 100%;
-    height: 30vh;
+    min-height: 30vh;
     margin-bottom: 0;
     padding-top: 20px;
     display: flex;
@@ -17,4 +17,11 @@ export const FormContainer = styled.form`
         padding-bottom: 15px;
         border-radius: 3px;
     }
+
+    @media only screen and (max-width: 765px) {
+
+    .footer-container-custom {
+        padding-left: 20px
+    }
+  }
 `

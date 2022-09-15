@@ -22,5 +22,4 @@ export const InputSection = styled.div`
     label {
         text-align: start;
     }
-
 `

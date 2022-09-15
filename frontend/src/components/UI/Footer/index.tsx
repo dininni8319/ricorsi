@@ -9,7 +9,7 @@ const Footer = () => {
 
       return (
           <FormContainer>
-              <section className='md:flex align-middle justify-around pt-5 footer-container-custom'>
+              <section className='md:flex md:align-middle md:justify-around pt-5 footer-container-custom'>
                 <div>
                     <LogoComponent imageUrl={logo} w='250px' h="250px"/>
                     <div className="pt-2">
@@ -32,11 +32,11 @@ const Footer = () => {
                
               </section>
       
-              <section className="flex justify-center align-middle col-12 px-5 pt-10">
+              <section className="md:flex md:justify-center md:align-middle px-5 pt-10">
                 <p className="text-sm">
                   © 2015 CNF - Credit Network & Finance S.p.A. a socio unico <i>Cap. Soc. 10.000.000</i> i.v. - All rights reserved | P.IVA: 05863840962 | Privacy Sito
                 </p>
-                <a className="text-success px-2" href="https://www.cienneffe.com/" target="blank">www.cienneffe.com</a>
+                <a className="text-success md:px-2 text-center" href="https://www.cienneffe.com/" target="blank">www.cienneffe.com</a>
               </section>
           </FormContainer>
       )
