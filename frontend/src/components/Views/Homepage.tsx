@@ -4,11 +4,12 @@ import Aside from '../UI/Aside/index';
 const Homepage = () => {
     return (
         <div className="height-custom">
-            <div>
+            <div className='w-30'>
                 <Aside></Aside>
             </div>
-            
-            {/* <Loader3 /> */}
+            <div className="flex justify-center align-middle homepage-body-style">
+             <Loader3 />
+            </div>
         </div>
     )
 }
