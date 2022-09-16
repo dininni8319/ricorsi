@@ -12,6 +12,7 @@ export interface PropsInput {
     typeIn: string,
     label: string,
     name: string,
+    handleData: (params: any) => any;
 };
 
 export interface PropsIcons {
@@ -28,7 +29,11 @@ export interface LogoProps {
 export type ObjSelectType = {
     title: string,
     name: string,
-    values: {value: string}[]
+    values: {value: string}[],
+}
+
+export type FunChange = {
+    handleData: (params: any) => any;
 }
 
 export interface ObjFormType {

@@ -35,23 +35,26 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn/*  onSubmit, redi
             informazioni_aggiuntive: '',
     });
 
-    //post a ricorso
-    fetch(`${baseURL}/api/crea_ricorso`, {
-        method: 'POST',
-        headers: { 'Content-Type' : "application/json"},
-        body: JSON.stringify(data)
-    })
-    .then(response => console.log(response))
-
-    const handleData = (e: { target: HTMLInputElement }):ObjFormType => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+       e.preventDefault();
+        //post a ricorso
+        fetch(`${baseURL}/api/crea_ricorso`, {
+            method: 'POST',
+            headers: { 'Content-Type' : "application/json"},
+            body: JSON.stringify(data)
+        })
+        .then(response => console.log(response))
+     
+    }
+    const handleData = (e: { target: HTMLInputElement }):void => {
         const newData = {...data};
         newData[e.target.id as keyof typeof data] = e.target.value
-
-        return newData;
+        
+        setData(newData);
     }
-        /* .then(data => ) */
+
     return (
-        <FormContainer>
+        <FormContainer onSubmit={handleSubmit}>
             <section className="form-row">
                 {formArr.map(({ label, name, typeIn }:PropsInput , index: number) =>{
                     return (
@@ -61,20 +64,24 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn/*  onSubmit, redi
                                 label={label}
                                 name={name}
                                 typeIn={typeIn}
+                                handleData={handleData}
                             />
                         </>
                     )
                 })}
             <div className='flex'>
                 <SelectInput
-                selectProps={selectPropsTributi}
+                   selectProps={selectPropsTributi}
+                   handleData={handleData}
                 />
 
                 <SelectInput
-                selectProps={selectPropsTipologiaAtto}
+                    selectProps={selectPropsTipologiaAtto}
+                    handleData={handleData}
                 />
                 <SelectInput
-                selectProps={selectPropsEsito}
+                    selectProps={selectPropsEsito}
+                    handleData={handleData}
                 />
             </div>
                 
