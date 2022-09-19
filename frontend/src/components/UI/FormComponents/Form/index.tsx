@@ -44,7 +44,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn/*  onSubmit, redi
             body: JSON.stringify(data)
         })
         .then(response => console.log(response))
-     
+
     }
 
     const handleData = (e: { target: HTMLInputElement }):void => {
