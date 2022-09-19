@@ -1,7 +1,7 @@
 import { ObjSelectType } from "../../../interfaces/interfaces";
 import { SelectComponent, Wrapper } from "./style";
 
-const SelectInput = ({ selectProps }: { selectProps:ObjSelectType }) => {
+const SelectInput:any = ({ selectProps }: { selectProps:ObjSelectType }) => {
     return (
         <Wrapper>
             <label htmlFor='tributo' className='input-label'>{selectProps?.name}</label> 

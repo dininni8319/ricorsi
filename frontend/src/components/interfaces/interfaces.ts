@@ -12,6 +12,7 @@ export interface PropsInput {
     typeIn: string,
     label: string,
     name: string,
+    handleData: (params: any) => any;
 };
 
 export interface PropsIcons {
@@ -28,5 +29,35 @@ export interface LogoProps {
 export type ObjSelectType = {
     title: string,
     name: string,
-    values: {value: string}[]
+    values: {value: string}[],
 }
+
+export type FunChange = {
+    handleData: (params: any) => any;
+}
+
+export interface ObjFormType {
+        nominativo: string,
+        mail: string,
+        cf_piva:string,
+        telefono: string,
+        cap:string,
+        città: string,
+        numero_ricorso: string,
+        numero_protocollo_interno: string,
+        ente: string,
+        data_ricezione_ricorso: string,
+        data_presentazione_ricorso: string,
+        indirizzo: string,
+        legale_controparte: string,
+        pec: string,
+        oggetto_ricorso: string,
+        anno_imposta: string,
+        importo_atto:string,
+        email_notification: string,
+        esito: string,
+        tributo: string,
+        tipologia_atto: string,
+        informazioni_aggiuntive: string,
+}
+

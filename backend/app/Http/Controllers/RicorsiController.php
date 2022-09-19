@@ -50,9 +50,24 @@ class RicorsiController extends Controller
     public function index()
     {
         $ricorsi = Ricorsi::orderBy("created_at", "desc")->get();
-        $tasks = Task::all();
+
+        if(!$ricorsi){
+            return response()->json([
+             'success' => false,
+             'message' => $this->messageUnSuccess,
+          ], 404);
+         } else {
+            
+             return response()->json([
+                'success' => true,
+                'notifiche_mensili' => $ricorsi,
+                'message' => $this->messageSuccess
+             ], 200);
+         }   
+
+      /*   $tasks = Task::all();
         
-        return view("ricorsi.paginaricorsi", compact("ricorsi", "tasks"));
+        return view("ricorsi.paginaricorsi", compact("ricorsi", "tasks")); */
     }
 
     public function workFlow($id = null)
@@ -88,9 +103,24 @@ class RicorsiController extends Controller
             $workflow = Ricorsi::create($formData);
             $ultimo_ricorso = Ricorsi::orderBy("created_at", "desc")->first();
             $id = $ultimo_ricorso->id;
-    
-            return redirect("/detail_ricorso/" . $id)->with("id", $id);
-        } 
+
+            if(!$id){
+                return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+            } else {
+                
+                return response()->json([
+                    'success' => true,
+                    'notifiche_mensili' => $ultimo_ricorso,
+                    'message' => $this->messageSuccess
+                ], 200);
+            }   
+
+        
+                return redirect("/detail_ricorso/" . $id)->with("id", $id);
+            } 
     }
 
     public function detailRicorso($id)

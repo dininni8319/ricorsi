@@ -98,7 +98,7 @@ export const defaultProps = {
       }, 
     ],
      subMitBtn: 'Sign In',
-    /* onSubmit: ((form: any) => console.log(form)), */
+     onChange: ((form: any) => console.log(form)),
   /*   redirect: {
         label: "Don't have an account",
         link: "Register",
