@@ -1,13 +1,14 @@
 import { ObjSelectType } from "../../../interfaces/interfaces";
 import { SelectComponent, Wrapper } from "./style";
 
-const SelectInput:any = ({ selectProps }: { selectProps:ObjSelectType }) => {
+const SelectInput = ({ selectProps, handleData}: { selectProps:ObjSelectType, handleData: React.ChangeEventHandler<HTMLSelectElement>}) => {
     return (
         <Wrapper>
-            <label htmlFor='tributo' className='input-label'>{selectProps?.name}</label> 
+            <label htmlFor={selectProps?.name} className='input-label'>{selectProps?.title}</label> 
             <SelectComponent
-                name='tributo'
-                id='tributo'
+                name={selectProps?.name}
+                id={selectProps?.name}
+                onChange={(e) => handleData(e)}
                 required
                 >
                     {

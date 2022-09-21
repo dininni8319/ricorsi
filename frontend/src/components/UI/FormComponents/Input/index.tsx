@@ -1,7 +1,7 @@
 import { PropsInput } from "../../../interfaces/interfaces";
 import { InputSection } from './style';
 
-const Input: React.FC<PropsInput> = ({ typeIn, name, label, handleData }):any => {
+const Input: React.FC<PropsInput> = ({ typeIn, name, label,index, handleData }:PropsInput) => {
     return (
         <InputSection>
             {/* <div className="input-wrapper"> */}
@@ -9,7 +9,8 @@ const Input: React.FC<PropsInput> = ({ typeIn, name, label, handleData }):any =>
                 <input 
                     type={typeIn} 
                     className='input-style' 
-                    onChange={handleData} 
+                    onChange={(e) => handleData(e, index)}
+                    name={name} 
                 />
             {/* </div> */}
         </InputSection>

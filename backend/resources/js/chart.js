@@ -1,6 +1,5 @@
 import { arrMonths1, arrMonths, baseURL } from './components/utilities/functionalities';
 import Chart from 'chart.js/auto';
-import Log from 'laravel-mix/src/Log';
 
     let baseUrl = (window.location).href; // You can also use document.URL
     let strUrl = baseUrl.substring(baseUrl.lastIndexOf('=') + 1).split(''); 
@@ -23,7 +22,7 @@ import Log from 'laravel-mix/src/Log';
      
         if(response.ok) {
             const data = await response.json();
-console.log(response)
+
             return data.notifiche_mensili;
         } 
     }
@@ -33,22 +32,6 @@ console.log(response)
          
         let objValues = Object.keys(notification).map(key => notification[key])
      
-       /*  for (const key in notification) {
-            if (Object.hasOwnProperty.call(notification, key)) {
-                const el = notification[key];
-               
-                let notificationValidation = key === 'notifiche_positive' 
-                || key === 'notifiche_negative' 
-                || key === 'cartoline_ritorno_inserite'
-                || key === 'nr_atti_annullati'
-                || key === 'nr_atti_spediti'
-                || key === 'numero_atti_rinotificare'
-                
-                if (notificationValidation) {
-                    arr = [ ...arr,el]
-                }      
-            }
-        } */
         
         const ctx = document?.getElementById('chart-js')?.getContext('2d');
 

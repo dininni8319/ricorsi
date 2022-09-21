@@ -1,76 +1,56 @@
 // import { string } from "yup";
-import React, { useState } from "react";
-
+import React, { useState, ChangeEvent } from "react";
 import Input from '../Input/index';
 import { FormContainer } from "./style";
+import { defaultProps } from "../defaultProps";
+import { formData } from'../formData';
 import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../selectPropsTributi";
-import { FormProps, PropsInput, ObjFormType } from "../../../interfaces/interfaces";
+import { FormProps } from "../../../interfaces/interfaces";
 import { baseURL } from "../../../Utilities/index";
 import SelectInput from '../SelectInput/index';
 
-const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn/*  onSubmit, redirect */ }) => {
+const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
+    const [ data, setData ] = useState(formData);
     
-    const [ data, setData ] = useState({
-            nominativo: '',
-            mail: '',
-            cf_piva:'',
-            telefono: '',
-            cap:'',
-            città: '',
-            numero_ricorso: '',
-            numero_protocollo_interno: '',
-            ente: '',
-            data_ricezione_ricorso: '',
-            data_presentazione_ricorso: '',
-            indirizzo: '',
-            legale_controparte: '',
-            pec: '',
-            oggetto_ricorso: '',
-            anno_imposta: '',
-            importo_atto:'',
-            email_notification: '',
-            esito: '',
-            tributo: '',
-            tipologia_atto: '',
-            informazioni_aggiuntive: '',
-    });
+    console.log(data);
     
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();
+
         //post a ricorso
-        fetch(`${baseURL}/api/crea_ricorso`, {
+        fetch(`${baseURL}/api/cienneffe/crea_ricorso`, {
             method: 'POST',
             headers: { 'Content-Type' : "application/json"},
             body: JSON.stringify(data)
         })
         .then(response => console.log(response))
-
     }
 
-    const handleData = (e: { target: HTMLInputElement }):void => {
-       
-        setData((prevState) => ({
-            ...prevState,
-            [e.target.id]: e.target.value
-        }));
-    }
-
+     // onChange
+     const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>, index?: number ) => {
+        // const i = defaultProps.formArr.findIndex(el => el.id === index)
+        setData({ ...data, [e.target.name]: 
+        e.target.value});
+    };
+ 
     return (
         <FormContainer onSubmit={handleSubmit}>
             <section className="form-row">
-                {formArr.map(({ label, name, typeIn }:PropsInput , index: number) =>{
-                    return (
-                        <>
-                            <Input
-                                key={index}
-                                label={label}
-                                name={name}
-                                typeIn={typeIn}
-                                handleData={handleData}
-                            />
-                        </>
-                    )
+                { defaultProps.formArr?.map(({ label, name, type }, index) => {
+                  return (
+                    <>
+                      <Input
+                         label={label}                       
+                         name={name}
+                         typeIn={type}
+                         handleData={handleData}
+                         index={index}
+                      />
+                      
+                    </>
+                  );
                 })}
+
             <div className='flex'>
                 <SelectInput
                    selectProps={selectPropsTributi}
@@ -87,7 +67,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn/*  onSubmit, redi
                 />
             </div>
                 
-                <button>{subMitBtn}</button>
+                <button className='bg-amber-500 border-solid text-white font-bold mt-5 py-2'>{subMitBtn}</button>
 
             </section>
         </FormContainer>

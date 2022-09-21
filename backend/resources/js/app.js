@@ -5,15 +5,15 @@
  */
 
 require("./bootstrap");
-require("./modal");
-require("./query");
-require("./functions");
-require("./input");
-require("./chart.js");
-require("./countDownClock");
-require("./formValidation");
-require("./chart.js");
-require ("./main.js");
+// require("./modal");
+// require("./query");
+// require("./functions");
+// require("./input");
+// require("./chart.js");
+// require("./countDownClock");
+// require("./formValidation");
+// require("./chart.js");
+// require ("./main.js");
 
 /* window.Vue = require('vue').default; */
 

@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RicorsiController extends Controller
 { 
-    public function __construct()
-    {
-       /*  $this->middleware("auth"); */
-        $this->middleware("auth.revisor");
-    }
+    // public function __construct()
+    // {
+    //    /*  $this->middleware("auth"); */
+    //     $this->middleware("auth.revisor");
+    // }
 
     protected function getFormData($req) {
 
@@ -84,7 +84,9 @@ class RicorsiController extends Controller
     }
 
     public function creaRicorso(Request $request, $id = null)
+
     {
+        dd($request);
         if ($id) {
             $ricorso = Ricorsi::find(intval($id));
             $formData = $this->getFormData($request);
