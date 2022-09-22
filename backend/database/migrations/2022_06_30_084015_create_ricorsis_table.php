@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string("nominativo");
             $table->string("cf_piva");
             $table->string("indirizzo")->nullable();
-            $table->string("citta");
+            $table->string("citta")->nullable();
             $table->string("cap");
             $table->string("mail");
             $table->string("pec");

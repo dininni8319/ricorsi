@@ -17,6 +17,8 @@ class RicorsiController extends Controller
     //     $this->middleware("auth.revisor");
     // }
 
+    protected $messageUnSuccess = 'Nessun importo trovato!';
+    protected $messageSuccess = 'Importi trovati!';
     protected function getFormData($req) {
 
         return [
@@ -26,7 +28,7 @@ class RicorsiController extends Controller
             "nominativo" => $req->nominativo,
             "cf_piva" => $req->cf_piva,
             "indirizzo" => $req->indirizzo,
-            "citta" => $req->citta,
+            "citta"=> $req->citta,
             "cap" => $req->cap,
             "mail" => $req->mail,
             "pec" => $req->pec,
@@ -60,7 +62,7 @@ class RicorsiController extends Controller
             
              return response()->json([
                 'success' => true,
-                'notifiche_mensili' => $ricorsi,
+                'ricorsi' => $ricorsi,
                 'message' => 'All the ricorsi'
              ], 200);
          }   
@@ -83,50 +85,45 @@ class RicorsiController extends Controller
         return view("ricorsi.createRicorsi");
     }
 
-    public function creaRicorso(Request $request){
-
-            dd($request->all());
-    }
-    // public function creaRicorso(Request $request, $id = null)
-
-    // {
-    //     if ($id) {
-    //         $ricorso = Ricorsi::find(intval($id));
-    //         $formData = $this->getFormData($request);
-    //         $ricorso->update($formData);
+    public function creaRicorso(Request $request, $id = null)
+    {
+        if ($id) {
+            $ricorso = Ricorsi::find(intval($id));
+            $formData = $this->getFormData($request);
+            $ricorso->update($formData);
         
-    //         return redirect("/detail_ricorso/" . $id)->with("id", $id);
+            return redirect("/detail_ricorso/" . $id)->with("id", $id);
 
-    //     } else {
+        } else {
 
-    //         // $user = Auth::user()->id;
-    //         $request->email_notification = $request->input("email_notification")
-    //             ? true
-    //             : false;
+            // $user = Auth::user()->id;
+            $request->email_notification = $request->input("email_notification")
+            ? true
+            : false;
             
-    //         $formData = $this->getFormData($request);
-    //         $workflow = Ricorsi::create($formData);
-    //         $ultimo_ricorso = Ricorsi::orderBy("created_at", "desc")->first();
-    //         $id = $ultimo_ricorso->id;
+            $formData = $this->getFormData($request);
+            
+            $ricorso = Ricorsi::create($formData);
 
-    //         if(!$id){
-    //             return response()->json([
-    //             'success' => false,
-    //             'message' => $this->messageUnSuccess,
-    //         ], 404);
-    //         } else {
+            $ultimo_ricorso = Ricorsi::orderBy("created_at", "desc")->first();
+            $id = $ultimo_ricorso->id;
+
+            if(!$id){
+                return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+            } else {
                 
-    //             return response()->json([
-    //                 'success' => true,
-    //                 'notifiche_mensili' => $ultimo_ricorso,
-    //                 'message' => $this->messageSuccess
-    //             ], 200);
-    //         }   
-
-        
-    //             return redirect("/detail_ricorso/" . $id)->with("id", $id);
-    //         } 
-    // }
+                return response()->json([
+                    'success' => true,
+                    'message' => $this->messageSuccess,
+                    'ricorso' => $ricorso,
+                    'id' => $id,
+                ], 200);
+            }   
+        } 
+    }
 
     public function detailRicorso($id)
     {
@@ -151,11 +148,23 @@ class RicorsiController extends Controller
         return view("ricorsi.detailPage", compact("ricorso", "documents", 'tasks'));
     }
 
-    public function ricorsoDelete($id)
+    public function deleteRicorso($id)
     {
-        $ricorso = Ricorsi::find($id)->delete();
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
 
-        return redirect("/paginaricorsi");
+            $ricorso = Ricorsi::find($id)->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'id' => $id,
+            ], 200);
+        }     
     }
 
     public function searchRicorso(Request $request)

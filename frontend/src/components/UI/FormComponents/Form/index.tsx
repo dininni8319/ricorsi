@@ -1,5 +1,6 @@
 // import { string } from "yup";
 import React, { useState, ChangeEvent } from "react";
+import { useNavigate } from 'react-router';
 import Input from '../Input/index';
 import { FormContainer } from "./style";
 import { defaultProps } from "../defaultProps";
@@ -12,16 +13,23 @@ import SelectInput from '../SelectInput/index';
 const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
     const [ data, setData ] = useState(formData);
     
+    const navigate = useNavigate()
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();
 
         //post a ricorso
-        fetch(`${baseURL}/api/users/crea_ricorso`, {
+        fetch(`${baseURL}/api/cienneffe/crea_ricorso`, {
             method: 'POST',
             headers: { 'Content-Type' : "application/json"},
             body: JSON.stringify(data)
         })
-        .then(response => console.log(response, 'testing the response'))
+        .then(response => {
+            if (response.ok) {
+                navigate('/')
+            } else {
+                alert('Something went wrong!')
+            }
+        })
     }
 
      // onChange
@@ -33,6 +41,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
  
     return (
         <FormContainer onSubmit={handleSubmit}>
+            <h1 className='font-bold text-amber-500 text-3xl'>{defaultProps.title}</h1>
             <section className="form-row">
                 { defaultProps.formArr?.map(({ label, name, type }, index) => {
                   return (
@@ -49,7 +58,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
                   );
                 })}
 
-            <div className='flex'>
+            <div className='md:flex'>
                 <SelectInput
                    selectProps={selectPropsTributi}
                    handleData={handleData}
@@ -64,9 +73,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
                     handleData={handleData}
                 />
             </div>
-                
                 <button className='bg-amber-500 border-solid text-white font-bold mt-5 py-2'>{subMitBtn}</button>
-
             </section>
         </FormContainer>
     )

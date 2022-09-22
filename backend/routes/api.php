@@ -20,15 +20,16 @@ use App\Http\Controllers\RicorsiController;
 /* Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
     return $request->user();
 }); */
+// /ricorso/delete/
 //Ricorsi
-Route::group(['prefix' => 'users', 'middleware' => 'CORS'], function ($router){
+Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home");
-    // Route::post("/crea_ricoqrso/{id?}", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");
-    Route::post("/crea_ricorso", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");
+    Route::post("/crea_ricorso/{id?}", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");
+    Route::delete("/ricorso/delete/{id}", [RicorsiController::class, "deleteRicorso"])->name("delete.ricorso");
     
     // //Chart Notifiche
-    // Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");
-    // Route::get("/notifiche_totali", [ChartController::class, "notificheTotali"])->name("notifichetotali.data");
-    // Route::get("/chartNotifiche", [ChartController::class, "chartNotifiche"])->name("chartNotifiche.data");
-    // Route::get("/notifiche_lotti/{id}", [ChartController::class, "notificheMesileSingoliLotti"])->name("notifiche.dettagli.lotti");
+    Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");
+    Route::get("/notifiche_totali", [ChartController::class, "notificheTotali"])->name("notifichetotali.data");
+    Route::get("/chartNotifiche", [ChartController::class, "chartNotifiche"])->name("chartNotifiche.data");
+    Route::get("/notifiche_lotti/{id}", [ChartController::class, "notificheMesileSingoliLotti"])->name("notifiche.dettagli.lotti");
 });
