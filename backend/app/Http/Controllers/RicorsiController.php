@@ -111,13 +111,13 @@ class RicorsiController extends Controller
             if(!$id){
                 return response()->json([
                 'success' => false,
-                'message' => $this->messageUnSuccess,
+                'message' => 'Something went wrong!',
             ], 404);
             } else {
                 
                 return response()->json([
                     'success' => true,
-                    'message' => $this->messageSuccess,
+                    'message' => 'The ricorso is been deleted!',
                     'ricorso' => $ricorso,
                     'id' => $id,
                 ], 200);

@@ -1,21 +1,28 @@
 import { ObjFormType } from "../../interfaces/interfaces";
 import { CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
+import useApiRequest  from "../../state/useApiRequest";
 
 const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
-
-    // const [ items, dispatch ] = useReducer((reducer, []) => {
-
-    // })
-   
+    
+    const [ { status, response }, makeRequest ] = useApiRequest(
+        `${baseURL}/api/cienneffe/ricorso/delete/${ricorsi.id}`, {
+            verb: 'delete',
+        }
+    )
+    console.log(response, 'deleting the ricorsi');
+    
     const handleDelete = (e:any) => {
-
-        fetch(`${baseURL}/api/cienneffe/ricorso/delete/${ricorsi.id}`,{
-            method: "DELETE",
-        })
-            .then(response => console.log(response))
+        e.preventDefault();
+        // fetch(`${baseURL}/api/cienneffe/ricorso/delete/${ricorsi.id}`,{
+        //     method: "DELETE",
+        // })
+        //     .then(response => console.log(response))
+       const del = makeRequest();
+       return del;
     } 
+
     return (
         <div className="card card-style bg-base-100 shadow-xl m-2" key={id}>
             <CardHeaderStyle></CardHeaderStyle>

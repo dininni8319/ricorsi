@@ -1,11 +1,16 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
+export type Methods = "head" | "options" | "put" | "post" | "patch" | "delete" | "get";
+
+export type InitialState = {
+    status: number | undefined,
+    response: object | undefined
+}
+
 export interface FormProps {
     title: string,
     formArr: any,
     subMitBtn: string,
-    /*onSubmit: any,
-    redirect: any */
 };
 
 export interface PropsInput {
