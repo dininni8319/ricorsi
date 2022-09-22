@@ -9,6 +9,12 @@
   display: flex;
 }
 
-.homepage-body-style {
+/* .homepage-body-style {
   width: 85vw;
+} */
+
+@media only screen and (max-width: 765px) {
+  .height-custom {
+    display: block;
+  } 
 }

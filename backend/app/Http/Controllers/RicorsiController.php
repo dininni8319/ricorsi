@@ -62,7 +62,7 @@ class RicorsiController extends Controller
             
              return response()->json([
                 'success' => true,
-                'notifiche_mensili' => $ricorsi,
+                'ricorsi' => $ricorsi,
                 'message' => 'All the ricorsi'
              ], 200);
          }   
@@ -118,7 +118,6 @@ class RicorsiController extends Controller
                 
                 return response()->json([
                     'success' => true,
-                    'notifiche_mensili' => $ultimo_ricorso,
                     'message' => $this->messageSuccess,
                     'ricorso' => $ricorso,
                     'id' => $id,

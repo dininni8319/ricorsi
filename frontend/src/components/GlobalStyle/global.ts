@@ -28,19 +28,20 @@ export const Theme = {
       //Colors
       backgroundColor: '#F2F2F2',
       goldColor: 'gold',
+      navbarColor: "#10B981",
       footerColor: '#272D36',
       textColorGrey: '#808080',
       borderColor: '#FCEADE',
       buttoncolor: '#A56FF8',
-      buttonColorGold: 'gold',
+      colorGold: '#fca311',
       grayColor: '#272D36',
       pinkColor: '#586BA4',
-      whiteColor: '#fff',
       blueColor: '#8338ec',
       blueLightColor: '#a3e6f5',
       transparent: 'trnasparent',
       colorWhite: 'white',
       borderGrayColor: '#a9a9a9 ',
+      
       //Box-shadow
       boxShadow: 'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px',
   

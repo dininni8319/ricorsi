@@ -21,7 +21,7 @@ use App\Http\Controllers\RicorsiController;
     return $request->user();
 }); */
 //Ricorsi
-Route::group(['prefix' => 'users', 'middleware' => 'CORS'], function ($router){
+Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home");
     Route::post("/crea_ricorso/{id?}", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");
     

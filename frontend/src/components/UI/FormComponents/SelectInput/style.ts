@@ -33,7 +33,6 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     background-color:#F2F2F2;
-
     margin: 5px;
     padding: 5px;
 

@@ -1,5 +1,6 @@
 // import { string } from "yup";
 import React, { useState, ChangeEvent } from "react";
+import { useNavigate } from 'react-router';
 import Input from '../Input/index';
 import { FormContainer } from "./style";
 import { defaultProps } from "../defaultProps";
@@ -11,17 +12,23 @@ import SelectInput from '../SelectInput/index';
 
 const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
     const [ data, setData ] = useState(formData);
-    
+    const navigate = useNavigate()
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();
 
         //post a ricorso
-        fetch(`${baseURL}/api/users/crea_ricorso`, {
+        fetch(`${baseURL}/api/cienneffe/crea_ricorso`, {
             method: 'POST',
             headers: { 'Content-Type' : "application/json"},
             body: JSON.stringify(data)
         })
-        .then(response => console.log(response, 'testing the response'))
+        .then(response => {
+            if (response.ok) {
+                navigate('/')
+            } else {
+                alert('Something went wrong!')
+            }
+        })
     }
 
      // onChange

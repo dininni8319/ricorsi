@@ -2,7 +2,7 @@ const Aside = () => {
 
   return (
   
-<aside className="w-64 h-100" aria-label="Sidebar">
+<aside className="w-94 md:w-64 h-100" aria-label="Sidebar">
    <div className="overflow-y-auto py-5 px-3 bg-white rounded dark:bg-gray-800">
       <ul className="space-y-2">
          <li>
