@@ -1,9 +1,9 @@
 import NavItem from './NavItem';
 import LogoComponent from './LogoComponent';
-import{ NavbarStyleComponent }from './style';
+import { NavbarStyleComponent } from './style';
 import logo from '../../../assets/icons/cnf_img.png';
 
-const Navbar = () => {
+const Navbar:React.FC = () => {
     return (
         <NavbarStyleComponent>
             <ul className='md:static fixed top-2 md:flex justify-between items-center md:bg-transparent w-10/12 bg-emerald-500 text-white space-x-5  md:space-y-0 space-y-5'>
