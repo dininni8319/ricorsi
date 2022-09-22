@@ -12,24 +12,22 @@ import SelectInput from '../SelectInput/index';
 const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
     const [ data, setData ] = useState(formData);
     
-    console.log(data);
-    
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();
 
         //post a ricorso
-        fetch(`${baseURL}/api/cienneffe/crea_ricorso`, {
+        fetch(`${baseURL}/api/users/crea_ricorso`, {
             method: 'POST',
             headers: { 'Content-Type' : "application/json"},
             body: JSON.stringify(data)
         })
-        .then(response => console.log(response))
+        .then(response => console.log(response, 'testing the response'))
     }
 
      // onChange
      const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>, index?: number ) => {
         // const i = defaultProps.formArr.findIndex(el => el.id === index)
-        setData({ ...data, [e.target.name]: 
+        setData({...data, [e.target.name]: 
         e.target.value});
     };
  

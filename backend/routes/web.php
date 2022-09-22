@@ -23,7 +23,7 @@ use App\Http\Controllers\TaxUnitEditController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+
 
 //Ricorso
 Route::get("/", [HomeController::class, "index"])->name("home");
@@ -77,5 +77,5 @@ Route::post("/update_riconciliazione/{id}", [RiconciliazioneController::class, "
 
 //Chart Data
 
-Auth::routes();
+
 

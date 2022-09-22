@@ -61,7 +61,7 @@ class RicorsiController extends Controller
              return response()->json([
                 'success' => true,
                 'notifiche_mensili' => $ricorsi,
-                'message' => $this->messageSuccess
+                'message' => 'All the ricorsi'
              ], 200);
          }   
 
@@ -83,47 +83,50 @@ class RicorsiController extends Controller
         return view("ricorsi.createRicorsi");
     }
 
-    public function creaRicorso(Request $request, $id = null)
+    public function creaRicorso(Request $request){
 
-    {
-        dd($request);
-        if ($id) {
-            $ricorso = Ricorsi::find(intval($id));
-            $formData = $this->getFormData($request);
-            $ricorso->update($formData);
-        
-            return redirect("/detail_ricorso/" . $id)->with("id", $id);
-
-        } else {
-
-            // $user = Auth::user()->id;
-            $request->email_notification = $request->input("email_notification")
-                ? true
-                : false;
-            
-            $formData = $this->getFormData($request);
-            $workflow = Ricorsi::create($formData);
-            $ultimo_ricorso = Ricorsi::orderBy("created_at", "desc")->first();
-            $id = $ultimo_ricorso->id;
-
-            if(!$id){
-                return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
-            } else {
-                
-                return response()->json([
-                    'success' => true,
-                    'notifiche_mensili' => $ultimo_ricorso,
-                    'message' => $this->messageSuccess
-                ], 200);
-            }   
-
-        
-                return redirect("/detail_ricorso/" . $id)->with("id", $id);
-            } 
+            dd($request->all());
     }
+    // public function creaRicorso(Request $request, $id = null)
+
+    // {
+    //     if ($id) {
+    //         $ricorso = Ricorsi::find(intval($id));
+    //         $formData = $this->getFormData($request);
+    //         $ricorso->update($formData);
+        
+    //         return redirect("/detail_ricorso/" . $id)->with("id", $id);
+
+    //     } else {
+
+    //         // $user = Auth::user()->id;
+    //         $request->email_notification = $request->input("email_notification")
+    //             ? true
+    //             : false;
+            
+    //         $formData = $this->getFormData($request);
+    //         $workflow = Ricorsi::create($formData);
+    //         $ultimo_ricorso = Ricorsi::orderBy("created_at", "desc")->first();
+    //         $id = $ultimo_ricorso->id;
+
+    //         if(!$id){
+    //             return response()->json([
+    //             'success' => false,
+    //             'message' => $this->messageUnSuccess,
+    //         ], 404);
+    //         } else {
+                
+    //             return response()->json([
+    //                 'success' => true,
+    //                 'notifiche_mensili' => $ultimo_ricorso,
+    //                 'message' => $this->messageSuccess
+    //             ], 200);
+    //         }   
+
+        
+    //             return redirect("/detail_ricorso/" . $id)->with("id", $id);
+    //         } 
+    // }
 
     public function detailRicorso($id)
     {

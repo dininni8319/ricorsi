@@ -7,7 +7,7 @@ export const FormContainer = styled.form `
     align-items: center;
     
     .form-row {
-        width: 45vw;
+        width: 65vw;
         display: flex;
         flex-direction: column;
         margin: 30px;
