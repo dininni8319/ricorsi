@@ -1,5 +1,5 @@
 export const defaultProps = {
-    title: 'Avvia un ricorso',
+    title: 'Avvia un Ricorso',
     formArr: [
       {
             label: 'Nominativo',
@@ -88,7 +88,7 @@ export const defaultProps = {
       {
             label: 'Pec',
             name: 'pec',
-            type: 'text',
+            type: 'email',
             id: 14,
       },
       {
@@ -100,13 +100,13 @@ export const defaultProps = {
       {
             label: 'Anno Imposta',
             name: 'anno_imposta',
-            type: 'text',
+            type: 'number',
             id: 16,
       }, 
       {
             label: 'Importo Atto €',
-            name: 'importo_atto ',
-            type: 'text',
+            name: 'importo_atto',
+            type: 'number',
             id: 17,
       }, 
       {
@@ -116,12 +116,6 @@ export const defaultProps = {
             id: 18,
       }, 
     ],
-     subMitBtn: 'Sign In',
-//      onChange: ((form: any) => console.log(form)),
-  /*   redirect: {
-        label: "Don't have an account",
-        link: "Register",
-        to: '/register'
-    } */
+     subMitBtn: 'Invia',
 }
 

@@ -33,6 +33,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
  
     return (
         <FormContainer onSubmit={handleSubmit}>
+            <h1 className='font-bold text-amber-500 text-3xl'>{defaultProps.title}</h1>
             <section className="form-row">
                 { defaultProps.formArr?.map(({ label, name, type }, index) => {
                   return (
@@ -49,7 +50,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
                   );
                 })}
 
-            <div className='flex'>
+            <div className='md:flex'>
                 <SelectInput
                    selectProps={selectPropsTributi}
                    handleData={handleData}
@@ -64,9 +65,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
                     handleData={handleData}
                 />
             </div>
-                
                 <button className='bg-amber-500 border-solid text-white font-bold mt-5 py-2'>{subMitBtn}</button>
-
             </section>
         </FormContainer>
     )
