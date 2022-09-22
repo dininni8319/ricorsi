@@ -13,6 +13,12 @@
   width: 85vw;
 } */
 
+.border-custom {
+  padding: 15px;
+  border: 1px solid rgb(209 213 219);
+  border-radius: 5px;
+}
+
 @media only screen and (max-width: 765px) {
   .height-custom {
     display: block;

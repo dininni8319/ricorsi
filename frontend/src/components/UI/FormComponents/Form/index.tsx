@@ -12,6 +12,7 @@ import SelectInput from '../SelectInput/index';
 
 const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
     const [ data, setData ] = useState(formData);
+    
     const navigate = useNavigate()
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();

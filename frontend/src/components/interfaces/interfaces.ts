@@ -35,6 +35,7 @@ export type ObjSelectType = {
 }
 
 export interface ObjFormType {
+    id: number,
     nominativo: string,
     mail: string,
     cf_piva:string,

@@ -18,7 +18,7 @@ const Homepage = () => {
           }
             )
           .catch((e) => alert(e))
-    }, [])
+    },[])
     
     return (
         <div className="height-custom">

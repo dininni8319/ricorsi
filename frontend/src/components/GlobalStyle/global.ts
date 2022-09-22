@@ -26,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Theme = {
       //Colors
-      backgroundColor: '#F2F2F2',
+      borderCoulor: '#F2F2F2',
       goldColor: 'gold',
       navbarColor: "#10B981",
       footerColor: '#272D36',
@@ -40,7 +40,7 @@ export const Theme = {
       blueLightColor: '#a3e6f5',
       transparent: 'trnasparent',
       colorWhite: 'white',
-      borderGrayColor: '#a9a9a9 ',
+      borderGrayColor: '#a9a9a9',
       
       //Box-shadow
       boxShadow: 'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px',

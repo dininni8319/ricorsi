@@ -87,7 +87,6 @@ class RicorsiController extends Controller
 
     public function creaRicorso(Request $request, $id = null)
     {
-       
         if ($id) {
             $ricorso = Ricorsi::find(intval($id));
             $formData = $this->getFormData($request);
@@ -123,8 +122,7 @@ class RicorsiController extends Controller
                     'id' => $id,
                 ], 200);
             }   
-                return redirect("/detail_ricorso/" . $id)->with("id", $id);
-            } 
+        } 
     }
 
     public function detailRicorso($id)
@@ -150,11 +148,23 @@ class RicorsiController extends Controller
         return view("ricorsi.detailPage", compact("ricorso", "documents", 'tasks'));
     }
 
-    public function ricorsoDelete($id)
+    public function deleteRicorso($id)
     {
-        $ricorso = Ricorsi::find($id)->delete();
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
 
-        return redirect("/paginaricorsi");
+            $ricorso = Ricorsi::find($id)->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'id' => $id,
+            ], 200);
+        }     
     }
 
     public function searchRicorso(Request $request)
