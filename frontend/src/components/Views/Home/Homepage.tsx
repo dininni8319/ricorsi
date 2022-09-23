@@ -31,6 +31,7 @@ const Homepage = () => {
                             <Card 
                                 ricorsi={ricorsi}
                                 id={id}
+                                key={id}
                             />
                         )
                     }): <Loader3 />}

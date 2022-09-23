@@ -1,9 +1,8 @@
 import { ObjFormType } from "../../interfaces/interfaces";
 import { CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
-import { useEffect, useReducer } from "react";
 import useApiRequest  from "../../state/useApiRequest";
-
+import { Link } from 'react-router-dom';
 const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
     
     const [ { status, response }, makeRequest ] = useApiRequest(
@@ -11,22 +10,18 @@ const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
             verb: 'delete',
         }
     )
-    console.log(response, 'deleting the ricorsi');
-    
+     console.log(response, 'response');
+     
     const handleDelete = (e:any) => {
-        e.preventDefault();
-        // fetch(`${baseURL}/api/cienneffe/ricorso/delete/${ricorsi.id}`,{
-        //     method: "DELETE",
-        // })
-        //     .then(response => console.log(response))
+       e.preventDefault();
+        
        const del = makeRequest();
        return del;
     } 
 
     return (
-        <div className="card card-style bg-base-100 shadow-xl m-2" key={id}>
+        <div className="card card-style bg-base-100 shadow-xl m-2 " key={id}>
             <CardHeaderStyle></CardHeaderStyle>
-         {/* <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure> */}
             <section className="card-body">
                 <h3 className="card-title mb-3">Tributo: {ricorsi.tributo}</h3>
 
@@ -51,6 +46,7 @@ const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
                 <div className="card-actions justify-end">
                    <p className='font-serif text-sm'>{ricorsi.oggetto_ricorso}</p>
                 </div>
+                <Link to={`/work_flow/${ricorsi.id}`}>Aggiorna Ricorso</Link>
                 <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18'>Cancella</button>
             </section>
         </div>

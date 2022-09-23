@@ -24,3 +24,7 @@
     display: block;
   } 
 }
+
+.card-style {
+  height: 40vh;
+}

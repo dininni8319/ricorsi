@@ -21,6 +21,7 @@ use App\Http\Controllers\RicorsiController;
     return $request->user();
 }); */
 // /ricorso/delete/
+
 //Ricorsi
 Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home");

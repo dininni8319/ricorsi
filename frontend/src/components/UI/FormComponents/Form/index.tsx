@@ -34,7 +34,6 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
 
      // onChange
      const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>, index?: number ) => {
-        // const i = defaultProps.formArr.findIndex(el => el.id === index)
         setData({...data, [e.target.name]: 
         e.target.value});
     };
@@ -52,6 +51,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
                          typeIn={type}
                          handleData={handleData}
                          index={index}
+                         key={index}
                       />
                       
                     </>
