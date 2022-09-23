@@ -46,8 +46,10 @@ const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
                 <div className="card-actions justify-end">
                    <p className='font-serif text-sm'>{ricorsi.oggetto_ricorso}</p>
                 </div>
-                <Link to={`/work_flow/${ricorsi.id}`}>Aggiorna Ricorso</Link>
-                <Link to={`/ricorsi_detail/${ricorsi.id}`}>Dettaglio Ricorso</Link>
+                <div className='flex justify-between'>
+                    <Link to={`/work_flow/${ricorsi.id}`}>Aggiorna Ricorso</Link>
+                    <Link to={`/ricorsi_detail/${ricorsi.id}`}>Dettaglio Ricorso</Link>
+               </div>
                 <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18'>Cancella</button>
             </section>
         </div>
