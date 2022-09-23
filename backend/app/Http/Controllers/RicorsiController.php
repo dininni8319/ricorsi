@@ -19,6 +19,7 @@ class RicorsiController extends Controller
 
     protected $messageUnSuccess = 'Nessun importo trovato!';
     protected $messageSuccess = 'Importi trovati!';
+
     protected function getFormData($req) {
 
         return [
@@ -87,12 +88,32 @@ class RicorsiController extends Controller
 
     public function creaRicorso(Request $request, $id = null)
     {
+       
         if ($id) {
+            dd($request->all());
             $ricorso = Ricorsi::find(intval($id));
+
+            $request->email_notification = $request->input("email_notification")
+            ? true
+            : false;
+
             $formData = $this->getFormData($request);
             $ricorso->update($formData);
         
-            return redirect("/detail_ricorso/" . $id)->with("id", $id);
+            if(!$ricorso){
+                return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong!',
+            ], 404);
+            } else {
+                
+                return response()->json([
+                    'success' => true,
+                    'message' => 'The ricorso is been deleted!',
+                    'ricorso' => $ricorso,
+                    'id' => $id,
+                ], 200);
+            }   
 
         } else {
 
@@ -127,25 +148,42 @@ class RicorsiController extends Controller
 
     public function detailRicorso($id)
     {
-        $documents = Document::where("fasi_id", $id)->get();
-        $ricorso = Ricorsi::find($id);
-        $idExistes = Fasi::where("ricorsi_id", $id)->exists();
-        $documents = Document::where('ricorsi_id', $id)->get();
+        // $documents = Document::where("fasi_id", $id)->get();
         
-        $tasks = Task::where('ricorsi_id', $id)->get();
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong!',
+            ], 404);
+        } else {
+            
+            $ricorso = Ricorsi::find($id);
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Success, the ricorso has been found!',
+                'ricorso' => $ricorso,
+                'id' => $id,
+            ], 200);
+        }   
 
-        if ($idExistes) {
-            $documents = Document::where('ricorsi_id', $id)->get();
-            $faseCurrent = Fasi::where("ricorsi_id", $id)->max('fase');
-            $currentFases = Fasi::where("ricorsi_id", $id)->orderBy("created_at", "desc")->get();
+        // $idExistes = Fasi::where("ricorsi_id", $id)->exists();
+        // $documents = Document::where('ricorsi_id', $id)->get();
+        
+        // $tasks = Task::where('ricorsi_id', $id)->get();
+
+        // if ($idExistes) {
+        //     $documents = Document::where('ricorsi_id', $id)->get();
+        //     $faseCurrent = Fasi::where("ricorsi_id", $id)->max('fase');
+        //     $currentFases = Fasi::where("ricorsi_id", $id)->orderBy("created_at", "desc")->get();
            
-            return view(
-                "ricorsi.detailPage",
-                compact("ricorso", "currentFases", "documents", 'faseCurrent' , 'tasks')
-            );
-        }
+        //     return view(
+        //         "ricorsi.detailPage",
+        //         compact("ricorso", "currentFases", "documents", 'faseCurrent' , 'tasks')
+        //     );
+        // }
 
-        return view("ricorsi.detailPage", compact("ricorso", "documents", 'tasks'));
+        // return view("ricorsi.detailPage", compact("ricorso", "documents", 'tasks'));
     }
 
     public function deleteRicorso($id)

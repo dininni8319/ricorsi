@@ -17,7 +17,8 @@ export interface PropsInput {
     typeIn: string,
     label: string,
     name: string,
-    index?: number,
+    index: number,
+    ricorso: ObjFormType,
     handleData: (e: React.ChangeEvent<HTMLInputElement>,
         index?: number) => any;
 };
@@ -37,6 +38,7 @@ export type ObjSelectType = {
     title: string,
     name: string,
     values: {value: string}[],
+    ricorso?: object,
 }
 
 export interface ObjFormType {

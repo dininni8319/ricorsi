@@ -12,6 +12,10 @@ export const NavbarStyleComponent = styled.nav`
     border: 1px solid #E6E6E6;
     background-color: ${(props) => props.theme.navbarColor};
 
+    a {
+        color: ${props => props.theme.colorWhite};
+    }
+    
     @media only screen and (max-width: 765px) {
         background-color: transparent;
         border: none;

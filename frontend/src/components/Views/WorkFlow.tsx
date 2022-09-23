@@ -5,7 +5,7 @@ const Workflow = () => {
     return (
         <div className="height-custom">
             <Form 
-                title='Testing the Form'
+                title='Avvio un Ricorso'
                 formArr={defaultProps.formArr}
                 subMitBtn={defaultProps.subMitBtn}  
             />

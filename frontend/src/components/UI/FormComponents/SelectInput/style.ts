@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SelectComponent = styled.select`
+export const SelectStyleComponent = styled.select`
     :root {
       --select-border: #777;
       --select-focus: blue;

@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   
-  /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400&family=Roboto+Condensed&family=Roboto:wght@400;500&display=swap'); */
-
     * {
         box-sizing: border-box;
         margin: 0;
@@ -22,11 +20,16 @@ export const GlobalStyle = createGlobalStyle`
     ul {
         list-style: none
     }
+
+    a {
+       color: blueviolet;
+    }
 `
 
 export const Theme = {
       //Colors
       borderCoulor: '#F2F2F2',
+      backgroundBodyColor: '#F7F8FA',
       goldColor: 'gold',
       navbarColor: "#10B981",
       footerColor: '#272D36',
@@ -38,7 +41,7 @@ export const Theme = {
       pinkColor: '#586BA4',
       blueColor: '#8338ec',
       blueLightColor: '#a3e6f5',
-      transparent: 'trnasparent',
+      transparent: 'transparent',
       colorWhite: 'white',
       borderGrayColor: '#a9a9a9',
       
