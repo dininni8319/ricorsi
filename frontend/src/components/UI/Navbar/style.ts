@@ -8,7 +8,7 @@ export const NavbarStyleComponent = styled.nav`
     z-index: 20;
     margin-top: 0;
     width: 100vw;
-    min-height: 5vh;
+    min-height: 4vh;
     border: 1px solid #E6E6E6;
     background-color: ${(props) => props.theme.navbarColor};
 

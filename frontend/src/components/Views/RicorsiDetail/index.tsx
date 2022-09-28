@@ -36,57 +36,57 @@ const RicorsiDetail = () => {
   return (
       <section className="height-custom flex justify-center">
             <DetailStyleComponent>
-                <h1 className="mb-3">Tributo: {ricorso.tributo}</h1>
+                <h1 className="mb-3 text-center pr-2">Tributo:{ricorso.tributo}</h1>
 
-                <ul className="border-custom">
+                <ul className="ul-detail-style">
                     <li>
-                       <span className="font-semibold pr-1">Numero Ricorso:</span>{ricorso.numero_ricorso}
+                       <strong>Numero Ricorso:</strong><span>{ricorso.numero_ricorso}</span>
                     </li>
                     <li>
-                        <span className="font-semibold pr-1">Tributo:</span>{ricorso.tributo} 
+                        <strong>Tributo:</strong><span>{ricorso.tributo}</span>
                     </li>
                     <li>
-                        <span className="font-semibold pr-1">Ente:</span>{ricorso.ente} 
+                        <strong>Ente:</strong><span>{ricorso.ente}</span> 
                     </li>
                     <li>
-                        <span className="font-semibold pr-1">Anno imposta:</span>{ricorso.anno_imposta}
+                        <strong>Anno imposta:</strong><span>{ricorso.anno_imposta}</span>
                     </li>
                     <li>
-                        <span className="font-semibold pr-1">Importo Atto:</span>{ricorso.importo_atto}
+                        <strong>Importo Atto:</strong><span>{ricorso.importo_atto}</span>
                     </li>
                     <li>
-                        <span className="font-semibold pr-1">Esito:</span>{ricorso.esito}
-                    </li>
-
-                    <li>
-                        <span className="font-semibold pr-1">Numero di protocollo interno:</span>{ricorso.numero_protocollo_interno}
-                    </li>
-                    <li>
-                        <span className="font-semibold pr-1">Indirizzo:</span>{ricorso.indirizzo}
-                    </li>
-                    <li>
-                        <span className="font-semibold pr-1">Email:</span>{ricorso.mail}
-                    </li>
-                    <li>
-                        <span className="font-semibold pr-1">Telefono:</span>{ricorso.telefono}
+                        <strong>Esito:</strong><span>{ricorso.esito}</span>
                     </li>
 
                     <li>
-                        <span className="font-semibold pr-1">Cod. Fiscale/P.Iva:</span>{ricorso.cf_piva}
+                        <strong>Numero di protocollo interno:</strong><span>{ricorso.numero_protocollo_interno}</span>
                     </li>
                     <li>
-                        <span className="font-semibold pr-1">Cod. Fiscale/P.Iva:</span>{ricorso.tipologia_atto}
+                        <strong>Indirizzo:</strong><span>{ricorso.indirizzo}</span>
+                    </li>
+                    <li>
+                        <strong>Email:</strong><span>{ricorso.mail}</span>
+                    </li>
+                    <li>
+                        <strong>Telefono:</strong><span>{ricorso.telefono}</span>
+                    </li>
+
+                    <li>
+                        <strong>Cod. Fiscale/P.Iva:</strong><span>{ricorso.cf_piva}</span>
+                    </li>
+                    <li>
+                        <strong>Cod. Fiscale/P.Iva:</strong><span>{ricorso.tipologia_atto}</span>
                     </li>
                 </ul>
-
-                <div className="card-actions justify-end">
-                   <p className='font-serif text-sm'>{ricorso.oggetto_ricorso}</p>
-                </div>
-                <div className='md:flex justify-around'>
-
-                   <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
-                   <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18'>Cancella</button>
-                </div>
+                <section className='md:px-3'>
+                    <div className='md:flex justify-between'>
+                        <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
+                        <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
+                    </div>
+                    <div className="card-actions">
+                         <p className='font-serif mt-3'>{ricorso.oggetto_ricorso}</p>
+                    </div>
+                </section>
             </DetailStyleComponent>
         </section>
       

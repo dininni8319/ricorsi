@@ -20,7 +20,7 @@ const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
     } 
 
     return (
-        <div className="card card-style bg-base-100 shadow-xl m-2 " key={id}>
+        <div className="card card-style bg-base-100 shadow-xl m-2" key={id}>
             <CardHeaderStyle></CardHeaderStyle>
             <section className="card-body">
                 <h3 className="card-title mb-3">Tributo: {ricorsi.tributo}</h3>
@@ -50,7 +50,7 @@ const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
                     <Link to={`/work_flow/${ricorsi.id}`}>Aggiorna Ricorso</Link>
                     <Link to={`/ricorsi_detail/${ricorsi.id}`}>Dettaglio Ricorso</Link>
                </div>
-                <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18'>Cancella</button>
+                <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
             </section>
         </div>
     );
