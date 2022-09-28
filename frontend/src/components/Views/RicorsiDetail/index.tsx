@@ -79,7 +79,7 @@ const RicorsiDetail = () => {
                     </li>
                 </ul>
                 <section className='md:px-3'>
-                    <div className='md:flex justify-between'>
+                    <div className='md:flex justify-between  border-bottom-style py-2'>
                         <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
                         <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
                     </div>

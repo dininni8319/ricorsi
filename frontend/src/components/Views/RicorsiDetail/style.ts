@@ -15,13 +15,13 @@ export const DetailStyleComponent = styled.div`
   h1 {
     font-weight: bold;
     font-size:30px;
-  
   }
-  li  {
+
+  .ul-detail-style > li  {
     display: flex;
     justify-content: space-between;
-    padding: 10px 5px;
-    border-bottom: 1px solid rgb(209 213 219);
+    padding: 25px 0px 2px 5px;
+    border-bottom: 1px solid ${props => props.theme.borderColor2};
   }
 
   span {
@@ -30,5 +30,9 @@ export const DetailStyleComponent = styled.div`
 
   strong {
     font-weight: bolder
+  }
+
+  .border-bottom-style {
+    border-bottom: 1px solid rgb(209 213 219);
   }
 `

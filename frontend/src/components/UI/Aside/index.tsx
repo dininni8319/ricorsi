@@ -1,9 +1,10 @@
+import { AsideStyleComponent } from "./style";
 const Aside = () => {
 
   return (
   
-<aside className="w-94 md:w-64 h-100" aria-label="Sidebar">
-   <div className="overflow-y-auto py-5 px-3 bg-white rounded dark:bg-gray-800">
+<AsideStyleComponent className="w-94 md:w-64 " aria-label="Sidebar">
+   <div className="overflow-y-auto py-5 px-3 rounded dark:bg-gray-800">
       <ul className="space-y-2">
          <li>
             <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -63,7 +64,7 @@ const Aside = () => {
          </li>
       </ul>
    </div>
-</aside>
+</AsideStyleComponent>
 
 
   );

@@ -35,6 +35,8 @@ export const Theme = {
       footerColor: '#272D36',
       textColorGrey: '#808080',
       borderColor: '#FCEADE',
+      //color for the input and line bottom
+      borderColor2: 'rgb(209 213 219)',
       buttoncolor: '#A56FF8',
       colorGold: '#fca311',
       grayColor: '#272D36',

@@ -12,7 +12,7 @@ export const InputSection = styled.div`
     
     .input-style {
         margin-top: 5px;
-        border-bottom: 1px solid ${props => props.theme.borderGrayColor};
+        border-bottom: 1px solid ${props => props.theme.borderColor2};
        /*  border-radius: ${props => props.theme.borderRadius}; */
         padding: 7px 0;
         width: 80%;

@@ -9,12 +9,12 @@ export const FormContainer = styled.form `
     align-items: center;
     
     .form-row {
-        width: 50vw;
+        width: 60vw;
         display: flex;
         flex-direction: column;
         margin: 30px;
         background: ${(props) => props.theme.colorWhite};
         padding: 20px;
-        box-shadow: ${props => props.theme.boxShadow};
+        box-shadow: ${props => props.theme.boxShadow2};
     }
 `
