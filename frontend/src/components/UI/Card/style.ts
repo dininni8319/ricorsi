@@ -5,3 +5,6 @@ export const CardHeaderStyle = styled.div`
   height: 8px;
   background-color: ${props => props.theme.colorGold};
 `
+export const CardStyleComponent = styled.div`
+  box-shadow: ${props=> props.theme.boxShadow2}
+`

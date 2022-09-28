@@ -1,5 +1,5 @@
 import { ObjFormType } from "../../interfaces/interfaces";
-import { CardHeaderStyle } from "./style";
+import { CardStyleComponent, CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
 import useApiRequest  from "../../state/useApiRequest";
 import { Link } from 'react-router-dom';
@@ -20,7 +20,7 @@ const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
     } 
 
     return (
-        <div className="card card-style bg-base-100 shadow-xl m-2" key={id}>
+        <CardStyleComponent className="card card-style bg-base-100 shadow-xl m-2" key={id}>
             <CardHeaderStyle></CardHeaderStyle>
             <section className="card-body">
                 <h3 className="card-title mb-3">Tributo: {ricorsi.tributo}</h3>
@@ -52,7 +52,7 @@ const Card = ({ricorsi, id }: {ricorsi:ObjFormType, id: number}) => {
                </div>
                 <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
             </section>
-        </div>
+        </CardStyleComponent>
     );
 }
 

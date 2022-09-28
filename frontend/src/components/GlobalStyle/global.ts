@@ -45,10 +45,11 @@ export const Theme = {
       blueLightColor: '#a3e6f5',
       transparent: 'transparent',
       colorWhite: 'white',
+      blackColor: 'black',
       borderGrayColor: '#a9a9a9',
       
       //Box-shadow
-      boxShadow: 'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px',
+      boxShadow: 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)',
       boxShadow2: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
       //Border-radius
       borderRadius: '5px',
