@@ -1,7 +1,6 @@
 import { AsideStyleComponent } from "./style";
 
 const Aside = () => {
-
   return (
   
 <AsideStyleComponent className="w-94 md:w-70" aria-label="Sidebar">

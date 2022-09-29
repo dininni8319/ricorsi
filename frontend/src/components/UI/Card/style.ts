@@ -6,5 +6,10 @@ export const CardHeaderStyle = styled.div`
   background-color: ${props => props.theme.colorGold};
 `
 export const CardStyleComponent = styled.div`
-  box-shadow: ${props=> props.theme.boxShadow2}
+  box-shadow: ${props=> props.theme.boxShadow2};
+
+  .btn-delete{
+    display: flex;
+    justify-content: end;
+  }
 `

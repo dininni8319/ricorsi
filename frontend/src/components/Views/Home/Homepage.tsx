@@ -20,9 +20,9 @@ const Homepage = () => {
     
     return (
         <div className="height-custom">
-            <>
+            {/* <>
                 <Aside></Aside>
-            </>
+            </> */}
             <WrapperStyleComponent>
                 <> 
                     { response ? response?.data?.ricorsi?.map((ricorsi: any, id:number) => {
