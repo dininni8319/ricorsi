@@ -22,7 +22,12 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a {
-       color: blueviolet;
+       color: #272D36;
+       transform: 3s
+    }
+
+    a:hover{
+        color: blue;
     }
 `
 
@@ -34,10 +39,12 @@ export const Theme = {
       navbarColor: "#10B981",
       footerColor: '#272D36',
       textColorGrey: 'rgba(255,255,255,0.9)',
-      borderColor: '#FCEADE',
       //color for the input and line bottom
       borderColor2: 'rgb(209 213 219)',
-      buttoncolor: '#A56FF8',
+      
+      //not in use
+      buttoncolor: '#577590',
+      //////////////
       colorGold: '#fca311',
       grayColor: '#272D36',
       pinkColor: '#586BA4',

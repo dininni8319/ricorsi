@@ -19,7 +19,7 @@ export interface PropsInput {
     name: string,
     index: number,
     ricorso: ObjFormType,
-    handleData: (e: React.ChangeEvent<HTMLInputElement>,
+    handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index?: number) => any;
 };
 

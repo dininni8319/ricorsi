@@ -17,4 +17,9 @@ export const FormContainer = styled.form `
         padding: 20px;
         box-shadow: ${props => props.theme.boxShadow2};
     }
+
+    .btn-send {
+        background-color: ${props => props.theme.navbarColor};
+        font-size: 20px;
+    }
 `

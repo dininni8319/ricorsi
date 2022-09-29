@@ -1,13 +1,14 @@
 // import { string } from "yup";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router';
-import Input from '../Input/index';
 import { FormContainer } from "./style";
 import { defaultProps } from "../defaultProps";
 import { formData } from'../formData';
 import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../selectPropsTributi";
 import { FormProps } from "../../../interfaces/interfaces";
 import { baseURL } from "../../../Utilities/index";
+import TextArea from "../TextArea/index";
+import Input from '../Input/index';
 import SelectInput from '../SelectInput/index';
 import useApiRequest from '../../../state/useApiRequest';
 
@@ -49,7 +50,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
     }
 
      // onChange
-     const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>, index?: number) => {
+     const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
         setData({...data, [e.target.name]: 
         e.target.value});
     };
@@ -76,6 +77,15 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
                 })}
 
             <div className='md:flex'>
+                {/* <TextArea
+                    label={label}                       
+                    name={}
+                    typeIn={type}
+                    handleData={handleData}
+                    index={index}
+                    key={index}
+                    ricorso={ricorso}
+                /> */}
                 <SelectInput
                    selectProps={selectPropsTributi}
                    handleData={handleData}
@@ -93,7 +103,7 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
                     ricorso={ricorso}
                 />
             </div>
-                <button className='bg-amber-500 border-solid text-white font-bold mt-5 py-2'>{subMitBtn}</button>
+                <button className='btn-send border-solid text-white mt-5 py-2'>{subMitBtn}</button>
             </section>
         </FormContainer>
     )

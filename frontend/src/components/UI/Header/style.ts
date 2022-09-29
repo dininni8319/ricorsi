@@ -15,7 +15,6 @@ export const HeaderComponent = styled.header`
         0 calc(100% - 1vw) 
     );
     
-  
     .h2-custom-class { 
       position: absolute;
       color: transparent;
