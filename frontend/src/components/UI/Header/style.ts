@@ -3,30 +3,23 @@ import img from'../../../assets/icons/man_suit.webp';
 
 export const HeaderComponent = styled.header`
     width: 100%;
-    min-height: 32vh;
-    background: linear-gradient(transparent,rgba(0,10,0,0.7)), url(${img});
+    min-height: 50vh;
+    background: linear-gradient(transparent,rgba(0,10,0,0.7)),linear-gradient(180deg,rgba(0,10,0,0.1), #0f084b), url(${img});
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-  
-
-    &::after {
-      content: "";
-     
-      position: absolute;
-      inset: 0px;
-      margin-top: -1px;
-      transform: skewY(-2deg);
-      transform-origin: 50% 0px;
-      outline: transparent solid 1px;
-      /* backface-visibility: hidden;
-      background-color: inherit; */
-    }
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 75%,
+        0 calc(100% - 1vw) 
+    );
+    
   
     .h2-custom-class { 
       position: absolute;
       color: transparent;
-      top: 70%;
+      top: 40%;
       left: 30%;
       font-size: 40px;
       color: rgb(255,255,255)

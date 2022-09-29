@@ -4,7 +4,7 @@ const Aside = () => {
 
   return (
   
-<AsideStyleComponent className="w-94 md:w-50" aria-label="Sidebar">
+<AsideStyleComponent className="w-94 md:w-70" aria-label="Sidebar">
    <div className="overflow-y-auto py-5 px-3 rounded dark:bg-gray-800">
       <ul className="space-y-2">
          <li>
