@@ -4,23 +4,15 @@ export const NavbarStyleComponent = styled.nav`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: absolute;
+    z-index: 5;
     margin-top: 0;
     width: 100vw;
     min-height: 6vh;
-    /* border: 1px solid #E6E6E6; */
-    background-color: ${(props) => props.theme.navbarColor};
+    background-color: ${(props) => props.theme.transparent};
    
     a {
-        color: ${props => props.theme.colorWhite};
-    }
-
-    nav::after{
-        position: absolute;
-        bottom: -30px;
-        content: '';
-        height: 5px;
-        background-color: red;
-        border-bottom: 5px solid black;
+        color: ${props => props.theme.textColorGrey};
     }
     
     @media only screen and (max-width: 765px) {

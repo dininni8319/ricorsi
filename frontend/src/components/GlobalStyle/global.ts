@@ -33,7 +33,7 @@ export const Theme = {
       goldColor: 'gold',
       navbarColor: "#10B981",
       footerColor: '#272D36',
-      textColorGrey: '#808080',
+      textColorGrey: 'rgba(255,255,255,0.9)',
       borderColor: '#FCEADE',
       //color for the input and line bottom
       borderColor2: 'rgb(209 213 219)',
@@ -43,6 +43,7 @@ export const Theme = {
       pinkColor: '#586BA4',
       blueColor: '#8338ec',
       blueLightColor: '#a3e6f5',
+      
       transparent: 'transparent',
       colorWhite: 'white',
       blackColor: 'black',
