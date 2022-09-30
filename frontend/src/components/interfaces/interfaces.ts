@@ -14,7 +14,20 @@ export interface FormProps {
 };
 
 export interface PropsInput {
-    typeIn: string,
+    typeIn?: string,
+    label: string,
+    name: string,
+    index: number,
+    ricorso: ObjFormType,
+    handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+        index?: number) => any;
+};
+
+export interface RicorsoProps {
+   ricorso: ObjFormType 
+}
+
+export interface PropsTextArea {
     label: string,
     name: string,
     index: number,
@@ -42,7 +55,7 @@ export type ObjSelectType = {
 }
 
 export interface ObjFormType {
-    id: number,
+    id?: number,
     nominativo: string,
     mail: string,
     cf_piva:string,

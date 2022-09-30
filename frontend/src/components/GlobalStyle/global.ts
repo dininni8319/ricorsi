@@ -13,6 +13,10 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #F7F8FA;
     }
 
+    /* h1 { 
+        color: #272D36;
+        text-shadow:  4px 5px 11px rgba(0,0,0,6) }
+    } */
     h5 {
        color: white;
     }
@@ -41,7 +45,7 @@ export const Theme = {
       textColorGrey: 'rgba(255,255,255,0.9)',
       //color for the input and line bottom
       borderColor2: 'rgb(209 213 219)',
-      
+      textShadow: 'text-shadow:  5px 5px 11px rgba(0,0,0,1)',
       //not in use
       buttoncolor: '#577590',
       //////////////

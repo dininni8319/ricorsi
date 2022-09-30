@@ -1,8 +1,8 @@
-import { PropsInput } from "../../../interfaces/interfaces";
+import { PropsTextArea } from "../../../interfaces/interfaces";
 import { InputSection } from '../Input/style';
 import { memo } from "react";
 
-const TextArea: React.FC<PropsInput> = ({ typeIn, name, label,index, ricorso, handleData }:PropsInput) => {
+const TextArea: React.FC<PropsTextArea> = ({ label, name, index, ricorso, handleData }:PropsTextArea) => {
     let newName = name;
    
     return (

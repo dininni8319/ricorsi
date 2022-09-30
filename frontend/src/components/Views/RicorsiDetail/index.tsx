@@ -1,9 +1,11 @@
 import {  Link } from "react-router-dom";
+import { RicorsoProps } from "../../interfaces/interfaces";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from 'react-router';
 import { baseURL } from "../../Utilities/index";
 import useApiRequest from '../../state/useApiRequest';
 import { DetailStyleComponent  } from "./style";
+import DetailPage from '../../UI/DetailPage';
 
 const RicorsiDetail = () => {
   let { slug } = useParams();
@@ -25,59 +27,24 @@ const RicorsiDetail = () => {
     e.preventDefault();
     makeRequest2();
     navigate('/');
-
   } 
 
   useEffect(() => {
     makeRequest(); 
   },[])
 
+//   console.log(response, 'testing the type of ricorso');
+
   let ricorso = {...response?.data?.ricorso}
+  
   return (
       <section className="height-custom flex justify-center">
             <DetailStyleComponent>
-                <h1 className="mb-3 text-center pr-2">Tributo:{ricorso.tributo}</h1>
+                <h1 className="mb-3 text-center pr-2">Tributo:{ricorso?.tributo}</h1>
 
-                <ul className="ul-detail-style">
-                    <li>
-                       <strong>Numero Ricorso:</strong><span>{ricorso.numero_ricorso}</span>
-                    </li>
-                    <li>
-                        <strong>Tributo:</strong><span>{ricorso.tributo}</span>
-                    </li>
-                    <li>
-                        <strong>Ente:</strong><span>{ricorso.ente}</span> 
-                    </li>
-                    <li>
-                        <strong>Anno imposta:</strong><span>{ricorso.anno_imposta}</span>
-                    </li>
-                    <li>
-                        <strong>Importo Atto:</strong><span>{ricorso.importo_atto}</span>
-                    </li>
-                    <li>
-                        <strong>Esito:</strong><span>{ricorso.esito}</span>
-                    </li>
-
-                    <li>
-                        <strong>Numero di protocollo interno:</strong><span>{ricorso.numero_protocollo_interno}</span>
-                    </li>
-                    <li>
-                        <strong>Indirizzo:</strong><span>{ricorso.indirizzo}</span>
-                    </li>
-                    <li>
-                        <strong>Email:</strong><span>{ricorso.mail}</span>
-                    </li>
-                    <li>
-                        <strong>Telefono:</strong><span>{ricorso.telefono}</span>
-                    </li>
-
-                    <li>
-                        <strong>Cod. Fiscale/P.Iva:</strong><span>{ricorso.cf_piva}</span>
-                    </li>
-                    <li>
-                        <strong>Cod. Fiscale/P.Iva:</strong><span>{ricorso.tipologia_atto}</span>
-                    </li>
-                </ul>
+                 <DetailPage 
+                   ricorso={ricorso}
+                 />
                 <section className='md:px-3'>
                     <div className='md:flex justify-between  border-bottom-style py-2'>
                         <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>

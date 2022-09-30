@@ -49,7 +49,8 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
         })
     }
 
-     // onChange
+   
+    // onChange
      const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
         setData({...data, [e.target.name]: 
         e.target.value});
@@ -59,24 +60,32 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
         <FormContainer onSubmit={handleSubmit}>
             <h1 className='font-bold text-amber-500 text-3xl'>{title}</h1>
             <section className="form-row">
-                { defaultProps.formArr?.map(({ label, name, type }, index) => {
+                { defaultProps.formArr?.map(({ label, name, type, id }, index) => {
                   return (
-                    <>
-                      <Input
-                         label={label}                       
-                         name={name}
-                         typeIn={type}
-                         handleData={handleData}
-                         index={index}
-                         key={index}
-                         ricorso={ricorso}
-                      />
-                      
-                    </>
+                      id === 12 || id === 13 || id === 15 ?  <TextArea 
+                                label={label}                       
+                                name={name}
+                                handleData={handleData}
+                                index={index}
+                                key={index}
+                                ricorso={ricorso}
+                          />:
+                          <Input
+                               label={label}                       
+                               name={name}
+                               typeIn={type}
+                               handleData={handleData}
+                               index={index}
+                               key={index}
+                               ricorso={ricorso}
+                            />
+                          
+                
                   );
                 })}
 
             <div className='md:flex'>
+
                 {/* <TextArea
                     label={label}                       
                     name={}
