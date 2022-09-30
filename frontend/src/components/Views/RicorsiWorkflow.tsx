@@ -1,5 +1,6 @@
-import Form from '../UI/FormComponents/Form/index';
+import Form from '../UI/FormComponents/FormRicorsi/index';
 import { defaultProps } from '../UI/FormComponents/defaultProps';
+import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../UI/FormComponents/selectPropsTributi";
 
 const Workflow = () => {
     return (
@@ -8,7 +9,7 @@ const Workflow = () => {
                 title='Avvio un Ricorso'
                 formArr={defaultProps.formArr}
                 subMitBtn={defaultProps.subMitBtn}  
-            />
+            ></Form>
         </div>
     );
 }

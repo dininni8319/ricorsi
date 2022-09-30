@@ -2,7 +2,7 @@
 import { ObjSelectType } from "../../../interfaces/interfaces";
 import { SelectStyleComponent, Wrapper } from "./style";
 
-const SelectInput = ({ selectProps,ricorso,  handleData }: { selectProps:ObjSelectType, ricorso: object, handleData: React.ChangeEventHandler<HTMLSelectElement>}) => {
+const SelectInput = ({ selectProps,ricorso,  handleData }: { selectProps:ObjSelectType, ricorso?: object, handleData: React.ChangeEventHandler<HTMLSelectElement>}) => {
     let newName = selectProps?.name;
     return (
         <Wrapper>

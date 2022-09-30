@@ -98,4 +98,57 @@ export const selectPropsEsito = {
     ]
 }
 
+export const selectPropsEsitoCartoline = {
+
+    title: "Esito",
+    name: 'esito_notifica',
+    values: 
+    [
+        {
+            value: 'Ricevuto-Destinatario' 
+        },
+        {
+            value: 'Ricevuto-Familiare Convivente' 
+        },
+        {
+            value: 'Ricevuto-Addetto all\'Immobile' 
+        },
+        {
+            value: 'Ricevuto-Portiere' 
+        }, 
+        {
+            value: 'Ritirato' 
+        }, 
+        {
+            value: 'Compiuta Giacenza' 
+        },
+        {
+            value: 'Rifiutato' 
+        }, 
+        {
+            value: 'Destinatario irreperibile' 
+        },
+        {
+            value: 'Destinatario deceduto' 
+        },
+        {
+            value: 'Destinatario sconosciuto' 
+        },
+        {
+            value: 'Destinatario trasferito' 
+        },
+        {
+            value: 'Indirizzo inesatto' 
+        },
+        {
+            value: 'Indirizzo insufficiente' 
+        },
+        {
+            value: 'Indirizzo inesistente' 
+        },
+        {
+            value: 'CAD' 
+        },
+    ]
+}
 

@@ -1,10 +1,10 @@
 // import { string } from "yup";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router';
-import { FormContainer } from "./style";
-import { defaultProps } from "../defaultProps";
+import { FormContainer } from "../FormRicorsi/style";
+import { cartolineFormData } from "../defaultProps";
 import { formData } from'../formData';
-import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../selectPropsTributi";
+import { selectPropsEsitoCartoline } from "../selectPropsTributi";
 import { FormProps } from "../../../interfaces/interfaces";
 import { baseURL } from "../../../Utilities/index";
 import TextArea from "../TextArea/index";
@@ -30,7 +30,8 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
 
     let ricorso = {...response?.data?.ricorso}
     
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();
 
@@ -49,7 +50,6 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
         })
     }
 
-   
     // onChange
      const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
         setData({...data, [e.target.name]: 
@@ -60,56 +60,25 @@ const Form: React.FC<FormProps> = ({ title, formArr, subMitBtn }) => {
         <FormContainer onSubmit={handleSubmit}>
             <h1 className='font-bold text-amber-500 text-3xl'>{title}</h1>
             <section className="form-row">
-                { defaultProps.formArr?.map(({ label, name, type, id }, index) => {
+                { cartolineFormData.formArr?.map(({ label, name, type, id }, index) => {
                   return (
-                      id === 12 || id === 13 || id === 15 ?  <TextArea 
-                                label={label}                       
-                                name={name}
-                                handleData={handleData}
-                                index={index}
-                                key={index}
-                                ricorso={ricorso}
-                          />:
-                          <Input
-                               label={label}                       
-                               name={name}
-                               typeIn={type}
-                               handleData={handleData}
-                               index={index}
-                               key={index}
-                               ricorso={ricorso}
-                            />
-                          
-                
+                      <Input
+                            label={label}                       
+                            name={name}
+                            typeIn={type}
+                            handleData={handleData}
+                            index={index}
+                            key={index}
+                            ricorso={ricorso}
+                        />
                   );
                 })}
 
             <div className='md:flex'>
 
-                {/* <TextArea
-                    label={label}                       
-                    name={}
-                    typeIn={type}
-                    handleData={handleData}
-                    index={index}
-                    key={index}
-                    ricorso={ricorso}
-                /> */}
                 <SelectInput
-                   selectProps={selectPropsTributi}
-                   handleData={handleData}
-                   ricorso={ricorso}
-                />
-
-                <SelectInput
-                    selectProps={selectPropsTipologiaAtto}
+                    selectProps={selectPropsEsitoCartoline}
                     handleData={handleData}
-                    ricorso={ricorso}
-                />
-                <SelectInput
-                    selectProps={selectPropsEsito}
-                    handleData={handleData}
-                    ricorso={ricorso}
                 />
             </div>
                 <button className='btn-send border-solid text-white mt-5 py-2'>{subMitBtn}</button>

@@ -117,3 +117,86 @@ export const defaultProps = {
      subMitBtn: 'Invia',
 }
 
+export const cartolineFormData = {
+      title: 'Avvia un Cartolina',
+      formArr: [
+        {
+              label: 'Descrizione Mandante',
+              name: 'descrizione_mandante',
+              type: 'text',
+              id: 0,
+        },
+        {
+              label: 'Codice della mandante',
+              name: 'codice_mandate',
+              type: 'text',
+              id: 1,
+        },
+        {
+              label: 'Nome e cognome del debitore',
+              name: 'nome_cognome_debitore',
+              type: 'text',
+              id: 2
+        },
+        {
+              label: 'Codice Fiscale/P.I del debitore',
+              name: 'cf_piva_debitore',
+              type: 'text',
+              id: 3,
+        },
+        {
+              label: 'NDG',
+              name: 'ndg',
+              type: 'text',
+              id: 4,
+        },
+        {
+              label: 'Data comunicazione/Data spedizione',
+              name: 'data_spedizione',
+              type: 'date',
+              id: 5,
+        },
+        {
+              label: 'Data notifica',
+              name: 'data_notifica',
+              type: 'date',
+              id: 6,
+        },
+        {
+              label: 'Numero Raccomandata',
+              name: 'numero_raccomandata',
+              type: 'text',
+              id: 7,
+        },
+        {
+              label: 'Chiave pratica',
+              name: 'chiave_pratica',
+              type: 'text',
+              id: 8,
+        },
+        {
+              label: 'Fase',
+              name: 'fase',
+              type: 'text',
+              id: 9,
+        },
+        {
+              label: 'File',
+              name: 'nome_file',
+              type: 'file',
+              id: 10,
+        },
+      ],
+       subMitBtn: 'Invia',
+  }
+// 'descrizione_mandante',
+//        'codice_mandate',
+//        'nome_cognome_debitore',
+//        'cf_piva_debitore',
+//        'ndg',
+//        'data_spedizione',
+//        'numero_raccomandata',
+//        'data_notifica',
+//        'esito_notifica',
+//        'chiave_pratica',
+//        'fase',
