@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router';
 import { baseURL } from "../../Utilities/index";
 import useApiRequest from '../../state/useApiRequest';
 import { DetailStyleComponent  } from "./style";
-import DetailPage from '../../UI/DetailPage';
+import DetailPage from '../../UI/DetailRicorsi';
 
 const RicorsiDetail = () => {
   let { slug } = useParams();
@@ -32,7 +32,6 @@ const RicorsiDetail = () => {
   useEffect(() => {
     makeRequest(); 
   },[])
-
 //   console.log(response, 'testing the type of ricorso');
 
   let ricorso = {...response?.data?.ricorso}
@@ -46,7 +45,7 @@ const RicorsiDetail = () => {
                    ricorso={ricorso}
                  />
                 <section className='md:px-3'>
-                    <div className='md:flex justify-between  border-bottom-style py-2'>
+                    <div className='md:flex justify-between  border-bottom-style py-3'>
                         <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
                         <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
                     </div>

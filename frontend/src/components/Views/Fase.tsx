@@ -1,5 +1,13 @@
 import useInput from '../../Hooks/useInput';
 import { defaultFasiData } from'../UI/FormComponents/defaultData';
+import 
+{ 
+    selectStatoFase,
+    selectEsitoSentenza, 
+    selectEsitoDefinitivo,
+    selectTipologiaFile,
+} from "../UI/FormComponents/selectPropsTributi";
+
 import { fasiFormData } from "../UI/FormComponents/defaultProps";
 import { Input, SelectInput, Form } from "../UI/index";
 import { selectPropsEsitoCartoline } from '../UI/FormComponents/selectPropsTributi';

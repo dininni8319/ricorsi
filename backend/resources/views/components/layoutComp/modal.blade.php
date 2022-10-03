@@ -24,7 +24,7 @@
                           <select name="fase"  class="form-control" required>
                               @if ($ricorso->importo_atto >= 50000)
                                 <option value="ricorso_1g">Ricorso 1°Grado</option>     
-                                <option value="mediazione">Mediazione</option>
+                                <option value="ricorso_1g">Mediazione</option>
                                 <option value="ricorso_2g">Ricorso 2°Grado</option>
                                 <option value="cassazione">Cassazione</option>
                               @else

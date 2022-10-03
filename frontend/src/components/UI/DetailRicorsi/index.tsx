@@ -51,7 +51,7 @@ const DetailPage = ( { ricorso }: RicorsoProps) => {
                     <strong>Cod. Fiscale/P.Iva:</strong><span>{ricorso.tipologia_atto}</span>
                 </li>
             </ul>
-            <section>
+            <section className='py-2'>
                 {/* <button className='primaryBtn' onClick={() => setIsOpen(true)}>
                     Avvia una fase
                 </button> */}
