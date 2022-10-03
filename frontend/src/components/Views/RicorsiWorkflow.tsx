@@ -30,7 +30,13 @@ const Workflow = () => {
                     />
                 );
                 })}
-            
+                <TextArea 
+                    label="Oggetto Ricorso"
+                    name="oggetto_ricorso"
+                    handleData={handleData}
+                />
+                <TextArea />
+                <TextArea />
                 <div className='md:flex'>
                     <SelectInput
                         selectProps={selectPropsTributi}

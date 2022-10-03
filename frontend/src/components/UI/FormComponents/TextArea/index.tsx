@@ -2,7 +2,7 @@ import { PropsTextArea } from "../../../interfaces/interfaces";
 import { InputSection } from '../Input/style';
 import { memo } from "react";
 
-const TextArea: React.FC<PropsTextArea> = ({ label, name, index, ricorso, handleData }:PropsTextArea) => {
+const TextArea: React.FC<PropsTextArea> = ({ label, name, handleData }:PropsTextArea) => {
     let newName = name;
    
     return (
@@ -12,7 +12,7 @@ const TextArea: React.FC<PropsTextArea> = ({ label, name, index, ricorso, handle
                 <textarea 
                     // type={typeIn} 
                     className='input-style' 
-                    onChange={(e) => handleData(e, index)}
+                    onChange={(e) => handleData(e)}
                     name={name}>
                     </textarea>
                     {/* // value={ricorso[newName as keyof object]} */}

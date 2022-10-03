@@ -1,3 +1,4 @@
+//Ricorsi
 export const selectPropsTributi = {
     title: 'Tributo',
     name: 'tributo',
@@ -98,6 +99,7 @@ export const selectPropsEsito = {
     ]
 }
 
+//Cartoline
 export const selectPropsEsitoCartoline = {
     title: "Esito",
     name: 'esito_notifica',
@@ -151,6 +153,7 @@ export const selectPropsEsitoCartoline = {
     ]
 }
 
+//fase
 export const selectEsitoSentenza = {
     title: "Esito Sentenza",
     name: 'esito',

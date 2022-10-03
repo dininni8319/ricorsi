@@ -67,6 +67,19 @@ export const defaultFormProps = {
             type: 'number',
             id: 10,
       },
+      {
+            label: 'Oggetto Ricorso',
+            name: 'oggetto_ricorso',
+            type: '',
+            id: 11,
+      },
+      {
+            label: 'Informazioni aggiuntive',
+            name: '',
+            type: '',
+            id: 11,
+      },
+
     ],
      subMitBtn: 'Invia',
 }

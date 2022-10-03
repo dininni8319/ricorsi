@@ -10,7 +10,7 @@ import
 
 import { fasiFormData } from "../UI/FormComponents/defaultProps";
 import { Input, SelectInput, Form } from "../UI/index";
-import { selectPropsEsitoCartoline } from '../UI/FormComponents/selectPropsTributi';
+
 
 const Fase = () => {
     const { data, handleData } = useInput(defaultFasiData)
@@ -25,9 +25,14 @@ const Fase = () => {
                 data={data}
             >
               <>
-              
+                <SelectInput
+                    selectProps={selectStatoFase}
+                    handleData={handleData}
+                />
+
                 {fasiFormData?.formArr.map(({ label, name, type }, index) => {
                 return (
+                    
                     <Input
                         label={label}                       
                         name={name}
@@ -41,7 +46,15 @@ const Fase = () => {
             
                 <div className='md:flex'>
                     <SelectInput
-                        selectProps={selectPropsEsitoCartoline}
+                        selectProps={selectEsitoSentenza}
+                        handleData={handleData}
+                    />
+                    <SelectInput
+                        selectProps={selectEsitoDefinitivo}
+                        handleData={handleData}
+                    />
+                     <SelectInput
+                        selectProps={selectTipologiaFile}
                         handleData={handleData}
                     />
                 </div> 
