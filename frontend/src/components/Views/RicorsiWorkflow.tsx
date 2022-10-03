@@ -1,11 +1,17 @@
-import { defaultFormProps } from '../UI/FormComponents/defaultProps';
+import { formRicorsiLabels } from '../UI/FormComponents/defaultProps';
 import { defaultRicorsiData } from "../UI/FormComponents/defaultData";
 import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../UI/FormComponents/selectPropsTributi";
 import useInput from '../../Hooks/useInput';
 import { Input, SelectInput, TextArea, Form } from '../UI/index';
 
 const Workflow = () => {
-   const { data, handleData } = useInput(defaultRicorsiData);
+    const { data, handleData } = useInput(defaultRicorsiData);
+
+    const isTextarea = (id:number) => {
+        if (id === 13 || id === 15 || id === 18) {
+            return true;
+        }
+    } 
 
     return (
         <div className="height-custom">
@@ -18,25 +24,27 @@ const Workflow = () => {
             >
               <>
               
-                {defaultFormProps?.formArr.map(({ label, name, type }, index) => {
-                return (
-                    <Input
-                        label={label}                       
-                        name={name}
-                        typeIn={type}
-                        handleData={handleData}
-                        index={index}
-                        key={index}
-                    />
-                );
+                {formRicorsiLabels?.formArr.map(({ label, name, type, id}, index) => {
+                
+                  return (
+                    isTextarea(id) ? (<TextArea 
+                                        label={label}                       
+                                        name={name}
+                                        handleData={handleData}
+                                        index={index}
+                                        key={index}
+                                    />): 
+                                  (  <Input
+                                        label={label}                       
+                                        name={name}
+                                        typeIn={type}
+                                        handleData={handleData}
+                                        index={index}
+                                        key={index}
+                                />)
+                  )
                 })}
-                <TextArea 
-                    label="Oggetto Ricorso"
-                    name="oggetto_ricorso"
-                    handleData={handleData}
-                />
-                <TextArea />
-                <TextArea />
+               
                 <div className='md:flex'>
                     <SelectInput
                         selectProps={selectPropsTributi}

@@ -39,8 +39,7 @@ const Cartoline = () => {
                 </div> 
               </>
            </Form>
-        </div>
-      
+        </div> 
     )
 }
 

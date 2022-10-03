@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\RicorsiController;
+use App\Http\Controllers\TaxUnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +25,14 @@ use App\Http\Controllers\RicorsiController;
 
 //Ricorsi
 Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
+    //Ricorsi
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home");
     Route::post("/crea_ricorso/{id?}", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");
     Route::get("/detail_ricorso/{id}", [RicorsiController::class, "detailRicorso"])->name("detail.ricorso");
     Route::delete("/ricorso/delete/{id}", [RicorsiController::class, "deleteRicorso"])->name("delete.ricorso");
     
+    //Fasi
+    Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create");
     // //Chart Notifiche
     Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");
     Route::get("/notifiche_totali", [ChartController::class, "notificheTotali"])->name("notifichetotali.data");

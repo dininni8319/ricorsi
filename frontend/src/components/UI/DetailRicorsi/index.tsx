@@ -56,7 +56,7 @@ const DetailPage = ( { ricorso }: RicorsoProps) => {
                     Avvia una fase
                 </button> */}
                 
-                <Link to='/fasi' className='primaryBtn'>Avvia una Fase</Link>
+                <Link to={`/fasi/${ricorso.id}`} className='primaryBtn'>Avvia una Fase</Link>
                 {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
             </section>
         </>

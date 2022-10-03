@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class TaxUnitController extends Controller
 {
-    public function __construct()
-    {
-        /* $this->middleware("auth"); */
-        $this->middleware("auth.revisor");
-    }
+    // public function __construct()
+    // {
+    //     /* $this->middleware("auth"); */
+    //     // $this->middleware("auth.revisor");
+    // }
 
     protected function findRicorsoID($id)
     {
@@ -75,7 +75,7 @@ class TaxUnitController extends Controller
         $fase = Fasi::where("ricorsi_id", $id)
         ->where("fase", $req_value);
 
-        //fasi corrent create
+        //fasi current create
         $currentFases = $this->findRicorsoID($id)->get();
         $state = true;
 

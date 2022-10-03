@@ -10,14 +10,16 @@ import
 
 import { fasiFormData } from "../UI/FormComponents/defaultProps";
 import { Input, SelectInput, Form } from "../UI/index";
-
+import { useParams } from 'react-router';
 
 const Fase = () => {
-    const { data, handleData } = useInput(defaultFasiData)
+    const { data, handleData } = useInput(defaultFasiData);
+    const { slug } = useParams();
     
     return (
         <div className="height-custom">
             <Form
+                id={slug}
                 title='Avvia una Fase' 
                 navPath="/" 
                 createPath='create_fase'
@@ -32,7 +34,6 @@ const Fase = () => {
 
                 {fasiFormData?.formArr.map(({ label, name, type }, index) => {
                 return (
-                    
                     <Input
                         label={label}                       
                         name={name}

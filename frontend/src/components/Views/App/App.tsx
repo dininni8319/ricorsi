@@ -16,7 +16,7 @@ const App = () => {
             <Route path='/ricorsi' element={<Ricorsi />}/>
             <Route path='/ricorsi_detail/:slug' element={<RicorsiDetail />} />
             <Route path='/work_flow/' element={<Cartoline />} />
-            <Route path='/fasi' element={<Fase />} />
+            <Route path='/fasi/:slug' element={<Fase />} />
             <Route path='/work_flow/:slug' element={<Cartoline />} />
         </Routes>
         <Footer />

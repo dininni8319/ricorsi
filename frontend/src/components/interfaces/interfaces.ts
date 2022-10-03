@@ -6,7 +6,7 @@ export interface FormWrapperType {
     title: string,
     subMitBtn: string,
     children?: JSX.Element,
-    handleSubmit: React.FormEventHandler<HTMLFormElement>;
+    handleSubmit: React.FormEventHandler<HTMLFormElement>,
 }
 export type InitialState = {
     status: number | undefined,
@@ -14,6 +14,7 @@ export type InitialState = {
 }
 
 export interface FormProps {
+    id?: string | number,
     title: string,
     navPath: string,
     createPath:string,
@@ -22,7 +23,6 @@ export interface FormProps {
     data: {[key: string]: string},
     children?: JSX.Element;
     // formData: ObjSelectType,
-    id?: number,
 };
 
 export interface DefaultData {
@@ -48,7 +48,6 @@ export interface PropsTextArea {
     label: string,
     name: string,
     index: number,
-    ricorso: ObjFormType,
     handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index?: number) => any;
 };
@@ -61,7 +60,7 @@ export interface PropsIcons {
 export interface LogoProps {
     imageUrl: string | undefined;
     w: string,
-    h: string
+    h: string,
 };
 
 export type ObjSelectType = {
