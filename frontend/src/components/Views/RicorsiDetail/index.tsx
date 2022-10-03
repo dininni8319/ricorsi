@@ -5,7 +5,8 @@ import { useParams, useNavigate } from 'react-router';
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent  } from "./style";
-import DetailPage from '../../UI/DetailRicorsi';
+import DetailPage from '../../UI/DetailPage';
+import useApiRequest from '../../state/useApiRequest';
 
 const RicorsiDetail = () => {
   let { slug } = useParams();
@@ -14,11 +15,19 @@ const RicorsiDetail = () => {
   const { data } = useFetch(`${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
     verb: 'get',      
   })
-  
- 
+
+  const [ { status, response }, makeRequest ] = useApiRequest(
+    `${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
+        verb: 'delete',
+    }
+  )
+
+  let { ricorso }: any = data 
+
   const handleDelete = (e:any) => {
     e.preventDefault();
-  
+    makeRequest()
+    navigate('/')
   } 
   
   return (
@@ -28,6 +37,7 @@ const RicorsiDetail = () => {
 
               {ricorso &&  <DetailPage 
                    ricorso={ricorso}
+                   slug={slug}
                  />}
               {ricorso &&  <section className='md:px-3'>
                     <div className='md:flex justify-between  border-bottom-style py-3'>

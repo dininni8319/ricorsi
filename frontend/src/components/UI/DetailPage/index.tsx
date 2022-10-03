@@ -1,11 +1,20 @@
 import { RicorsoProps } from "../../interfaces/interfaces";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Modal from "../Modal";
+import { baseURL } from '../../Utilities/index'
+import useFetch from '../../../Hooks/useFetch';
 
-const DetailPage = ( { ricorso }: RicorsoProps) => {
+const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
     const [ isOpen, setIsOpen ] = useState(false);
 
+    const { data } = useFetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`, {
+        verb: 'get',      
+    });
+    let fasi: {[key: string]: string} | undefined = data?.fasi 
+    console.log(data);
+
+    // current_fasis
     return (
         <>
             <ul className="ul-detail-style">
@@ -50,14 +59,24 @@ const DetailPage = ( { ricorso }: RicorsoProps) => {
                 <li>
                     <strong>Cod. Fiscale/P.Iva:</strong><span>{ricorso.tipologia_atto}</span>
                 </li>
+                
             </ul>
             <section className='py-2'>
                 {/* <button className='primaryBtn' onClick={() => setIsOpen(true)}>
                     Avvia una fase
                 </button> */}
-                
+                 {
+                   data && data?.fasi?.map((el:any) => {
+                        return (
+                            <>
+                            <li>{el.fase}</li>
+                            </>
+                        )
+                    }) 
+                } 
                 <Link to={`/fasi/${ricorso.id}`} className='primaryBtn'>Avvia una Fase</Link>
                 {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
+               
             </section>
         </>
     )   

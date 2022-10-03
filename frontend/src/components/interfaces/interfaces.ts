@@ -41,7 +41,8 @@ export interface PropsInput {
 };
 
 export interface RicorsoProps {
-   ricorso: ObjFormType 
+   ricorso: ObjFormType,
+   slug?: string | number
 }
 
 export interface PropsTextArea {

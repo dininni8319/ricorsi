@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FaseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\RicorsiController;
@@ -33,6 +34,8 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     
     //Fasi
     Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create");
+    Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current");
+
     // //Chart Notifiche
     Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");
     Route::get("/notifiche_totali", [ChartController::class, "notificheTotali"])->name("notifichetotali.data");
