@@ -1,4 +1,4 @@
-export const defaultProps = {
+export const defaultFormProps = {
     title: 'Avvia un Ricorso',
     formArr: [
       {

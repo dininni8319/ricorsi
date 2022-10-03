@@ -1,22 +1,18 @@
-import Form from '../UI/FormComponents/Form/index';
 import useInput from '../../Hooks/useInput';
-
 import { defaultCartolineData } from'../UI/FormComponents/defaultData';
 import { cartolineFormData } from "../UI/FormComponents/defaultProps";
-import Input from "../UI/FormComponents/Input";
-import SelectInput from "../UI/FormComponents/SelectInput";
+import { Input, SelectInput, Form } from "../UI/index";
 import { selectPropsEsitoCartoline } from '../UI/FormComponents/selectPropsTributi';
 
 const Cartoline = () => {
-
     const { data, handleData } = useInput(defaultCartolineData)
     
     return (
         <div className="height-custom">
             <Form
-                title='Avvia una cartolina' 
+                title='Avvia una Cartolina' 
                 navPath="/" 
-                createPath='create_cartolina'
+                createPath='crea_ricorso'
                 subMitBtn='Invio'
                 data={data}
             >
