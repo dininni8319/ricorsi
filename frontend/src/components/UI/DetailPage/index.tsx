@@ -1,4 +1,5 @@
 import { RicorsoProps } from "../../interfaces/interfaces";
+import { Link } from 'react-router-dom';
 import { useState } from "react";
 import Modal from "../Modal";
 
@@ -51,10 +52,12 @@ const DetailPage = ( { ricorso }: RicorsoProps) => {
                 </li>
             </ul>
             <section>
-                <button className='primaryBtn' onClick={() => setIsOpen(true)}>
+                {/* <button className='primaryBtn' onClick={() => setIsOpen(true)}>
                     Avvia una fase
-                </button>
-                {isOpen && <Modal setIsOpen={setIsOpen} />}
+                </button> */}
+                
+                <Link to='/fasi' className='primaryBtn'>Avvia una Fase</Link>
+                {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
             </section>
         </>
     )   

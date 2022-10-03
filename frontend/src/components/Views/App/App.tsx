@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Homepage, Ricorsi, WorkFlow, RicorsiDetail } from '../index';
+import { Homepage, Ricorsi, Cartoline, Fase, RicorsiDetail } from '../index';
 import Navbar from '../../UI/Navbar/index';
 import Footer from '../../UI/Footer/index';
 import Header from '../../UI/Header/index';
@@ -14,9 +14,10 @@ const App = () => {
         <Routes>
             <Route path='/' element={<Homepage />}/>
             <Route path='/ricorsi' element={<Ricorsi />}/>
-            <Route path='/work_flow/:slug' element={<WorkFlow />} />
-            <Route path='/work_flow/' element={<WorkFlow />} />
             <Route path='/ricorsi_detail/:slug' element={<RicorsiDetail />} />
+            <Route path='/work_flow/' element={<Cartoline />} />
+            <Route path='/fasi' element={<Fase />} />
+            <Route path='/work_flow/:slug' element={<Cartoline />} />
         </Routes>
         <Footer />
     </BrowserRouter>
