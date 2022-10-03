@@ -189,14 +189,4 @@ export const cartolineFormData = {
       ],
        subMitBtn: 'Invia',
   }
-// 'descrizione_mandante',
-//        'codice_mandate',
-//        'nome_cognome_debitore',
-//        'cf_piva_debitore',
-//        'ndg',
-//        'data_spedizione',
-//        'numero_raccomandata',
-//        'data_notifica',
-//        'esito_notifica',
-//        'chiave_pratica',
-//        'fase',
+

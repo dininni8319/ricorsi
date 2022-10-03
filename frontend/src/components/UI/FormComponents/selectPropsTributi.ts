@@ -99,7 +99,6 @@ export const selectPropsEsito = {
 }
 
 export const selectPropsEsitoCartoline = {
-
     title: "Esito",
     name: 'esito_notifica',
     values: 

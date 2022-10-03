@@ -2,7 +2,7 @@ import { PropsInput } from "../../../interfaces/interfaces";
 import { InputSection } from './style';
 import { memo } from "react";
 
-const Input: React.FC<PropsInput> = ({ typeIn, name, label,index, ricorso, handleData }:PropsInput) => {
+const Input: React.FC<PropsInput> = ({ typeIn, name, label,index, handleData }:PropsInput) => {
     let newName = name;
    
     return (

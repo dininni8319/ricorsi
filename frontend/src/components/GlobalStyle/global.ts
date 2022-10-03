@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
         color: #272D36;
         text-shadow:  4px 5px 11px rgba(0,0,0,6) }
     } */
+    
     h5 {
        color: white;
     }

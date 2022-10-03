@@ -36,6 +36,7 @@ const Homepage = () => {
                     }): <Loader3 />}
                 </>
             </WrapperStyleComponent>
+
         </div>
     )
 }

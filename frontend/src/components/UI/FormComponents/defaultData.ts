@@ -1,4 +1,4 @@
-export let formData = {
+export let defaultRicorsiData = {
   nominativo: "",
   mail: "",
   cf_piva:"",
@@ -21,4 +21,18 @@ export let formData = {
   tributo: "",
   tipologia_atto: "",
   informazioni_aggiuntive: "",
+}
+
+export let defaultCartolineData = {
+  descrizione_mandante: "",
+  codice_mandate: "",
+  nome_cognome_debitore:"",
+  cf_piva_debitore: "",
+  ndg: "",
+  data_spedizione:"",
+  numero_raccomandata: "",
+  data_notifica: "",
+  esito_notifica: "",
+  chiave_pratica: "",
+  fase: "",
 }

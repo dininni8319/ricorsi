@@ -2,6 +2,12 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export type Methods = "head" | "options" | "put" | "post" | "patch" | "delete" | "get";
 
+export interface FormWrapperType {
+    title: string,
+    subMitBtn: string,
+    children?: JSX.Element,
+    handleSubmit: React.FormEventHandler<HTMLFormElement>;
+}
 export type InitialState = {
     status: number | undefined,
     response: object | undefined
@@ -9,16 +15,27 @@ export type InitialState = {
 
 export interface FormProps {
     title: string,
-    formArr: any,
+    navPath: string,
+    createPath:string,
     subMitBtn: string,
+    //key and value pair definition in typescript
+    data: {[key: string]: string},
+    children?: JSX.Element;
+    // formData: ObjSelectType,
+    id?: number,
 };
 
+export interface DefaultData {
+   type: string,
+   name: string,
+   label: string,
+   id: number
+}
 export interface PropsInput {
     typeIn?: string,
     label: string,
     name: string,
     index: number,
-    ricorso: ObjFormType,
     handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index?: number) => any;
 };
