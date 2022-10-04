@@ -9,13 +9,6 @@ import Card from "../Card";
 const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
     const [ isOpen, setIsOpen ] = useState(false);
 
-    const { data }:{ data: FasiListProps}  = useFetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`, {
-        verb: 'get',      
-    });
-    
-    let fasi = data.fasi
-    console.log(fasi);
-
     // current_fasis
     return (
         <>
@@ -67,23 +60,7 @@ const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
                 {/* <button className='primaryBtn' onClick={() => setIsOpen(true)}>
                     Avvia una fase
                 </button> */}
-                {
-                    fasi?.map((fase:Fasi, id: number) => {
-                        return (
-                            <Card
-                               taxunit={fase}
-                               key={id}
-                            >
-                                <>
-                                <li>{fase.fase}</li>
-                                </>
-
-                            </Card>
-                        )
-                    }) 
-                } 
-                <Link to={`/fasi/${ricorso.id}`} className='primaryBtn'>Avvia una Fase</Link>
-                {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
+             
                
             </section>
         </>
