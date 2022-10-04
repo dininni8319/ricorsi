@@ -1,18 +1,20 @@
-import { RicorsoProps } from "../../interfaces/interfaces";
+import { RicorsoProps, FasiListProps, Fasi } from "../../interfaces/interfaces";
 import { Link } from 'react-router-dom';
 import { useLayoutEffect, useState } from "react";
 import Modal from "../Modal";
 import { baseURL } from '../../Utilities/index'
 import useFetch from '../../../Hooks/useFetch';
+import Card from "../Card";
 
 const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
     const [ isOpen, setIsOpen ] = useState(false);
 
-    const { data } = useFetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`, {
+    const { data }:{ data: FasiListProps}  = useFetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`, {
         verb: 'get',      
     });
-    let fasi: {[key: string]: string} | undefined = data?.fasi 
-    console.log(data);
+    
+    let fasi = data.fasi
+    console.log(fasi);
 
     // current_fasis
     return (
@@ -65,12 +67,18 @@ const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
                 {/* <button className='primaryBtn' onClick={() => setIsOpen(true)}>
                     Avvia una fase
                 </button> */}
-                 {
-                   data && data?.fasi?.map((el:any) => {
+                {
+                    fasi?.map((fase:Fasi, id: number) => {
                         return (
-                            <>
-                            <li>{el.fase}</li>
-                            </>
+                            <Card
+                               taxunit={fase}
+                               key={id}
+                            >
+                                <>
+                                <li>{fase.fase}</li>
+                                </>
+
+                            </Card>
                         )
                     }) 
                 } 

@@ -71,6 +71,27 @@ export type ObjSelectType = {
     ricorso?: object,
 }
 
+export interface FasiListProps {
+    fasi?: Fasi[] 
+}
+
+export interface Fasi {
+    [key: string]: string
+    // fase: string,
+    // contro_deduzioni_tax_unit: string,
+    // contro_deduzioni_uff_legale:string,
+    // presentato: string,
+    // data_presentazione: string,
+    // data_convocazione:string,
+    // data_deposito: string,
+    // sede: string,
+    // esito: string,
+    // esito_definitivo: string,
+    // motivazione: string,
+    // spese: string,
+    // data_deposito_sentenza: string,
+    // data_notifica_sentenza: string,
+}
 export interface ObjFormType {
     id?: number,
     nominativo: string,
