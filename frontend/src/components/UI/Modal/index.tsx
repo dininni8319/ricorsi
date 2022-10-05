@@ -26,6 +26,7 @@ const Overlay = ({ setIsOpen }:any ) => {
           <Form
               title='Avvia una Fase' 
               navPath="/" 
+              detailPath=""
               createPath='create_fase'
               subMitBtn='Invio'
               data={data}

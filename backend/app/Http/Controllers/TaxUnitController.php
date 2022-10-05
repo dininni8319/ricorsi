@@ -15,11 +15,20 @@ class TaxUnitController extends Controller
     //     /* $this->middleware("auth"); */
     //     // $this->middleware("auth.revisor");
     // }
+    protected $messageUnSuccess = 'Something went wrong!';
+    protected $messageSuccess = 'Success, this fase was ';
 
     protected function findRicorsoID($id)
     {
         return Fasi::where("ricorsi_id", $id);
     }
+
+    protected  $obj = [
+        "mediazione" => 1,
+        "ricorso_1g" => 2,
+        "ricorso_2g" => 3,
+        "cassazione" => 4,
+    ];
 
     protected function getFormFaseData($req) { 
         return [
@@ -50,16 +59,12 @@ class TaxUnitController extends Controller
         $documents = $request->nome_file;
         $folderName = $request->tipologia_file;
        /*  $integer = intval($id); */ 
-        $obj = [
-            "mediazione" => 1,
-            "ricorso_1g" => 2,
-            "ricorso_2g" => 3,
-            "cassazione" => 4,
-        ];
 
         $formFaseData = $this->getFormFaseData($request);
         $fase_req = $request->fase;
         $req_value = 0;
+        
+        $obj = $this->obj;
 
         foreach ($obj as $key => $value) {
             if ($fase_req == $key) {
@@ -105,7 +110,7 @@ class TaxUnitController extends Controller
                     'ricorsi_id' => intval($id),
                 ]);
 
-                //cerca l'ultimo documento salvato e troviamo l'id
+                //cerca l'ultimo documento salvato e trova l'id
                 $last_document = Document::orderBy("created_at", "desc")->first();
                 $idDocument = $last_document->id;
                 
@@ -125,7 +130,19 @@ class TaxUnitController extends Controller
                 }
             }
             
-            return redirect("/detail_ricorso/" . $id)->with("message", 'La fase è stata aggiunta');
+            if(!$fase){
+                return response()->json([
+                 'success' => false,
+                 'message' => $this->messageUnSuccess,
+              ], 404);
+             } else {
+                
+                 return response()->json([
+                    'success' => true,
+                    'fase' => $fase,
+                    'message' => $this->messageSuccess,
+                 ], 200);
+             }
             
         } else if ($state && $idNotEx) {
             

@@ -30,6 +30,7 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     //Ricorsi
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home");
     Route::post("/crea_ricorso/{id?}", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");
+    Route::get("/last_ricorso/", [RicorsiController::class, "lastCreatedRicorso"])->name("last.ricorso");
     Route::get("/detail_ricorso/{id}", [RicorsiController::class, "detailRicorso"])->name("detail.ricorso");
     Route::delete("/ricorso/delete/{id}", [RicorsiController::class, "deleteRicorso"])->name("delete.ricorso");
     

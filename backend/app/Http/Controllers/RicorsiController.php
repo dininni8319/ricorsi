@@ -67,10 +67,6 @@ class RicorsiController extends Controller
                 'message' => 'All the ricorsi'
              ], 200);
          }   
-
-      /*   $tasks = Task::all();
-        
-        return view("ricorsi.paginaricorsi", compact("ricorsi", "tasks")); */
     }
 
     public function workFlow($id = null)
@@ -90,7 +86,6 @@ class RicorsiController extends Controller
     {
        
         if ($id) {
-            dd($request->all());
             $ricorso = Ricorsi::find(intval($id));
 
             $request->email_notification = $request->input("email_notification")
@@ -116,7 +111,6 @@ class RicorsiController extends Controller
             }   
 
         } else {
-
             // $user = Auth::user()->id;
             $request->email_notification = $request->input("email_notification")
             ? true
@@ -149,7 +143,6 @@ class RicorsiController extends Controller
     public function detailRicorso($id)
     {
         // $documents = Document::where("fasi_id", $id)->get();
-        
         if(!$id){
             return response()->json([
                 'success' => false,
@@ -214,5 +207,26 @@ class RicorsiController extends Controller
         if ($query) {
             return view("ricorsi.searchPage", compact("ricorsi", "query"));
         }
+    }
+
+    public function lastCreatedRicorso()
+    {
+        $lastRicorso =  Ricorsi::orderBy("created_at", "desc")->first();
+        $id = $lastRicorso->id;
+
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'id' => $id,
+                'lastRicorso'=> $lastRicorso,
+            ], 200);
+        }     
     }
 }

@@ -5,7 +5,7 @@ import { baseURL } from "../../../Utilities/index";
 import FormWrapper from '../FormWrapper';
 import { FormContainer } from "../FormRicorsi/style";
 
-const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, children, data }) => {
+const Form: React.FC<FormProps> = ({ id, title,detailPath, navPath, createPath, subMitBtn, children, data }) => {
     
     const navigate = useNavigate();
 
@@ -19,13 +19,20 @@ const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, 
             body: JSON.stringify(data)
         })
         .then(response => {
-            console.log(response.status, response.ok, 'testing the response');
             
-            if (response.ok) {
-                navigate(`${navPath}`)
+            if (response.status === 200 || response.ok) {
+                fetch(`${baseURL}/api/cienneffe/${detailPath ? detailPath : ''}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        navigate(`/${navPath}/${data.lastRicorso.id}`)
+                    })
+                     
             } else {
                 alert('Something went wrong!')
             }
+        })
+        .then(() => {
+            
         })
     }
  
