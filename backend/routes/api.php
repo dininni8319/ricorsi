@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\RicorsiController;
 use App\Http\Controllers\TaxUnitController;
+use App\Http\Controllers\TaxUnitEditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     //Fasi
     Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create");
     Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current");
+    Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
 
     // //Chart Notifiche
     Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");

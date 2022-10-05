@@ -1,15 +1,27 @@
 import { RicorsoProps, FasiListProps, Fasi } from "../../interfaces/interfaces";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useLayoutEffect, useState } from "react";
 import Modal from "../Modal";
 import { baseURL } from '../../Utilities/index'
 import useFetch from '../../../Hooks/useFetch';
 import Card from "../Card";
+import { WrapperStyleComponent } from "../../Views/Home/style";
+import useApiRequest from '../../state/useApiRequest';
+import { memo } from "react";
 
 const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
     const [ isOpen, setIsOpen ] = useState(false);
+    const navigate = useNavigate();
 
+    let { payload }:{ payload: FasiListProps }  = useFetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`, {
+        verb: 'get',      
+    });
+
+   
+    let fasi = payload.fasi
     // current_fasis
+
     return (
         <>
             <ul className="ul-detail-style">
@@ -60,11 +72,39 @@ const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
                 {/* <button className='primaryBtn' onClick={() => setIsOpen(true)}>
                     Avvia una fase
                 </button> */}
-             
+                <WrapperStyleComponent>
+              {
+                fasi?.map((fase:Fasi, id: number) => {
+                    return (
+                        <Card
+                            taxunit={fase}
+                            key={id}
+                            path='fase/delete'
+                        >
+                          <>
+                            <h3 className="card-title mb-3">Fase corrente: <span>{fase.fase}</span></h3>
+                            <ul className="border-custom">
+                              <li>Esito: <span>{fase.esito}</span></li>
+                              <li>Esito definitivo: <span>{fase.esito_definitivo}</span></li>
+                              <li>Sede: <span>{fase.sede}</span></li>
+                              <li>Spese: <span>{fase.spese}</span></li>
+                              <li>Data presentazione: <span>{fase.data_presentazione}</span></li>
+                              <li>Data convocazione: <span>{fase.data_convocazione}</span></li>
+                            </ul>
+                            <div className='flex justify-between p-2'>
+                                <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
+                                <Link to={`/ricorsi_detail/${ricorso.id}`}>Dettaglio Ricorso</Link>
+                            </div>
+                          </>
+                        </Card>
+                    )
+                }) 
+              } 
+            </WrapperStyleComponent>
                
             </section>
         </>
     )   
 }
 
-export default DetailPage;
+export default memo(DetailPage);

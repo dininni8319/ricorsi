@@ -3,11 +3,11 @@ import { CardStyleComponent, CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
 import useApiRequest  from "../../state/useApiRequest";
 import { Link } from 'react-router-dom';
-
-const Card = ({taxunit, children }: {taxunit: ObjFormType | Fasi, children?: JSX.Element}) => {
+import { memo } from 'react';
+const Card = ({taxunit, path, children }: {taxunit: ObjFormType | Fasi, path: string, children?: JSX.Element}) => {
 
     const [ { status, response }, makeRequest ] = useApiRequest(
-        `${baseURL}/api/cienneffe/ricorso/delete/${taxunit.id}`, {
+        `${baseURL}/api/cienneffe/${path}/${taxunit.id}`, {
             verb: 'delete',
         }
     )
@@ -25,16 +25,12 @@ const Card = ({taxunit, children }: {taxunit: ObjFormType | Fasi, children?: JSX
             <section className="card-body">
               {children}
             </section>
-            <div className='flex justify-between'>
-                <Link to={`/work_flow/${taxunit.id}`}>Aggiorna Ricorso</Link>
-                <Link to={`/ricorsi_detail/${taxunit.id}`}>Dettaglio Ricorso</Link>
-            </div>
-                               
             <div className='btn-delete'>
                 <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
             </div>
+                               
         </CardStyleComponent>
     );
 }
 
-export default Card;
+export default memo(Card);

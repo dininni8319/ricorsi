@@ -7,6 +7,16 @@ export const WrapperStyleComponent = styled.div`
     padding: 20px;
     width: 100vw;
 
+    span{
+        font-size: 14px;
+        font-weight: 300;
+        padding-left: 2px;
+        color: ${props => props.theme.blackColor};
+    }
+    h3 {
+      color: ${props => props.theme.colorGold};
+    }
+
     @media only screen and (max-width: 1500px) {
         grid-template-columns: 1fr 1fr;
     }

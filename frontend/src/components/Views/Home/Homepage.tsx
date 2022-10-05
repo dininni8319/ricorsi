@@ -6,6 +6,7 @@ import Aside from '../../UI/Aside/index';
 import Card from '../../UI/Card/index';
 import { WrapperStyleComponent } from "./style";
 import useApiRequest from '../../state/useApiRequest';
+import {  Link } from "react-router-dom";
 
 const Homepage = () => {
  
@@ -31,6 +32,7 @@ const Homepage = () => {
                             <Card 
                                 taxunit={ricorso}
                                 key={id}
+                                path='ricorso/delete'
                             >
                                 <>
                                     <h3 className="card-title mb-3">Tributo: {ricorso.tributo}</h3>
@@ -55,6 +57,10 @@ const Homepage = () => {
 
                                     <div className="card-actions justify-end">
                                         <p className='font-serif text-sm'>{ricorso.oggetto_ricorso}</p>
+                                    </div>
+                                    <div className='flex justify-between p-2'>
+                                        <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
+                                        <Link to={`/ricorsi_detail/${ricorso.id}`}>Dettaglio Ricorso</Link>
                                     </div>
                                 </>
                             </Card>
