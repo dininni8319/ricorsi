@@ -7,7 +7,7 @@ export const WrapperStyleComponent = styled.div`
     padding: 20px;
     width: 100vw;
 
-    span{
+    span {
         font-size: 14px;
         font-weight: 300;
         padding-left: 2px;

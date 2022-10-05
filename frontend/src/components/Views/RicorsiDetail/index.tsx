@@ -32,30 +32,31 @@ const RicorsiDetail = () => {
   } 
 
   return (
-      <section className="height-custom flex flex-col justify-center items-center">
+      <section className="height-custom flex flex-col justify-center">
             <DetailStyleComponent>
               <section>
-                <h1 className="mb-3 text-center pr-2">Tributo:{ricorso?.tributo}</h1>
+                <h1 className="mb-2 text-center pr-1">Tributo:{ricorso?.tributo}</h1>
                 {ricorso &&  <DetailPage 
                    ricorso={ricorso}
                    slug={slug}
                 />}
-              {ricorso && <section className='md:px-3'>
-                    <div className='md:flex justify-between  border-bottom-style py-3'>
-                        <Link to={`/work_flow/${ricorso?.id}`}>Aggiorna Ricorso</Link>
-                        <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
-                    </div>
-                    <div className="card-actions">
-                         <p className='font-serif mt-3'>{ricorso.oggetto_ricorso}</p>
-                    </div>
-                </section>}
+                <section>
+                  {ricorso && <>
+                      <div className="card-actions flex flex-col ">
+                          <Link to={`/fasi/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
+                          <p className='font-serif mt-3'>{ricorso.oggetto_ricorso}</p>
+                      </div>
+                      <div className='md:flex justify-between  border-bottom-style py-2'>
+                          <Link to={`/work_flow/${ricorso?.id}`}>Aggiorna Ricorso</Link>
+                          <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
+                      </div>
+                  </>}
+                </section>
               </section>
               
-                <Link to={`/fasi/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
                 {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
                
-            </DetailStyleComponent>
-            
+            </DetailStyleComponent>   
         </section>
       
   )

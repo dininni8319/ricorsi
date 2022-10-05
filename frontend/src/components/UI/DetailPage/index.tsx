@@ -68,7 +68,7 @@ const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
                 </li>
                 
             </ul>
-            <section className='py-2'>
+            <section>
                 {/* <button className='primaryBtn' onClick={() => setIsOpen(true)}>
                     Avvia una fase
                 </button> */}
@@ -82,7 +82,7 @@ const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
                             path='fase/delete'
                         >
                           <>
-                            <h3 className="card-title mb-3">Fase corrente: <span>{fase.fase}</span></h3>
+                            <h3 className="card-title mb-2">Fase corrente: <span>{fase.fase}</span></h3>
                             <ul className="border-custom">
                               <li>Esito: <span>{fase.esito}</span></li>
                               <li>Esito definitivo: <span>{fase.esito_definitivo}</span></li>
@@ -91,7 +91,7 @@ const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
                               <li>Data presentazione: <span>{fase.data_presentazione}</span></li>
                               <li>Data convocazione: <span>{fase.data_convocazione}</span></li>
                             </ul>
-                            <div className='flex justify-between p-2'>
+                            <div className='flex justify-between py-1'>
                                 <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
                                 <Link to={`/ricorsi_detail/${ricorso.id}`}>Dettaglio Ricorso</Link>
                             </div>

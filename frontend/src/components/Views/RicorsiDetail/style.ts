@@ -3,12 +3,11 @@ import styled from "styled-components";
 export const DetailStyleComponent = styled.div`
   margin: 20px 0;
   width: 80%;
-  padding: 20px;
+  padding: 25px 15px;
   box-shadow: ${props => props.theme.boxShadow2};
   background-color:${props => props.theme.colorWhite};
   
   .ul-detail-style {
-    padding: 10px;
     border-radius: 5px;
   }
 
@@ -20,7 +19,7 @@ export const DetailStyleComponent = styled.div`
   .ul-detail-style > li  {
     display: flex;
     justify-content: space-between;
-    padding: 25px 0px 2px 5px;
+    padding: 15px 0px 2px 5px;
     border-bottom: 1px solid ${props => props.theme.borderColor2};
   }
 

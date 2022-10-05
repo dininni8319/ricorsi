@@ -14,11 +14,11 @@ class TaxUnitEditController extends Controller
     protected $messageUnSuccess = 'Something went wrong!';
     protected $messageSuccess = 'Success, this fase was ';
 
-    public function __construct()
-    {
-        /* $this->middleware("auth"); */
-        $this->middleware("auth.revisor");
-    }
+    // public function __construct()
+    // {
+    //     /* $this->middleware("auth"); */
+    //     $this->middleware("auth.revisor");
+    // }
 
     public function taxunit()
     {

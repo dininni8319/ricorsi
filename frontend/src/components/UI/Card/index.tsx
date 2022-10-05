@@ -10,12 +10,19 @@ const Card = ({taxunit, path, children }: {taxunit: ObjFormType | Fasi, path: st
         `${baseURL}/api/cienneffe/${path}/${taxunit.id}`, {
             verb: 'delete',
         }
-    )
+        )
+
+        console.log('====================================');
+        console.log(status);
+        console.log('====================================');
      
     const handleDelete = (e:any) => {
        e.preventDefault();
-        
+       
        const del = makeRequest();
+    //    if () {
+           
+    //    }
        return del;
     } 
 
