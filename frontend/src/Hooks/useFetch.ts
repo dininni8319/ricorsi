@@ -27,6 +27,7 @@ const useFetch =  ( endpoint: string, { verb = 'get', params = {} } = {}) => {
   
   return {
     payload:data,
+    setData,
     loading,
     error,
   }
