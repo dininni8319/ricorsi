@@ -4,6 +4,7 @@ import { baseURL } from "../../Utilities/index";
 import useApiRequest  from "../../state/useApiRequest";
 import { Link } from 'react-router-dom';
 import { memo } from 'react';
+
 const Card = ({taxunit, path, children }: {taxunit: ObjFormType | Fasi, path: string, children?: JSX.Element}) => {
 
     const [ { status, response }, makeRequest ] = useApiRequest(
@@ -12,10 +13,6 @@ const Card = ({taxunit, path, children }: {taxunit: ObjFormType | Fasi, path: st
         }
         )
 
-        console.log('====================================');
-        console.log(status);
-        console.log('====================================');
-     
     const handleDelete = (e:any) => {
        e.preventDefault();
        

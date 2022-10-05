@@ -66,42 +66,39 @@ const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
                 <li>
                     <strong>Cod. Fiscale/P.Iva:</strong><span>{ricorso.tipologia_atto}</span>
                 </li>
-                
+                <li>
+                  <p className='font-serif mt-5'><strong>Oggetto Ricorso:</strong> <span>{ricorso.oggetto_ricorso}</span></p>
+                </li>
             </ul>
-            <section>
-                {/* <button className='primaryBtn' onClick={() => setIsOpen(true)}>
-                    Avvia una fase
-                </button> */}
+            <section className='flex justify-center'>
                 <WrapperStyleComponent>
-              {
-                fasi?.map((fase:Fasi, id: number) => {
-                    return (
-                        <Card
-                            taxunit={fase}
-                            key={id}
-                            path='fase/delete'
-                        >
-                          <>
-                            <h3 className="card-title mb-2">Fase corrente: <span>{fase.fase}</span></h3>
-                            <ul className="border-custom">
-                              <li>Esito: <span>{fase.esito}</span></li>
-                              <li>Esito definitivo: <span>{fase.esito_definitivo}</span></li>
-                              <li>Sede: <span>{fase.sede}</span></li>
-                              <li>Spese: <span>{fase.spese}</span></li>
-                              <li>Data presentazione: <span>{fase.data_presentazione}</span></li>
-                              <li>Data convocazione: <span>{fase.data_convocazione}</span></li>
-                            </ul>
-                            <div className='flex justify-between py-1'>
-                                <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
-                                <Link to={`/ricorsi_detail/${ricorso.id}`}>Dettaglio Ricorso</Link>
-                            </div>
-                          </>
-                        </Card>
-                    )
-                }) 
-              } 
-            </WrapperStyleComponent>
-               
+                    {fasi?.map((fase:Fasi, id: number) => {
+                            return (
+                                <Card
+                                    taxunit={fase}
+                                    key={id}
+                                    path='fase/delete'
+                                >
+                                <>
+                                    <h3 className="card-title mb-2">Fase corrente: <span>{fase.fase}</span></h3>
+                                    <ul className="border-custom">
+                                    <li>Esito: <span>{fase.esito}</span></li>
+                                    <li>Esito definitivo: <span>{fase.esito_definitivo}</span></li>
+                                    <li>Sede: <span>{fase.sede}</span></li>
+                                    <li>Spese: <span>{fase.spese}</span></li>
+                                    <li>Data presentazione: <span>{fase.data_presentazione}</span></li>
+                                    <li>Data convocazione: <span>{fase.data_convocazione}</span></li>
+                                    </ul>
+                                    <div className='flex justify-between py-1'>
+                                        <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
+                                        <Link to={`/ricorsi_detail/${ricorso.id}`}>Dettaglio Ricorso</Link>
+                                    </div>
+                                </>
+                                </Card>
+                            )
+                        }) 
+                    } 
+                </WrapperStyleComponent>
             </section>
         </>
     )   

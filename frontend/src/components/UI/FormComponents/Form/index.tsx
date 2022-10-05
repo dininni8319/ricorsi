@@ -19,6 +19,7 @@ const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, 
             body: JSON.stringify(data)
         })
         .then(response => {
+            console.log(response.status, response.ok, 'testing the response');
             
             if (response.ok) {
                 navigate(`${navPath}`)

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const WrapperStyleComponent = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
+    justify-content: space-between;
     padding: 20px;
     width: 100vw;
 

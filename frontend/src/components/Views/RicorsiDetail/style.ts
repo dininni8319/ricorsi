@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const DetailStyleComponent = styled.div`
   margin: 20px 0;
-  width: 80%;
-  padding: 25px 15px;
-  box-shadow: ${props => props.theme.boxShadow2};
-  background-color:${props => props.theme.colorWhite};
-  
+   
   .ul-detail-style {
     border-radius: 5px;
+    width: 80%;
+    padding: 25px 15px;
+    box-shadow: ${props => props.theme.boxShadow2};
+    background-color:${props => props.theme.colorWhite};
   }
 
   h1 {
@@ -37,7 +37,6 @@ export const DetailStyleComponent = styled.div`
   
   /*style for the modal */
   .primaryBtn {
-    margin: 20px 10px;
     cursor: pointer;
     font-weight: 500;
     padding: 13px 25px;
@@ -52,5 +51,11 @@ export const DetailStyleComponent = styled.div`
   .primaryBtn:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
+  }
+
+  .links-detail-page {
+    width: 80%;
+    background-color: ${props => props.theme.colorWhite};
+    padding: 10px;
   }
 `
