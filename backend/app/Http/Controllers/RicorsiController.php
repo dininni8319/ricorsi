@@ -19,6 +19,7 @@ class RicorsiController extends Controller
 
     protected $messageUnSuccess = 'Nessun importo trovato!';
     protected $messageSuccess = 'Importi trovati!';
+
     protected function getFormData($req) {
 
         return [
@@ -66,10 +67,6 @@ class RicorsiController extends Controller
                 'message' => 'All the ricorsi'
              ], 200);
          }   
-
-      /*   $tasks = Task::all();
-        
-        return view("ricorsi.paginaricorsi", compact("ricorsi", "tasks")); */
     }
 
     public function workFlow($id = null)
@@ -87,15 +84,33 @@ class RicorsiController extends Controller
 
     public function creaRicorso(Request $request, $id = null)
     {
+       
         if ($id) {
             $ricorso = Ricorsi::find(intval($id));
+
+            $request->email_notification = $request->input("email_notification")
+            ? true
+            : false;
+
             $formData = $this->getFormData($request);
             $ricorso->update($formData);
         
-            return redirect("/detail_ricorso/" . $id)->with("id", $id);
+            if(!$ricorso){
+                return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong!',
+            ], 404);
+            } else {
+                
+                return response()->json([
+                    'success' => true,
+                    'message' => 'The ricorso is been deleted!',
+                    'ricorso' => $ricorso,
+                    'id' => $id,
+                ], 200);
+            }   
 
         } else {
-
             // $user = Auth::user()->id;
             $request->email_notification = $request->input("email_notification")
             ? true
@@ -111,13 +126,13 @@ class RicorsiController extends Controller
             if(!$id){
                 return response()->json([
                 'success' => false,
-                'message' => $this->messageUnSuccess,
+                'message' => 'Something went wrong!',
             ], 404);
             } else {
                 
                 return response()->json([
                     'success' => true,
-                    'message' => $this->messageSuccess,
+                    'message' => 'The ricorso is been deleted!',
                     'ricorso' => $ricorso,
                     'id' => $id,
                 ], 200);
@@ -127,25 +142,41 @@ class RicorsiController extends Controller
 
     public function detailRicorso($id)
     {
-        $documents = Document::where("fasi_id", $id)->get();
-        $ricorso = Ricorsi::find($id);
-        $idExistes = Fasi::where("ricorsi_id", $id)->exists();
-        $documents = Document::where('ricorsi_id', $id)->get();
+        // $documents = Document::where("fasi_id", $id)->get();
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong!',
+            ], 404);
+        } else {
+            
+            $ricorso = Ricorsi::find($id);
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Success, the ricorso has been found!',
+                'ricorso' => $ricorso,
+                'id' => $id,
+            ], 200);
+        }   
+
+        // $idExistes = Fasi::where("ricorsi_id", $id)->exists();
+        // $documents = Document::where('ricorsi_id', $id)->get();
         
-        $tasks = Task::where('ricorsi_id', $id)->get();
+        // $tasks = Task::where('ricorsi_id', $id)->get();
 
-        if ($idExistes) {
-            $documents = Document::where('ricorsi_id', $id)->get();
-            $faseCurrent = Fasi::where("ricorsi_id", $id)->max('fase');
-            $currentFases = Fasi::where("ricorsi_id", $id)->orderBy("created_at", "desc")->get();
+        // if ($idExistes) {
+        //     $documents = Document::where('ricorsi_id', $id)->get();
+        //     $faseCurrent = Fasi::where("ricorsi_id", $id)->max('fase');
+        //     $currentFases = Fasi::where("ricorsi_id", $id)->orderBy("created_at", "desc")->get();
            
-            return view(
-                "ricorsi.detailPage",
-                compact("ricorso", "currentFases", "documents", 'faseCurrent' , 'tasks')
-            );
-        }
+        //     return view(
+        //         "ricorsi.detailPage",
+        //         compact("ricorso", "currentFases", "documents", 'faseCurrent' , 'tasks')
+        //     );
+        // }
 
-        return view("ricorsi.detailPage", compact("ricorso", "documents", 'tasks'));
+        // return view("ricorsi.detailPage", compact("ricorso", "documents", 'tasks'));
     }
 
     public function deleteRicorso($id)
@@ -176,5 +207,26 @@ class RicorsiController extends Controller
         if ($query) {
             return view("ricorsi.searchPage", compact("ricorsi", "query"));
         }
+    }
+
+    public function lastCreatedRicorso()
+    {
+        $lastRicorso =  Ricorsi::orderBy("created_at", "desc")->first();
+        $id = $lastRicorso->id;
+
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'id' => $id,
+                'lastRicorso'=> $lastRicorso,
+            ], 200);
+        }     
     }
 }

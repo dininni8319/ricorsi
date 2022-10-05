@@ -1,11 +1,13 @@
-import { ObjSelectType } from "../../../interfaces/interfaces";
-import { SelectComponent, Wrapper } from "./style";
 
-const SelectInput = ({ selectProps, handleData}: { selectProps:ObjSelectType, handleData: React.ChangeEventHandler<HTMLSelectElement>}) => {
+import { ObjSelectType } from "../../../interfaces/interfaces";
+import { SelectStyleComponent, Wrapper } from "./style";
+
+const SelectInput = ({ selectProps,ricorso,  handleData }: { selectProps:ObjSelectType, ricorso?: object, handleData: React.ChangeEventHandler<HTMLSelectElement>}) => {
+    let newName = selectProps?.name;
     return (
         <Wrapper>
             <label htmlFor={selectProps?.name} className='input-label'>{selectProps?.title}</label> 
-            <SelectComponent
+            <SelectStyleComponent
                 name={selectProps?.name}
                 id={selectProps?.name}
                 onChange={(e) => handleData(e)}
@@ -14,11 +16,11 @@ const SelectInput = ({ selectProps, handleData}: { selectProps:ObjSelectType, ha
                     {
                         selectProps?.values.map(({ value },index: number)  => {
                             return (
-                                <option value={value} key={index}>{value}</option>
+                                <option value={ricorso? ricorso[newName as keyof object] : value} key={index}>{value}</option>
                             );
                         })
                     }
-            </SelectComponent>
+            </SelectStyleComponent>
         </Wrapper>
     )
 }

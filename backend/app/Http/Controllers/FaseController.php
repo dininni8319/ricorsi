@@ -10,10 +10,28 @@ use Illuminate\Http\Request;
 
 class FaseController extends Controller
 {
-    public function __construct()
-    {
-       /*  $this->middleware("auth"); */
-       $this->middleware("auth.revisor");
+    // public function __construct()
+    // {
+    //    /*  $this->middleware("auth"); */
+    //    $this->middleware("auth.revisor");
+    // }
+
+    public function currentFasis($id){
+      $fasi = Ricorsi::find($id)->fasi;
+    
+      if(!$fasi){
+        return response()->json([
+         'success' => false,
+         'message' => 'something went wrong',
+      ], 404);
+     } else {
+        
+         return response()->json([
+            'success' => true,
+            'fasi' => $fasi,
+            'message' => 'success, the upload was successfull'
+         ], 200);
+     }   
     }
 
     public function updateFase(Request $request, $id)

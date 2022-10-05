@@ -1,19 +1,56 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-export interface FormProps {
+export type Methods = "head" | "options" | "put" | "post" | "patch" | "delete" | "get";
+
+export interface FormWrapperType {
     title: string,
-    formArr: any,
     subMitBtn: string,
-    /*onSubmit: any,
-    redirect: any */
+    children?: JSX.Element,
+    handleSubmit: React.FormEventHandler<HTMLFormElement>,
+}
+export type InitialState = {
+    status: number | undefined,
+    response: object | undefined
+}
+
+export interface FormProps {
+    id?: string | number,
+    title: string,
+    detailPath: string,
+    navPath: string,
+    createPath:string,
+    subMitBtn: string,
+    //key and value pair definition in typescript
+    data: {[key: string]: string},
+    children?: JSX.Element;
+    // formData: ObjSelectType,
 };
 
+export interface DefaultData {
+   type: string,
+   name: string,
+   label: string,
+   id: number
+}
 export interface PropsInput {
-    typeIn: string,
+    typeIn?: string,
     label: string,
     name: string,
-    index?: number,
-    handleData: (e: React.ChangeEvent<HTMLInputElement>,
+    index: number,
+    handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+        index?: number) => any;
+};
+
+export interface RicorsoProps {
+   ricorso: ObjFormType,
+   slug?: string | number
+}
+
+export interface PropsTextArea {
+    label: string,
+    name: string,
+    index: number,
+    handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index?: number) => any;
 };
 
@@ -25,17 +62,39 @@ export interface PropsIcons {
 export interface LogoProps {
     imageUrl: string | undefined;
     w: string,
-    h: string
+    h: string,
 };
 
 export type ObjSelectType = {
     title: string,
     name: string,
     values: {value: string}[],
+    ricorso?: object,
 }
 
+export interface FasiListProps {
+    fasi?: Fasi[] 
+}
+
+export interface Fasi {
+    [key: string]: string
+    // fase: string,
+    // contro_deduzioni_tax_unit: string,
+    // contro_deduzioni_uff_legale:string,
+    // presentato: string,
+    // data_presentazione: string,
+    // data_convocazione:string,
+    // data_deposito: string,
+    // sede: string,
+    // esito: string,
+    // esito_definitivo: string,
+    // motivazione: string,
+    // spese: string,
+    // data_deposito_sentenza: string,
+    // data_notifica_sentenza: string,
+}
 export interface ObjFormType {
-    id: number,
+    id?: number,
     nominativo: string,
     mail: string,
     cf_piva:string,

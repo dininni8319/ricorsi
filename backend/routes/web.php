@@ -26,6 +26,7 @@ use App\Http\Controllers\TaxUnitEditController;
 
 
 //Ricorso
+
 Route::get("/", [HomeController::class, "index"])->name("home");
 Route::get("/paginaricorsi", [RicorsiController::class, "index"])->name("paginaricorsi");
 Route::get("/work_flow/{ricorso?}", [RicorsiController::class, "workFlow"])->name("workflow");

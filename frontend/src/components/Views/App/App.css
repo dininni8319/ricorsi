@@ -2,16 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .height-custom {
   width: 100vw;
-  min-height: 60vh;
+  min-height: 40vh;
   background-color:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   display: flex;
 }
-
-/* .homepage-body-style {
-  width: 85vw;
-} */
 
 .border-custom {
   padding: 15px;
@@ -24,3 +25,9 @@
     display: block;
   } 
 }
+
+.card-style {
+  height: 40vh;
+}
+
+

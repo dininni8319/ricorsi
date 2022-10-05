@@ -4,9 +4,10 @@ import logo from '../../../assets/icons/logo_inv2.png';
 import { faEnvelope, faLink } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import FontAwesomeComponent from './FontAwesomeComponent';
+import { useState, memo } from 'react';
 
 const Footer = () => {
-
+      
       return (
           <FormContainer>
               <section className='md:flex md:align-middle md:justify-around pt-5 footer-container-custom'>
@@ -38,8 +39,9 @@ const Footer = () => {
                 </p>
                 <a className="text-success md:px-2 text-center" href="https://www.cienneffe.com/" target="blank">www.cienneffe.com</a>
               </section>
+           
           </FormContainer>
       )
   }
 
-export default Footer;
+export default memo(Footer);

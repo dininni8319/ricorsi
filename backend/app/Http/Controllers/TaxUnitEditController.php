@@ -10,11 +10,15 @@ use Illuminate\Http\Request;
 
 class TaxUnitEditController extends Controller
 {
-    public function __construct()
-    {
-        /* $this->middleware("auth"); */
-        $this->middleware("auth.revisor");
-    }
+
+    protected $messageUnSuccess = 'Something went wrong!';
+    protected $messageSuccess = 'Success, this fase was ';
+
+    // public function __construct()
+    // {
+    //     /* $this->middleware("auth"); */
+    //     $this->middleware("auth.revisor");
+    // }
 
     public function taxunit()
     {
@@ -49,9 +53,24 @@ class TaxUnitEditController extends Controller
 
     public function faseDelete($id)
     {
-        $fase = Fasi::find($id)->delete();
-
-        return redirect("/paginataxunit");
+        if ($id) {
+            $fase = Fasi::find($id)->delete();
+    
+            if(!$fase){
+                return response()->json([
+                 'success' => false,
+                 'message' => $this->messageUnSuccess,
+              ], 404);
+             } else {
+                
+                 return response()->json([
+                    'success' => true,
+                    'ricorsi' => $fase,
+                    'message' => $this->messageSuccess,
+                 ], 200);
+             }   
+            
+        }
     }
 
     public function taxUnitFormPage($id)

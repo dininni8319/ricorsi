@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400&family=Roboto+Condensed&family=Roboto:wght@400;500&display=swap');
-
     * {
         box-sizing: border-box;
         margin: 0;
@@ -15,6 +13,11 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #F7F8FA;
     }
 
+    /* h1 { 
+        color: #272D36;
+        text-shadow:  4px 5px 11px rgba(0,0,0,6) }
+    } */
+    
     h5 {
        color: white;
     }
@@ -22,29 +25,45 @@ export const GlobalStyle = createGlobalStyle`
     ul {
         list-style: none
     }
+
+    a {
+       color: #272D36;
+       transform: 3s
+    }
+
+    a:hover{
+        color: blue;
+    }
 `
 
 export const Theme = {
       //Colors
       borderCoulor: '#F2F2F2',
+      backgroundBodyColor: '#F7F8FA',
       goldColor: 'gold',
       navbarColor: "#10B981",
       footerColor: '#272D36',
-      textColorGrey: '#808080',
-      borderColor: '#FCEADE',
-      buttoncolor: '#A56FF8',
+      textColorGrey: 'rgba(255,255,255,0.9)',
+      //color for the input and line bottom
+      borderColor2: 'rgb(209 213 219)',
+      textShadow: 'text-shadow:  5px 5px 11px rgba(0,0,0,1)',
+      //not in use
+      buttoncolor: '#577590',
+      //////////////
       colorGold: '#fca311',
       grayColor: '#272D36',
       pinkColor: '#586BA4',
       blueColor: '#8338ec',
       blueLightColor: '#a3e6f5',
-      transparent: 'trnasparent',
+      
+      transparent: 'transparent',
       colorWhite: 'white',
+      blackColor: 'black',
       borderGrayColor: '#a9a9a9',
       
       //Box-shadow
-      boxShadow: 'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px',
-  
+      boxShadow: 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)',
+      boxShadow2: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
       //Border-radius
       borderRadius: '5px',
   
