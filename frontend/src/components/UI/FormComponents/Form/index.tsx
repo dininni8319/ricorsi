@@ -25,6 +25,8 @@ const Form: React.FC<FormProps> = ({ id, title,detailPath, navPath, createPath, 
                     .then(response => response.json())
                     .then(data => {
                         navigate(`/${navPath}/${data.lastRicorso.id}`)
+                    }).catch((err) => {
+                        alert(err)
                     })
                      
             } else {

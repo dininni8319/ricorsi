@@ -59,7 +59,7 @@ const Homepage = () => {
                                         <p className='font-serif text-sm'>{ricorso.oggetto_ricorso}</p>
                                     </div>
                                     <div className='flex justify-between p-2'>
-                                        <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
+                                        <Link to={`/ricorsi/${ricorso.id}`}>Aggiorna Ricorso</Link>
                                         <Link to={`/ricorsi_detail/${ricorso.id}`}>Dettaglio Ricorso</Link>
                                     </div>
                                 </>

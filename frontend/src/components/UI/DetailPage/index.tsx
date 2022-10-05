@@ -90,8 +90,8 @@ const DetailPage = ( { ricorso, slug }: RicorsoProps) => {
                                     <li>Data convocazione: <span>{fase.data_convocazione}</span></li>
                                     </ul>
                                     <div className='flex justify-between py-1'>
-                                        <Link to={`/work_flow/${ricorso.id}`}>Aggiorna Ricorso</Link>
-                                        <Link to={`/ricorsi_detail/${ricorso.id}`}>Dettaglio Ricorso</Link>
+                                        <Link to={`/form_fase/${fase.id}`}>Aggiorna la Fase</Link>
+                                        <Link to={`/ricorsi_detail/${fase.id}`}>Dettaglio Fase</Link>
                                     </div>
                                 </>
                                 </Card>
