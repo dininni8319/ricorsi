@@ -17,8 +17,8 @@ const Workflow = () => {
         <div className="height-custom">
             <Form
                 title='Avvia un Ricorso' 
-                navPath="ricorsi_detail" 
                 createPath='crea_ricorso'
+                navPath="ricorsi_detail" 
                 detailPath="last_ricorso" 
                 subMitBtn='Invio'
                 data={data}

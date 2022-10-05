@@ -21,9 +21,9 @@ const Fase = () => {
             <Form
                 id={slug}
                 title='Avvia una Fase' 
-                detailPath=""
-                navPath="/" 
                 createPath='create_fase'
+                navPath="fase_detail" 
+                detailPath="last_fase"
                 subMitBtn='Invio'
                 data={data}
             >

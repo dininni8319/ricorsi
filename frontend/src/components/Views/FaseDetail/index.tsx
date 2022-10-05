@@ -19,7 +19,7 @@ const FasiDetail = () => {
   })
 
   const [ { status, response }, makeRequest ] = useApiRequest(
-    `${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
+    `${baseURL}/api/cienneffe/fase/delete/${slug}`, {
         verb: 'delete',
     }
   )
@@ -34,31 +34,29 @@ const FasiDetail = () => {
 
   return (
             <DetailStyleComponent>
-              
-                {/* <section className="flex flex-col items-center">
+                <section className="flex flex-col items-center">
                     <>
-                      <h1 className="mb-2 text-center pr-1">Tributo:{ricorso?.tributo}</h1>
-                      {ricorso &&  <DetailPage 
-                        ricorso={ricorso}
-                        slug={slug}
-                      />}
+                      <h1 className="mb-2 text-center pr-1">Fase:{fase?.fase}</h1>
+                      {fase &&  <DetailPage 
+                          slug={slug}
+                        >
+                          
+                          <h2>hello</h2>
+                        </DetailPage>
+                      }
                     </>
                     <section className='links-detail-page'>
-                    {ricorso && <>
+                      {fase && <>
                         <div className='md:flex md:justify-between md:items-end border-bottom-style py-2'>
-                            <Link to={`/fasi/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
-                            <Link to={`/work_flow/${ricorso?.id}`}>Aggiorna Ricorso</Link>
+                            
+                            <Link to={`/form_fase/${fase.id}`}>Aggiorna la Fase</Link>
                             <div>
                               <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
                             </div>
-                        </div>
-                      
-                    </>}
+                        </div> 
+                      </>}
+                    </section> 
                 </section> 
-                </section> */}
-              
-                {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
-               
             </DetailStyleComponent>   
   )
 }

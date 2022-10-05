@@ -24,7 +24,7 @@ const Form: React.FC<FormProps> = ({ id, title,detailPath, navPath, createPath, 
                 fetch(`${baseURL}/api/cienneffe/${detailPath ? detailPath : ''}`)
                     .then(response => response.json())
                     .then(data => {
-                        navigate(`/${navPath}/${data.lastRicorso.id}`)
+                        navigate(`/${navPath}/${data.id}`)
                     }).catch((err) => {
                         alert(err)
                     })

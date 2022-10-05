@@ -36,7 +36,9 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     
     //Fasi
     Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create");
+    Route::get("/last_fase/", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase");
     Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current");
+    Route::get("/detail_fase/{id}", [TaxUnitEditController::class,"detailFase",])->name("detail.fase");
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
 
     // //Chart Notifiche
