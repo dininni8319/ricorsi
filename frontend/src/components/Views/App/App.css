@@ -7,11 +7,10 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Times New Roman', Times, serif;
-  
 }
-.height-custom, body{
+.height-custom{
   width: 100vw;
-  min-height: 50vh;
+  min-height: 40vh;
   background-color:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   display: flex;
 }
@@ -27,6 +26,7 @@ body {
     display: block;
   } 
 }
+
 
 
 

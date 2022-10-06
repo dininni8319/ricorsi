@@ -119,11 +119,8 @@ class RicorsiController extends Controller
             $formData = $this->getFormData($request);
             
             $ricorso = Ricorsi::create($formData);
-
-            $ultimo_ricorso = Ricorsi::orderBy("created_at", "desc")->first();
-            $id = $ultimo_ricorso->id;
-
-            if(!$id){
+            
+            if(!$ricorso){
                 return response()->json([
                 'success' => false,
                 'message' => 'Something went wrong!',
@@ -132,7 +129,7 @@ class RicorsiController extends Controller
                 
                 return response()->json([
                     'success' => true,
-                    'message' => 'The ricorso is been deleted!',
+                    'message' => 'The ricorso is been created!',
                     'ricorso' => $ricorso,
                     'id' => $id,
                 ], 200);

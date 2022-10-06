@@ -2,7 +2,6 @@ import { ObjFormType, Fasi } from "../../interfaces/interfaces";
 import { CardStyleComponent, CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
 import useApiRequest  from "../../state/useApiRequest";
-import { memo } from 'react';
 import { useNavigate } from 'react-router';
 
 const Card = ({taxunit, path, children, current, setCurrent}: {taxunit: ObjFormType | Fasi, path: string, children?: JSX.Element, current?: any, setCurrent?: any}) => {
@@ -34,4 +33,4 @@ const Card = ({taxunit, path, children, current, setCurrent}: {taxunit: ObjFormT
     );
 }
 
-export default memo(Card);
+export default Card;
