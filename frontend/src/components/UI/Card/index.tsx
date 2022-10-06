@@ -14,10 +14,11 @@ const Card = ({taxunit, path, children, current, setCurrent}: {taxunit: ObjFormT
     const navigate = useNavigate();
     const handleDelete = (e:any, id?: number | string) => {
         e.preventDefault();
+
         let filteredData = current?.filter((el:any) => el.id !== id);
         setCurrent(() => [...filteredData])
         makeRequest();
-        navigate('/')
+        // navigate('/')
     } 
 
     return (

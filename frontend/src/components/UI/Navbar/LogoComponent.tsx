@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { LogoProps } from "../../interfaces/interfaces";
 
 const LogoComponent: React.FC<LogoProps> = ({ imageUrl, w, h}) => {

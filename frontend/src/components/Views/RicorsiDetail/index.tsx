@@ -5,8 +5,8 @@ import {  Link } from "react-router-dom";
 import { Fasi } from "../../interfaces/interfaces";
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
-import useApiRequest from '../../state/useApiRequest';
 import { DetailStyleComponent  } from "./style";
+import useApiRequest from '../../state/useApiRequest';
 import { WrapperStyleComponent } from "../Home/style";
 import { Card, DetailPage } from "../../UI/index";
 import { faseCurrent } from "../../Utilities/index"; 
@@ -15,23 +15,22 @@ const RicorsiDetail = () => {
   
   let { slug } = useParams();
   let navigate = useNavigate()
-  const [currentFasis, setCurrentFasis ] = useState([])
+  const [ currentFasis, setCurrentFasis ] = useState([])
   
   let { payload } = useFetch(`${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
     verb: 'get',      
   })
 
   useEffect(() => {
-
     axios.get(`${baseURL}/api/cienneffe/current_fasis/${slug}`)
       .then(response => {
         
         setCurrentFasis(response.data.fasi);
       })
       .catch((error: unknown) =>{
-        alert(error)
+        console.log(error)
       })
-  },[])
+  },[currentFasis, payload])
   
   const [ { status, response }, makeRequest ] = useApiRequest(
     `${baseURL}/api/cienneffe/ricorso/delete/${slug}`, {

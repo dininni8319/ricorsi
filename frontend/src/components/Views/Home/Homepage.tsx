@@ -1,4 +1,5 @@
-import {  Link } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { baseURL } from "../../Utilities/index";
 import { ObjFormType } from "../../interfaces/interfaces";
@@ -8,26 +9,30 @@ import useFetch from "../../../Hooks/useFetch";
 import useApiRequest from '../../state/useApiRequest';
 
 const Homepage = () => {
- 
-    let { payload, setData }  = useFetch(`${baseURL}/api/cienneffe/ricorsi/`, {
-        verb: 'get',      
-      })
+    const [ ricorsi, setRicorsi ] = useState<{[key: string]: string}[]>([])
 
-    let { ricorsi }: any = payload;
+      useEffect(() => {
+        axios.get(`${baseURL}/api/cienneffe/ricorsi`)
+          .then(response => {
+            setRicorsi(response.data.ricorsi);
+          })
+          .catch((error: unknown) =>{
+    
+          })
+      },[])
     
     return (
         <div className="height-custom">
-        
              <WrapperStyleComponent>
                 <> 
-                    {ricorsi?.map((ricorso: ObjFormType, id: number) => {
+                    {ricorsi?.map((ricorso, id: number) => {
                         return (
                             <Card 
                                 taxunit={ricorso}
                                 key={id}
                                 path='ricorso/delete'
                                 current={ricorsi}
-                                setCurrent={setData}
+                                setCurrent={setRicorsi}
                             >
                                 <>
                                     <h3 className="card-title mb-3">Tributo: <span>{ricorso.tributo}</span></h3>
@@ -63,7 +68,6 @@ const Homepage = () => {
                     })}
                 </>
             </WrapperStyleComponent>
-
         </div>
     )
 }

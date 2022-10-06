@@ -26,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
        transition: 1s;
        color: inherit;
     }
+    
     a:hover {
         color:#10B981;
     }
