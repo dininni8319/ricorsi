@@ -37,50 +37,50 @@ const FasiDetail = () => {
     <DetailStyleComponent>
         <section className="flex flex-col items-center">
             <>
-              <h2 className="mb-2 text-center pr-1">Fase: {faseCurrent(fase?.fase)}</h2>
+              <h1 className="mb-2 text-center">Fase: <span>{faseCurrent(fase?.fase)}</span></h1>
               {fase &&  <DetailPage 
                   slug={slug}
                 >
                   <ul className="ul-detail-style">
                       <li>
-                          <strong>Presentato da:</strong><span>{fase.presentato}</span>
+                          Presentato da: <span>{fase.presentato}</span>
                       </li>
                       <li>
-                          <strong>Contro deduzioni Taxunit:</strong><span>{fase.contro_deduzioni_tax_unit}</span>
+                          Contro deduzioni Taxunit: <span>{fase.contro_deduzioni_tax_unit}</span>
                       </li>
                       <li>
-                          <strong>Contro deduzioni uff. Legale:</strong><span>{fase.contro_deduzioni_uff_legale}</span>
+                          Contro deduzioni uff. Legale: <span>{fase.contro_deduzioni_uff_legale}</span>
                       </li>
                       <li>
-                          <strong>Data presentazione:</strong><span>{fase.data_presentazione}</span> 
+                          Data presentazione: <span>{fase.data_presentazione}</span> 
                       </li>
                       <li>
-                          <strong>Sede:</strong><span>{fase.sede}</span>
+                          Sede: <span>{fase.sede}</span>
                       </li>
                       <li>
-                          <strong>Esito:</strong><span>{fase.esito}</span>
+                          Esito: <span>{fase.esito}</span>
                       </li>
                       <li>
-                          <strong>Esito definitivo:</strong><span>{fase.esito_definitivo}</span>
+                          Esito definitivo: <span>{fase.esito_definitivo}</span>
                       </li>
 
                       <li>
-                          <strong>Motivazione: </strong><span>{fase.motivazione}</span>
+                          Motivazione:  <span>{fase.motivazione}</span>
                       </li>
                       <li>
-                          <strong>Spese:</strong><span>{fase.spese}</span>
+                          Spese: <span>{fase.spese}</span>
                       </li>
                       <li>
-                          <strong>Data deposito Sentenza:</strong><span>{fase.data_deposito_sentenza}</span>
+                          Data deposito Sentenza: <span>{fase.data_deposito_sentenza}</span>
                       </li>
                       <li>
-                          <strong>Data notifica Sentenza:</strong><span>{fase.data_notifica_sentenza}</span>
+                          Data notifica Sentenza: <span>{fase.data_notifica_sentenza}</span>
                       </li>
                   </ul>
                 </DetailPage>
               }
             </>
-            <section className='links-detail-page'>
+            <section className='links-detail-page mt-5'>
               {fase && <>
                 <div className='md:flex md:justify-between md:items-end py-2'>
                     

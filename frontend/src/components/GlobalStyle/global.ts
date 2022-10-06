@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  
     * {
         box-sizing: border-box;
         margin: 0;
@@ -12,11 +11,6 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background-color: #F7F8FA;
     }
-
-    /* h1 { 
-        color: #272D36;
-        text-shadow:  4px 5px 11px rgba(0,0,0,6) }
-    } */
     
     h5 {
        color: white;
@@ -62,7 +56,7 @@ export const Theme = {
       colorWhite: 'white',
       blackColor: 'black',
       //we could usse this colour for the text, not in use at the moment
-      textGray: '#F5F5F5',
+      textGray: '#1C1C1C',
       
       boxShadow: 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)',
       //that for the details pages

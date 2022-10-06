@@ -4,15 +4,14 @@ export const WrapperStyleComponent = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
-    padding: 20px;
-    width: 100vw;
+    padding: 20px 5px;
+    width: 80vw;
 
-    span {
-        font-size: 14px;
-        font-weight: 300;
+    span { 
         padding-left: 2px;
         color: ${props => props.theme.blackColor};
     }
+
     h3 {
       color: ${props => props.theme.colorGold};
     }

@@ -35,7 +35,7 @@ const Homepage = () => {
                                 <>
                                     <h3 className="card-title mb-3">Tributo: <span>{ricorso.tributo}</span></h3>
 
-                                    <ul className="border-custom">
+                                    <ul className="border-custom ul-style-custom">
                                         <li>
                                             <span className="font-semibold pr-1">Numero Ricorso:</span>{ricorso.numero_ricorso}
                                         </li>

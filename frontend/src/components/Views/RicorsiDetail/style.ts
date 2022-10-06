@@ -13,22 +13,23 @@ export const DetailStyleComponent = styled.div`
 
   h1 {
     font-weight: bold;
-    font-size:30px;
+    font-size:25px;
+    span {
+      font-size: 20px;
+      color: ${props => props.theme.textGray}
+    }
   }
-
+  
   .ul-detail-style > li  {
     display: flex;
     justify-content: space-between;
     padding: 15px 5px;
     border-bottom: 1px solid ${props => props.theme.borderGrayColor};
-  }
 
-  span {
-    font-size: 14px;
-  }
-
-  strong {
-    font-weight: bolder
+    span {
+      font-size: 14px;
+      color: ${props => props.theme.textGray}
+    }
   }
 
   .border-bottom-style {
