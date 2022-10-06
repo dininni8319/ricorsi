@@ -19,8 +19,8 @@ export const DetailStyleComponent = styled.div`
   .ul-detail-style > li  {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0px 2px 5px;
-    border-bottom: 1px solid ${props => props.theme.borderColor2};
+    padding: 15px 5px;
+    border-bottom: 1px solid ${props => props.theme.borderGrayColor};
   }
 
   span {

@@ -2,10 +2,9 @@ import { ObjFormType, Fasi } from "../../interfaces/interfaces";
 import { CardStyleComponent, CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
 import useApiRequest  from "../../state/useApiRequest";
-import { Link } from 'react-router-dom';
 import { memo } from 'react';
 
-const Card = ({taxunit, path, children, currentFasis, setCurrentFasis}: {taxunit: ObjFormType | Fasi, path: string, children?: JSX.Element, currentFasis?: any, setCurrentFasis?: any}) => {
+const Card = ({taxunit, path, children, current, setCurrent}: {taxunit: ObjFormType | Fasi, path: string, children?: JSX.Element, current?: any, setCurrent?: any}) => {
 
     const [ { status, response }, makeRequest ] = useApiRequest(
         `${baseURL}/api/cienneffe/${path}/${taxunit.id}`, {
@@ -14,21 +13,20 @@ const Card = ({taxunit, path, children, currentFasis, setCurrentFasis}: {taxunit
     
     const handleDelete = (e:any, id?: number | string) => {
         e.preventDefault();
-        let filteredData = currentFasis?.filter((el:any) => el.id !== id);
-        setCurrentFasis([...filteredData])
+        let filteredData = current?.filter((el:any) => el.id !== id);
+        setCurrent(() => [...filteredData])
         makeRequest();
     } 
 
     return (
-        <CardStyleComponent className="card card-style bg-base-100 shadow-xl m-2">
-            <CardHeaderStyle></CardHeaderStyle>
-            <section className="card-body">
+        <CardStyleComponent className="card-style bg-base-100 m-2">
+            <section className="p-6">
               {children}
             </section>
             <div className='btn-delete'>
-                <button onClick={(e) => handleDelete(e, taxunit.id)} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
-            </div>
-                               
+                <button onClick={(e) => handleDelete(e, taxunit.id)} className='bg-red-500 text-white outline-none cursor-pointer px-5 mr-1 py-2 font-semibold'>Cancella</button>
+            </div>                     
+            <CardHeaderStyle></CardHeaderStyle>
         </CardStyleComponent>
     );
 }

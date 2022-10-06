@@ -82,7 +82,7 @@ const FasiDetail = () => {
             </>
             <section className='links-detail-page'>
               {fase && <>
-                <div className='md:flex md:justify-between md:items-end border-bottom-style py-2'>
+                <div className='md:flex md:justify-between md:items-end py-2'>
                     
                     <Link to={`/form_fase/${fase.id}`}>Aggiorna la Fase</Link>
                     <>

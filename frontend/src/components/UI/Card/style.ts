@@ -2,10 +2,15 @@ import styled from "styled-components";
 
 export const CardHeaderStyle = styled.div`
   width: 100%;
-  height: 12px;
+  height: 1px;
+  margin-top: 5px;
   background-color: ${props => props.theme.navbarColor};
-`
+  `
 export const CardStyleComponent = styled.div`
+  border-top-left-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   box-shadow: ${props=> props.theme.boxShadow};
 
   .btn-delete{

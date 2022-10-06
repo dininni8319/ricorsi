@@ -34,7 +34,6 @@ const RicorsiDetail = () => {
       })
   },[])
   
-
   const [ { status, response }, makeRequest ] = useApiRequest(
     `${baseURL}/api/cienneffe/ricorso/delete/${slug}`, {
         verb: 'delete',
@@ -112,8 +111,8 @@ const RicorsiDetail = () => {
                                         taxunit={fase}
                                         key={id}
                                         path='fase/delete'
-                                        setCurrentFasis={setCurrentFasis}
-                                        currentFasis={currentFasis}
+                                        current={currentFasis}
+                                        setCurrent={setCurrentFasis}
                                     >
                                       <>
                                           <h3 className="card-title mb-2">Fase corrente: <span>{faseCurrent(fase.fase)}</span></h3>
@@ -140,7 +139,7 @@ const RicorsiDetail = () => {
                 
                   <section className='links-detail-page'>
                     {ricorso && <>
-                        <div className='md:flex md:justify-between md:items-end border-bottom-style py-2'>
+                        <div className='md:flex md:justify-between md:items-end py-2'>
                             <Link to={`/form_fase/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
                             <Link to={`/ricorsi/${ricorso?.id}`}>Aggiorna Ricorso</Link>
                             <div>
