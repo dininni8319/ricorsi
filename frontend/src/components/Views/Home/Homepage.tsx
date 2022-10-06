@@ -1,13 +1,11 @@
+import {  Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { baseURL } from "../../Utilities/index";
-import Loader3 from '../../UI/Loaders/Loader3/index';
 import { ObjFormType } from "../../interfaces/interfaces";
-import Aside from '../../UI/Aside/index';
-import Card from '../../UI/Card/index';
+import { Card, Aside, Loader3 } from "../../UI/index";
 import { WrapperStyleComponent } from "./style";
-import useApiRequest from '../../state/useApiRequest';
-import {  Link } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
+import useApiRequest from '../../state/useApiRequest';
 
 const Homepage = () => {
  
@@ -16,7 +14,6 @@ const Homepage = () => {
       })
 
     let { ricorsi }: any = payload;
-    console.log(ricorsi, 'testing the ricorsi');
     
     return (
         <div className="height-custom">

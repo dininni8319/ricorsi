@@ -7,7 +7,6 @@ import
     selectEsitoDefinitivo,
     selectTipologiaFile,
 } from "../UI/FormComponents/selectPropsTributi";
-
 import { fasiFormData } from "../UI/FormComponents/defaultProps";
 import { Input, SelectInput, Form } from "../UI/index";
 import { useParams } from 'react-router';

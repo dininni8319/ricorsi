@@ -3,6 +3,7 @@ import { CardStyleComponent, CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
 import useApiRequest  from "../../state/useApiRequest";
 import { memo } from 'react';
+import { useNavigate } from 'react-router';
 
 const Card = ({taxunit, path, children, current, setCurrent}: {taxunit: ObjFormType | Fasi, path: string, children?: JSX.Element, current?: any, setCurrent?: any}) => {
 
@@ -10,12 +11,13 @@ const Card = ({taxunit, path, children, current, setCurrent}: {taxunit: ObjFormT
         `${baseURL}/api/cienneffe/${path}/${taxunit.id}`, {
             verb: 'delete',
     })
-    
+    const navigate = useNavigate();
     const handleDelete = (e:any, id?: number | string) => {
         e.preventDefault();
         let filteredData = current?.filter((el:any) => el.id !== id);
         setCurrent(() => [...filteredData])
         makeRequest();
+        navigate('/')
     } 
 
     return (

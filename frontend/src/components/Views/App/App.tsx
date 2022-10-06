@@ -1,9 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Homepage, Ricorsi, Cartoline, Fase, RicorsiDetail, FaseDetail } from '../index';
-import Navbar from '../../UI/Navbar/index';
-import Footer from '../../UI/Footer/index';
-import Header from '../../UI/Header/index';
+import { Navbar, Footer, Header } from "../../UI/index";
 
 const App = () => {
 

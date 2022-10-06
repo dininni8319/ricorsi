@@ -1,15 +1,14 @@
-import {  Link } from "react-router-dom";
-import { RicorsoProps, Fasi } from "../../interfaces/interfaces";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router';
+import {  Link } from "react-router-dom";
+import { Fasi } from "../../interfaces/interfaces";
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
+import useApiRequest from '../../state/useApiRequest';
 import { DetailStyleComponent  } from "./style";
 import { WrapperStyleComponent } from "../Home/style";
-import DetailPage from '../../UI/DetailPage';
-import Card from '../../UI/Card/index';
-import useApiRequest from '../../state/useApiRequest';
-import axios from "axios";
+import { Card, DetailPage } from "../../UI/index";
 import { faseCurrent } from "../../Utilities/index"; 
 
 const RicorsiDetail = () => {

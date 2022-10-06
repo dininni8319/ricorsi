@@ -1,17 +1,15 @@
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { RicorsoProps } from "../../interfaces/interfaces";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from 'react-router';
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
-import { DetailStyleComponent  } from "../RicorsiDetail/style";
-import DetailPage from '../../UI/DetailPage';
-import Card from '../../UI/Card/index';
+import { DetailStyleComponent } from "../RicorsiDetail/style";
+import { Card, DetailPage } from "../../UI/index";
 import useApiRequest from '../../state/useApiRequest';
 import { faseCurrent } from "../../Utilities/index";
 
 const FasiDetail = () => {
-  
   let { slug } = useParams();
   let navigate = useNavigate()
 
