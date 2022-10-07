@@ -5,7 +5,7 @@ import { baseURL } from "../../../Utilities/index";
 import FormWrapper from '../FormWrapper';
 import { FormContainer } from "../FormRicorsi/style";
 
-const Form: React.FC<FormProps> = ({ id, title, detailPath, navPath, createPath, subMitBtn, children, data }) => {
+const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, children, data }) => {
 
     const navigate = useNavigate();
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

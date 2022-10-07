@@ -10,3 +10,9 @@ export const faseCurrent = (current: string | number) => {
     || current === 4 && 'Cassazione';
   return fase;
 } 
+
+export const isTextarea = (id:number) => {
+  if (id === 13 || id === 15 || id === 18) {
+      return true;
+  }
+} 

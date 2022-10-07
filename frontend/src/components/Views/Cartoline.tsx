@@ -11,9 +11,8 @@ const Cartoline = () => {
         <div className="height-custom">
             <Form
                 title='Avvia una Cartolina' 
-                navPath="/"
-                detailPath="" 
-                createPath='crea_ricorso'
+                navPath="detail_cartoline" 
+                createPath='create_cartolina'
                 subMitBtn='Invio'
                 data={data}
             >

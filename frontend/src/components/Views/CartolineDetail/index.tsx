@@ -9,86 +9,86 @@ import { Card, DetailPage, Loader3 } from "../../UI/index";
 import useApiRequest from '../../state/useApiRequest';
 import { faseCurrent } from "../../Utilities/index";
 
-const FasiDetail = () => {
+const CartolineDetail = () => {
   let { slug } = useParams();
   let navigate = useNavigate()
 
-  let { payload, setData } = useFetch(`${baseURL}/api/cienneffe/detail_fase/${slug}`, {
+  let { payload, setData } = useFetch(`${baseURL}/api/cienneffe/detail_cartoline/${slug}`, {
     verb: 'get',      
   })
   
-  const [ { status, response }, makeRequest ] = useApiRequest(
-    `${baseURL}/api/cienneffe/fase/delete/${slug}`, {
-        verb: 'delete',
-    }
-  )
+  // const [ { status, response }, makeRequest ] = useApiRequest(
+  //   `${baseURL}/api/cienneffe/fase/delete/${slug}`, {
+  //       verb: 'delete',
+  //   }
+  // )
 
-  let { fase }:any = payload;
-
+  let { cartolina }:any = payload;
+  
   const handleDelete = (e:any) => {
     e.preventDefault();
-    makeRequest()
+    // makeRequest()
     navigate('/')
   } 
   
   return (
     <DetailStyleComponent>
             <>
-              <h1 className="mb-2 text-center">Fase: <span>{faseCurrent(fase?.fase)}</span></h1>
-              {fase && <DetailPage 
+              <h1 className="mb-2 text-center">Descrizione della Cartolina: <span>{cartolina?.descrizione_mandante}</span></h1>
+              {cartolina && <DetailPage 
                   slug={slug}
                 >
                   <ul className="ul-detail-style">
                       <li>
-                          Presentato da: <span>{fase.presentato}</span>
+                          Presentato da: <span>{cartolina.codice_mandate}</span>
                       </li>
                       <li>
-                          Contro deduzioni Taxunit: <span>{fase.contro_deduzioni_tax_unit}</span>
+                          Contro deduzioni Taxunit: <span>{cartolina.nome_cognome_debitore}</span>
                       </li>
                       <li>
-                          Contro deduzioni uff. Legale: <span>{fase.contro_deduzioni_uff_legale}</span>
+                          Contro deduzioni uff. Legale: <span>{cartolina.cf_piva_debitore}</span>
                       </li>
                       <li>
-                          Data presentazione: <span>{fase.data_presentazione}</span> 
+                          Data presentazione: <span>{cartolina.ndg}</span> 
                       </li>
                       <li>
-                          Sede: <span>{fase.sede}</span>
+                          Sede: <span>{cartolina.data_spedizione}</span>
                       </li>
                       <li>
-                          Esito: <span>{fase.esito}</span>
+                          Esito: <span>{cartolina.numero_raccomandata}</span>
                       </li>
                       <li>
-                          Esito definitivo: <span>{fase.esito_definitivo}</span>
+                          Esito definitivo: <span>{cartolina.data_notifica}</span>
                       </li>
 
                       <li>
-                          Motivazione:  <span>{fase.motivazione}</span>
+                          Motivazione:  <span>{cartolina.esito_notifica}</span>
                       </li>
                       <li>
-                          Spese: <span>{fase.spese}</span>
+                          Spese: <span>{cartolina.chiave_pratica}</span>
                       </li>
                       <li>
-                          Data deposito Sentenza: <span>{fase.data_deposito_sentenza}</span>
+                          Data deposito Sentenza: <span>{cartolina.fase}</span>
                       </li>
-                      <li>
-                          Data notifica Sentenza: <span>{fase.data_notifica_sentenza}</span>
-                      </li>
+                      {/* <li>
+                          Data notifica Sentenza: <span>{cartolina.data_notifica_sentenza}</span>
+                      </li> */}
                   </ul>
                 </DetailPage> 
               }
             </>
             <section className='links-detail-page mt-5'>
-              {fase && <div className='md:flex md:justify-between md:items-end py-2'>
+              {/* {cartolina && <div className='md:flex md:justify-between md:items-end py-2'>
                     
                     <Link to={`/form_fase/${fase.id}`}>Aggiorna la Fase</Link>
                     <>
                       <button onClick={(event)=> handleDelete(event)} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
                     </>
                 </div> 
-              }
+              } */}
             </section> 
     </DetailStyleComponent>   
   )
 }
 
-export default FasiDetail;
+export default CartolineDetail;

@@ -14,7 +14,11 @@ const Homepage = () => {
     useEffect(() => {
         fetch(`${baseURL}/api/cienneffe/ricorsi`)
           .then(response => response.json())
-          .then(data => setRicorsi(prev => [...data.ricorsi]))
+          .then(data => {
+              if (data.ricorsi) {
+                  setRicorsi(prev => [...data?.ricorsi])
+              }
+          })
           .catch((error: unknown) =>{
              console.log(error);
           })

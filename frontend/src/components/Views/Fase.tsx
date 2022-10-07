@@ -22,7 +22,6 @@ const Fase = () => {
                 title='Avvia una Fase' 
                 createPath='create_fase'
                 navPath="fase_detail" 
-                detailPath="last_fase"
                 subMitBtn='Invio'
                 data={data}
             >

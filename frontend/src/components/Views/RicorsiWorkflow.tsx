@@ -3,30 +3,23 @@ import { defaultRicorsiData } from "../UI/FormComponents/defaultData";
 import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../UI/FormComponents/selectPropsTributi";
 import useInput from '../../Hooks/useInput';
 import { Input, SelectInput, TextArea, Form } from '../UI/index';
+import { isTextarea } from '../Utilities/index';
 
 const Workflow = () => {
     const { data, handleData } = useInput(defaultRicorsiData);
-
-    const isTextarea = (id:number) => {
-        if (id === 13 || id === 15 || id === 18) {
-            return true;
-        }
-    } 
-
+     
     return (
         <div className="height-custom">
             <Form
                 title='Avvia un Ricorso' 
                 createPath='crea_ricorso'
                 navPath="ricorsi_detail" 
-                detailPath="last_ricorso" 
                 subMitBtn='Invio'
                 data={data}
             >
               <>
               
                 {formRicorsiLabels?.formArr.map(({ label, name, type, id}, index) => {
-                
                   return (
                     isTextarea(id) ? (<TextArea 
                                         label={label}                       

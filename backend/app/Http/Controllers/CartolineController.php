@@ -9,11 +9,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CartolineController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware("auth"); 
-        $this->middleware("auth.revisor");
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware("auth"); 
+    //     $this->middleware("auth.revisor");
+    // }
 
     protected function findCartoline($id) 
     {
@@ -45,9 +45,20 @@ class CartolineController extends Controller
 
     public function detailCartoline($id)
     {
-        $cartolina = $this->findCartoline($id);
-       
-        return view("cartoline.detailCartoline", compact('cartolina'));
+        if(!$id){
+            return response()->json([
+            'success' => false,
+            'message' => 'Something went wrong!',
+        ], 404);
+        } else {
+            $cartolina = $this->findCartoline($id);
+            return response()->json([
+                'success' => true,
+                'message' => 'The ricorso is been deleted!',
+                'cartolina' => $cartolina,
+                'id' => $cartolina->id,
+            ], 200);
+        }    
     }
 
     public function cartolineForm($id = null) 
@@ -125,11 +136,21 @@ class CartolineController extends Controller
         $formData = array_merge($formData, ['path_file' => $path_file]);
         $formData = array_merge($formData, ['nome_file' => $fileName]);
         
-        $cartoline = Cartoline::create($formData);
-        $ultimo_cartolina = Cartoline::orderBy("created_at", "desc")->first();
-        $id = $ultimo_cartolina->id;
-        
-        return redirect("/detailCartoline/".$id);
+        $cartolina = Cartoline::create($formData);
+        if(!$cartolina){
+            return response()->json([
+            'success' => false,
+            'message' => 'Something went wrong!',
+        ], 404);
+        } else {
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'The ricorso is been deleted!',
+                'cartolina' => $cartolina,
+                'id' => $cartolina->id,
+            ], 200);
+        }   
     }
 
     public function searchCartolina(Request $request)

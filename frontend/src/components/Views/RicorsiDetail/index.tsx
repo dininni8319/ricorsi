@@ -10,7 +10,6 @@ import useApiRequest from '../../state/useApiRequest';
 import { WrapperStyleComponent } from "../Home/style";
 import { Card, DetailPage, Modal } from "../../UI/index";
 import { faseCurrent } from "../../Utilities/index"; 
-import Wrapper from '../../UI/Helper/Wrapper';
 
 const RicorsiDetail = () => {
   
@@ -135,16 +134,13 @@ const RicorsiDetail = () => {
                 
                   <section className='links-detail-page'>
                     {/* //you can use a fragment or a custom wrapper */}
-                    {ricorso && <Wrapper>
-                        <div className='md:flex md:justify-between md:items-end py-1'>
-                            <Link to={`/form_fase/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
-                            <Link to={`/ricorsi/${ricorso?.id}`}>Aggiorna Ricorso</Link>
-                            <div>
+                    {ricorso && 
+                        <div className='flex justify-between items-end py-2'>
+                              <Link to={`/form_fase/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
+                              <Link to={`/ricorsi/${ricorso?.id}`}>Aggiorna Ricorso</Link>
                               <button onClick={(e) => handleDelete(e)} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
-                            </div>
-                        </div>
-                      
-                    </Wrapper>}
+                        </div>    
+                       }
                   </section> 
              
       </DetailStyleComponent>   

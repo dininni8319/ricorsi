@@ -16,7 +16,6 @@ export type InitialState = {
 export interface FormProps {
     id?: string | number,
     title: string,
-    detailPath: string,
     navPath: string,
     createPath:string,
     subMitBtn: string,

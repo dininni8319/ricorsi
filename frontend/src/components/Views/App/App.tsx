@@ -12,6 +12,7 @@ const App = () => {
   const Fase = lazy(() => import('../Fase'));
   const RicorsiDetail = lazy(() => import('../RicorsiDetail'));
   const FaseDetail = lazy(() => import('../FaseDetail'));
+  const CartolineDetail = lazy(() => import('../CartolineDetail'));
 
   return (
     <BrowserRouter>
@@ -63,6 +64,12 @@ const App = () => {
           <Route path='/fase_detail/:slug' element={
             <Suspense fallback={<Loader3/>}>
                <FaseDetail />
+            </Suspense> 
+          }/>
+
+          <Route path='/detail_cartoline/:slug' element={
+            <Suspense fallback={<Loader3/>}>
+               <CartolineDetail />
             </Suspense> 
           }/>
         </Routes>
