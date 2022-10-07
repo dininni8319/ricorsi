@@ -10,15 +10,15 @@ import useApiRequest from '../../state/useApiRequest';
 
 const Homepage = () => {
     const [ ricorsi, setRicorsi ] = useState<{[key: string]: string}[]>([])
-    
+ 
     useEffect(() => {
         fetch(`${baseURL}/api/cienneffe/ricorsi`)
           .then(response => response.json())
-          .then(data => setRicorsi(data.ricorsi))
+          .then(data => setRicorsi(prev => [...data.ricorsi]))
           .catch((error: unknown) =>{
              console.log(error);
           })
-      },[])
+      },[ricorsi])
     
     return (
         <div className="height-custom">
@@ -27,7 +27,6 @@ const Homepage = () => {
                     {ricorsi?.map((ricorso, id: number) => {
                         return (
                             <>
-
                                 <Card 
                                     taxunit={ricorso}
                                     key={id}

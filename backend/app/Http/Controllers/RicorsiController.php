@@ -17,7 +17,7 @@ class RicorsiController extends Controller
     //     $this->middleware("auth.revisor");
     // }
 
-    protected $messageUnSuccess = 'Nessun importo trovato!';
+    protected $messageUnSuccess = 'Nessun ricorso trovato!';
     protected $messageSuccess = 'Importi trovati!';
 
     protected function getFormData($req) {
@@ -131,7 +131,7 @@ class RicorsiController extends Controller
                     'success' => true,
                     'message' => 'The ricorso is been created!',
                     'ricorso' => $ricorso,
-                    'id' => $id,
+                    'id' => $ricorso->id,
                 ], 200);
             }   
         } 

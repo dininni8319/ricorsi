@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 export const DetailStyleComponent = styled.div`
   margin: 20px 0;
-   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 60vh;
+
   .ul-detail-style {
     border-radius: 5px;
     width: 80%;

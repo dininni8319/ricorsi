@@ -17,16 +17,16 @@ class FaseController extends Controller
     // }
 
     public function currentFasis($id){
-      $fasi = Ricorsi::find($id)->fasi;
-    
-      if(!$fasi){
-        return response()->json([
-         'success' => false,
-         'message' => 'something went wrong',
-      ], 404);
-     } else {
         
-         return response()->json([
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => 'something went wrong',
+            ], 404);
+        } else {
+            $fasi = Ricorsi::find($id)->fasi;
+            
+            return response()->json([
             'success' => true,
             'fasi' => $fasi,
             'message' => 'success, the upload was successfull'

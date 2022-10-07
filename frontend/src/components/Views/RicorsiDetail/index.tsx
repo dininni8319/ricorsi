@@ -8,8 +8,9 @@ import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent  } from "./style";
 import useApiRequest from '../../state/useApiRequest';
 import { WrapperStyleComponent } from "../Home/style";
-import { Card, DetailPage } from "../../UI/index";
+import { Card, DetailPage, Modal } from "../../UI/index";
 import { faseCurrent } from "../../Utilities/index"; 
+import Wrapper from '../../UI/Helper/Wrapper';
 
 const RicorsiDetail = () => {
   
@@ -20,17 +21,16 @@ const RicorsiDetail = () => {
   let { payload } = useFetch(`${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
     verb: 'get',      
   })
-
+  
   useEffect(() => {
-    axios.get(`${baseURL}/api/cienneffe/current_fasis/${slug}`)
-      .then(response => {
-        
-        setCurrentFasis(response.data.fasi);
-      })
-      .catch((error: unknown) =>{
-        console.log(error)
-      })
-  },[currentFasis, payload])
+    fetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`)
+    .then(response => response.json())
+    .then(data => setCurrentFasis(data?.fasi))
+    .catch((error: unknown) =>{
+       console.log(error);
+    })
+   
+  },[currentFasis])
   
   const [ { status, response }, makeRequest ] = useApiRequest(
     `${baseURL}/api/cienneffe/ricorso/delete/${slug}`, {
@@ -48,7 +48,6 @@ const RicorsiDetail = () => {
 
   return (
       <DetailStyleComponent>
-          <section className="flex flex-col items-center">
                 <h1 className="mb-2 text-center pr-1">Tributo: <span>{ricorso?.tributo}</span></h1>
                   {ricorso &&  <DetailPage 
                     slug={slug}
@@ -135,7 +134,8 @@ const RicorsiDetail = () => {
                     </DetailPage>}
                 
                   <section className='links-detail-page'>
-                    {ricorso && <>
+                    {/* //you can use a fragment or a custom wrapper */}
+                    {ricorso && <Wrapper>
                         <div className='md:flex md:justify-between md:items-end py-1'>
                             <Link to={`/form_fase/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
                             <Link to={`/ricorsi/${ricorso?.id}`}>Aggiorna Ricorso</Link>
@@ -144,9 +144,9 @@ const RicorsiDetail = () => {
                             </div>
                         </div>
                       
-                    </>}
+                    </Wrapper>}
                   </section> 
-          </section>     
+             
       </DetailStyleComponent>   
   )
 }

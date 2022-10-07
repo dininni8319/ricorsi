@@ -33,7 +33,6 @@ const FasiDetail = () => {
   
   return (
     <DetailStyleComponent>
-        <section className="flex flex-col items-center">
             <>
               <h1 className="mb-2 text-center">Fase: <span>{faseCurrent(fase?.fase)}</span></h1>
               {fase &&  <DetailPage 
@@ -89,7 +88,6 @@ const FasiDetail = () => {
                 </div> 
               </>}
             </section> 
-        </section> 
     </DetailStyleComponent>   
   )
 }

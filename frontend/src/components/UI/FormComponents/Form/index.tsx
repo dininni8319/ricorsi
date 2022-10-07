@@ -6,38 +6,27 @@ import FormWrapper from '../FormWrapper';
 import { FormContainer } from "../FormRicorsi/style";
 
 const Form: React.FC<FormProps> = ({ id, title, detailPath, navPath, createPath, subMitBtn, children, data }) => {
-    
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();
-
+         
         //post a ricorso
         fetch(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, {
             method: 'POST',
             headers: { 'Content-Type' : "application/json"},
             body: JSON.stringify(data)
         })
-        .then(response => {
-            
-            if (response.status === 200 || response.ok) {
-                fetch(`${baseURL}/api/cienneffe/${detailPath ? detailPath : ''}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.id) {
-                            navigate(`/${navPath}/${data.id}`)  
-                        } else {
-                            navigate('/')
-                        }
-                    }).catch((err) => {
-                        alert(err)
-                    })
-                     
+        .then(response => response.json())
+        .then(data => {
+            if (data.id) {
+                navigate(`/${navPath}/${data.id}`)  
             } else {
-                alert('Something went wrong!')
+                navigate('/')
             }
         })
-        .then(() => { 
+        .catch((err) => {
+            alert(err)
         })
     }
  
