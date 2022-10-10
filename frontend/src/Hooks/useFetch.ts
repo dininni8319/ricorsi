@@ -23,7 +23,7 @@ const useFetch =  ( endpoint: string, { verb = 'get', params = {} } = {}) => {
         setLoading(false)
       })
 
-  },[endpoint, data])
+  },[endpoint])
   
   return {
     payload:data,

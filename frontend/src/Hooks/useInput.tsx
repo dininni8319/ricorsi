@@ -3,7 +3,6 @@ import { validate } from "../components/Utilities/index";
 
 export default function useInput(initialSate: {[key: string]: string}) {
   
-  const [ errors, setErrors ] = useState({});
   const [ data, setData ] = useState(initialSate);
 
   const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
@@ -16,6 +15,5 @@ export default function useInput(initialSate: {[key: string]: string}) {
   return {
     data,
     handleData,
-    errors,
   }
 }

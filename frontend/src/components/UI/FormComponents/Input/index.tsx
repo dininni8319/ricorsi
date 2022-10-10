@@ -14,7 +14,7 @@ const Input: React.FC<PropsInput> = ({ typeIn, name, label,index, handleData }:P
                     className='input-style' 
                     onChange={(e) => handleData(e, index)}
                     name={name}
-                    // value={ricorso[newName as keyof object]}
+                    // value={ricorso[newName as keyof object] || ''}
                 />
             {/* </div> */}
         </InputSection>

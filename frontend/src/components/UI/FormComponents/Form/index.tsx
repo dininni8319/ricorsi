@@ -16,6 +16,7 @@ const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, 
     const errorTag = (message: string) => {
         return <span className='text-red-600 text-sm'>{message}</span>
     }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();
     
