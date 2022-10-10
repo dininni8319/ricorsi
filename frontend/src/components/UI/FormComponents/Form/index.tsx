@@ -1,20 +1,24 @@
 // import { string } from "yup";
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { FormProps } from "../../../interfaces/interfaces";
 import { baseURL } from "../../../Utilities/index";
 import FormWrapper from '../FormWrapper';
 import { FormContainer } from "../FormRicorsi/style";
 
-const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, children, data, errors }) => {
-    
+const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, children, data }) => {
+    // const [ errors, setErrors ] = useState({
+    //     status: false,
+    //     message: ''
+    //   });
     const navigate = useNavigate();
+
     const errorTag = (message: string) => {
         return <span className='text-red-600 text-sm'>{message}</span>
     }
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
        e.preventDefault();
-        
-       if (!errors?.status) {
+    
            //post a ricorso
            fetch(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, {
                method: 'POST',
@@ -32,13 +36,13 @@ const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, 
            .catch((err) => {
                alert(err)
            })   
-       }
+       
     }
  
     return (
         <FormContainer onSubmit={handleSubmit}>
             <h1 className='font-bold text-amber-500 text-3xl'>{title}</h1>
-            {errors && errorTag(errors?.message)}
+            {/* {errors && errorTag(errors?.message)} */}
             <section className="form-row"> 
                 {children}
                 <div className='flex items-center'>

@@ -3,9 +3,6 @@ import { type } from 'os';
 
 export type Methods = "head" | "options" | "put" | "post" | "patch" | "delete" | "get";
 
-// export type ArrayOfObj = {
-//    {[key: string]: string}[] 
-// }
 export interface FormWrapperType {
     title: string,
     subMitBtn: string,
@@ -25,7 +22,7 @@ export interface FormProps {
     //key and value pair definition in typescript
     data: {[key: string]: string},
     children?: JSX.Element,
-    errors?: ErrorType
+    // errors?: ErrorType
     // formData: ObjSelectType,
 };
 export type ErrorType = {

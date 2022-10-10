@@ -26,4 +26,14 @@ export const funFormatDate = (str: string) => {
   return utc;
 }
 
+export function validate(values: string) {
+  let errors = {errorTitle: ''};
+  if (!values) {
+    errors.errorTitle = 'Email address is required';
+  } else if (!/\S+@\S+\.\S+/.test(values)) {
+    errors.errorTitle = 'Email address is invalid';
+  } 
+  
+  return errors;
+};
 
