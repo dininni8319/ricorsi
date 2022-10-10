@@ -10,7 +10,7 @@ const Backdrop = ({ setIsOpen }: any) => {
   return <div className={styles.backdrop} onClick={() => setIsOpen(false)}></div>
 }
 
-const Overlay = ({ setIsOpen }:any ) => {
+const Overlay = ({ setIsOpen, children }:any ) => {
 
   return (
     <div className={styles.modal}>
@@ -18,11 +18,13 @@ const Overlay = ({ setIsOpen }:any ) => {
           <h3 className={styles.heading}>Avvia una fase</h3>
         </div> */}
         <div className={styles.centered}>
-
-        <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
+        {children}
+        <button className={styles.closeBtn} onClick={(e) => {
+          e.preventDefault();
+          setIsOpen(false)}}>
           <RiCloseLine style={{ marginBottom: '-3px'}}/>
         </button>
-      
+        
         <div className={styles.modalActions}>
           <div className={styles.actionsContainer}>
             <button className={styles.deleteBtn} onClick={() => setIsOpen(false)}>DELETE</button>
@@ -48,7 +50,7 @@ const Modal:any = ( { setIsOpen }:any) => {
        {
          createPortal(
          <Overlay 
-         setIsOpen={setIsOpen}
+          setIsOpen={setIsOpen}
          />,
          document.getElementById( 'overlay') as HTMLElement
          )}

@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar, Footer, Header, Loader3 } from "../../UI/index";
 
 const App = () => {
-  
   const Homepage = lazy(() => import('../Home/Homepage'));
   const Ricorsi = lazy(() => import('../RicorsiWorkflow'));
   const Cartoline = lazy(() => import('../Cartoline'));

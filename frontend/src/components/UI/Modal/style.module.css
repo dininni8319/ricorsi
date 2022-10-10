@@ -15,11 +15,11 @@
 }
 
 .modal {
-  position: fixed;
+   position: fixed; 
   top: 10vh;
   left: 35%;
-  width: 100%;
-  height: 500px;
+  width: 100vw;
+  height: 100%;
   z-index: 1000;
   overflow: scroll;
   background: white;

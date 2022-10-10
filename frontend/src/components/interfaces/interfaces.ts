@@ -2,6 +2,9 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export type Methods = "head" | "options" | "put" | "post" | "patch" | "delete" | "get";
 
+// export type ArrayOfObj = {
+//    {[key: string]: string}[] 
+// }
 export interface FormWrapperType {
     title: string,
     subMitBtn: string,
