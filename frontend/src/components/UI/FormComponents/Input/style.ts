@@ -13,9 +13,10 @@ export const InputSection = styled.div`
     .input-style {
         margin-top: 5px;
         border-bottom: 1px solid ${props => props.theme.borderGrayColor};
+        background: ${props => props.theme.transparent};
        /*  border-radius: ${props => props.theme.borderRadius}; */
         padding: 7px 0;
-        width: 80%;
+        width: 100%;
         outline: none
     }
 

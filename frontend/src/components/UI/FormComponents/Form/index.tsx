@@ -35,7 +35,9 @@ const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, 
             <h1 className='font-bold text-amber-500 text-3xl'>{title}</h1>
             <section className="form-row"> 
                 {children}
-                <button className='btn-send border-solid text-white mt-5 py-2'>{subMitBtn}</button>
+                <div className='flex items-center'>
+                   <button className='btn-send border-solid text-white mt-5 py-2 w-full'>{subMitBtn}</button>
+                </div>
             </section>
         </FormContainer>
       

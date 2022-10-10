@@ -7,28 +7,13 @@ export const FormContainer = styled.form `
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    /* .modal {
-        position: fixed; 
-        left: 35%;
-        top: 10%;  
-        width: 50%;
-        height: 60%;
-        z-index: 1000;
-        overflow: scroll;
-        background: white;
-        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-        border-radius: 4px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        backdrop-filter: blur(8px);
-    } */
+    width: 60vw;
 
     .form-row {
         padding-top: 10px;
-        width: 40vw;
-        display: flex;
-        flex-direction: column;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         margin: 30px;
         background: ${(props) => props.theme.colorWhite};
         padding: 20px;
@@ -38,5 +23,15 @@ export const FormContainer = styled.form `
     .btn-send {
         background-color: ${props => props.theme.navbarColor};
         font-size: 20px;
+    }
+
+    
+
+    @media only screen and (max-width: 1300px) {
+        .form-row {
+            grid-template-columns: 1fr;
+            align-items: center;
+            padding: 5px;
+        }
     }
 `
