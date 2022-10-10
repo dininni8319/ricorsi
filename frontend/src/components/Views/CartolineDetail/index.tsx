@@ -7,7 +7,7 @@ import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "../RicorsiDetail/style";
 import { Card, DetailPage, Loader3 } from "../../UI/index";
 import useApiRequest from '../../state/useApiRequest';
-import { faseCurrent } from "../../Utilities/index";
+import { faseCurrent, funFormatDate } from "../../Utilities/index";
 
 const CartolineDetail = () => {
   let { slug } = useParams();
@@ -17,17 +17,17 @@ const CartolineDetail = () => {
     verb: 'get',      
   })
   
-  // const [ { status, response }, makeRequest ] = useApiRequest(
-  //   `${baseURL}/api/cienneffe/fase/delete/${slug}`, {
-  //       verb: 'delete',
-  //   }
-  // )
+  const [ { status, response }, makeRequest ] = useApiRequest(
+    `${baseURL}/api/cienneffe/cartolina/delete/${slug}`, {
+        verb: 'delete',
+    }
+  )
 
   let { cartolina }:any = payload;
   
   const handleDelete = (e:any) => {
     e.preventDefault();
-    // makeRequest()
+    makeRequest()
     navigate('/')
   } 
   
@@ -49,16 +49,16 @@ const CartolineDetail = () => {
                           Contro deduzioni uff. Legale: <span>{cartolina.cf_piva_debitore}</span>
                       </li>
                       <li>
-                          Data presentazione: <span>{cartolina.ndg}</span> 
+                          Ndg: <span>{cartolina.ndg}</span> 
                       </li>
                       <li>
-                          Sede: <span>{cartolina.data_spedizione}</span>
+                          Sede: <span>{funFormatDate(cartolina.data_spedizione)}</span>
                       </li>
                       <li>
                           Esito: <span>{cartolina.numero_raccomandata}</span>
                       </li>
                       <li>
-                          Esito definitivo: <span>{cartolina.data_notifica}</span>
+                          Esito definitivo: <span>{funFormatDate(cartolina.data_notifica)}</span>
                       </li>
 
                       <li>
@@ -78,14 +78,14 @@ const CartolineDetail = () => {
               }
             </>
             <section className='links-detail-page mt-5'>
-              {/* {cartolina && <div className='md:flex md:justify-between md:items-end py-2'>
+               {cartolina && <div className='md:flex md:justify-between md:items-end py-2'>
                     
-                    <Link to={`/form_fase/${fase.id}`}>Aggiorna la Fase</Link>
+                    <Link to={`/create_cartolina/${slug}`}>Aggiorna la Cartolina</Link>
                     <>
                       <button onClick={(event)=> handleDelete(event)} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
                     </>
-                </div> 
-              } */}
+                </div>  
+              } 
             </section> 
     </DetailStyleComponent>   
   )

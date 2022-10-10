@@ -16,3 +16,10 @@ export const isTextarea = (id:number) => {
       return true;
   }
 } 
+
+export const funFormatDate = (str: string) => {
+  let myDate = new Date(str);
+  let utc =`${myDate.getDate()}.${myDate.getMonth()}.${myDate.getFullYear()}`;
+  
+  return utc;
+}

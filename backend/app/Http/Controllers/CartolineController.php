@@ -52,6 +52,7 @@ class CartolineController extends Controller
         ], 404);
         } else {
             $cartolina = $this->findCartoline($id);
+        
             return response()->json([
                 'success' => true,
                 'message' => 'The ricorso is been deleted!',
@@ -59,6 +60,24 @@ class CartolineController extends Controller
                 'id' => $cartolina->id,
             ], 200);
         }    
+    }
+
+    public function cartolinaDelete($id)
+    {
+        if(!$id){
+            return response()->json([
+            'success' => false,
+            'message' => 'Something went wrong!',
+        ], 404);
+        } else {
+            $cartolina = $this->findCartoline($id);
+            $cartolina->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'The cartolina is been deleted!',
+            ], 200);
+        }  
     }
 
     public function cartolineForm($id = null) 
@@ -137,6 +156,7 @@ class CartolineController extends Controller
         $formData = array_merge($formData, ['nome_file' => $fileName]);
         
         $cartolina = Cartoline::create($formData);
+
         if(!$cartolina){
             return response()->json([
             'success' => false,

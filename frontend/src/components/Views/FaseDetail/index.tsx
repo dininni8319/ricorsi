@@ -7,7 +7,7 @@ import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "../RicorsiDetail/style";
 import { Card, DetailPage, Loader3 } from "../../UI/index";
 import useApiRequest from '../../state/useApiRequest';
-import { faseCurrent } from "../../Utilities/index";
+import { faseCurrent, funFormatDate } from "../../Utilities/index";
 
 const FasiDetail = () => {
   let { slug } = useParams();
@@ -49,7 +49,7 @@ const FasiDetail = () => {
                           Contro deduzioni uff. Legale: <span>{fase.contro_deduzioni_uff_legale}</span>
                       </li>
                       <li>
-                          Data presentazione: <span>{fase.data_presentazione}</span> 
+                          Data presentazione: <span>{funFormatDate(fase.data_presentazione)}</span> 
                       </li>
                       <li>
                           Sede: <span>{fase.sede}</span>
@@ -68,10 +68,10 @@ const FasiDetail = () => {
                           Spese: <span>{fase.spese}</span>
                       </li>
                       <li>
-                          Data deposito Sentenza: <span>{fase.data_deposito_sentenza}</span>
+                          Data deposito Sentenza: <span>{funFormatDate(fase.data_deposito_sentenza)}</span>
                       </li>
                       <li>
-                          Data notifica Sentenza: <span>{fase.data_notifica_sentenza}</span>
+                          Data notifica Sentenza: <span>{funFormatDate(fase.data_notifica_sentenza)}</span>
                       </li>
                   </ul>
                 </DetailPage> 
