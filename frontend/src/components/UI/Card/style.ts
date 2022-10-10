@@ -4,7 +4,7 @@ export const CardHeaderStyle = styled.div`
   width: 100%;
   height: 3px;
   margin-top: 5px;
-  background-color: ${props => props.theme.navbarColor};
+  background-color: ${props => props.theme.blackColor};
   `
 export const CardStyleComponent = styled.div`
   border-top-left-radius: 10px;

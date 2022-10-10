@@ -24,8 +24,10 @@ class FaseController extends Controller
                 'message' => 'something went wrong',
             ], 404);
         } else {
-            $fasi = Ricorsi::find($id)->fasi;
-            
+
+            $fasiData = Ricorsi::find(intval($id))->fasi;
+            $fasi = json_decode($fasiData, true);
+    
             return response()->json([
             'success' => true,
             'fasi' => $fasi,

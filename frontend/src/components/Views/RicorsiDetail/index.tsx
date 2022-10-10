@@ -8,23 +8,23 @@ import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent  } from "./style";
 import useApiRequest from '../../state/useApiRequest';
 import { WrapperStyleComponent } from "../Home/style";
-import { Card, DetailPage, Modal } from "../../UI/index";
+import { Card, DetailPage, Loader3, Modal } from "../../UI/index";
 import { faseCurrent } from "../../Utilities/index"; 
 
 const RicorsiDetail = () => {
   
   let { slug } = useParams();
   let navigate = useNavigate()
-  const [ currentFasis, setCurrentFasis ] = useState([])
+  const [ currentFasis, setCurrentFasis ] = useState<{[key: string]: string}[]>([])
   
   let { payload } = useFetch(`${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
     verb: 'get',      
   })
-  
+ 
   useEffect(() => {
     fetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`)
     .then(response => response.json())
-    .then(data => setCurrentFasis(data?.fasi))
+    .then(data => setCurrentFasis([...data.fasi]))
     .catch((error: unknown) =>{
        console.log(error);
     })
@@ -48,7 +48,7 @@ const RicorsiDetail = () => {
   return (
       <DetailStyleComponent>
                 <h1 className="mb-2 text-center pr-1">Tributo: <span>{ricorso?.tributo}</span></h1>
-                  {ricorso &&  <DetailPage 
+                  {ricorso ? <DetailPage 
                     slug={slug}
                   >
                     <>
@@ -130,7 +130,7 @@ const RicorsiDetail = () => {
                           </WrapperStyleComponent>
                       </section>
                       </>
-                    </DetailPage>}
+                    </DetailPage> : <Loader3 />}
                 
                   <section className='links-detail-page'>
                     {/* //you can use a fragment or a custom wrapper */}

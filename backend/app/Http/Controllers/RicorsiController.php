@@ -94,6 +94,7 @@ class RicorsiController extends Controller
             $formData = $this->getFormData($request);
             
             $ricorso->update($formData);
+            
             if(!$ricorso){
                 return response()->json([
                 'success' => false,

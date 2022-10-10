@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { baseURL } from "../../Utilities/index";
 import { ObjFormType } from "../../interfaces/interfaces";
- import { Card } from "../../UI/index";
+ import { Card, Loader3 } from "../../UI/index";
 import { WrapperStyleComponent } from "./style";
 import useFetch from "../../../Hooks/useFetch";
 import useApiRequest from '../../state/useApiRequest';
@@ -28,7 +28,7 @@ const Homepage = () => {
         <div className="height-custom">
              <WrapperStyleComponent>
                 <> 
-                    {ricorsi?.map((ricorso, id: number) => {
+                    {ricorsi ? ricorsi?.map((ricorso, id: number) => {
                         return (
                             <>
                                 <Card 
@@ -70,7 +70,7 @@ const Homepage = () => {
                                 </Card>
                             </>
                         )
-                    })}
+                    }) : <Loader3 />}
                 </>
             </WrapperStyleComponent>
         </div>

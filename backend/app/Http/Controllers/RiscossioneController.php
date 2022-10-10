@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Riscossione;
 use Illuminate\Http\Request;
-use App\Models\Riconciliazione;
 use App\Exports\RiscossioneExport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
-
 
 
 class RiscossioneController extends Controller
@@ -31,14 +29,6 @@ class RiscossioneController extends Controller
 
     protected function getFormData($req) {
         return [
-           /*  "ente" => $req->ente,
-            "durata_contratto" => $req->durata_contratto,
-            "valore_contratto" => $req->valore_contratto,
-            "data_affidamento" => $req->data_affidamento,
-            "nome_cognome" => $req->nome_cognome,
-            "email" => $req->email,
-            "oggetto_affidamento" => $req->oggetto_affidamento,
-            "referente_ente" => $req->referente_ente, */
             "descrizione_spedizione" => $req->descrizione_spedizione,
             "entrata_tributo" => $req->entrata_tributo,
             "tipologia_documenti"=> $req->tipologia_documenti,
@@ -133,7 +123,7 @@ class RiscossioneController extends Controller
            return redirect("/detail_riscossione/".$id);
         }
     }       
-    public function exportLotti ()
+    public function exportLotti()
      {
         return Excel::download(new RiscossioneExport(), 'lottiexport.xlsx',);
      }

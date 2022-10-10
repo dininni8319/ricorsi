@@ -152,14 +152,12 @@ class ChartController extends Controller
                 'message' => $this->messageSuccess
              ], 200);
          }   
-
     }
 
     public function chartNotifiche(Request $request)
     {
         $notifiche_mensili = $this->notifiche_mensili;
        
-       /*  dd($notifiche_mensili, 'testing the notif'); */
         $importo_atti_annullati = DB::table('riscossiones')->select('*')->get();
 
             $count = 0;

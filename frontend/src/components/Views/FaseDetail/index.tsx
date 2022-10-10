@@ -35,7 +35,7 @@ const FasiDetail = () => {
     <DetailStyleComponent>
             <>
               <h1 className="mb-2 text-center">Fase: <span>{faseCurrent(fase?.fase)}</span></h1>
-              {fase && <DetailPage 
+              {fase ? <DetailPage 
                   slug={slug}
                 >
                   <ul className="ul-detail-style">
@@ -74,7 +74,7 @@ const FasiDetail = () => {
                           Data notifica Sentenza: <span>{funFormatDate(fase.data_notifica_sentenza)}</span>
                       </li>
                   </ul>
-                </DetailPage> 
+                </DetailPage> : <Loader3 />
               }
             </>
             <section className='links-detail-page mt-5'>

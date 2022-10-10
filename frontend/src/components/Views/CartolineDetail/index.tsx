@@ -35,7 +35,7 @@ const CartolineDetail = () => {
     <DetailStyleComponent>
             <>
               <h1 className="mb-2 text-center">Descrizione della Cartolina: <span>{cartolina?.descrizione_mandante}</span></h1>
-              {cartolina && <DetailPage 
+              {cartolina ? <DetailPage 
                   slug={slug}
                 >
                   <ul className="ul-detail-style">
@@ -74,13 +74,13 @@ const CartolineDetail = () => {
                           Data notifica Sentenza: <span>{cartolina.data_notifica_sentenza}</span>
                       </li> */}
                   </ul>
-                </DetailPage> 
+                </DetailPage> : <Loader3 />
               }
             </>
             <section className='links-detail-page mt-5'>
                {cartolina && <div className='md:flex md:justify-between md:items-end py-2'>
                     
-                    <Link to={`/create_cartolina/${slug}`}>Aggiorna la Cartolina</Link>
+                    <Link to={`/work_flow/${slug}`}>Aggiorna la Cartolina</Link>
                     <>
                       <button onClick={(event)=> handleDelete(event)} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
                     </>

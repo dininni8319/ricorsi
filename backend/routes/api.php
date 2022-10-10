@@ -36,14 +36,14 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::delete("/ricorso/delete/{id}", [RicorsiController::class, "deleteRicorso"])->name("delete.ricorso");
     
     //Fasi
-    Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create");
+    Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create")->withoutMiddleware('throttle:api');
     Route::get("/last_fase/", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase");
-    Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current");
+    Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current")->withoutMiddleware('throttle:api');
     Route::get("/detail_fase/{id}", [TaxUnitEditController::class,"detailFase",])->name("detail.fase");
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
 
     //Cartoline 
-    Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina");
+    Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
     Route::get("/detail_cartoline/{id}" , [CartolineController::class, "detailCartoline"])->name("detail.cartoline");
     Route::delete("/cartolina/delete/{id}", [CartolineController::class,"cartolinaDelete",])->name("delete.cartolina");
     
