@@ -6,8 +6,8 @@ import { Input, SelectInput, TextArea, Form } from '../UI/index';
 import { isTextarea } from '../Utilities/index';
 
 const Workflow = () => {
-    const { data, handleData } = useInput(defaultRicorsiData);
-     
+    const { data, handleData, errors } = useInput(defaultRicorsiData);
+    
     return (
         <div className="height-custom">
             <Form
@@ -16,6 +16,7 @@ const Workflow = () => {
                 navPath="ricorsi_detail" 
                 subMitBtn='Invio'
                 data={data}
+                errors={errors}
             >
               <>
               

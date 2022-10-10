@@ -1,4 +1,3 @@
-
 import { ObjSelectType } from "../../../interfaces/interfaces";
 import { SelectStyleComponent, Wrapper } from "./style";
 

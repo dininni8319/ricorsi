@@ -1,4 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { type } from 'os';
 
 export type Methods = "head" | "options" | "put" | "post" | "patch" | "delete" | "get";
 
@@ -15,7 +16,6 @@ export type InitialState = {
     status: number | undefined,
     response: object | undefined
 }
-
 export interface FormProps {
     id?: string | number,
     title: string,
@@ -24,10 +24,14 @@ export interface FormProps {
     subMitBtn: string,
     //key and value pair definition in typescript
     data: {[key: string]: string},
-    children?: JSX.Element;
+    children?: JSX.Element,
+    errors?: ErrorType
     // formData: ObjSelectType,
 };
-
+export type ErrorType = {
+    status: boolean,
+    message: string,
+}
 export interface DefaultData {
    type: string,
    name: string,

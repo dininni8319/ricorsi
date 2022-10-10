@@ -24,9 +24,7 @@ use App\Http\Controllers\TaxUnitEditController;
 /* Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
     return $request->user();
 }); */
-// /ricorso/delete/
 
-//Ricorsi
 Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
     //Ricorsi        withoutMiddleware('throttle:api') is usefull went you want allow illimited request from the api          
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home")->withoutMiddleware('throttle:api');
@@ -39,7 +37,7 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create")->withoutMiddleware('throttle:api');
     Route::get("/last_fase/", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase");
     Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current")->withoutMiddleware('throttle:api');
-    Route::get("/detail_fase/{id}", [TaxUnitEditController::class,"detailFase",])->name("detail.fase");
+    Route::get("/detail_fase/{id}", [TaxUnitEditController::class,"detailFase",])->name("detail.fase")->withoutMiddleware('throttle:api');
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
 
     //Cartoline 

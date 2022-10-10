@@ -25,8 +25,6 @@ export const FormContainer = styled.form `
         font-size: 20px;
     }
 
-    
-
     @media only screen and (max-width: 1300px) {
         .form-row {
             grid-template-columns: 1fr;
