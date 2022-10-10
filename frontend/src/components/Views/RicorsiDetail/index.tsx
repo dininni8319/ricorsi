@@ -29,7 +29,7 @@ const RicorsiDetail = () => {
        console.log(error);
     })
    
-  },[currentFasis])
+  },[])
   
   const [ { status, response }, makeRequest ] = useApiRequest(
     `${baseURL}/api/cienneffe/ricorso/delete/${slug}`, {

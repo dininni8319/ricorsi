@@ -83,7 +83,8 @@ class TaxUnitController extends Controller
         //fasi current create
         $currentFases = $this->findRicorsoID($id)->get();
         $state = true;
-
+        
+        //we are controlling if the current fase is equal to the fase of the request
         foreach ($currentFases as $key => $value) {
             if ($req_value < $value->fase) {
                 $state = false;

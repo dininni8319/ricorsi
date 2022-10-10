@@ -84,17 +84,16 @@ class RicorsiController extends Controller
 
     public function creaRicorso(Request $request, $id = null)
     {
-       
         if ($id) {
             $ricorso = Ricorsi::find(intval($id));
-
+         
             $request->email_notification = $request->input("email_notification")
             ? true
             : false;
 
             $formData = $this->getFormData($request);
+            
             $ricorso->update($formData);
-        
             if(!$ricorso){
                 return response()->json([
                 'success' => false,

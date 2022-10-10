@@ -14,10 +14,11 @@ export const NavbarStyleComponent = styled.nav`
     a {
         font-size: 22px;
         color: ${props => props.theme.textColorGrey};
-        transition: 0.4s ease-in-out;
+        transition: 0.5s ease-in-out;
     }
 
     a:hover{
+        font-size: 20px;
         color: rgba(255,255,255,0.9);
         padding-bottom: 5px;
         border-bottom: 3px solid white;
