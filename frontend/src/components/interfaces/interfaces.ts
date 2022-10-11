@@ -37,11 +37,14 @@ export interface DefaultData {
    id: number
 }
 export interface PropsInput {
-    typeIn?: string,
+    type?: string,
     label: string,
     name: string,
     id?: number,
     value?:string,
+    errorMessage?: string,
+    focused?: string,
+    // inputProps: string,
     handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index?: number) => any;
 };

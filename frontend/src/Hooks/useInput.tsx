@@ -6,25 +6,23 @@ import { ObjFormType } from "../components/interfaces/interfaces";
 export default function useInput(initialSate: {[key: string]: string}, slug?: number | string) {
   const [ data, setData ] = useState(initialSate);
 
-  const [ { status, response }, makeRequest ] = useApiRequest(
-    `${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
-        verb: 'get',
-  })
-  
-  useEffect(() => {
-    makeRequest();
-  }, [])
-  
-  let ricorso = response?.data?.ricorso;
+  // const [ { status, response }, makeRequest ] = useApiRequest(
+  //   `${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
+  //       verb: 'get',
+  // })
 
+  // let ricorso = response?.data?.ricorso;
+  
+  // useEffect(() => {
+  //   makeRequest();
+  //   setData(prevState => ({...prevState, ricorso}))
+  // }, [])
+  
   const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
   
     let { name, value } = e.target;
-    // if (ricorso) {
-    //   setData(prevState => ({...prevState, [name]:value = ricorso[name]}));
-    // }
-    setData(prevState => ({...prevState, [name]:value}));
 
+    setData(prevState => ({...prevState, [name]:value}));
 }
   return {
     data,

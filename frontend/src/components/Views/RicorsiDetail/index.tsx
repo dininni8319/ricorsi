@@ -116,8 +116,8 @@ const RicorsiDetail = () => {
                                             <li>Esito definitivo: <span>{fase.esito_definitivo}</span></li>
                                             <li>Sede: <span>{fase.sede}</span></li>
                                             <li>Spese: <span>{fase.spese}</span></li>
-                                            <li>Data presentazione: <span>{funFormatDate(fase.data_presentazione)}</span></li>
-                                            <li>Data convocazione: <span>{funFormatDate(fase.data_convocazione)}</span></li>
+                                            <li>Data presentazione: <span>{funFormatDate(String(fase.data_presentazione))}</span></li>
+                                            <li>Data convocazione: <span>{funFormatDate(String(fase.data_convocazione))}</span></li>
                                           </ul>
                                           <div className='flex justify-between py-1'>
                                               <Link to={`/form_fase/${fase.id}`}>Aggiorna la Fase</Link>

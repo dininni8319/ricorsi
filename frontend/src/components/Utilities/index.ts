@@ -37,3 +37,16 @@ export function validate(values: string) {
   return errors;
 };
 
+export function formatDate(date: string){
+  let time = new Date(date);
+  let timeNow = new Date().getDay();
+
+  let day = time.getDay();
+  let hours = time.getHours();
+
+  let minutes = time.getMinutes();
+  return ` ${day === timeNow ? 'Today' : 'Yesterday'} ${
+      hours < 10 ? '0' + hours : hours
+  }:${minutes < 10 ? '0' + minutes : minutes}`;
+};
+

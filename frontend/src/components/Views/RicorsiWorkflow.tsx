@@ -31,14 +31,14 @@ const Workflow = () => {
                     isTextarea(input.id) ? (<TextArea 
                                         handleData={handleData}
                                         key={index}
-                                        value={data[input.name as keyof object]}
+                                        value={slug && data && data[input.name as keyof object]}
                                         {...input}
                                     />): 
                                     ( <Input
                                             handleData={handleData}
                                             key={index}
                                             {...input}
-                                            value={data[input.name as keyof object]}
+                                            value={slug && data && data[input.name as keyof object]}
                                     />)
                   )
                 })}

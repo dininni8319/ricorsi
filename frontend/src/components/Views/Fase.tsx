@@ -34,7 +34,8 @@ const Fase = () => {
                         />
 
                         {fasiFormData?.formArr.map((input, index) => {
-                        return (
+                    
+                       return (
                             <Input
                                 handleData={handleData}
                                 key={index}
