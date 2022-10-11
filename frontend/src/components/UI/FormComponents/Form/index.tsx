@@ -6,7 +6,7 @@ import { baseURL } from "../../../Utilities/index";
 import FormWrapper from '../FormWrapper';
 import { FormContainer } from "../FormRicorsi/style";
 
-const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, children, data }) => {
+const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, children, data}) => {
     // const [ errors, setErrors ] = useState({
     //     status: false,
     //     message: ''
@@ -36,7 +36,8 @@ const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, 
            })
            .catch((err) => {
                alert(err)
-           })    
+           })   
+       
     }
  
     return (

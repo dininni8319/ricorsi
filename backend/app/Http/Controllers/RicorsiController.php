@@ -195,12 +195,23 @@ class RicorsiController extends Controller
         }     
     }
 
-    public function searchRicorso(Request $request)
-    {
-        $query = $request->input("query");
+    public function searchRicorso($query)
+    {  
+       
+        if(!$query){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+            $ricorsi = Ricorsi::search($query)->get();
 
-        $ricorsi = Ricorsi::search($query)->get();
-
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'ricorsi'=> $ricorsi,
+            ], 200);
+        }     
         if ($query) {
             return view("ricorsi.searchPage", compact("ricorsi", "query"));
         }

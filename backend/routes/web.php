@@ -60,7 +60,6 @@ Route::get("/search_cartoline", [CartolineController::class, "searchCartolina"])
 Route::post('/import_cartolina', [CartolineController::class, "importCsv"])->name("import.cartolina");
 Route::get('/export_cartolina', [CartolineController::class, "exportExcel"])->name("export.cartolina");
 
-
 //Riscossioni
 Route::get("/riscossione", [RiscossioneController::class, "riscossione"])->name("riscossione");
 Route::get("/form_ricossione/{id?}", [RiscossioneController::class, "formRiscossione"])->name("form.riscossione");

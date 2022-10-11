@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { baseURL } from "../../Utilities/index";
 import { ObjFormType } from "../../interfaces/interfaces";
  import { Card, Loader3 } from "../../UI/index";
@@ -9,8 +9,11 @@ import useFetch from "../../../Hooks/useFetch";
 import useApiRequest from '../../state/useApiRequest';
 
 const Homepage = () => {
-    const [ ricorsi, setRicorsi ] = useState<{[key: string]: string}[]>([])
- 
+    const [ ricorsi, setRicorsi ] = useState<{[key: string]: string}[]>([]);
+    const [ searchedRicorsi, setSearchedRicorsi ] = useState<any>([]);
+    const [ searchedTerm, setSearchedTerm ] = useState('');
+    console.log(searchedTerm, 'testing the term!');
+    
     useEffect(() => {
         fetch(`${baseURL}/api/cienneffe/ricorsi`)
           .then(response => response.json())
@@ -22,11 +25,50 @@ const Homepage = () => {
           .catch((error: unknown) =>{
             console.log(error);
           })
-      },[ricorsi])
-    
+     
+      },[])
+
+      console.log(searchedTerm);
+      
+    useEffect(() => {
+        if (searchedTerm.length > 3) {
+            fetch(`${baseURL}/api/cienneffe/ricorsi/search=${searchedTerm}`)
+             .then(response => response.json())
+             .then(data => setSearchedRicorsi(() => ([...data.ricorsi])))
+             .catch((error: unknown) =>{
+               console.log(error);
+             })
+        }
+    }, [searchedTerm])
+
+    const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.value);
+        
+        setSearchedTerm(e.target.value)
+    }
     return (
         <div className="height-custom">
              <WrapperStyleComponent>
+                 <div>
+                     <label htmlFor="search">Search</label>
+                     <input type="text" placeholder='Cerca un Ricorso' onChange={handleChange} name='query'/>
+                     {searchedRicorsi?.map((searched:any) => {
+                        return (
+                            <ul className='bg-white mt-2 p-2 shadow-md border-slate-400'>
+                                <li>
+                                    <span className="font-semibold pr-1">Numero Ricorso:</span>{searched.numero_ricorso}
+                                </li>
+                                <li>
+                                    <span className="font-semibold pr-1">Ente:</span>{searched.ente} 
+                                </li>
+                                <li>
+                                    <span className="font-semibold pr-1">Anno imposta:</span>{searched.anno_imposta}
+                                </li>
+                                <Link to={`/ricorsi_detail/${searched.id}`}>Dettaglio Ricorso</Link>
+                            </ul>
+                        )
+                     })}
+                 </div>
                 <> 
                     {ricorsi ? ricorsi?.map((ricorso, id: number) => {
                         return (
