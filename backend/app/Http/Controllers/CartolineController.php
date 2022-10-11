@@ -9,11 +9,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CartolineController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware("auth"); 
-        $this->middleware("auth.revisor");
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware("auth"); 
+    //     $this->middleware("auth.revisor");
+    // }
+    protected $messageUnSuccess = 'Sorry, something went wrong';
+    protected $messageSuccess = 'Success, the task was successfull!';
 
     protected function findCartoline($id) 
     {
@@ -45,9 +47,39 @@ class CartolineController extends Controller
 
     public function detailCartoline($id)
     {
-        $cartolina = $this->findCartoline($id);
-       
-        return view("cartoline.detailCartoline", compact('cartolina'));
+        if(!$id){
+            return response()->json([
+            'success' => false,
+            'message' => $this->messageUnSuccess,
+        ], 404);
+        } else {
+            $cartolina = $this->findCartoline($id);
+        
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'cartolina' => $cartolina,
+                'id' => $cartolina->id,
+            ], 200);
+        }    
+    }
+
+    public function cartolinaDelete($id)
+    {
+        if(!$id){
+            return response()->json([
+            'success' => false,
+            'message' => $this->messageUnSuccess,
+        ], 404);
+        } else {
+            $cartolina = $this->findCartoline($id);
+            $cartolina->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+            ], 200);
+        }  
     }
 
     public function cartolineForm($id = null) 
@@ -58,7 +90,6 @@ class CartolineController extends Controller
             return view("cartoline.cartolineForm", compact('cartolina'));
         }
         return view("cartoline.cartolineForm");
-
     }
 
     public function createCartolina(Request $request, $id = null){
@@ -107,29 +138,53 @@ class CartolineController extends Controller
         }
 
         if ($id) {
-            $formatData = [
-                "data_notifica" => $request->data_notifica,
-                "esito_notifica" => $request->esito_notifica,
-            ];
             
-            $cartoline = $this->findCartoline(intval($id)); 
+            if(!$id){
+                return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong!',
+            ], 404);
+            } else {
+                $formatData = [
+                    "data_notifica" => $request->data_notifica,
+                    "esito_notifica" => $request->esito_notifica,
+                ];
+                
+                $cartolina = $this->findCartoline(intval($id)); 
+    
+                $formatData = array_merge($formatData, ['path_file' => $path_file]);
+                $formatData = array_merge($formatData, ['nome_file' => $fileName]);
+    
+                $cartolina->update($formatData);
 
-            $formatData = array_merge($formatData, ['path_file' => $path_file]);
-            $formatData = array_merge($formatData, ['nome_file' => $fileName]);
-
-            $cartoline->update($formatData);
-
-            return redirect("/detailCartoline/" . $id)->with("id", $id);
+                return response()->json([
+                    'success' => true,
+                    'message' => $this->messageSuccess ,
+                    'cartolina' => $cartolina,
+                    'id' => $cartolina->id,
+                ], 200);
+            }   
         }
 
         $formData = array_merge($formData, ['path_file' => $path_file]);
         $formData = array_merge($formData, ['nome_file' => $fileName]);
         
-        $cartoline = Cartoline::create($formData);
-        $ultimo_cartolina = Cartoline::orderBy("created_at", "desc")->first();
-        $id = $ultimo_cartolina->id;
-        
-        return redirect("/detailCartoline/".$id);
+        $cartolina = Cartoline::create($formData);
+
+        if(!$cartolina){
+            return response()->json([
+            'success' => false,
+            'message' => 'Something went wrong!',
+        ], 404);
+        } else {
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'The ricorso is been deleted!',
+                'cartolina' => $cartolina,
+                'id' => $cartolina->id,
+            ], 200);
+        }   
     }
 
     public function searchCartolina(Request $request)

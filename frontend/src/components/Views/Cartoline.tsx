@@ -11,23 +11,19 @@ const Cartoline = () => {
         <div className="height-custom">
             <Form
                 title='Avvia una Cartolina' 
-                navPath="/"
-                detailPath="" 
-                createPath='crea_ricorso'
+                navPath="detail_cartoline" 
+                createPath='create_cartolina'
                 subMitBtn='Invio'
                 data={data}
             >
               <>
               
-                {cartolineFormData?.formArr.map(({ label, name, type }, index) => {
+                {cartolineFormData?.formArr.map((input, index) => {
                 return (
                     <Input
-                        label={label}                       
-                        name={name}
-                        typeIn={type}
                         handleData={handleData}
-                        index={index}
                         key={index}
+                        {...input}
                     />
                 );
                 })}

@@ -4,6 +4,7 @@ export const LoaderStyleComponent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 60vh;
 
   span {
     display: inline-block;

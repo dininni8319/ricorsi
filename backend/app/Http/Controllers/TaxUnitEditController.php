@@ -20,9 +20,25 @@ class TaxUnitEditController extends Controller
     //     $this->middleware("auth.revisor");
     // }
 
-    public function taxunit()
+    public function lastCreatedFase()
     {
-        return view("fasi.taxunitListFase");
+        $lastFase =  Fasi::orderBy("created_at", "desc")->first();
+        $id = $lastFase->id;
+
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'id' => $id,
+                'lastFase'=> $lastFase,
+            ], 200);
+        }     
     }
 
     public function paginataxunit()
@@ -43,10 +59,25 @@ class TaxUnitEditController extends Controller
 
     public function detailFase($id)
     {   
-        $fase = Fasi::find($id); 
-        $ricorsoId = $fase->ricorsi_id;
-    
-        $documents = Document::where('ricorsi_id', $ricorsoId)->where('fase', $fase->fase)->get();
+        if ($id) {
+            $fase = Fasi::find($id);
+            $ricorsoId = $fase->ricorsi_id;
+            //per adesso non lo sto utilizzando la riga 48 e 50
+            $documents = Document::where('ricorsi_id', $ricorsoId)->where('fase', $fase->fase)->get();
+                
+            return response()->json([
+                    'success' => true,
+                    'fase' => $fase,
+                    'message' => $this->messageSuccess,
+                ], 200);
+        } else {
+
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        }
+       
     
         return view("fasi.detailFase", compact("fase", "documents"));
     }

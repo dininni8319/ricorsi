@@ -17,7 +17,7 @@ class RicorsiController extends Controller
     //     $this->middleware("auth.revisor");
     // }
 
-    protected $messageUnSuccess = 'Nessun importo trovato!';
+    protected $messageUnSuccess = 'Nessun ricorso trovato!';
     protected $messageSuccess = 'Importi trovati!';
 
     protected function getFormData($req) {
@@ -84,17 +84,17 @@ class RicorsiController extends Controller
 
     public function creaRicorso(Request $request, $id = null)
     {
-       
         if ($id) {
             $ricorso = Ricorsi::find(intval($id));
-
+         
             $request->email_notification = $request->input("email_notification")
             ? true
             : false;
 
             $formData = $this->getFormData($request);
+            
             $ricorso->update($formData);
-        
+            
             if(!$ricorso){
                 return response()->json([
                 'success' => false,
@@ -119,11 +119,8 @@ class RicorsiController extends Controller
             $formData = $this->getFormData($request);
             
             $ricorso = Ricorsi::create($formData);
-
-            $ultimo_ricorso = Ricorsi::orderBy("created_at", "desc")->first();
-            $id = $ultimo_ricorso->id;
-
-            if(!$id){
+            
+            if(!$ricorso){
                 return response()->json([
                 'success' => false,
                 'message' => 'Something went wrong!',
@@ -132,9 +129,9 @@ class RicorsiController extends Controller
                 
                 return response()->json([
                     'success' => true,
-                    'message' => 'The ricorso is been deleted!',
+                    'message' => 'The ricorso is been created!',
                     'ricorso' => $ricorso,
-                    'id' => $id,
+                    'id' => $ricorso->id,
                 ], 200);
             }   
         } 

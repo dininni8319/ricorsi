@@ -1,10 +1,11 @@
+import { Fragment } from "react";
 import { LogoProps } from "../../interfaces/interfaces";
 
-const LogoComponent: React.FC<LogoProps> = ({ imageUrl, w, h}) => {
+const LogoComponent: React.FC<LogoProps> = ({ imageUrl }) => {
     return (
         <>
             <a href="https://www.cienneffe.com/" target='blank'>
-                <img src={imageUrl} alt="logo cienneffe" width={w} height={h} loading="lazy"/>
+                <img src={imageUrl} alt="logo cienneffe"  loading="lazy" className='style-logo'/>
             </a>
         </>
     )

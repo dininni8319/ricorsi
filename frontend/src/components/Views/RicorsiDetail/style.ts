@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
 export const DetailStyleComponent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 60vh;
   margin: 20px 0;
-   
+
   .ul-detail-style {
     border-radius: 5px;
     width: 80%;
@@ -13,29 +17,30 @@ export const DetailStyleComponent = styled.div`
 
   h1 {
     font-weight: bold;
-    font-size:30px;
+    font-size:25px;
+    span {
+      font-size: 20px;
+      color: ${props => props.theme.textGray}
+    }
   }
-
+  
   .ul-detail-style > li  {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0px 2px 5px;
-    border-bottom: 1px solid ${props => props.theme.borderColor2};
-  }
+    padding: 15px 5px;
+    border-bottom: 1px solid ${props => props.theme.borderGrayColor};
 
-  span {
-    font-size: 14px;
-  }
-
-  strong {
-    font-weight: bolder
+    span {
+      font-size: 14px;
+      color: ${props => props.theme.textGray}
+    }
   }
 
   .border-bottom-style {
     border-bottom: 1px solid rgb(209 213 219);
   }
   
-  /*style for the modal */
+  /* button start workflow */
   .primaryBtn {
     cursor: pointer;
     font-weight: 500;
@@ -57,5 +62,11 @@ export const DetailStyleComponent = styled.div`
     width: 80%;
     background-color: ${props => props.theme.colorWhite};
     padding: 10px;
+  }
+  
+  @media only screen and (max-width: 765px) {
+    .ul-detail-style {
+      width: 95%;
+    }  
   }
 `

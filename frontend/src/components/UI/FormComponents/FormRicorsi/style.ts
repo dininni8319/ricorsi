@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.form `
-    padding: 20px;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    width: 60vw;
+    padding: 20px;
+
     .form-row {
-        width: 60vw;
-        display: flex;
-        flex-direction: column;
+        padding-top: 10px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         margin: 30px;
         background: ${(props) => props.theme.colorWhite};
         padding: 20px;
@@ -21,5 +22,17 @@ export const FormContainer = styled.form `
     .btn-send {
         background-color: ${props => props.theme.navbarColor};
         font-size: 20px;
+    }
+
+    @media only screen and (max-width: 1300px) {
+        .form-row {
+            grid-template-columns: 1fr;
+            align-items: center;
+            padding: 5px;
+        }
+    }
+
+    @media only screen and (max-width: 765px) {
+       width: 100vw;
     }
 `

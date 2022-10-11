@@ -4,13 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require("./bootstrap");
+// require("./bootstrap");
 // require("./modal");
 // require("./query");
 // require("./functions");
 // require("./input");
 // require("./chart.js");
-// require("./countDownClock");
 // require("./formValidation");
 // require("./chart.js");
 // require ("./main.js");

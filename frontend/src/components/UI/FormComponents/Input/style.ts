@@ -11,15 +11,35 @@ export const InputSection = styled.div`
     }
     
     .input-style {
+        padding: 15px;
         margin-top: 5px;
-        border-bottom: 1px solid ${props => props.theme.borderColor2};
-       /*  border-radius: ${props => props.theme.borderRadius}; */
-        padding: 7px 0;
-        width: 80%;
+        border-radius: ${props => props.theme.borderRadius};
+        border: 1px solid ${props => props.theme.borderGrayColor};
+        background: ${props => props.theme.transparent};
+        width: 100%;
         outline: none
     }
 
     label {
         text-align: start;
+    }
+
+    .error-message {
+        font-size: 12px;
+        color: red;
+        padding: 3px;
+        display: none;
+    }
+
+    input:invalid[focused='true'] {
+        border: 1px solid red;
+    }
+
+    input:valid[focused='true'] {
+        border: 1px solid green;
+    }
+    
+    input:invalid[focused='true'] ~ span {
+        display: block;
     }
 `

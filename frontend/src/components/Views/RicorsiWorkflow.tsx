@@ -3,46 +3,43 @@ import { defaultRicorsiData } from "../UI/FormComponents/defaultData";
 import { selectPropsTributi, selectPropsTipologiaAtto, selectPropsEsito } from "../UI/FormComponents/selectPropsTributi";
 import useInput from '../../Hooks/useInput';
 import { Input, SelectInput, TextArea, Form } from '../UI/index';
+import { isTextarea, validate } from '../Utilities/index';
+import { baseURL } from "../Utilities/index";
+import useFetch from "../../Hooks/useFetch";
+import { useParams } from 'react-router';
+import { useEffect, useState } from "react";
 
 const Workflow = () => {
-    const { data, handleData } = useInput(defaultRicorsiData);
-
-    const isTextarea = (id:number) => {
-        if (id === 13 || id === 15 || id === 18) {
-            return true;
-        }
-    } 
-
+    
+    let { slug } = useParams();
+ 
+    const { data, handleData } = useInput(defaultRicorsiData, slug);
+    
     return (
         <div className="height-custom">
             <Form
                 title='Avvia un Ricorso' 
-                navPath="ricorsi_detail" 
                 createPath='crea_ricorso'
-                detailPath="last_ricorso" 
+                navPath="ricorsi_detail" 
                 subMitBtn='Invio'
                 data={data}
             >
               <>
               
-                {formRicorsiLabels?.formArr.map(({ label, name, type, id}, index) => {
-                
+                {formRicorsiLabels?.formArr.map((input, index) => {
                   return (
-                    isTextarea(id) ? (<TextArea 
-                                        label={label}                       
-                                        name={name}
+                    isTextarea(input.id) ? (<TextArea 
                                         handleData={handleData}
-                                        index={index}
                                         key={index}
+                                        value={slug && data && data[input.name as keyof object]}
+                                        {...input}
                                     />): 
-                                  (  <Input
-                                        label={label}                       
-                                        name={name}
-                                        typeIn={type}
-                                        handleData={handleData}
-                                        index={index}
-                                        key={index}
-                                />)
+                                    ( <Input
+                                            handleData={handleData}
+                                            key={index}
+                                            {...input}
+                                            value={slug && data && data[input.name as keyof object]}
+                                    />)
                   )
                 })}
                
@@ -62,6 +59,7 @@ const Workflow = () => {
                 </div> 
               </>
            </Form>
+          {/* {errors && <span></span>} */}
         </div>
     );
 }

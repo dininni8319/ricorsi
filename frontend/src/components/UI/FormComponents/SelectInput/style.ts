@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
 export const SelectStyleComponent = styled.select`
-    :root {
-      --select-border: #777;
-      --select-focus: blue;
-      --select-arrow: var(--select-border);
-    }
-
     width: 100%;
     min-width: 15ch;
     max-width: 30ch;
@@ -19,6 +13,12 @@ export const SelectStyleComponent = styled.select`
     background-color: #fff;
     background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 
+    :root {
+      --select-border: #777;
+      --select-focus: blue;
+      --select-arrow: var(--select-border);
+    }
+
     #tributo::after {
         content: "";
         width: 0.8em;
@@ -27,9 +27,8 @@ export const SelectStyleComponent = styled.select`
         clip-path: polygon(100% 0%, 0 0%, 50% 100%);
     }
 `
-
 export const Wrapper = styled.div`
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     background-color:#F2F2F2;
@@ -45,5 +44,9 @@ export const Wrapper = styled.div`
     select {
       outline: none;
       padding: 5px;
+    }
+
+    @media only screen and (max-width: 765px) {
+       width: 98%;
     }
 `

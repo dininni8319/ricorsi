@@ -1,64 +1,149 @@
-import {  Link } from "react-router-dom";
-import { RicorsoProps } from "../../interfaces/interfaces";
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router';
+import {  Link } from "react-router-dom";
+import { Fasi } from "../../interfaces/interfaces";
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent  } from "./style";
-import DetailPage from '../../UI/DetailPage';
-import Card from '../../UI/Card/index';
 import useApiRequest from '../../state/useApiRequest';
+import { WrapperStyleComponent } from "../Home/style";
+import { Card, DetailPage, Loader3, Modal } from "../../UI/index";
+import { faseCurrent, funFormatDate } from "../../Utilities/index"; 
 
 const RicorsiDetail = () => {
+  
   let { slug } = useParams();
   let navigate = useNavigate()
-
+  const [ currentFasis, setCurrentFasis ] = useState<{[key: string]: string}[]>([])
+  
   let { payload } = useFetch(`${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
     verb: 'get',      
   })
-
+ 
+  useEffect(() => {
+    fetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`)
+    .then(response => response.json())
+    .then(data => setCurrentFasis([...data.fasi]))
+    .catch((error: unknown) =>{
+       console.log(error);
+    })
+   
+  },[])
+  
   const [ { status, response }, makeRequest ] = useApiRequest(
-    `${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
+    `${baseURL}/api/cienneffe/ricorso/delete/${slug}`, {
         verb: 'delete',
     }
   )
 
   let { ricorso }:any = payload;
 
-  const handleDelete = (e:any) => {
+  const handleDelete = (e:any, id?: number) => {
     e.preventDefault();
     makeRequest()
     navigate('/')
   } 
 
   return (
-            <DetailStyleComponent>
-              
-                <section className="flex flex-col items-center">
+      <DetailStyleComponent>
+                <h1 className="mb-2 text-center pr-1">Tributo: <span>{ricorso?.tributo}</span></h1>
+                  {ricorso ? <DetailPage 
+                    slug={slug}
+                  >
                     <>
-                      <h1 className="mb-2 text-center pr-1">Tributo:{ricorso?.tributo}</h1>
-                      {ricorso &&  <DetailPage 
-                        ricorso={ricorso}
-                        slug={slug}
-                      />}
-                    </>
-                    <section className='links-detail-page'>
-                    {ricorso && <>
-                        <div className='md:flex md:justify-between md:items-end border-bottom-style py-2'>
-                            <Link to={`/fasi/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
-                            <Link to={`/work_flow/${ricorso?.id}`}>Aggiorna Ricorso</Link>
-                            <div>
-                              <button onClick={handleDelete} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
-                            </div>
-                        </div>
-                      
-                    </>}
-                </section> 
-                </section>
-              
-                {/* {isOpen && <Modal setIsOpen={setIsOpen} />} */}
-               
-            </DetailStyleComponent>   
+                      <ul className="ul-detail-style">
+                          <li>
+                              Nominativo:<span>{ricorso.nominativo}</span>
+                          </li>
+                          <li>
+                              Numero Ricorso:<span>{ricorso.numero_ricorso}</span>
+                          </li>
+                          <li>
+                              Tributo:<span>{ricorso.tributo}</span>
+                          </li>
+                          <li>
+                              Ente:<span>{ricorso.ente}</span> 
+                          </li>
+                          <li>
+                              Anno imposta:<span>{ricorso.anno_imposta}</span>
+                          </li>
+                          <li>
+                              Importo Atto:<span>{ricorso.importo_atto}</span>
+                          </li>
+                          <li>
+                              Esito:<span>{ricorso.esito}</span>
+                          </li>
+
+                          <li>
+                              Numero di protocollo interno:<span>{ricorso.numero_protocollo_interno}</span>
+                          </li>
+                          <li>
+                              Indirizzo:<span>{ricorso.indirizzo}</span>
+                          </li>
+                          <li>
+                              Email:<span>{ricorso.mail}</span>
+                          </li>
+                          <li>
+                              Telefono:<span>{ricorso.telefono}</span>
+                          </li>
+
+                          <li>
+                              Cod. Fiscale/P.Iva:<span>{ricorso.cf_piva}</span>
+                          </li>
+                          <li>
+                              Cod. Fiscale/P.Iva:<span>{ricorso.tipologia_atto}</span>
+                          </li>
+                          <li>
+                            <p className='font-serif mt-5'>Oggetto Ricorso: <span>{ricorso.oggetto_ricorso}</span></p>
+                          </li>
+                      </ul>
+                      <section className='flex justify-center'>
+                          <WrapperStyleComponent>
+                              {currentFasis?.map((fase:Fasi, id: number) => {
+                                  return (
+                                    <Card
+                                        taxunit={fase}
+                                        key={id}
+                                        path='fase/delete'
+                                        current={currentFasis}
+                                        setCurrent={setCurrentFasis}
+                                    >
+                                      <>
+                                          <h3 className="card-title mb-2">Fase corrente: <span>{faseCurrent(fase.fase)}</span></h3>
+                                          <ul className="border-custom ul-style-custom">
+                                            <li>Esito: <span>{fase.esito}</span></li>
+                                            <li>Esito definitivo: <span>{fase.esito_definitivo}</span></li>
+                                            <li>Sede: <span>{fase.sede}</span></li>
+                                            <li>Spese: <span>{fase.spese}</span></li>
+                                            <li>Data presentazione: <span>{funFormatDate(String(fase.data_presentazione))}</span></li>
+                                            <li>Data convocazione: <span>{funFormatDate(String(fase.data_convocazione))}</span></li>
+                                          </ul>
+                                          <div className='flex justify-between py-1'>
+                                              <Link to={`/form_fase/${fase.id}`}>Aggiorna la Fase</Link>
+                                              <Link to={`/fase_detail/${fase.id}`}>Dettaglio Fase</Link>
+                                          </div>
+                                      </>
+                                    </Card>
+                                  )
+                              })} 
+                          </WrapperStyleComponent>
+                      </section>
+                      </>
+                    </DetailPage> : <Loader3 />}
+                
+                  <section className='links-detail-page'>
+                    {/* //you can use a fragment or a custom wrapper */}
+                    {ricorso && 
+                        <div className='flex justify-between items-end py-2'>
+                              <Link to={`/form_fase/${ricorso?.id}`} className='primaryBtn'>Avvia una Fase</Link>
+                              <Link to={`/ricorsi/${ricorso?.id}`}>Aggiorna Ricorso</Link>
+                              <button onClick={(e) => handleDelete(e)} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>
+                        </div>    
+                       }
+                  </section> 
+             
+      </DetailStyleComponent>   
   )
 }
 
