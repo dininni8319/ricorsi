@@ -45,4 +45,8 @@ export const Wrapper = styled.div`
       outline: none;
       padding: 5px;
     }
+
+    @media only screen and (max-width: 765px) {
+       width: 98%;
+    }
 `

@@ -20,8 +20,6 @@ const Fase = () => {
     
     return (
         <div className="height-custom">
-            {/* <button ></button> */}
-                
                     <Form
                         id={slug}
                         title='Avvia una Fase' 
@@ -65,9 +63,7 @@ const Fase = () => {
                         </div> 
                     </>
                 </Form>
-            
         </div>
-      
     )
 }
 

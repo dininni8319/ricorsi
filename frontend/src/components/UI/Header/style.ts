@@ -23,4 +23,12 @@ export const HeaderComponent = styled.header`
       font-size: 35px;
       color: ${props => props.theme.colorWhite}
     }
+
+    @media only screen and (max-width: 765px) {
+      .h2-custom-class { 
+        top: 50%;
+        left: 10%;
+        font-size: 22px;
+      }  
+  }
 `;

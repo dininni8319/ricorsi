@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.form `
-    padding: 20px;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 60vw;
+    padding: 20px;
 
     .form-row {
         padding-top: 10px;
@@ -31,5 +30,9 @@ export const FormContainer = styled.form `
             align-items: center;
             padding: 5px;
         }
+    }
+
+    @media only screen and (max-width: 765px) {
+       width: 100vw;
     }
 `

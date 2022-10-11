@@ -12,7 +12,7 @@ const Footer = () => {
           <FormContainer>
               <section className='md:flex md:align-middle md:justify-around pt-5 footer-container-custom'>
                 <div>
-                    <LogoComponent imageUrl={logo} w='250px' h="250px"/>
+                    <LogoComponent imageUrl={logo}/>
                     <div className="pt-2">
                        <a href="https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Aorganization%3A743119&keywords=credit%20network%20%26%20finance&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=44fd7983-1d17-4c84-b9da-a94b9b6576dc&sid=a(O" className="text-success">www.linkedIn.com/cienneffe</a>
                     </div>

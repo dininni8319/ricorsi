@@ -11,6 +11,11 @@ export const NavbarStyleComponent = styled.nav`
     min-height: 6vh;
     background-color: ${(props) => props.theme.transparent};
    
+    .style-logo {
+        width: 100%;
+        height: 50px;
+        object-fit: cover;
+    } 
     a {
         font-size: 22px;
         color: ${props => props.theme.textColorGrey};
@@ -25,6 +30,7 @@ export const NavbarStyleComponent = styled.nav`
     }
     
     @media only screen and (max-width: 765px) {
+        
         background-color: transparent;
         border: none;
     }

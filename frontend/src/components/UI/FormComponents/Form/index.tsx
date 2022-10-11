@@ -36,8 +36,7 @@ const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, 
            })
            .catch((err) => {
                alert(err)
-           })   
-       
+           })    
     }
  
     return (

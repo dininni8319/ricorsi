@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const DetailStyleComponent = styled.div`
-  margin: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 60vh;
+  margin: 20px 0;
 
   .ul-detail-style {
     border-radius: 5px;
@@ -40,7 +40,7 @@ export const DetailStyleComponent = styled.div`
     border-bottom: 1px solid rgb(209 213 219);
   }
   
-  /*style for the modal */
+  /* button start workflow */
   .primaryBtn {
     cursor: pointer;
     font-weight: 500;
@@ -62,5 +62,11 @@ export const DetailStyleComponent = styled.div`
     width: 80%;
     background-color: ${props => props.theme.colorWhite};
     padding: 10px;
+  }
+  
+  @media only screen and (max-width: 765px) {
+    .ul-detail-style {
+      width: 95%;
+    }  
   }
 `

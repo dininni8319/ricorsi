@@ -23,6 +23,7 @@ export const WrapperStyleComponent = styled.div`
     @media only screen and (max-width: 765px) {
         grid-template-columns: 1fr;
         align-items: center;
-        padding: 5px;
+        padding: 3px;
+        width: 100%;
     }
 `

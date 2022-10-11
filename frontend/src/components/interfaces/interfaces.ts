@@ -65,8 +65,6 @@ export interface PropsIcons {
 
 export interface LogoProps {
     imageUrl: string | undefined;
-    w: string,
-    h: string,
 };
 
 export type ObjSelectType = {
