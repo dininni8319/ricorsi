@@ -17,7 +17,6 @@ const Fase = () => {
     const [ isOpen, setIsOpen] = useState(false);
     const { slug } = useParams();
     
-    
     return (
         <div className="height-custom">
                     <Form
@@ -34,15 +33,13 @@ const Fase = () => {
                             handleData={handleData}
                         />
 
-                        {fasiFormData?.formArr.map(({ label, name, type }, index) => {
+                        {fasiFormData?.formArr.map((input, index) => {
                         return (
                             <Input
-                                label={label}                       
-                                name={name}
-                                typeIn={type}
                                 handleData={handleData}
-                                index={index}
                                 key={index}
+                                {...input}
+                                // value={payload[input.name as keyof object]}
                             />
                         );
                         })}

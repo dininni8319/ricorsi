@@ -18,15 +18,12 @@ const Cartoline = () => {
             >
               <>
               
-                {cartolineFormData?.formArr.map(({ label, name, type }, index) => {
+                {cartolineFormData?.formArr.map((input, index) => {
                 return (
                     <Input
-                        label={label}                       
-                        name={name}
-                        typeIn={type}
                         handleData={handleData}
-                        index={index}
                         key={index}
+                        {...input}
                     />
                 );
                 })}

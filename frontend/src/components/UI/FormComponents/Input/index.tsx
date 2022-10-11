@@ -2,9 +2,9 @@ import { PropsInput } from "../../../interfaces/interfaces";
 import { InputSection } from './style';
 import { memo } from "react";
 
-const Input: React.FC<PropsInput> = ({ typeIn, name, label,index, handleData }:PropsInput) => {
+const Input: React.FC<PropsInput> = ({ typeIn, name, label, id, value, handleData }:PropsInput) => {
     let newName = name;
-   
+    
     return (
         <InputSection>
             {/* <div className="input-wrapper"> */}
@@ -12,9 +12,9 @@ const Input: React.FC<PropsInput> = ({ typeIn, name, label,index, handleData }:P
                 <input 
                     type={typeIn} 
                     className='input-style' 
-                    onChange={(e) => handleData(e, index)}
+                    onChange={(e) => handleData(e, id)}
                     name={name}
-                    // value={ricorso[newName as keyof object] || ''}
+                    value={value}
                 />
             {/* </div> */}
         </InputSection>

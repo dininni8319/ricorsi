@@ -40,7 +40,8 @@ export interface PropsInput {
     typeIn?: string,
     label: string,
     name: string,
-    index: number,
+    id?: number,
+    value?:string,
     handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index?: number) => any;
 };
@@ -53,7 +54,9 @@ export interface RicorsoProps {
 export interface PropsTextArea {
     label: string,
     name: string,
-    index: number,
+    index?: number,
+    typeIn?: string,
+    value?: string,
     handleData: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         index?: number) => any;
 };

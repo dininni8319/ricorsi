@@ -1,16 +1,30 @@
-import { useState, ChangeEvent } from 'react';
-import { validate } from "../components/Utilities/index";
+import { useState, ChangeEvent, useEffect } from 'react';
+import { validate, baseURL } from "../components/Utilities/index";
+import useApiRequest from '../components/state/useApiRequest';
+import { ObjFormType } from "../components/interfaces/interfaces";
 
-export default function useInput(initialSate: {[key: string]: string}) {
-  
+export default function useInput(initialSate: {[key: string]: string}, slug?: number | string) {
   const [ data, setData ] = useState(initialSate);
 
+  const [ { status, response }, makeRequest ] = useApiRequest(
+    `${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
+        verb: 'get',
+  })
+  
+  useEffect(() => {
+    makeRequest();
+  }, [])
+  
+  let ricorso = response?.data?.ricorso;
+
   const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
-    // if (e.target.name === 'mail') {
-    //   let email = {[e.target.name]:e.target.value};
-    //   let errors = validate(email.mail)
+  
+    let { name, value } = e.target;
+    // if (ricorso) {
+    //   setData(prevState => ({...prevState, [name]:value = ricorso[name]}));
     // }
-    setData({...data, [e.target.name]:e.target.value});
+    setData(prevState => ({...prevState, [name]:value}));
+
 }
   return {
     data,

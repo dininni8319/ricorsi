@@ -7,30 +7,13 @@ import { isTextarea, validate } from '../Utilities/index';
 import { baseURL } from "../Utilities/index";
 import useFetch from "../../Hooks/useFetch";
 import { useParams } from 'react-router';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Workflow = () => {
-
-    let { slug } = useParams();
-    // const [ errors, setErrors ] = useState({
-    //     status: false,
-    //     errorTitle: ''
-    // });
-    const { data, handleData } = useInput(defaultRicorsiData);
-    let { payload } = useFetch(`${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
-        verb: 'get',      
-    })
-
-    // if(validate(data.mail)) {
     
-    //     let invalid = validate(data.mail)
-    //     console.log(invalid);
-    //     setErrors({
-    //         status: true,
-    //         errorTitle: 'email not valid'
-    //     })
-    // }
-   
+    let { slug } = useParams();
+ 
+    const { data, handleData } = useInput(defaultRicorsiData, slug);
     
     return (
         <div className="height-custom">
@@ -40,27 +23,23 @@ const Workflow = () => {
                 navPath="ricorsi_detail" 
                 subMitBtn='Invio'
                 data={data}
-                // ricorso={payload.ricorso}
             >
               <>
               
-                {formRicorsiLabels?.formArr.map(({ label, name, type, id}, index) => {
+                {formRicorsiLabels?.formArr.map((input, index) => {
                   return (
-                    isTextarea(id) ? (<TextArea 
-                                        label={label}                       
-                                        name={name}
+                    isTextarea(input.id) ? (<TextArea 
                                         handleData={handleData}
-                                        index={index}
                                         key={index}
+                                        value={data[input.name as keyof object]}
+                                        {...input}
                                     />): 
-                                  (  <Input
-                                        label={label}                       
-                                        name={name}
-                                        typeIn={type}
-                                        handleData={handleData}
-                                        index={index}
-                                        key={index}
-                                />)
+                                    ( <Input
+                                            handleData={handleData}
+                                            key={index}
+                                            {...input}
+                                            value={data[input.name as keyof object]}
+                                    />)
                   )
                 })}
                
