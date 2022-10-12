@@ -1,3 +1,10 @@
+#react icons install command
+- npm install react-icons
+
+#start queues
+- cd backend && php artisan queue:work
+- npx prettier --write .
+
 #run prettier: prettier resources --write
 #run laravel: php artisan serve
 
@@ -70,22 +77,4 @@ php artisan make:import CartolineImport --model=Cartoline
 
 Get a week before date in seconds, get a week in seconds, and the current date;
 #dd(strtotime('-1 week') , (60 * 60 * 24 * 7), strtotime(Carbon::now()));
-/_ "numero_protocollo_interno",
-"numero_ricorso",
-"ente",
-"nominativo",
-"cf_p.iva",
-"indirizzo",
-"citta",
-"cap",
-"mail",
-"telefono",
-"oggetto_ricorso",
-"data_presentazione_ricorso",
-"data_ricezione_ricorso",
-"esito",
-"tributo",
-"anno_imposta",
-"tipologia_atto",
-"importo_atto",
-"legale_controparte", _/
+

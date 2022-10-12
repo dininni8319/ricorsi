@@ -94,16 +94,6 @@ class CartolineController extends Controller
         }  
     }
 
-    public function cartolineForm($id = null) 
-    {
-        if ($id) {
-            $cartolina = $this->findCartoline($id);
-            
-            return view("cartoline.cartolineForm", compact('cartolina'));
-        }
-        return view("cartoline.cartolineForm");
-    }
-
     public function createCartolina(Request $request, $id = null){
         $formData = $this->getFormData($request);
         $fileName = '';
