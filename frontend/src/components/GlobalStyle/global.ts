@@ -27,7 +27,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a {
-       color: #272D36;
        font-size: 14px;
        transition: 1s;
        color: inherit;
