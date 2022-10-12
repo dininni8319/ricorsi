@@ -39,8 +39,9 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get("/last_fase/", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase");
     Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current")->withoutMiddleware('throttle:api');
     Route::get("/detail_fase/{id}", [TaxUnitEditController::class,"detailFase",])->name("detail.fase")->withoutMiddleware('throttle:api');
+    Route::get("/cartolina/search={query}", [CartolineController::class, "searchCartolina"])->name("search.cartoline");
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
-
+    
     //Cartoline 
     Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
     Route::get("/cartoline" , [CartolineController::class, "cartoline"])->name("cartoline")->withoutMiddleware('throttle:api');

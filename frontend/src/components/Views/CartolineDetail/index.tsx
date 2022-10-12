@@ -40,35 +40,35 @@ const CartolineDetail = () => {
                 >
                   <ul className="ul-detail-style">
                       <li>
-                          Presentato da: <span>{cartolina.codice_mandate}</span>
+                          Nome e Cognome: <span>{cartolina.nome_cognome_debitore}</span>
                       </li>
                       <li>
-                          Contro deduzioni Taxunit: <span>{cartolina.nome_cognome_debitore}</span>
+                          Codice Mandante: <span>{cartolina.codice_mandate}</span>
                       </li>
                       <li>
-                          Contro deduzioni uff. Legale: <span>{cartolina.cf_piva_debitore}</span>
+                          CF/PIVA: <span>{cartolina.cf_piva_debitore}</span>
                       </li>
                       <li>
                           Ndg: <span>{cartolina.ndg}</span> 
                       </li>
                       <li>
-                          Sede: <span>{funFormatDate(cartolina.data_spedizione)}</span>
+                          Data Spedizione: <span>{funFormatDate(cartolina.data_spedizione)}</span>
                       </li>
                       <li>
-                          Esito: <span>{cartolina.numero_raccomandata}</span>
+                          Numero Raccomandata: <span>{cartolina.numero_raccomandata}</span>
                       </li>
                       <li>
-                          Esito definitivo: <span>{funFormatDate(cartolina.data_notifica)}</span>
+                          Data Notifica: <span>{funFormatDate(cartolina.data_notifica)}</span>
                       </li>
 
                       <li>
-                          Motivazione:  <span>{cartolina.esito_notifica}</span>
+                          Esito notifica: <span>{cartolina.esito_notifica}</span>
                       </li>
                       <li>
-                          Spese: <span>{cartolina.chiave_pratica}</span>
+                          Chiave Pratica: <span>{cartolina.chiave_pratica}</span>
                       </li>
                       <li>
-                          Data deposito Sentenza: <span>{cartolina.fase}</span>
+                          Fase: <span>{cartolina.fase}</span>
                       </li>
                       {/* <li>
                           Data notifica Sentenza: <span>{cartolina.data_notifica_sentenza}</span>

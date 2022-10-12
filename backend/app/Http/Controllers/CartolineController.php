@@ -199,15 +199,22 @@ class CartolineController extends Controller
         }   
     }
 
-    public function searchCartolina(Request $request)
+    public function searchCartolina($query)
     {
-        $query = $request->input("query");
+        if(!$query){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+            $ricorsi = Cartoline::search($query)->get();
 
-        $cartoline = Cartoline::search($query)->get();
-
-        if ($query) {
-            return view("cartoline.search", compact("cartoline", "query"));
-        }
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'ricorsi'=> $ricorsi,
+            ], 200);
+        }     
     }
 
     public function importCsv(Request $request){

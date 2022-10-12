@@ -11,6 +11,12 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background-color: #F7F8FA;
     }
+
+    h1 {
+        font-size: 40px;
+        font-weight: 400;
+        padding: 25px 0;
+    }
     
     h5 {
        color: white;

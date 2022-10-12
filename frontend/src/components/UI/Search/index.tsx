@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { SearchStyleComponent } from "./style";
 
-const Search = ({ title, searchedRicorsi, handleChange }: {title: string, searchedRicorsi: {[key: string]: string}[], handleChange: any}) => {
+const Search = ({ title, children, handleChange }: {title: string, children?: JSX.Element, handleChange: any}) => {
 
   return (
     <SearchStyleComponent>
@@ -9,22 +9,7 @@ const Search = ({ title, searchedRicorsi, handleChange }: {title: string, search
         <input type="text" placeholder={`Cerca un ${title}`} onChange={handleChange} name='query'/>
       </>
   
-      {searchedRicorsi?.map((searched: {[key: string]: string}) => {
-        return (
-            <ul className='bg-white mt-2 p-2 shadow-md border-slate-400'>
-                <li>
-                    <span className="font-semibold pr-1">Numero Ricorso:</span>{searched.numero_ricorso}
-                </li>
-                <li>
-                    <span className="font-semibold pr-1">Ente:</span>{searched.ente} 
-                </li>
-                <li>
-                    <span className="font-semibold pr-1">Anno imposta:</span>{searched.anno_imposta}
-                </li>
-                <Link to={`/ricorsi_detail/${searched.id}`}>Dettaglio Ricorso</Link>
-            </ul>
-        )
-      })}
+       {children}
     </SearchStyleComponent>
   )
 }

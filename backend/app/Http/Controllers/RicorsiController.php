@@ -197,7 +197,6 @@ class RicorsiController extends Controller
 
     public function searchRicorso($query)
     {  
-       
         if(!$query){
             return response()->json([
                 'success' => false,
@@ -212,9 +211,6 @@ class RicorsiController extends Controller
                 'ricorsi'=> $ricorsi,
             ], 200);
         }     
-        if ($query) {
-            return view("ricorsi.searchPage", compact("ricorsi", "query"));
-        }
     }
 
     public function lastCreatedRicorso()

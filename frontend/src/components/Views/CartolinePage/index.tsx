@@ -7,86 +7,103 @@ import { ObjFormType } from "../../interfaces/interfaces";
 import { WrapperStyleComponent } from "../Home/style";
 
 const CartolinePage = () => {
-    const [ ricorsi, setRicorsi ] = useState<{[key: string]: string}[]>([]);
-    const [ searchedRicorsi, setSearchedRicorsi ] = useState<any>([]);
+    const [ cartoline, setCartoline ] = useState<{[key: string]:string}[]>([]);
+    const [ searchedCartoline, setSearchedCartoline ] = useState<any>([]);
     const [ searchedTerm, setSearchedTerm ] = useState('');
 
     useEffect(() => {
-        fetch(`${baseURL}/api/cienneffe/ricorsi`)
+        fetch(`${baseURL}/api/cienneffe/cartoline`)
           .then(response => response.json())
           .then(data => {
-              if (data.ricorsi) {
-                setRicorsi(prev => [prev,...data?.ricorsi])
+              if (data.cartoline) {
+                setCartoline(() => [...data?.cartoline])
               }
           })
           .catch((error: unknown) =>{
             console.log(error);
           })
-     
       },[])
 
     useEffect(() => {
         if (searchedTerm.length > 3) {
-            fetch(`${baseURL}/api/cienneffe/ricorsi/search=${searchedTerm}`)
+            fetch(`${baseURL}/api/cienneffe/cartoline/search=${searchedTerm}`)
             .then(response => response.json())
-            .then(data => setSearchedRicorsi(() => ([...data.ricorsi])))
+            .then(data => setSearchedCartoline(() => ([...data?.cartoline])))
             .catch((error: unknown) =>{
               console.log(error);
             })
         }
-    }, [searchedTerm])  
+    }, [searchedTerm]) 
+
     const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
         setSearchedTerm(e.target.value)
     }
 
     return (
         <div className="height-custom flex flex-col items-center">
-            <>
+              <>
                 <Search 
-                    title='Ricorsi'
-                    searchedRicorsi={searchedRicorsi}
+                    title='Cartolina'
                     handleChange={handleChange}
-                />
-            </>
+                >
+                  {searchedCartoline?.map((searched:{[key: string]: string}) => {
+                    return (
+                      <ul className='bg-white mt-2 p-2 shadow-md border-slate-400'>
+                          <li>
+                              <span className="font-semibold pr-1">Nome e Cognome:</span>{searched.nome_cognome_debitore}
+                          </li>
+                          <li>
+                              <span className="font-semibold pr-1">C.F/P.I:</span>{searched.cf_piva_debitore} 
+                          </li>
+                          <li>
+                              <span className="font-semibold pr-1">Data Notifica:</span>{searched.data_notifica}
+                          </li>
+                          <Link to={`/detail_cartoline/${searched.id}`}>Dettaglio Cartolina</Link>
+                      </ul>
+                    )
+                  })}     
+                </Search>
+                <h1>Cartoline</h1>
+              </>
              <WrapperStyleComponent>
                 <> 
-                    {ricorsi ? ricorsi?.map((ricorso, id: number) => {
+                    {cartoline ? cartoline?.map((cartolina, id: number) => {
                         return (
                             <>
                                 <Card 
-                                    taxunit={ricorso}
+                                    taxunit={cartolina}
                                     key={id}
-                                    path='ricorso/delete'
-                                    current={ricorsi}
-                                    setCurrent={setRicorsi}
+                                    path='cartolina/delete'
+                                    current={cartoline}
+                                    setCurrent={setCartoline}
                                 >
                                     <>
-                                        <h3 className="card-title mb-3">Tributo: <span>{ricorso.tributo}</span></h3>
+                                        <h3 className="card-title mb-3">Mandante: <span>{cartolina.descrizione_mandante}</span></h3>
 
                                         <ul className="border-custom ul-style-custom">
                                             <li>
-                                                <span className="font-semibold pr-1">Numero Ricorso:</span>{ricorso.numero_ricorso}
+                                                <span className="font-semibold pr-1">Nome e Cognome:</span>{cartolina.nome_cognome_debitore}
                                             </li>
                                             <li>
-                                                <span className="font-semibold pr-1">Ente:</span>{ricorso.ente} 
+                                                <span className="font-semibold pr-1">C.F/P.I:</span>{cartolina.cf_piva_debitore} 
                                             </li>
                                             <li>
-                                                <span className="font-semibold pr-1">Anno imposta:</span>{ricorso.anno_imposta}
+                                                <span className="font-semibold pr-1">Data Notifica:</span>{cartolina.data_notifica}
                                             </li>
                                             <li>
-                                                <span className="font-semibold pr-1">Importo Atto:</span>{ricorso.importo_atto}
+                                                <span className="font-semibold pr-1">NDG:</span>{cartolina.ndg}
                                             </li>
                                             <li>
-                                                <span className="font-semibold pr-1">Esito:</span>{ricorso.esito}
+                                                <span className="font-semibold pr-1">Esito:</span>{cartolina.esito_notifica}
                                             </li>
                                             <li>
-                                                <p className='font-serif text-sm'><span className="font-semibold pr-1">Descrizione:</span>{ricorso.oggetto_ricorso}</p>
+                                                <p className='font-serif text-sm'><span className="font-semibold pr-1">Chiave Pratica:</span>{cartolina.chiave_pratica}</p>
                                             </li>
                                         </ul>
 
                                         <div className='flex justify-between py-1'>
-                                            <Link to={`/ricorsi/${ricorso.id}`}>Aggiorna Ricorso</Link>
-                                            <Link to={`/ricorsi_detail/${ricorso.id}`}>Dettaglio Ricorso</Link>
+                                            <Link to={`/work_flow/${cartolina.id}`}>Aggiorna cartolina</Link>
+                                            <Link to={`/detail_cartoline/${cartolina.id}`}>Dettaglio cartolina</Link>
                                         </div>
                                     </>
                                 </Card>

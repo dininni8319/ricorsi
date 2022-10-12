@@ -11,7 +11,8 @@ const Navbar = () => {
                 <LogoComponent imageUrl={logo} />
                 <NavItem content="Ricorsi" href='/' />
                 <NavItem content="Avvia Ricorso" href='/ricorsi' />
-                <NavItem content="Caroline" href={`/work_flow`} />
+                <NavItem content="Caroline" href={`/cartoline`} />
+                <NavItem content="Avvia una Caroline" href={`/work_flow`} />
             </ul>
         </NavbarStyleComponent> 
     );
