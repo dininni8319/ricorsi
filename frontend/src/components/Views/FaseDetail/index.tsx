@@ -25,13 +25,6 @@ const FasiDetail = () => {
   )
 
   let { fase }:any = payload;
-  
-  // useEffect(() => {
-  //   fetch(`${baseURL}/api/cienneffe/detail_ricorso/${fase?.ricorsi_id}`)
-  //   .then(response => response.json())
-  //   .then(data => setRicorso({...data.ricorso}))
-    
-  // },[])
 
   const handleDelete = (e:any) => {
     e.preventDefault();
@@ -85,43 +78,10 @@ const FasiDetail = () => {
                 </DetailPage> : <Loader3 />
               }
             </>
-            {/* <Card 
-                  taxunit={ricorso}
-                  path='ricorso/delete'
-            >
-                  <>
-                      <h3 className="card-title mb-3">Tributo: <span>{ricorso.tributo}</span></h3>
-
-                      <ul className="border-custom ul-style-custom">
-                          <li>
-                              <span className="font-semibold pr-1">Numero Ricorso:</span>{ricorso.numero_ricorso}
-                          </li>
-                          <li>
-                              <span className="font-semibold pr-1">Ente:</span>{ricorso.ente} 
-                          </li>
-                          <li>
-                              <span className="font-semibold pr-1">Anno imposta:</span>{ricorso.anno_imposta}
-                          </li>
-                          <li>
-                              <span className="font-semibold pr-1">Importo Atto:</span>{ricorso.importo_atto}
-                          </li>
-                          <li>
-                              <span className="font-semibold pr-1">Esito:</span>{ricorso.esito}
-                          </li>
-                          <li>
-                              <p className='font-serif text-sm'><span className="font-semibold pr-1">Descrizione:</span>{ricorso.oggetto_ricorso}</p>
-                          </li>
-                      </ul>
-
-                      <div className='flex justify-between py-1'>
-                          <Link to={`/ricorsi/${fase?.ricorsi_id}`}>Aggiorna Ricorso</Link>
-                          <Link to={`/ricorsi_detail/${fase?.ricorsi_id}`}>Dettaglio Ricorso</Link>
-                      </div>
-                  </>
-            </Card> */}
+        
             <section className='links-detail-page mt-5'>
               {fase && <div className='md:flex md:justify-between md:items-end py-2'>
-                    
+                    <Link to={`/ricorsi_detail/${fase.ricorsi_id}`}>Dettaglio Ricorso</Link>
                     <Link to={`/form_fase/${fase.id}`}>Aggiorna la Fase</Link>
                     <>
                       <button onClick={(event)=> handleDelete(event)} className='bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold'>Cancella</button>

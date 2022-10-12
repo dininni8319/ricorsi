@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
-const Search = ({ searchedRicorsi, handleChange}: { searchedRicorsi: any, handleChange: any}) =>{
+import { SearchStyleComponent } from "./style";
+
+const Search = ({ title, searchedRicorsi, handleChange }: {title: string, searchedRicorsi: {[key: string]: string}[], handleChange: any}) => {
+
   return (
-    <div>
-      <label htmlFor="search">Search</label>
-      <input type="text" placeholder='Cerca un Ricorso' onChange={handleChange} name='query'/>
-      {searchedRicorsi?.map((searched:any) => {
+    <SearchStyleComponent>
+      <>
+        <input type="text" placeholder={`Cerca un ${title}`} onChange={handleChange} name='query'/>
+      </>
+  
+      {searchedRicorsi?.map((searched: {[key: string]: string}) => {
         return (
             <ul className='bg-white mt-2 p-2 shadow-md border-slate-400'>
                 <li>
@@ -20,7 +25,7 @@ const Search = ({ searchedRicorsi, handleChange}: { searchedRicorsi: any, handle
             </ul>
         )
       })}
-</div>
+    </SearchStyleComponent>
   )
 }
 

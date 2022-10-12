@@ -41,8 +41,20 @@ class CartolineController extends Controller
     public function cartoline() 
     {
         $cartoline = Cartoline::orderBy("created_at")->limit(15)->get();;
+         
+        if(!$cartoline){
+            return response()->json([
+            'success' => false,
+            'message' => $this->messageUnSuccess,
+        ], 404);
+        } else {
 
-        return view("cartoline.cartoline", compact('cartoline'));
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'cartoline' => $cartoline,
+            ], 200);
+        }  
     }
 
     public function detailCartoline($id)

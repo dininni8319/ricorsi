@@ -4,9 +4,9 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { baseURL } from "../../Utilities/index";
 import { ObjFormType } from "../../interfaces/interfaces";
  import { Card, Loader3, Search } from "../../UI/index";
-import { WrapperStyleComponent } from "./style";
+import { WrapperStyleComponent } from "../Home/style";
 
-const Homepage = () => {
+const CartolinePage = () => {
     const [ ricorsi, setRicorsi ] = useState<{[key: string]: string}[]>([]);
     const [ searchedRicorsi, setSearchedRicorsi ] = useState<any>([]);
     const [ searchedTerm, setSearchedTerm ] = useState('');
@@ -99,4 +99,4 @@ const Homepage = () => {
     )
 }
 
-export default Homepage;
+export default CartolinePage;

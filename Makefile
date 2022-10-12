@@ -36,3 +36,12 @@ prettier: ##prettier
 clearCache: ## to clear the cache
 	@echo "clear cache"
 	@cd backend && php artisan cache:clear && php artisan config:cache && php artisan route:clear
+
+queueWork: #start queues command
+	@echo "queue:work"
+	@cd backend && php artisan queue:work
+
+scheduleWork: ##
+	@echo "schedule:work"
+	@cd backend && php artisan schedule:work
+
