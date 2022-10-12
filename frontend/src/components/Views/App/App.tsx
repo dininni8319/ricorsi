@@ -15,7 +15,7 @@ const App = () => {
     const CartolinePage = lazy(() => import('../CartolinePage'));
     const LottiSpedizioneDetail = lazy(() => import('../LottiSpedizioneDetail'));
     const LottiSpedizione = lazy(() => import('../LottiSpedizione'));
-    const RiscossionePage = lazy(() => import('../RiscossionePage'));
+    // const RiscossionePage  = lazy(() => import('../RiscossionePage'));
 
     return (
         <BrowserRouter>
@@ -111,14 +111,14 @@ const App = () => {
                     }
                 />
 
-                <Route
+                {/* <Route
                     path="/riscossione/"
                     element={
                         <Suspense fallback={<Loader3 />}>
                             <RiscossionePage />
                         </Suspense>
                     }
-                />
+                /> */}
 
                 <Route
                     path="/form_riscossione/"
