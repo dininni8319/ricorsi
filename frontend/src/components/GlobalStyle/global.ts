@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
     h1 {
         font-size: 40px;
-        font-weight: 400;
+        font-weight: 300;
         padding: 25px 0;
     }
     

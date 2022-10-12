@@ -7,10 +7,7 @@ import FormWrapper from '../FormWrapper';
 import { FormContainer } from "../FormRicorsi/style";
 
 const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, children, data}) => {
-    // const [ errors, setErrors ] = useState({
-    //     status: false,
-    //     message: ''
-    //   });
+   
     const navigate = useNavigate();
 
     const errorTag = (message: string) => {
@@ -36,13 +33,12 @@ const Form: React.FC<FormProps> = ({ id, title, navPath, createPath, subMitBtn, 
            })
            .catch((err) => {
                alert(err)
-           })   
-       
+           })    
     }
  
     return (
         <FormContainer onSubmit={handleSubmit}>
-            <h1 className='font-bold text-amber-500 text-3xl'>{title}</h1>
+            <h1>{title}</h1>
             {/* {errors && errorTag(errors?.message)} */}
             <section className="form-row"> 
                 {children}

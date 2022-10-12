@@ -207,12 +207,12 @@ class CartolineController extends Controller
                 'message' => $this->messageUnSuccess,
             ], 404);
         } else {
-            $ricorsi = Cartoline::search($query)->get();
+            $cartoline = Cartoline::search($query)->get();
 
             return response()->json([
                 'success' => true,
                 'message' => $this->messageSuccess,
-                'ricorsi'=> $ricorsi,
+                'cartoline'=> $cartoline,
             ], 200);
         }     
     }

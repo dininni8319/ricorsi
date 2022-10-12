@@ -16,7 +16,7 @@ const Homepage = () => {
           .then(response => response.json())
           .then(data => {
               if (data.ricorsi) {
-                setRicorsi(prev => [prev,...data?.ricorsi])
+                setRicorsi(prev => [...data?.ricorsi])
               }
           })
           .catch((error: unknown) =>{

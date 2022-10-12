@@ -23,12 +23,12 @@ const CartolinePage = () => {
             console.log(error);
           })
       },[])
-
+     
     useEffect(() => {
         if (searchedTerm.length > 3) {
-            fetch(`${baseURL}/api/cienneffe/cartoline/search=${searchedTerm}`)
+            fetch(`${baseURL}/api/cienneffe/cartolina/search=${searchedTerm}`)
             .then(response => response.json())
-            .then(data => setSearchedCartoline(() => ([...data?.cartoline])))
+            .then(data => setSearchedCartoline(data?.cartoline))
             .catch((error: unknown) =>{
               console.log(error);
             })
