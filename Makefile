@@ -30,7 +30,7 @@ i: ## performs initial setup
 
 prettier: ##prettier
 	@echo "lunch prettier"
-	@cd frontend && npm start npx prettier --write . &
+	@cd frontend && npx prettier --write . &
 	@cd backend && npx prettier --write . 
 
 clearCache: ## to clear the cache

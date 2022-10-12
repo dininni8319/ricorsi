@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const WrapperStyleComponent = styled.div`
     display: grid;
@@ -7,13 +7,13 @@ export const WrapperStyleComponent = styled.div`
     padding: 20px 5px;
     width: 80vw;
 
-    span { 
+    span {
         padding-left: 2px;
-        color: ${props => props.theme.blackColor};
+        color: ${(props) => props.theme.blackColor};
     }
 
     h3 {
-      color: ${props => props.theme.colorGold};
+        color: ${(props) => props.theme.colorGold};
     }
 
     @media only screen and (max-width: 1500px) {
@@ -26,4 +26,4 @@ export const WrapperStyleComponent = styled.div`
         padding: 3px;
         width: 100%;
     }
-`
+`;

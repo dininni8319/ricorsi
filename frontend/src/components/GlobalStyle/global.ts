@@ -35,38 +35,38 @@ export const GlobalStyle = createGlobalStyle`
     a:hover {
         color:#10B981;
     }
-`
+`;
 
 export const Theme = {
-      navbarColor: "#10B981",
-      footerColor: '#272D36',
-      borderColor: '#F2F2F2',
-      textColorGrey: 'rgba(255,255,255,0.9)',
-      
-      //color for the input and line bottom
-      borderGrayColor: '#e5e5e5',
-      textShadow: 'text-shadow:  5px 5px 11px rgba(0,0,0,1)',
-      
-      //not in use
-      backgroundBodyColor: '',
-      buttoncolor: '',
-      blueColor: '',
-      grayColor: '',
-      //////////////
-      
-      //General Colors
-      colorGold: '#fca311',
-      pinkColor: '#586BA4',
-      transparent: 'transparent',
-      goldColor: 'gold',
-      colorWhite: 'white',
-      blackColor: 'black',
-      //we could usse this colour for the text, not in use at the moment
-      textGray: '#1C1C1C',
-      
-      boxShadow: 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)',
-      //that for the details pages
-      boxShadow2: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
-      borderRadius: '5px',
-      fontFamily: '"Roboto", sans-serif',
-}
+    navbarColor: '#10B981',
+    footerColor: '#272D36',
+    borderColor: '#F2F2F2',
+    textColorGrey: 'rgba(255,255,255,0.9)',
+
+    //color for the input and line bottom
+    borderGrayColor: '#e5e5e5',
+    textShadow: 'text-shadow:  5px 5px 11px rgba(0,0,0,1)',
+
+    //not in use
+    backgroundBodyColor: '',
+    buttoncolor: '',
+    blueColor: '',
+    grayColor: '',
+    //////////////
+
+    //General Colors
+    colorGold: '#fca311',
+    pinkColor: '#586BA4',
+    transparent: 'transparent',
+    goldColor: 'gold',
+    colorWhite: 'white',
+    blackColor: 'black',
+    //we could usse this colour for the text, not in use at the moment
+    textGray: '#1C1C1C',
+
+    boxShadow: 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)',
+    //that for the details pages
+    boxShadow2: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
+    borderRadius: '5px',
+    fontFamily: '"Roboto", sans-serif'
+};

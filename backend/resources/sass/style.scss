@@ -18,22 +18,25 @@
     --greenColor: #79c09c;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
 
 * {
-    font-family: "Nunito Sans", sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 body {
-    background-color: #F7F8FA;
+    background-color: #f7f8fa;
 }
 
 .bg-backgroud-3 {
-    background-color: #F7F8FA;
+    background-color: #f7f8fa;
 }
 
-input, textarea, select, option {
-    background-color: #F7F8FA !important;
+input,
+textarea,
+select,
+option {
+    background-color: #f7f8fa !important;
     border: 1px solid #b1adad !important;
 }
 
@@ -53,11 +56,18 @@ button {
     overflow-x: scroll;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #ed9133;
 }
 
- span{ padding-left: 5px;}
+span {
+    padding-left: 5px;
+}
 
 .tc-main {
     color: var(--main-color);
@@ -128,7 +138,6 @@ h1, h2, h3, h4, h5, h6 {
     background-clip: border-box;
     border: 2px solid #79c09c;
     border-radius: 3rem;
-
 }
 
 .btn-dark {
@@ -180,7 +189,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-   
     color: var(--footerBackGroundColor);
     text-decoration: none;
     cursor: pointer;
@@ -191,7 +199,7 @@ a {
 }
 
 .mansuite {
-    background: url("/photos/man_suit.jpg");
+    background: url('/photos/man_suit.jpg');
     height: 50vh;
 }
 
@@ -210,61 +218,59 @@ a {
     padding-bottom: 1rem !important;
 }
 
-.bluex
-{
-   color: rgb(18, 55, 155)
-};
+.bluex {
+    color: rgb(18, 55, 155);
+}
 
-.grend
-{
-    color: rgb(42, 231, 24)
-};
+.grend {
+    color: rgb(42, 231, 24);
+}
 
 .likede {
-   color: #2b15f3e8;
-};
+    color: #2b15f3e8;
+}
 
-.vede{
-    margin-top:15px; 
-    padding:5px; 
-};
+.vede {
+    margin-top: 15px;
+    padding: 5px;
+}
 
-.ssi{
-    margin:50px; 
-    padding:15px; 
+.ssi {
+    margin: 50px;
+    padding: 15px;
     margin-left: 100px;
-};
+}
 
-.grett{
-   color : #828282
-};
+.grett {
+    color: #828282;
+}
 
 .pk-0 {
-   color:#828282;
-}; 
+    color: #828282;
+}
 
-.cardin{
-    border: 1px solid #828282; 
+.cardin {
+    border: 1px solid #828282;
     border-radius: 5px;
-};
+}
 
 .py-8 {
     padding-top: 12rem !important;
     padding-bottom: 5rem !important;
-};
+}
 
 .scroll {
     overflow-y: scroll;
     height: 20vh;
-    border: 3px
-};
+    border: 3px;
+}
 
 .btn-darker {
     color: #fff;
     background-color: #f307079d;
     border-color: #f307079d;
     border-radius: 20px;
-};
+}
 
 .btn-darkerre {
     color: #fff;
@@ -272,21 +278,20 @@ a {
     border-color: #f307079d;
     border-radius: 20px;
     font-size: 20px !important;
-    
-};
+}
 
 .btn-green {
     color: rgba(15, 15, 15, 0.842);
     background-color: #d6d4d1;
     border-color: #d6d4d1;
     border-radius: 20px;
-};
+}
 
-.class-height-doc{
+.class-height-doc {
     height: 300px;
 }
 
-.icon-done{
+.icon-done {
     max-width: 15%;
     max-height: 200px;
     object-fit: contain;
@@ -303,8 +308,8 @@ a {
 }
 
 .progress {
-    --bs-progress-height: 1,5rem;
-   
+    --bs-progress-height: 1, 5rem;
+
     --bs-progress-bg: #cfebdde8;
     --bs-progress-border-radius: lrem;
     --bs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
@@ -314,12 +319,12 @@ a {
     display: flex;
     height: var(--bs-progress-height);
     overflow: hidden;
- 
+
     background-color: var(--bs-progress-bg);
     border-radius: var(--bs-progress-border-radius);
-  }
+}
 
-  .progress {
+.progress {
     background-color: #79c09c57;
     color: rgba(0, 0, 0, 0.877);
 }

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const FormContainer = styled.form `
+export const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,11 +16,11 @@ export const FormContainer = styled.form `
         margin: 30px;
         background: ${(props) => props.theme.colorWhite};
         padding: 20px;
-        box-shadow: ${props => props.theme.boxShadow2};
+        box-shadow: ${(props) => props.theme.boxShadow2};
     }
 
     .btn-send {
-        background-color: ${props => props.theme.navbarColor};
+        background-color: ${(props) => props.theme.navbarColor};
         font-size: 20px;
     }
 
@@ -33,6 +33,6 @@ export const FormContainer = styled.form `
     }
 
     @media only screen and (max-width: 765px) {
-       width: 100vw;
+        width: 100vw;
     }
-`
+`;

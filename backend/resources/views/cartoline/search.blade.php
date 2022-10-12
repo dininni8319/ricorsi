@@ -40,19 +40,11 @@
                         Torna indietro      
                     </a>
                     </div>
-               
-                   
-                
                 </div>
 
             </div>
             
         </section>  
-           {{--  <form method="POST" action="{{ route('delete.ricorso', [$cartolina->id]) }}">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-                <button type="submit" class="btn-delete">Delete</button>
-            </form> --}}
            
         @endforeach
 </section>

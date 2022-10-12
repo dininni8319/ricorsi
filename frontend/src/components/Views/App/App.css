@@ -3,32 +3,27 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
 .height-custom {
-  width: 100vw;
-  min-height: 40vh;
-  background-color:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  display: flex;
-  justify-content: center;
+    width: 100vw;
+    min-height: 40vh;
+    background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    justify-content: center;
 }
 
 .border-custom {
-  padding: 15px;
-  border: 1px solid #e5e5e5;
-  border-radius: 5px;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
 }
 
 @media only screen and (max-width: 765px) {
-  .height-custom {
-    display: block;
-  } 
+    .height-custom {
+        display: block;
+    }
 }
-
-
-
-
-
