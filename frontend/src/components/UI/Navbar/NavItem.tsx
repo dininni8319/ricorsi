@@ -5,12 +5,12 @@ export interface LinkProps {
     href: string;
 }
 
-const NavItem:React.FC<LinkProps> = ({ content, href }) => {
+const NavItem: React.FC<LinkProps> = ({ content, href }) => {
     return (
-        <li className='font-bold text-2xl'>
+        <li className="font-bold text-2xl">
             <Link to={href}>{content}</Link>
         </li>
-    )
-}
+    );
+};
 
 export default NavItem;

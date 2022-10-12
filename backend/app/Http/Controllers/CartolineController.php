@@ -41,8 +41,20 @@ class CartolineController extends Controller
     public function cartoline() 
     {
         $cartoline = Cartoline::orderBy("created_at")->limit(15)->get();;
+         
+        if(!$cartoline){
+            return response()->json([
+            'success' => false,
+            'message' => $this->messageUnSuccess,
+        ], 404);
+        } else {
 
-        return view("cartoline.cartoline", compact('cartoline'));
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'cartoline' => $cartoline,
+            ], 200);
+        }  
     }
 
     public function detailCartoline($id)
@@ -80,16 +92,6 @@ class CartolineController extends Controller
                 'message' => $this->messageSuccess,
             ], 200);
         }  
-    }
-
-    public function cartolineForm($id = null) 
-    {
-        if ($id) {
-            $cartolina = $this->findCartoline($id);
-            
-            return view("cartoline.cartolineForm", compact('cartolina'));
-        }
-        return view("cartoline.cartolineForm");
     }
 
     public function createCartolina(Request $request, $id = null){
@@ -187,15 +189,22 @@ class CartolineController extends Controller
         }   
     }
 
-    public function searchCartolina(Request $request)
+    public function searchCartolina($query)
     {
-        $query = $request->input("query");
+        if(!$query){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+            $cartoline = Cartoline::search($query)->get();
 
-        $cartoline = Cartoline::search($query)->get();
-
-        if ($query) {
-            return view("cartoline.search", compact("cartoline", "query"));
-        }
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'cartoline'=> $cartoline,
+            ], 200);
+        }     
     }
 
     public function importCsv(Request $request){

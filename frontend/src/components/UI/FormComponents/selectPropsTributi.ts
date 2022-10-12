@@ -2,276 +2,373 @@
 export const selectPropsTributi = {
     title: 'Tributo',
     name: 'tributo',
-    values: 
-    [
+    values: [
         {
-            value: 'Imu' 
+            value: 'Imu'
         },
         {
-            value: 'Tari' 
+            value: 'Tari'
         },
         {
-            value: 'Tarsu' 
+            value: 'Tarsu'
         },
         {
-            value: 'Tassa rifiuti' 
+            value: 'Tassa rifiuti'
         },
         {
-            value: 'Pubblicità' 
+            value: 'Pubblicità'
         },
         {
-            value: 'Occ. suolo' 
+            value: 'Occ. suolo'
         },
         {
-            value: 'C.u.patr' 
+            value: 'C.u.patr'
         },
         {
-            value: 'Cod.stradale' 
+            value: 'Cod.stradale'
         },
         {
-            value: 'Mensa' 
+            value: 'Mensa'
         },
         {
-            value: 'Tasi' 
-        },
-    ]     
-}
+            value: 'Tasi'
+        }
+    ]
+};
 
 export const selectPropsTipologiaAtto = {
     title: "Tipologia dell'Atto",
     name: 'tipologia_atto',
-    values: 
-    [
+    values: [
         {
-            value: 'Accertamento' 
+            value: 'Accertamento'
         },
         {
-            value: 'Fermo Amministrativo' 
+            value: 'Fermo Amministrativo'
         },
         {
-            value: 'Ingiunzione' 
+            value: 'Ingiunzione'
         },
         {
-            value: 'Intimazione' 
+            value: 'Intimazione'
         },
         {
-            value: 'Liquidazione' 
+            value: 'Liquidazione'
         },
         {
-            value: 'Pignoramento' 
+            value: 'Pignoramento'
         },
         {
-            value: 'Preavviso' 
+            value: 'Preavviso'
         },
         {
-            value: 'Preavviso fermo' 
+            value: 'Preavviso fermo'
         },
         {
-            value: 'Rimborso' 
+            value: 'Rimborso'
         },
         {
-            value: 'Riscossione' 
+            value: 'Riscossione'
         },
         {
-            value: 'Sollecito' 
-        },
-    ]          
-}
+            value: 'Sollecito'
+        }
+    ]
+};
 
 export const selectPropsEsito = {
-
-    title: "Esito",
+    title: 'Esito',
     name: 'esito',
-    values: 
-    [
+    values: [
         {
-            value: 'Aperto' 
+            value: 'Aperto'
         },
         {
-            value: 'Vinto' 
+            value: 'Vinto'
         },
         {
-            value: 'Perso' 
+            value: 'Perso'
         },
         {
-            value: 'Chiuso' 
-        },    
+            value: 'Chiuso'
+        }
     ]
-}
+};
 
 //Cartoline
 export const selectPropsEsitoCartoline = {
-    title: "Esito",
+    title: 'Esito',
     name: 'esito_notifica',
-    values: 
-    [
+    values: [
         {
-            value: 'Ricevuto-Destinatario' 
+            value: 'Ricevuto-Destinatario'
         },
         {
-            value: 'Ricevuto-Familiare Convivente' 
+            value: 'Ricevuto-Familiare Convivente'
         },
         {
-            value: 'Ricevuto-Addetto all\'Immobile' 
+            value: "Ricevuto-Addetto all'Immobile"
         },
         {
-            value: 'Ricevuto-Portiere' 
-        }, 
-        {
-            value: 'Ritirato' 
-        }, 
-        {
-            value: 'Compiuta Giacenza' 
+            value: 'Ricevuto-Portiere'
         },
         {
-            value: 'Rifiutato' 
-        }, 
-        {
-            value: 'Destinatario irreperibile' 
+            value: 'Ritirato'
         },
         {
-            value: 'Destinatario deceduto' 
+            value: 'Compiuta Giacenza'
         },
         {
-            value: 'Destinatario sconosciuto' 
+            value: 'Rifiutato'
         },
         {
-            value: 'Destinatario trasferito' 
+            value: 'Destinatario irreperibile'
         },
         {
-            value: 'Indirizzo inesatto' 
+            value: 'Destinatario deceduto'
         },
         {
-            value: 'Indirizzo insufficiente' 
+            value: 'Destinatario sconosciuto'
         },
         {
-            value: 'Indirizzo inesistente' 
+            value: 'Destinatario trasferito'
         },
         {
-            value: 'CAD' 
+            value: 'Indirizzo inesatto'
         },
+        {
+            value: 'Indirizzo insufficiente'
+        },
+        {
+            value: 'Indirizzo inesistente'
+        },
+        {
+            value: 'CAD'
+        }
     ]
-}
+};
 
 //fase
 export const selectEsitoSentenza = {
-    title: "Esito Sentenza",
+    title: 'Esito Sentenza',
     name: 'esito',
-    values: 
-    [
+    values: [
         {
-            value: 'accolto' 
+            value: 'accolto'
         },
         {
-            value: 'accolto parz' 
+            value: 'accolto parz'
         },
         {
-            value: 'rigettato' 
+            value: 'rigettato'
         },
         {
-            value: 'cessata materia del contendere' 
-        },    
+            value: 'cessata materia del contendere'
+        }
     ]
-}
+};
 
 export const selectEsitoDefinitivo = {
-    title: "Esito Definitivo Relativo la Sentenza",
+    title: 'Esito Definitivo Relativo la Sentenza',
     name: 'esito_definitivo',
-    values: 
-    [
+    values: [
         {
-            value: 'Accoglimento totale' 
+            value: 'Accoglimento totale'
         },
         {
-            value: 'Accoglimento parziale' 
+            value: 'Accoglimento parziale'
         },
         {
-            value: 'Rigettato' 
+            value: 'Rigettato'
         },
         {
-            value: 'Proposta convocazione' 
-        },    
+            value: 'Proposta convocazione'
+        }
     ]
-}
+};
 
 export const selectStatoFase = {
-    title: "Stato Fase",
+    title: 'Stato Fase',
     name: 'fase',
-    values: 
-    [
+    values: [
         {
-            value: 'mediazione' 
+            value: 'mediazione'
         },
         {
-            value: 'ricorso_1g' 
+            value: 'ricorso_1g'
         },
         {
-            value: 'ricorso_2g' 
+            value: 'ricorso_2g'
         },
         {
-            value: 'cassazione' 
-        },    
+            value: 'cassazione'
+        }
     ]
-}
+};
 
 export const selectTipologiaFile = {
-    title: "Tipologia File",
+    title: 'Tipologia File',
     name: 'tipologia_file',
-    values: 
-    [
+    values: [
         {
-            value: 'Ricorso' 
+            value: 'Ricorso'
         },
         {
-            value: 'Istruttoria' 
+            value: 'Istruttoria'
         },
         {
-            value: 'Doc Varia Ricorso' 
+            value: 'Doc Varia Ricorso'
         },
         {
-            value: 'Accertamento' 
-        }, 
-        {
-            value: 'Note Tecniche' 
-        }, 
-        {
-            value: 'Controdeduzioni' 
+            value: 'Accertamento'
         },
         {
-            value: 'Nota Integrativa' 
-        }, 
-        {
-            value: 'Dispositivo' 
+            value: 'Note Tecniche'
         },
         {
-            value: 'Appello' 
+            value: 'Controdeduzioni'
         },
         {
-            value: 'Controdeduzioni Appello' 
+            value: 'Nota Integrativa'
         },
         {
-            value: 'Doc Varia Appello' 
+            value: 'Dispositivo'
         },
         {
-            value: 'Dispositivo' 
+            value: 'Appello'
         },
         {
-            value: 'Sentenza II Grado' 
+            value: 'Controdeduzioni Appello'
         },
         {
-            value: 'Ricorso Cassazione' 
+            value: 'Doc Varia Appello'
         },
         {
-            value: 'Controdeduzioni Cassazione' 
+            value: 'Dispositivo'
         },
         {
-            value: 'Dispositivo Cassazione' 
+            value: 'Sentenza II Grado'
         },
         {
-            value: 'Sentenza Cassazione' 
+            value: 'Ricorso Cassazione'
         },
         {
-            value: 'Varie' 
+            value: 'Controdeduzioni Cassazione'
+        },
+        {
+            value: 'Dispositivo Cassazione'
+        },
+        {
+            value: 'Sentenza Cassazione'
+        },
+        {
+            value: 'Varie'
+        }
+    ]
+};
+
+//Lotti di spedizione
+export const selectEntrataTributo = {
+    title: 'Entrata Tributo',
+    name: 'entrata_tributo',
+    values: [
+        {
+            value: 'Canone unico Patrimoniale'
+        },
+        {
+            value: 'Imu'
+        },
+        {
+            value: 'Tasi'
+        },
+        {
+            value: 'Rsu'
+        },
+        {
+            value: 'Icp'
+        },
+        {
+            value: 'Osap'
+        },
+        {
+            value: 'Dpa'
+        },
+        {
+            value: 'Canone unico'
+        },
+        {
+            value: 'Lvo'
+        },
+        {
+            value: 'Cds'
+        },
+        {
+            value: 'Mense'
+        },
+        {
+            value: 'Trasporti'
+        },
+        {
+            value: 'Imposta di Soggiorno'
+        },
+        {
+            value: 'Numerazione Civica'
+        },
+        {
+            value: 'Riscossione Coattiva'
+        },
+        {
+            value: 'Varie'
+        }
+    ]
+};
+
+export const selectTipologiaDocumenti = {
+    title: 'Tipologia Documenti',
+    name: 'tipologia_documenti',
+    values: [
+        {
+            value: 'Avviso Bonario'
+        },
+        {
+            value: 'Ingiunzioni'
+        },
+        {
+            value: "Accertamenti"
+        },
+        {
+            value: 'Atti Giudiziari'
+        },
+        {
+            value: 'Solleciti'
+        },
+        {
+            value: 'Avvisi Bonari'
+        },
+        {
+            value: 'Rateizzazioni'
+        },
+        {
+            value: 'Altro'
         },
     ]
-}
+};
+
+export const selectTipologiaSpedizione = {
+    title: 'Tipologia Spedizione',
+    name: 'tipologia_spedizioni',
+    values: [
+        {
+            value: 'Posta ordinaria'
+        },
+        {
+            value: 'Raccomandata'
+        },
+        {
+            value: 'Atto giudiziario'
+        },
+        {
+            value: 'Posta Ordinaria'
+        }
+    ]
+};

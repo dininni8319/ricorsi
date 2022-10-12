@@ -16,7 +16,6 @@ class RicorsiController extends Controller
     //    /*  $this->middleware("auth"); */
     //     $this->middleware("auth.revisor");
     // }
-
     protected $messageUnSuccess = 'Nessun ricorso trovato!';
     protected $messageSuccess = 'Importi trovati!';
 
@@ -156,24 +155,6 @@ class RicorsiController extends Controller
                 'id' => $id,
             ], 200);
         }   
-
-        // $idExistes = Fasi::where("ricorsi_id", $id)->exists();
-        // $documents = Document::where('ricorsi_id', $id)->get();
-        
-        // $tasks = Task::where('ricorsi_id', $id)->get();
-
-        // if ($idExistes) {
-        //     $documents = Document::where('ricorsi_id', $id)->get();
-        //     $faseCurrent = Fasi::where("ricorsi_id", $id)->max('fase');
-        //     $currentFases = Fasi::where("ricorsi_id", $id)->orderBy("created_at", "desc")->get();
-           
-        //     return view(
-        //         "ricorsi.detailPage",
-        //         compact("ricorso", "currentFases", "documents", 'faseCurrent' , 'tasks')
-        //     );
-        // }
-
-        // return view("ricorsi.detailPage", compact("ricorso", "documents", 'tasks'));
     }
 
     public function deleteRicorso($id)
@@ -195,15 +176,22 @@ class RicorsiController extends Controller
         }     
     }
 
-    public function searchRicorso(Request $request)
-    {
-        $query = $request->input("query");
+    public function searchRicorso($query)
+    {  
+        if(!$query){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+            $ricorsi = Ricorsi::search($query)->get();
 
-        $ricorsi = Ricorsi::search($query)->get();
-
-        if ($query) {
-            return view("ricorsi.searchPage", compact("ricorsi", "query"));
-        }
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'ricorsi'=> $ricorsi,
+            ], 200);
+        }     
     }
 
     public function lastCreatedRicorso()
