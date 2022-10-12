@@ -8,6 +8,7 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\RicorsiController;
 use App\Http\Controllers\TaxUnitController;
 use App\Http\Controllers\CartolineController;
+use App\Http\Controllers\RiscossioneController;
 use App\Http\Controllers\TaxUnitEditController;
 
 /*
@@ -26,6 +27,7 @@ use App\Http\Controllers\TaxUnitEditController;
 }); */
 
 Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
+    
     //Ricorsi        withoutMiddleware('throttle:api') is usefull went you want allow illimited request from the api          
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home")->withoutMiddleware('throttle:api');
     Route::post("/crea_ricorso/{id?}", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");
@@ -47,6 +49,14 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get("/cartoline" , [CartolineController::class, "cartoline"])->name("cartoline")->withoutMiddleware('throttle:api');
     Route::get("/detail_cartoline/{id}" , [CartolineController::class, "detailCartoline"])->name("detail.cartoline");
     Route::delete("/cartolina/delete/{id}", [CartolineController::class,"cartolinaDelete",])->name("delete.cartolina");
+    
+    //Lotti di spedizioni 
+    Route::get("/riscossione", [RiscossioneController::class, "riscossione"])->name("riscossione");
+    Route::post("/create_riscossione/{id?}", [RiscossioneController::class, "creazioneRisc"])->name("creazioneRisc");
+    Route::get("/detail_riscossione/{id}" , [RiscossioneController::class, "detailRiscossione"])->name("detail.riscossione");
+    Route::get("/riscossione/search={query}" , [RiscossioneController::class, "searchRiscossioni"])->name("search.riscossione");
+    Route::get('/export_lotti', [RiscossioneController::class, "exportLotti"])->name("export.lotti");
+    Route::delete("/riscossione/delete/{id}", [RiscossioneController::class,"deleteRiscossione",])->name("riscossione.cartolina");
     
     // //Chart Notifiche
     Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");

@@ -266,3 +266,109 @@ export const selectTipologiaFile = {
         }
     ]
 };
+
+//Lotti di spedizione
+export const selectEntrataTributo = {
+    title: 'Entrata Tributo',
+    name: 'entrata_tributo',
+    values: [
+        {
+            value: 'Canone unico Patrimoniale'
+        },
+        {
+            value: 'Imu'
+        },
+        {
+            value: 'Tasi'
+        },
+        {
+            value: 'Rsu'
+        },
+        {
+            value: 'Icp'
+        },
+        {
+            value: 'Osap'
+        },
+        {
+            value: 'Dpa'
+        },
+        {
+            value: 'Canone unico'
+        },
+        {
+            value: 'Lvo'
+        },
+        {
+            value: 'Cds'
+        },
+        {
+            value: 'Mense'
+        },
+        {
+            value: 'Trasporti'
+        },
+        {
+            value: 'Imposta di Soggiorno'
+        },
+        {
+            value: 'Numerazione Civica'
+        },
+        {
+            value: 'Riscossione Coattiva'
+        },
+        {
+            value: 'Varie'
+        }
+    ]
+};
+
+export const selectTipologiaDocumenti = {
+    title: 'Tipologia Documenti',
+    name: 'tipologia_documenti',
+    values: [
+        {
+            value: 'Avviso Bonario'
+        },
+        {
+            value: 'Ingiunzioni'
+        },
+        {
+            value: "Accertamenti"
+        },
+        {
+            value: 'Atti Giudiziari'
+        },
+        {
+            value: 'Solleciti'
+        },
+        {
+            value: 'Avvisi Bonari'
+        },
+        {
+            value: 'Rateizzazioni'
+        },
+        {
+            value: 'Altro'
+        },
+    ]
+};
+
+export const selectTipologiaSpedizione = {
+    title: 'Tipologia Spedizione',
+    name: 'tipologia_spedizioni',
+    values: [
+        {
+            value: 'Posta ordinaria'
+        },
+        {
+            value: 'Raccomandata'
+        },
+        {
+            value: 'Atto giudiziario'
+        },
+        {
+            value: 'Posta Ordinaria'
+        }
+    ]
+};

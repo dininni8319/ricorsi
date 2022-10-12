@@ -13,6 +13,9 @@ const App = () => {
     const FaseDetail = lazy(() => import('../FaseDetail'));
     const CartolineDetail = lazy(() => import('../CartolineDetail'));
     const CartolinePage = lazy(() => import('../CartolinePage'));
+    const LottiSpedizioneDetail = lazy(() => import('../LottiSpedizioneDetail'));
+    const LottiSpedizione = lazy(() => import('../LottiSpedizione'));
+    const RiscossionePage = lazy(() => import('../RiscossionePage'));
 
     return (
         <BrowserRouter>
@@ -104,6 +107,41 @@ const App = () => {
                     element={
                         <Suspense fallback={<Loader3 />}>
                             <CartolineDetail />
+                        </Suspense>
+                    }
+                />
+
+                <Route
+                    path="/riscossione/"
+                    element={
+                        <Suspense fallback={<Loader3 />}>
+                            <RiscossionePage />
+                        </Suspense>
+                    }
+                />
+
+                <Route
+                    path="/form_riscossione/"
+                    element={
+                        <Suspense fallback={<Loader3 />}>
+                            <LottiSpedizione />
+                        </Suspense>
+                    }
+                />
+                
+                <Route
+                    path="/form_riscossione/:slug"
+                    element={
+                        <Suspense fallback={<Loader3 />}>
+                            <LottiSpedizione />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/detail_riscossione/:slug"
+                    element={
+                        <Suspense fallback={<Loader3 />}>
+                            <LottiSpedizioneDetail />
                         </Suspense>
                     }
                 />

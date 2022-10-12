@@ -13,6 +13,8 @@ const Navbar = () => {
                 <NavItem content="Avvia Ricorso" href="/ricorsi" />
                 <NavItem content="Caroline" href={`/cartoline`} />
                 <NavItem content="Avvia una Caroline" href={`/work_flow`} />
+                <NavItem content="Riscossione" href={`/riscossione`} />
+                <NavItem content="Avvia un Lotto di Spedizione" href={`/form_riscossione`} />
             </ul>
         </NavbarStyleComponent>
     );

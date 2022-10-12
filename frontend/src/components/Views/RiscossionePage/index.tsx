@@ -3,19 +3,20 @@ import { useState, useEffect, ChangeEvent } from 'react';
 import { baseURL } from '../../Utilities/index';
 import { ObjFormType } from '../../interfaces/interfaces';
 import { Card, Loader3, Search } from '../../UI/index';
-import { WrapperStyleComponent } from './style';
+import { WrapperStyleComponent } from '../Home/style';
+import { funFormatDate } from '../../Utilities/index';
 
-const Homepage = () => {
-    const [ricorsi, setRicorsi] = useState<{ [key: string]: string }[]>([]);
-    const [searchedRicorsi, setSearchedRicorsi] = useState<any>([]);
-    const [searchedTerm, setSearchedTerm] = useState('');
+const RiscossionePage = () => {
+    const [ riscossioni, setRiscossioni ] = useState<{ [key: string]: string }[]>([]);
+    const [ searchedRiscossione, setSearchedRiscossione ] = useState<any>([]);
+    const [ searchedTerm, setSearchedTerm ] = useState('');
 
     useEffect(() => {
-        fetch(`${baseURL}/api/cienneffe/ricorsi`)
+        fetch(`${baseURL}/api/cienneffe/riscossione`)
             .then((response) => response.json())
             .then((data) => {
-                if (data.ricorsi) {
-                    setRicorsi((prev) => [...data?.ricorsi]);
+                if (data.riscossioni) {
+                  setRiscossioni(() => [...data?.riscossioni]);
                 }
             })
             .catch((error: unknown) => {
@@ -25,14 +26,15 @@ const Homepage = () => {
 
     useEffect(() => {
         if (searchedTerm.length > 3) {
-            fetch(`${baseURL}/api/cienneffe/ricorsi/search=${searchedTerm}`)
+            fetch(`${baseURL}/api/cienneffe/riscossione/search=${searchedTerm}`)
                 .then((response) => response.json())
-                .then((data) => setSearchedRicorsi(() => [...data.ricorsi]))
+                .then((data) => setSearchedRiscossione(data?.riscossioni))
                 .catch((error: unknown) => {
                     console.log(error);
                 });
         }
     }, [searchedTerm]);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchedTerm(e.target.value);
     };
@@ -40,96 +42,104 @@ const Homepage = () => {
     return (
         <div className="height-custom flex flex-col items-center">
             <>
-                <Search title="Ricorsi" handleChange={handleChange}>
-                    {searchedRicorsi?.map(
+                <Search title="Riscossione" handleChange={handleChange}>
+                    {searchedRiscossione?.map(
                         (searched: { [key: string]: string }) => {
                             return (
                                 <ul className="bg-white mt-2 p-2 shadow-md border-slate-400">
                                     <li>
                                         <span className="font-semibold pr-1">
-                                            Numero Ricorso:
+                                            Descrizione Spedizione:
                                         </span>
-                                        {searched.numero_ricorso}
+                                        {searched.descrizione_spedizione}
                                     </li>
                                     <li>
                                         <span className="font-semibold pr-1">
-                                            Ente:
+                                            Notifiche Positive:
                                         </span>
-                                        {searched.ente}
+                                        {searched.notifiche_positive}
                                     </li>
                                     <li>
                                         <span className="font-semibold pr-1">
-                                            Anno imposta:
+                                            Data di Consegna al Service:
                                         </span>
-                                        {searched.anno_imposta}
+                                        {funFormatDate(searched.data_consegna_service)}
                                     </li>
-                                    <Link to={`/ricorsi_detail/${searched.id}`}>
-                                        Dettaglio Ricorso
+                                    <Link
+                                        to={`/detail_riscossione/${searched.id}`}
+                                    >
+                                        Dettaglio Lotto di Spedizione
                                     </Link>
                                 </ul>
                             );
                         }
                     )}
                 </Search>
-                <h1>Ricorsi</h1>
+                <h1>Lotto di Spedizione</h1>
             </>
             <WrapperStyleComponent>
                 <>
-                    {ricorsi ? (
-                        ricorsi?.map((ricorso, id: number) => {
+                    {riscossioni ? (
+                        riscossioni?.map((riscossione, id: number) => {
                             return (
                                 <>
                                     <Card
-                                        taxunit={ricorso}
+                                        taxunit={riscossione}
                                         key={id}
-                                        path="ricorso/delete"
-                                        current={ricorsi}
-                                        setCurrent={setRicorsi}
+                                        path="riscossione/delete"
+                                        current={riscossioni}
+                                        setCurrent={setRiscossioni}
                                     >
                                         <>
                                             <h3 className="card-title mb-3">
-                                                Tributo:{' '}
-                                                <span>{ricorso.tributo}</span>
+                                                Descrizione spedizione:{' '}
+                                                <span>
+                                                    {
+                                                        riscossione.descrizione_spedizione
+                                                    }
+                                                </span>
                                             </h3>
 
                                             <ul className="border-custom ul-style-custom">
                                                 <li>
                                                     <span className="font-semibold pr-1">
-                                                        Numero Ricorso:
+                                                        Entrata Tributo:
                                                     </span>
-                                                    {ricorso.numero_ricorso}
+                                                    {
+                                                        riscossione.entrata_tributo
+                                                    }
                                                 </li>
                                                 <li>
                                                     <span className="font-semibold pr-1">
-                                                        Ente:
+                                                        Tipologia Spedizione:
                                                     </span>
-                                                    {ricorso.ente}
+                                                    {riscossione.tipologia_spedizioni}
                                                 </li>
                                                 <li>
                                                     <span className="font-semibold pr-1">
-                                                        Anno imposta:
+                                                        Tipologia Documenti:
                                                     </span>
-                                                    {ricorso.anno_imposta}
+                                                    {riscossione.tipologia_documenti}
                                                 </li>
                                                 <li>
                                                     <span className="font-semibold pr-1">
-                                                        Importo Atto:
+                                                        Numeri Atti:
                                                     </span>
-                                                    {ricorso.importo_atto}
+                                                    {riscossione.nr_atti}
                                                 </li>
                                                 <li>
                                                     <span className="font-semibold pr-1">
-                                                        Esito:
+                                                        Data di Consegna al Service:
                                                     </span>
-                                                    {ricorso.esito}
+                                                    {funFormatDate(riscossione.data_consegna_service)}
                                                 </li>
                                                 <li>
                                                     <p className="font-serif text-sm">
                                                         <span className="font-semibold pr-1">
-                                                            Descrizione:
+                                                            Numberi Atti Spediti:
                                                         </span>
                                                         {
-                                                            ricorso.oggetto_ricorso
+                                                          riscossione.nr_atti_spediti
                                                         }
                                                     </p>
                                                 </li>
@@ -137,14 +147,14 @@ const Homepage = () => {
 
                                             <div className="flex justify-between py-1">
                                                 <Link
-                                                    to={`/ricorsi/${ricorso.id}`}
+                                                    to={`/form_riscossione/${riscossione.id}`}
                                                 >
-                                                    Aggiorna Ricorso
+                                                    Aggiorna il Lotto di Spedizione
                                                 </Link>
                                                 <Link
-                                                    to={`/ricorsi_detail/${ricorso.id}`}
+                                                    to={`/detail_riscossione/${riscossione.id}`}
                                                 >
-                                                    Dettaglio Ricorso
+                                                    Dettaglio Lotto di Spedizione
                                                 </Link>
                                             </div>
                                         </>
@@ -161,4 +171,4 @@ const Homepage = () => {
     );
 };
 
-export default Homepage;
+export default RiscossionePage;

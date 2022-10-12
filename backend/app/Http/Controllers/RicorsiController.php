@@ -16,7 +16,6 @@ class RicorsiController extends Controller
     //    /*  $this->middleware("auth"); */
     //     $this->middleware("auth.revisor");
     // }
-
     protected $messageUnSuccess = 'Nessun ricorso trovato!';
     protected $messageSuccess = 'Importi trovati!';
 
@@ -156,24 +155,6 @@ class RicorsiController extends Controller
                 'id' => $id,
             ], 200);
         }   
-
-        // $idExistes = Fasi::where("ricorsi_id", $id)->exists();
-        // $documents = Document::where('ricorsi_id', $id)->get();
-        
-        // $tasks = Task::where('ricorsi_id', $id)->get();
-
-        // if ($idExistes) {
-        //     $documents = Document::where('ricorsi_id', $id)->get();
-        //     $faseCurrent = Fasi::where("ricorsi_id", $id)->max('fase');
-        //     $currentFases = Fasi::where("ricorsi_id", $id)->orderBy("created_at", "desc")->get();
-           
-        //     return view(
-        //         "ricorsi.detailPage",
-        //         compact("ricorso", "currentFases", "documents", 'faseCurrent' , 'tasks')
-        //     );
-        // }
-
-        // return view("ricorsi.detailPage", compact("ricorso", "documents", 'tasks'));
     }
 
     public function deleteRicorso($id)

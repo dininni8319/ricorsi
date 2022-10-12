@@ -40,9 +40,10 @@ export const formRicorsiLabels = {
         {
             label: 'Telefono',
             name: 'telefono',
-            type: 'number',
+            type: 'text',
+            pattern: '^[0-9]{3,16}',
+            errorMessage: 'Il numero di Telefono deve contenere solo numeri, e un massimo di 16 num!',
             id: 4,
-            errorMessage: ''
         },
         {
             label: 'Cap',
@@ -139,10 +140,10 @@ export const formRicorsiLabels = {
             label: 'Importo Atto €',
             name: 'importo_atto',
             type: 'number',
-            id: 17,
             pattern: '^[1-9]d*(.d+)?$',
             required: true,
-            errorMessage: "L' importo deve essere almeno numberi e decimali"
+            errorMessage: "L' importo deve essere almeno numberi e decimali",
+            id: 17,
         },
         {
             label: 'Informazioni Aggiuntive',
@@ -159,8 +160,8 @@ export const formRicorsiLabels = {
             errorMessage: ''
         }
     ],
-    subMitBtn: 'Invia'
 };
+
 export const cartolineFormData = {
     title: 'Avvia un Cartolina',
     formArr: [
@@ -242,7 +243,6 @@ export const cartolineFormData = {
             errorMessage: ''
         }
     ],
-    subMitBtn: 'Invia'
 };
 
 export const fasiFormData = {
@@ -333,5 +333,109 @@ export const fasiFormData = {
         //       errorMessage: ''
         //   },
     ],
-    subMitBtn: 'Invia'
 };
+
+export const LottiSpedizioneFormData = {
+    title: 'Avvia un Lotto di Spedizione',
+    formArr: [
+        {
+            label: 'Descrizione Spedizione',
+            name: 'descrizione_spedizione',
+            type: 'text',
+            id: 0,
+            errorMessage: ''
+        },
+        {
+            label: 'Numberi degli Atti',
+            name: 'nr_atti',
+            type: 'text',
+            id: 1,
+            errorMessage: ''
+        },
+        {
+            label: 'Data di Consegna al Service',
+            name: 'data_consegna_service',
+            type: 'date',
+            id: 2,
+            errorMessage: ''
+        },
+        {
+            label: 'Data Conferma Anteprime',
+            name: 'data_conferma_anteprime',
+            type: 'date',
+            id: 3,
+            errorMessage: ''
+        },
+        {
+            label: 'Numeri Atti Spediti',
+            name: 'nr_atti_spediti',
+            type: 'text',
+            id: 4,
+            errorMessage: ''
+        },
+        {
+            label: 'Cartoline Ritorno Inserite',
+            name: 'cartoline_ritorno_inserite',
+            type: 'text',
+            id: 5,
+            errorMessage: ''
+        },
+        {
+            label: 'Notifiche Positive',
+            name: 'notifiche_positive',
+            type: 'text',
+            id: 6,
+            errorMessage: ''
+        },
+        {
+            label: 'Notifiche Negative',
+            name: 'notifiche_negative',
+            type: 'text',
+            id: 7,
+            errorMessage: ''
+        },
+        {
+            label: 'Numero Atti Rinotificare',
+            name: 'numero_atti_rinotificare',
+            type: 'text',
+            id: 8,
+            errorMessage: ''
+        },
+        {
+            label: 'Numero Atti Annullati',
+            name: 'nr_atti_annullati',
+            type: 'text',
+            id: 9,
+            errorMessage: ''
+        },
+        {
+            label: 'Importo Atti Annullati',
+            name: 'importo_atti_annullati',
+            type: 'text',
+            id: 10,
+            errorMessage: ''
+        },
+        {
+            label: 'Atti Rettificati',
+            name: 'atti_rettificati',
+            type: 'text',
+            id: 11,
+            errorMessage: ''
+        },
+        {
+            label: 'Importo Atti Rettificati',
+            name: 'importo_atti_rettificati',
+            type: 'text',
+            id: 12,
+            errorMessage: ''
+        },
+        //   {
+        //       label: 'File',
+        //       name: 'nome_file',
+        //       type: 'file',
+        //       id: 11,
+        //       errorMessage: ''
+        //   },
+    ],
+};
+

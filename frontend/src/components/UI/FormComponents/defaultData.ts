@@ -53,3 +53,22 @@ export let defaultFasiData = {
     data_deposito_sentenza: '',
     data_notifica_sentenza: ''
 };
+
+export let defaultLottoData = {
+    descrizione_spedizione: '',
+    entrata_tributo: '',
+    tipologia_documenti: '',
+    tipologia_spedizioni: '',
+    nr_atti: '',
+    data_consegna_service: '',
+    data_conferma_anteprime: '',
+    nr_atti_spediti: '',
+    cartoline_ritorno_inserite: '',
+    notifiche_positive: '',
+    notifiche_negative: '',
+    numero_atti_rinotificare: '',
+    nr_atti_annullati: '',
+    importo_atti_annullati: '',
+    atti_rettificati: '',
+    importo_atti_rettificati: '',
+};
