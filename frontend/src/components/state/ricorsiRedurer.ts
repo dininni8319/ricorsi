@@ -1,39 +1,39 @@
-import { FETCHING, SUCCESS, ERROR } from './actionTypes';
+import { FETCHING, SUCCESS, ERROR } from "./actionTypes";
 // import { InitialState } from "../interfaces/interfaces";
 
 export const initialState: {
-    status: string | undefined;
-    response: object | undefined;
+  status: string | undefined;
+  response: object | undefined;
 } = {
-    status: '',
-    response: {}
+  status: "",
+  response: {},
 };
 
 const ricorsiReducer = (
-    state: any,
-    action: { type: string; response?: object }
+  state: any,
+  action: { type: string; response?: object }
 ) => {
-    switch (action.type) {
-        case FETCHING:
-            return { ...initialState, status: FETCHING };
+  switch (action.type) {
+    case FETCHING:
+      return { ...initialState, status: FETCHING };
 
-        case SUCCESS:
-            return {
-                ...initialState,
-                status: SUCCESS,
-                response: action.response
-            };
+    case SUCCESS:
+      return {
+        ...initialState,
+        status: SUCCESS,
+        response: action.response,
+      };
 
-        case ERROR:
-            return {
-                ...initialState,
-                status: ERROR,
-                response: action.response
-            };
+    case ERROR:
+      return {
+        ...initialState,
+        status: ERROR,
+        response: action.response,
+      };
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
 
 export default ricorsiReducer;
