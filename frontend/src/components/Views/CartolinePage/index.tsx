@@ -42,10 +42,15 @@ const CartolinePage = () => {
   return (
     <div className="height-custom flex flex-col items-center">
       <>
-        <Search title="Cartolina" handleChange={handleChange}>
+        <Search 
+          title="Cartolina" 
+          handleChange={handleChange} 
+          setSearchFC={setSearchedCartoline}
+          setSearchedTerm={setSearchedTerm}
+        >
           {searchedCartoline?.map((searched: { [key: string]: string }) => {
             return (
-              <ul className="bg-white mt-2 p-2 shadow-md border-slate-400">
+              <ul className="bg-white p-2 shadow-md border-slate-400">
                 <li>
                   <span className="font-semibold pr-1">Nome e Cognome:</span>
                   {searched.nome_cognome_debitore}

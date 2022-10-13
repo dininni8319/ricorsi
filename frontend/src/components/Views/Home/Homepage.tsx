@@ -40,10 +40,15 @@ const Homepage = () => {
   return (
     <div className="height-custom flex flex-col items-center">
       <>
-        <Search title="Ricorsi" handleChange={handleChange}>
+        <Search 
+          title="Ricorsi" 
+          handleChange={handleChange} 
+          setSearchFC={setSearchedRicorsi}
+          setSearchedTerm={setSearchedTerm}
+        >
           {searchedRicorsi?.map((searched: { [key: string]: string }) => {
             return (
-              <ul className="bg-white mt-2 p-2 shadow-md border-slate-400">
+              <ul className="bg-white p-2 shadow-md">
                 <li>
                   <span className="font-semibold pr-1">Numero Ricorso:</span>
                   {searched.numero_ricorso}

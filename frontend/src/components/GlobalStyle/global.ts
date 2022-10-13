@@ -61,6 +61,7 @@ export const Theme = {
   goldColor: "gold",
   colorWhite: "white",
   blackColor: "black",
+  orangeColor: '#FCA414',
   //we could usse this colour for the text, not in use at the moment
   textGray: "#1C1C1C",
 

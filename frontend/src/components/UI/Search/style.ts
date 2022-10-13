@@ -1,23 +1,33 @@
 import styled from "styled-components";
 
 export const SearchStyleComponent = styled.header`
-  width: 30vw;
+  width: 20vw;
   min-height: 20%;
   background: inherit;
+  position: absolute;
+  z-index: 100;
+  top: 25%;
+
+  ul {
+    border-left: 3px solid ${props => props.theme.orangeColor};
+    border-bottom: 1px solid ${props => props.theme.borderGrayColor};
+    margin-bottom: 1px;
+  }
 
   input {
     width: 100%;
     padding: 0.7rem 0.4rem;
     outline: none;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 2px;
     text-align: center;
     box-shadow: ${(props) => props.theme.boxShadow2};
+    margin-bottom: 3px;
   }
 
-  @media only screen and (max-width: 765px) {
-    width: 100%;
+  /* @media only screen and (max-width: 765px) { */
+    /* width: 100%;
     display: flex;
-    justify-content: center;
-  }
+    justify-content: center; */
+  /* } */
 `;

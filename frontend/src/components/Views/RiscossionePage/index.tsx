@@ -44,10 +44,15 @@ const RiscossionePage = () => {
   return (
     <div className="height-custom flex flex-col items-center">
       <>
-        <Search title="Riscossione" handleChange={handleChange}>
+        <Search 
+          title="Riscossione" 
+          handleChange={handleChange} 
+          setSearchFC={setSearchedRiscossione} 
+          setSearchedTerm={setSearchedTerm}
+        >
           {searchedRiscossione?.map((searched: { [key: string]: string }) => {
             return (
-              <ul className="bg-white mt-2 p-2 shadow-md border-slate-400">
+              <ul className="bg-white p-2 shadow-md border-slate-400">
                 <li>
                   <span className="font-semibold pr-1">
                     Descrizione Spedizione:
