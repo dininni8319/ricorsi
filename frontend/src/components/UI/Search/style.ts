@@ -11,7 +11,12 @@ export const SearchStyleComponent = styled.header`
   ul {
     border-left: 3px solid ${props => props.theme.orangeColor};
     border-bottom: 1px solid ${props => props.theme.borderGrayColor};
-    margin-bottom: 1px;
+  }
+  
+  .active-class {
+    cursor: pointer;
+    transition: 0.6s ease-out;
+    background: ${props => props.theme.bodyBackgroundColor};
   }
 
   input {
@@ -19,7 +24,6 @@ export const SearchStyleComponent = styled.header`
     padding: 0.7rem 0.4rem;
     outline: none;
     cursor: pointer;
-    border-radius: 2px;
     text-align: center;
     box-shadow: ${(props) => props.theme.boxShadow2};
     margin-bottom: 3px;

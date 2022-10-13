@@ -46,7 +46,7 @@ export const Theme = {
   //color for the input and line bottom
   borderGrayColor: "#e5e5e5",
   textShadow: "text-shadow:  5px 5px 11px rgba(0,0,0,1)",
-
+  bodyBackgroundColor: 'rgba(222,222,222)',
   //not in use
   backgroundBodyColor: "",
   buttoncolor: "",

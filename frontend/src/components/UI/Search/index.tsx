@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { SearchStyleComponent } from "./style";
 
+
 const Search = ({
   title,
   children,

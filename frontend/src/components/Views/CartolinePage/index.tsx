@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect, ChangeEvent } from "react";
+import { useNavigate } from 'react-router';
 import { baseURL } from "../../Utilities/index";
 import { ObjFormType } from "../../interfaces/interfaces";
 import { Card, Loader3, Search } from "../../UI/index";
@@ -11,6 +12,22 @@ const CartolinePage = () => {
   const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
   const [searchedTerm, setSearchedTerm] = useState("");
 
+  const [selectedItem, setSelectedItem] = useState(false);
+  let [ cardId, setCardId ] = useState<number>(0);
+  
+  const handleSelectedItem = (e:any, id: number) => {
+    
+    if (id) {
+      setSelectedItem(true);
+      setCardId(id);
+    }
+  }
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (id: number) => {
+     navigate(`/detail_cartoline/${id}`);
+  }
   useEffect(() => {
     fetch(`${baseURL}/api/cienneffe/cartoline`)
       .then((response) => response.json())
@@ -50,7 +67,11 @@ const CartolinePage = () => {
         >
           {searchedCartoline?.map((searched: { [key: string]: string }) => {
             return (
-              <ul className="bg-white p-2 shadow-md border-slate-400">
+              <ul 
+                className={`bg-white p-2 shadow-md ${selectedItem && cardId === parseInt(searched.id) ? 'active-class' : ''}`} 
+                onMouseOver={(e) => handleSelectedItem(e, parseInt(searched?.id))}
+                onClick={() => handleNavigate(parseInt(searched.id))}
+              >
                 <li>
                   <span className="font-semibold pr-1">Nome e Cognome:</span>
                   {searched.nome_cognome_debitore}
