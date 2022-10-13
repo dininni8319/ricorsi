@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { SearchStyleComponent } from "./style";
 
-
 const Search = ({
   title,
   children,
@@ -15,12 +14,11 @@ const Search = ({
   handleChange: any;
   setSearchedTerm: any;
 }) => {
-
   const handleResetSearch = (e: any) => {
-    let val = e.target.value = '';
+    let val = (e.target.value = "");
     setSearchedTerm(() => val);
     setSearchFC([]);
-  }
+  };
   return (
     <SearchStyleComponent>
       <>

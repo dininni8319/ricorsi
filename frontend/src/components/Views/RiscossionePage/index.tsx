@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef, ChangeEvent } from "react";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
 import { Card, Loader3, Search } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
@@ -13,27 +13,26 @@ const RiscossionePage = () => {
   const [searchedRiscossione, setSearchedRiscossione] = useState<any>([]);
   const [searchedTerm, setSearchedTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState(false);
-  let [ cardId, setCardId ] = useState<number>(0);
-  
-  const handleSelectedItem = (e:any, id: number) => {
-    
+  let [cardId, setCardId] = useState<number>(0);
+
+  const handleSelectedItem = (e: any, id: number) => {
     if (id) {
       setSelectedItem(true);
       setCardId(id);
     }
-  }
+  };
   const navigate = useNavigate();
 
   const handleNavigate = (id: number) => {
-     navigate(`/detail_riscossione/${id}`);
-  }
+    navigate(`/detail_riscossione/${id}`);
+  };
 
   useEffect(() => {
     fetch(`${baseURL}/api/cienneffe/riscossione`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.riscossioni) {
-          setRiscossioni(() => [...data?.riscossioni]);
+        if (data.data) {
+          setRiscossioni(() => [...data?.data]);
         }
       })
       .catch((error: unknown) => {
@@ -45,7 +44,7 @@ const RiscossionePage = () => {
     if (searchedTerm.length > 3) {
       fetch(`${baseURL}/api/cienneffe/riscossione/search=${searchedTerm}`)
         .then((response) => response.json())
-        .then((data) => setSearchedRiscossione(data?.riscossioni))
+        .then((data) => setSearchedRiscossione(data?.data))
         .catch((error: unknown) => {
           console.log(error);
         });
@@ -59,17 +58,23 @@ const RiscossionePage = () => {
   return (
     <div className="height-custom flex flex-col items-center">
       <>
-        <Search 
-          title="Riscossione" 
-          handleChange={handleChange} 
-          setSearchFC={setSearchedRiscossione} 
+        <Search
+          title="Riscossione"
+          handleChange={handleChange}
+          setSearchFC={setSearchedRiscossione}
           setSearchedTerm={setSearchedTerm}
         >
           {searchedRiscossione?.map((searched: { [key: string]: string }) => {
             return (
-              <ul 
-                className={`bg-white p-2 shadow-md border-slate-400 ${selectedItem && cardId === parseInt(searched.id) ? 'active-class' : ''}`} 
-                onMouseOver={(e) => handleSelectedItem(e, parseInt(searched?.id))}
+              <ul
+                className={`bg-white p-2 shadow-md border-slate-400 ${
+                  selectedItem && cardId === parseInt(searched.id)
+                    ? "active-class"
+                    : ""
+                }`}
+                onMouseOver={(e) =>
+                  handleSelectedItem(e, parseInt(searched?.id))
+                }
                 onClick={() => handleNavigate(parseInt(searched.id))}
               >
                 <li>

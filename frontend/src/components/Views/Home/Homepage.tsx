@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, ChangeEvent } from "react";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
 import { ObjFormType } from "../../interfaces/interfaces";
 import { Card, Loader3, Search } from "../../UI/index";
@@ -11,20 +11,19 @@ const Homepage = () => {
   const [searchedRicorsi, setSearchedRicorsi] = useState<any>([]);
   const [searchedTerm, setSearchedTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState(false);
-  let [ cardId, setCardId ] = useState<number>(0);
-  
-  const handleSelectedItem = (e:any, id: number) => {
-    
+  let [cardId, setCardId] = useState<number>(0);
+
+  const handleSelectedItem = (e: any, id: number) => {
     if (id) {
       setSelectedItem(true);
       setCardId(id);
     }
-  }
+  };
 
   const navigate = useNavigate();
   const handleNavigate = (id: number) => {
-     navigate(`/ricorsi_detail/${id}`);
-  }
+    navigate(`/ricorsi_detail/${id}`);
+  };
 
   useEffect(() => {
     fetch(`${baseURL}/api/cienneffe/ricorsi`)
@@ -56,17 +55,23 @@ const Homepage = () => {
   return (
     <div className="height-custom flex flex-col items-center">
       <>
-        <Search 
-          title="Ricorsi" 
-          handleChange={handleChange} 
+        <Search
+          title="Ricorsi"
+          handleChange={handleChange}
           setSearchFC={setSearchedRicorsi}
           setSearchedTerm={setSearchedTerm}
         >
           {searchedRicorsi?.map((searched: { [key: string]: string }) => {
             return (
-              <ul 
-                className={`bg-white p-2 shadow-md ${selectedItem && cardId === parseInt(searched.id) ? 'active-class' : ''}`} 
-                onMouseOver={(e) => handleSelectedItem(e, parseInt(searched?.id))}
+              <ul
+                className={`bg-white p-2 shadow-md ${
+                  selectedItem && cardId === parseInt(searched.id)
+                    ? "active-class"
+                    : ""
+                }`}
+                onMouseOver={(e) =>
+                  handleSelectedItem(e, parseInt(searched?.id))
+                }
                 onClick={() => handleNavigate(parseInt(searched.id))}
               >
                 <li>

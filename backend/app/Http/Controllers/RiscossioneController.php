@@ -19,11 +19,12 @@ class RiscossioneController extends Controller
     protected $messageUnSuccess = 'Nessun ricorso trovato!';
     protected $messageSuccess = 'Importi trovati!';
 
-    public function funResponse($status, $success,$message, $data){
+    public function funResponse($status, $success,$message, $data, $id){
         return response()->json([
             'success' => $success,
             'message' => $message,
             'data' => $data,
+            'id' => $id,
         ], $status);
     }
 
@@ -70,62 +71,35 @@ class RiscossioneController extends Controller
         $riscossioni = Riscossione::orderBy("created_at", "desc")->limit(5)->get();
 
         if(!$riscossioni){
-            return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
+            return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null,$id = null);
+
         } else {
+            return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossioni, $id = null);
 
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-                'riscossioni' => $riscossioni,
-            ], 200);
         }   
-
-        if ($riscossioni) {
-    
-            return view("riscossione.riscossione", compact('riscossioni','notifichePositive', 'notificheNegative', 'notificheNotificare', 'notificheRitorno','notificheAnnullati' , 'notificheRettificati'));
-        }
-
-        return view("riscossione.riscossione");
     }
 
     public function detailRiscossione($id)
     {
         if(!intval($id)){
-            return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
+            return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
+
         } else {
 
             $riscossione = Riscossione::find($id);
-
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-                'riscossione' => $riscossione,
-                'id' => $id,
-            ], 200);
+            
+            return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $id);   
         }   
     }
      
     public function searchRiscossioni($query)
     {
         if(!$query){
-            return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
+            return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
         } else {
             $riscossioni = Riscossione::search($query)->get();
 
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-                'riscossioni'=> $riscossioni,
-            ], 200);
+            return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossioni, $id = null);
         }     
     }
 
@@ -138,60 +112,39 @@ class RiscossioneController extends Controller
             $riscossione = Riscossione::create($formData);
 
             if(!$riscossione){
-                return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
+                return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
             } else {
-                
-                return response()->json([
-                    'success' => true,
-                    'message' => $this->messageSuccess,
-                    'riscossione' => $riscossione,
-                    'id' => $riscossione->id,
-                ], 200);
+
+                return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $riscossione->id);
             }  
             
         } elseif ($id) {
 
-            if(!$id){
-                return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
+            return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
+
             } else {
                 $riscossione = Riscossione::find($id);
      
                 $riscossione->update($formData);
                 
-                return response()->json([
-                    'success' => true,
-                    'message' => $this->messageSuccess,
-                    'riscossione' => $riscossione,
-                    'id' => $riscossione->id,
-                ], 200);
+                return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $riscossione->id);
+              
             }    
         }
-    }    
-    
+
     public function deleteRiscossione($id)
     {
         if(!$id){
-            return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
+            
+            return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
         } else {
 
             $riscossione = Riscossione::find($id)->delete();
 
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-                'id' => $id,
-            ], 200);
+            return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $id);
         }     
     }
+
     public function exportLotti()
      {
         return Excel::download(new RiscossioneExport(), 'lottiexport.xlsx',);

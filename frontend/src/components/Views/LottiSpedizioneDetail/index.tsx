@@ -18,6 +18,7 @@ const LottiSpedizioneDetail = () => {
       verb: "get",
     }
   );
+  console.log(payload, "testing the payload");
 
   const [{ status, response }, makeRequest] = useApiRequest(
     `${baseURL}/api/cienneffe/cartolina/delete/${slug}`,
@@ -26,7 +27,7 @@ const LottiSpedizioneDetail = () => {
     }
   );
 
-  let { riscossione }: any = payload;
+  let { data: riscossione }: any = payload;
 
   const handleDelete = (e: any) => {
     e.preventDefault();

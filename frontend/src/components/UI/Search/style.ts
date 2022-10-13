@@ -9,14 +9,14 @@ export const SearchStyleComponent = styled.header`
   top: 25%;
 
   ul {
-    border-left: 3px solid ${props => props.theme.orangeColor};
-    border-bottom: 1px solid ${props => props.theme.borderGrayColor};
+    border-left: 3px solid ${(props) => props.theme.orangeColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderGrayColor};
   }
-  
+
   .active-class {
     cursor: pointer;
     transition: 0.6s ease-out;
-    background: ${props => props.theme.bodyBackgroundColor};
+    background: ${(props) => props.theme.bodyBackgroundColor};
   }
 
   input {
@@ -30,7 +30,7 @@ export const SearchStyleComponent = styled.header`
   }
 
   /* @media only screen and (max-width: 765px) { */
-    /* width: 100%;
+  /* width: 100%;
     display: flex;
     justify-content: center; */
   /* } */

@@ -9,18 +9,6 @@ export default function useInput(
 ) {
   const [data, setData] = useState(initialSate);
 
-  // const [ { status, response }, makeRequest ] = useApiRequest(
-  //   `${baseURL}/api/cienneffe/detail_ricorso/${slug}`, {
-  //       verb: 'get',
-  // })
-
-  // let ricorso = response?.data?.ricorso;
-
-  // useEffect(() => {
-  //   makeRequest();
-  //   setData(prevState => ({...prevState, ricorso}))
-  // }, [])
-
   const handleData = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
     index?: number
