@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { FormProps } from "../../../interfaces/interfaces";
 import { baseURL } from "../../../Utilities/index";
 import FormWrapper from "../FormWrapper";
-import { FormContainer } from "../FormRicorsi/style";
+import { FormContainer } from "./style";
 
 const Form: React.FC<FormProps> = ({
   id,

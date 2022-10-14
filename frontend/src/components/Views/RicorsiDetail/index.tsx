@@ -7,7 +7,7 @@ import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "./style";
 import useApiRequest from "../../state/useApiRequest";
 import { WrapperStyleComponent } from "../Home/style";
-import { Card, DetailPage, Loader3, Modal } from "../../UI/index";
+import { Card, DetailPage, Loader3, RemainderForm } from "../../UI/index";
 import { faseCurrent, funFormatDate } from "../../Utilities/index";
 
 const RicorsiDetail = () => {
@@ -115,6 +115,7 @@ const RicorsiDetail = () => {
                 </p>
               </li>
             </ul>
+            <RemainderForm />
             <section className="flex justify-center">
               <WrapperStyleComponent>
                 {currentFasis?.map((fase: Fasi, id: number) => {

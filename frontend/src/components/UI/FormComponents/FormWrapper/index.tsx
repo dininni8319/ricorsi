@@ -1,4 +1,4 @@
-import { FormContainer } from "../FormRicorsi/style";
+import { FormContainer } from "../Form/style";
 import { FormWrapperType } from "../../../interfaces/interfaces";
 
 //not in use at the moment, it's working!

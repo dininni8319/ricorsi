@@ -44,7 +44,26 @@ class TaskCotroller extends Controller
                     "scadenza_del_compito" => $scadenza,
                     "descrizione_compito"=>$request->descrizione_compito,
                 ]);
+
+                if(!$task){
+                    return response()->json([
+                        'success' => false,
+                        'message' => "The task was not created!",
+                    ], 404);
+                } else {
+        
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Thank you, the task is been assigned!',
+                        'task'=> $task,
+                    ], 200);
+                }     
             }
+            
+            return response()->json([
+                'success' => false,
+                'message' => "The task was not created!",
+            ], 404);
         }
         return redirect("/detail_ricorso/" . $ricorsi_id)->with("id", $ricorsi_id);
     }
