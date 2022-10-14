@@ -23,8 +23,6 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
       .then((data) => {
         if (data) {
           navigate(`/ricorsi_detail/${slug}`);
-        } else {
-          navigate("/");
         }
       })
       .catch((err) => {

@@ -35,8 +35,8 @@ class TaskEmailNotificationCommand extends Command
         //here we get all the tasks that they are not been send
         foreach ($notifications as $notification) {
             $email = $notification->mail;
-
-            Notification::route("mail", 'gestione.ricorsi@cienneffe.com')->notify(
+              
+            Notification::route("mail",$email)->notify(
                 new TaskEmailNotification($notification)
             );
 

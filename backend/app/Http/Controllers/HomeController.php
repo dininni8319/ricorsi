@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        /* $this->middleware("auth"); */
-        $this->middleware("auth.revisor")->except(['index']);
-    }
+    // public function __construct()
+    // {
+    //     /* $this->middleware("auth"); */
+    //     $this->middleware("auth.revisor")->except(['index']);
+    // }
 
     public function index()
     {

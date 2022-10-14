@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class RiconciliazioneController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware("auth");
-        /* $this->middleware("auth.revisor"); */
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware("auth");
+    //     /* $this->middleware("auth.revisor"); */
+    // }
 
     protected function getFormData($req) {
         return [

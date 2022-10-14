@@ -42,8 +42,8 @@ class EndDateTaskReminder extends Command
             $ricorsi_id = $value["ricorsi_id"];
             $ricorso = Ricorsi::find($ricorsi_id);
             $email = $ricorso->mail;
-
-            Notification::route("mail", 'gestione.ricorsi@cienneffe.com')->notify(
+            
+            Notification::route("mail", $email)->notify(
                 new TaskReminderEndDateNotification($value, $ricorso)
             );
 

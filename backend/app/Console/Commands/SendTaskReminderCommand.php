@@ -53,7 +53,7 @@ class SendTaskReminderCommand extends Command
             $ricorso = Ricorsi::find($ricorso_id);
             $email = $ricorso->mail;
 
-            Notification::route("mail", 'gestione.ricorsi@cienneffe.com')->notify(
+            Notification::route("mail", $email)->notify(
                 new TaskReminderNotification($task, $ricorso)
             );
 
