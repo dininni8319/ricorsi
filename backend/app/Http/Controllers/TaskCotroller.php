@@ -44,7 +44,7 @@ class TaskCotroller extends Controller
                     "scadenza_del_compito" => $scadenza,
                     "descrizione_compito"=>$request->descrizione_compito,
                 ]);
-
+                dd($task, 'testing the taskes');
                 if(!$task){
                     return response()->json([
                         'success' => false,

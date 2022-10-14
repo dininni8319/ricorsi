@@ -20,17 +20,17 @@ const FasiDetail = () => {
       verb: "get",
     }
   );
-  let { fase }:any = payload;
+  let { fase }: any = payload;
 
   let { payload: currentFase } = useFetch(
     `${baseURL}/api/cienneffe/last_fase/${fase?.ricorsi_id}`,
     {
       verb: "get",
     }
-    );
-  
-  let { id: currentId }:any = currentFase;
-  
+  );
+
+  let { id: currentId }: any = currentFase;
+
   const [{ status, response }, makeRequest] = useApiRequest(
     `${baseURL}/api/cienneffe/fase/delete/${slug}`,
     {
@@ -38,9 +38,6 @@ const FasiDetail = () => {
     }
   );
 
- 
-  
-  
   const handleDelete = (e: any) => {
     e.preventDefault();
     makeRequest();
@@ -108,7 +105,11 @@ const FasiDetail = () => {
             <Link to={`/ricorsi_detail/${fase.ricorsi_id}`}>
               Dettaglio Ricorso
             </Link>
-            {currentId === fase?.id && <Link to={`/form_fase/${fase?.ricorsi_id}`}>Aggiorna la Fase</Link>}
+            {currentId === fase?.id && (
+              <Link to={`/form_fase/${fase?.ricorsi_id}`}>
+                Aggiorna la Fase
+              </Link>
+            )}
             <>
               <button
                 onClick={(event) => handleDelete(event)}

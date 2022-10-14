@@ -1,6 +1,5 @@
 //Ricorsi
 
-
 export const selectPropsTributi = {
   title: "Tributo",
   name: "tributo",
@@ -189,7 +188,6 @@ export const selectEsitoDefinitivo = {
   ],
 };
 
-
 export const selectStatoFase = {
   title: "Stato Fase",
   name: "fase",
@@ -372,6 +370,29 @@ export const selectTipologiaSpedizione = {
     },
     {
       value: "Posta Ordinaria",
+    },
+  ],
+};
+
+//select tasks imput
+export const selectTasks = {
+  title: "Invia una notifica prima della scadenza",
+  name: "reminder",
+  values: [
+    {
+      value: "uno",
+    },
+    {
+      value: "due",
+    },
+    {
+      value: "tre",
+    },
+    {
+      value: "cinque",
+    },
+    {
+      value: "settimana",
     },
   ],
 };

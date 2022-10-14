@@ -35,6 +35,11 @@ export const GlobalStyle = createGlobalStyle`
     a:hover {
         color:#10B981;
     }
+
+    input, select {
+        outline: none;
+        cursor: pointer;
+    }
 `;
 
 export const Theme = {

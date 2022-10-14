@@ -34,6 +34,7 @@ Route::get("/detail_ricorso/{ricorso}", [RicorsiController::class,"detailRicorso
 Route::delete("/delete_ricorso/{id}", [RicorsiController::class,"ricorsoDelete",])->name("delete.ricorso");
 Route::get("/search", [RicorsiController::class, "searchRicorso"])->name("search");
 Route::post("/crea_ricorso/{id?}", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");
+
 //TaskReminder
 Route::post("/taskrimender/{id}", [TaskCotroller::class, "setReminder"])->name("reminder");
 Route::delete("/delete_task/{task}", [TaskCotroller::class,"deleteTask",])->name("delete.task");

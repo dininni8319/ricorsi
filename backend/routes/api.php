@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskCotroller;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChartController;
@@ -44,6 +45,10 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get("/cartolina/search={query}", [CartolineController::class, "searchCartolina"])->name("search.cartoline");
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
     
+    //TaskReminder
+    Route::post("/taskrimender/{id}", [TaskCotroller::class, "setReminder"])->name("reminder");
+    Route::delete("/delete_task/{task}", [TaskCotroller::class,"deleteTask",])->name("delete.task");
+
     //Cartoline 
     Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
     Route::get("/cartoline" , [CartolineController::class, "cartoline"])->name("cartoline")->withoutMiddleware('throttle:api');

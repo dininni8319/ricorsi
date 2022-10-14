@@ -72,3 +72,9 @@ export let defaultLottoData = {
   atti_rettificati: "",
   importo_atti_rettificati: "",
 };
+
+export let defaultRemainderData = {
+  scadenza_del_compito: "",
+  descrizione_compito: "",
+  reminder: "",
+};

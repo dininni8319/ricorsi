@@ -22,7 +22,7 @@ const SelectInput = ({
         onChange={(e) => handleData(e)}
         required
       >
-        {selectProps?.values.map(({ value }:any, index: number) => {
+        {selectProps?.values.map(({ value }: any, index: number) => {
           return (
             <option
               value={ricorso ? ricorso[newName as keyof object] : value}
