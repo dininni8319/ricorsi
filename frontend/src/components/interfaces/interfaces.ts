@@ -27,7 +27,7 @@ export interface FormProps {
   createPath: string;
   subMitBtn: string;
   //key and value pair definition in typescript
-  data: { [key: string]: string };
+  data: { [key: string]: string | number};
   children?: JSX.Element;
   // ricorso: {[key: string]: string} | undefined,
   // errors?: ErrorType
@@ -48,7 +48,7 @@ export interface PropsInput {
   label: string;
   name: string;
   id?: number;
-  value?: string;
+  value?: string | number;
   errorMessage?: string;
   focused?: string;
   // inputProps: string,
@@ -68,7 +68,7 @@ export interface PropsTextArea {
   name: string;
   index?: number;
   typeIn?: string;
-  value?: string;
+  value?: string | number;
   handleData: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     index?: number
@@ -87,7 +87,7 @@ export interface LogoProps {
 export type ObjSelectType = {
   title: string;
   name: string;
-  values: { value: string }[];
+  values: { value: string | number }[];
   ricorso?: object;
 };
 

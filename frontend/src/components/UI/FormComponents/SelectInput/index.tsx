@@ -6,7 +6,7 @@ const SelectInput = ({
   ricorso,
   handleData,
 }: {
-  selectProps: ObjSelectType;
+  selectProps: any;
   ricorso?: object;
   handleData: React.ChangeEventHandler<HTMLSelectElement>;
 }) => {
@@ -22,7 +22,7 @@ const SelectInput = ({
         onChange={(e) => handleData(e)}
         required
       >
-        {selectProps?.values.map(({ value }, index: number) => {
+        {selectProps?.values.map(({ value }:any, index: number) => {
           return (
             <option
               value={ricorso ? ricorso[newName as keyof object] : value}

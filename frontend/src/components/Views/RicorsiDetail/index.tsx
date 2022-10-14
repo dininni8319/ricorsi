@@ -19,9 +19,7 @@ const RicorsiDetail = () => {
 
   let { payload } = useFetch(
     `${baseURL}/api/cienneffe/detail_ricorso/${slug}`,
-    {
-      verb: "get",
-    }
+    {verb: "get",}
   );
 
   useEffect(() => {
@@ -32,7 +30,16 @@ const RicorsiDetail = () => {
         console.log(error);
       });
   }, []);
-
+ 
+  let { payload: currentFase } = useFetch(
+    `${baseURL}/api/cienneffe/last_fase/${currentFasis[0]?.ricorsi_id}`,
+    {
+      verb: "get",
+    }
+    );
+  
+  let { id: currentId }:any = currentFase;
+  
   const [{ status, response }, makeRequest] = useApiRequest(
     `${baseURL}/api/cienneffe/ricorso/delete/${slug}`,
     {
@@ -151,12 +158,10 @@ const RicorsiDetail = () => {
                           </li>
                         </ul>
                         <div className="flex justify-between py-1">
-                          <Link to={`/form_fase/${fase.id}`}>
-                            Aggiorna la Fase
-                          </Link>
                           <Link to={`/fase_detail/${fase.id}`}>
                             Dettaglio Fase
                           </Link>
+                          {currentId === fase?.id && <Link to={`/form_fase/${fase?.ricorsi_id}`}>Aggiorna la Fase</Link>}
                         </div>
                       </>
                     </Card>

@@ -38,7 +38,7 @@ export let defaultCartolineData = {
 };
 
 export let defaultFasiData = {
-  fase: "",
+  fase: 0,
   contro_deduzioni_tax_unit: "",
   contro_deduzioni_uff_legale: "",
   presentato: "",

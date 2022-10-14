@@ -4,7 +4,7 @@ import useApiRequest from "../components/state/useApiRequest";
 import { ObjFormType } from "../components/interfaces/interfaces";
 
 export default function useInput(
-  initialSate: { [key: string]: string },
+  initialSate: { [key: string]: string | number },
   slug?: number | string
 ) {
   const [data, setData] = useState(initialSate);

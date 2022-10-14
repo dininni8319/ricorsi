@@ -1,4 +1,6 @@
 //Ricorsi
+
+
 export const selectPropsTributi = {
   title: "Tributo",
   name: "tributo",
@@ -187,21 +189,22 @@ export const selectEsitoDefinitivo = {
   ],
 };
 
+
 export const selectStatoFase = {
   title: "Stato Fase",
   name: "fase",
   values: [
     {
-      value: "mediazione",
+      value: 1,
     },
     {
-      value: "ricorso_1g",
+      value: 2,
     },
     {
-      value: "ricorso_2g",
+      value: 3,
     },
     {
-      value: "cassazione",
+      value: 4,
     },
   ],
 };
