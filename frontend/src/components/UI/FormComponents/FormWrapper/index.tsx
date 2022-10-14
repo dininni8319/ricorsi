@@ -1,5 +1,6 @@
 import { FormContainer } from "../Form/style";
 import { FormWrapperType } from "../../../interfaces/interfaces";
+import { memo } from "react";
 
 //not in use at the moment, it's working!
 const FormWrapper = ({ title, subMitBtn, handleSubmit }: FormWrapperType) => {
@@ -15,4 +16,4 @@ const FormWrapper = ({ title, subMitBtn, handleSubmit }: FormWrapperType) => {
   );
 };
 
-export default FormWrapper;
+export default memo(FormWrapper);

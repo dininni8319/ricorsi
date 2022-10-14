@@ -3,6 +3,7 @@ import { CardStyleComponent, CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
 import useApiRequest from "../../state/useApiRequest";
 import { useNavigate } from "react-router";
+import { memo } from "react";
 
 const Card = ({
   taxunit,
@@ -23,6 +24,7 @@ const Card = ({
       verb: "delete",
     }
   );
+
   const navigate = useNavigate();
   const handleDelete = (e: any, id?: number | string) => {
     e.preventDefault();
@@ -49,4 +51,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default memo(Card);

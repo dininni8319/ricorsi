@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { ObjSelectType } from "../../../interfaces/interfaces";
 import { SelectStyleComponent, Wrapper } from "./style";
 
@@ -37,4 +38,4 @@ const SelectInput = ({
   );
 };
 
-export default SelectInput;
+export default memo(SelectInput);

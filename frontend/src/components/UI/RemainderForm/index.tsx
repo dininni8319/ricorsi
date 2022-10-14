@@ -5,14 +5,16 @@ import { defaultRemainderData } from "../FormComponents/defaultData";
 import useInput from "../../../Hooks/useInput";
 import { RemainderStyleComponent } from "./style";
 import { useNavigate } from "react-router";
+import { memo } from "react";
 
 const RemainderForm = ({ slug }: { slug?: string }) => {
   const navigate = useNavigate();
+
   const { data, handleData } = useInput(defaultRemainderData);
+  console.log("testing the rendering");
 
   const HandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(data);
 
     fetch(`${baseURL}/api/cienneffe/taskrimender/${slug}}`, {
       method: "POST",
@@ -70,4 +72,4 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
   );
 };
 
-export default RemainderForm;
+export default memo(RemainderForm);

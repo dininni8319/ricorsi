@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef, ChangeEvent } from "react";
+import { useState, useEffect, useRef, ChangeEvent, useCallback } from "react";
 import { useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
 import { Card, Loader3, Search } from "../../UI/index";
@@ -21,6 +21,7 @@ const RiscossionePage = () => {
       setCardId(id);
     }
   };
+
   const navigate = useNavigate();
 
   const handleNavigate = (id: number) => {
