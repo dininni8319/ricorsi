@@ -8,6 +8,10 @@ body {
   box-sizing: border-box;
   font-family: "Times New Roman", Times, serif;
 }
+
+h1 {
+  text-align: center;
+}
 .height-custom {
   width: 100vw;
   min-height: 40vh;

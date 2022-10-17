@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardHeaderStyle = styled.div`
   width: 100%;
-  height: 3px;
+  height: 1px;
   margin-top: 5px;
   background-color: ${(props) => props.theme.blackColor};
 `;

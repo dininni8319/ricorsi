@@ -53,10 +53,10 @@ export const Theme = {
   textShadow: "text-shadow:  5px 5px 11px rgba(0,0,0,1)",
   bodyBackgroundColor: "rgba(222,222,222)",
   //not in use
-  backgroundBodyColor: "",
+  backgroundGrayColor: "#F1F2F6",
   buttoncolor: "",
   blueColor: "",
-  grayColor: "",
+  grayInputText: "#888888",
   //////////////
 
   //General Colors

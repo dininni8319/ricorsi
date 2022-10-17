@@ -28,10 +28,11 @@ export const SelectStyleComponent = styled.select`
   }
 `;
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  background-color: #f2f2f2;
+  align-items: center;
+  background-color: ${props => props.theme.backgroundGrayColor};
   margin: 5px;
   padding: 5px;
 

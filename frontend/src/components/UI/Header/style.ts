@@ -21,10 +21,9 @@ export const HeaderComponent = styled.header`
   }
 
   @media only screen and (max-width: 765px) {
-    height: 45vh;
-
+    clip-path: none;
     .h2-custom-class {
-      top: 45%;
+      top: 50%;
       left: 4%;
       font-size: 18px;
     }

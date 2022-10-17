@@ -5,7 +5,7 @@ export const SearchStyleComponent = styled.header`
   min-height: 20%;
   background: inherit;
   position: absolute;
-  z-index: 100;
+  z-index: 50;
   top: 25%;
 
   ul {

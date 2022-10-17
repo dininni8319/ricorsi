@@ -10,7 +10,8 @@ export const NavbarStyleComponent = styled.nav`
   width: 100vw;
   min-height: 6vh;
   background-color: ${(props) => props.theme.transparent};
-
+  z-index: 100;
+  
   .nav-label-style {
     background-color: transparent;
     font-size: 22px;

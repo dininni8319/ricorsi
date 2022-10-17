@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-export const InputSection = styled.div`
+export const InputSection = styled.div.attrs((props: { checkBox: boolean }) => props)`
+  width: ${props => props.checkBox ? '40%' : '' };
+  height: ${props => props.checkBox ? '70%' : '' };
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  align-items: ${props => props.checkBox ? 'center' : 'flex-start' };
+  margin-left: ${props => props.checkBox ? '20px' : '' };
+  padding: ${props => props.checkBox ? '10px' : '20px' };
+  background: ${props => props.checkBox ? '#F1F2F6' : 'transparent'};
+  border-radius: ${props => props.checkBox ? '5px' : '0' };
 
   .input-label {
     font-weight: bold;
@@ -11,16 +17,21 @@ export const InputSection = styled.div`
   }
 
   .input-style {
-    padding: 15px;
+    width: ${props => props.checkBox ? '30px' : '90%' };
+    height: ${props => props.checkBox ? '30px' : '' };
+    padding: ${props => props.checkBox ? '' : '10px' };
     margin-top: 5px;
     border-radius: ${(props) => props.theme.borderRadius};
     border: 1px solid ${(props) => props.theme.borderGrayColor};
-    background: ${(props) => props.theme.transparent};
-    width: 100%;
+
+    border-radius: ${props => props.checkBox ? '10px' : '' };
+    background:${props => props.checkBox ? '#eee' : 'white' } ;
     outline: none;
   }
 
   label {
+    margin-bottom: ${props => props.checkBox ? '10px' : '' };
+    font-size: ${props => props.checkBox ? '14px' : '' };
     text-align: start;
   }
 
@@ -35,11 +46,11 @@ export const InputSection = styled.div`
     border: 1px solid red;
   }
 
-  input:valid[focused="true"] {
+  /* input:valid[focused="true"] {
     border: 1px solid green;
   }
 
   input:invalid[focused="true"] ~ span {
     display: block;
-  }
+  } */
 `;
