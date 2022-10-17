@@ -5,11 +5,19 @@ import { defaultRemainderData } from "../FormComponents/defaultData";
 import useInput from "../../../Hooks/useInput";
 import { RemainderStyleComponent } from "./style";
 import { useNavigate } from "react-router";
-import { memo } from "react";
+import { memo, useState } from "react";
+import { Modal } from '../index';
 
 const RemainderForm = ({ slug }: { slug?: string }) => {
   const navigate = useNavigate();
-
+  const [ isOpen, setIsOpen ] = useState(false);
+  const [ message, setMessage ] = useState('')
+   console.log(isOpen);
+     
+  const handleOpen = (event: any) => {
+    event.preventDefault();
+    setIsOpen(prev => !prev);
+  }
   const { data, handleData } = useInput(defaultRemainderData);
   console.log("testing the rendering");
 
@@ -23,7 +31,13 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data) {
+        if (data.success === true) {
+          setMessage(data.message);
+          setIsOpen(true);
+        
+        } else {
+          // setMessage(data.message);
+          // setIsOpen(true);
           navigate(`/ricorsi_detail/${slug}`);
         }
       })
@@ -58,7 +72,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
           </div>
         </section>
       </form>
-
+      {isOpen && <Modal setIsOpen={setIsOpen} message={message}/>}
     </RemainderStyleComponent>
   );
 };

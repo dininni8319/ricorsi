@@ -7,51 +7,34 @@ import { Input, SelectInput, Form } from "../index";
 import useInput from "../../../Hooks/useInput";
 
 const Backdrop = ({ setIsOpen }: any) => {
+
   return (
     <div className={styles.backdrop} onClick={() => setIsOpen(false)}></div>
   );
 };
 
-const Overlay = ({ setIsOpen, children }: any) => {
+const Overlay = ({ setIsOpen, message }: any) => {
   return (
     <div className={styles.modal}>
-      {/* <div className={styles.modalHeader}>
-          <h3 className={styles.heading}>Avvia una fase</h3>
-        </div> */}
+        <div className={styles.modalHeader}>
+        </div>
       <div className={styles.centered}>
-        {children}
+        
         <button
           className={styles.closeBtn}
-          onClick={(e) => {
-            e.preventDefault();
-            setIsOpen(false);
-          }}
+          onClick={() => setIsOpen(false)}
         >
           <RiCloseLine style={{ marginBottom: "-3px" }} />
-        </button>
-
-        <div className={styles.modalActions}>
+        </button>    
           <div className={styles.actionsContainer}>
-            <button
-              className={styles.deleteBtn}
-              onClick={() => setIsOpen(false)}
-            >
-              DELETE
-            </button>
-            <button
-              className={styles.cancelBtn}
-              onClick={() => setIsOpen(false)}
-            >
-              CANCEL
-            </button>
+            <h3 className={styles.heading}>{message}</h3>
           </div>
-        </div>
       </div>
     </div>
   );
 };
 
-const Modal: any = ({ setIsOpen }: any) => {
+const Modal: any = ({ setIsOpen, message }: any) => {
   return (
     <>
       {createPortal(
@@ -61,7 +44,7 @@ const Modal: any = ({ setIsOpen }: any) => {
         document.getElementById("backdrop") as HTMLElement
       )}
       {createPortal(
-        <Overlay setIsOpen={setIsOpen} />,
+        <Overlay setIsOpen={setIsOpen} message={message} />,
         document.getElementById("overlay") as HTMLElement
       )}
     </>

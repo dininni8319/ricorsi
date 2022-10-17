@@ -30,7 +30,8 @@ export const GlobalStyle = createGlobalStyle`
        font-size: 14px;
        transition: 1s;
        color: inherit;
-       color: blue;
+       color: #4361ee;
+       font-weight: 600;
     }
 
     input, select {

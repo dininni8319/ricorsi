@@ -31,13 +31,11 @@ class TaskCotroller extends Controller
 
         $reminder_at = $request->reminder;
         
-        foreach ($obj as $key => $value) {
-            
-            if ($reminder_at == $key && $reminder_at != null) {
-                $days = $obj[$key];
+            if ( $reminder_at != null) {
+                $days = $obj[$reminder_at];
                 $reminder_at = Carbon::create(now()->addDays($days));
                 $scadenza = $request->scadenza_del_compito;
-                
+              
                 // $date = date('y-m-d', strtotime($reminder_at));
                 $task = Task::create([
                     "reminder_at" => $reminder_at,
@@ -46,7 +44,6 @@ class TaskCotroller extends Controller
                     "descrizione_compito"=>$request->descrizione_compito,
                 ]);
                 
-
                 if(!$task){
                     return response()->json([
                         'success' => false,
@@ -63,7 +60,7 @@ class TaskCotroller extends Controller
                 }     
             }
             
-        }
+    
         return response()->json([
             'success' => false,
             'message' => "The task was not created!2",

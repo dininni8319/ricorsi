@@ -30,8 +30,8 @@ export const baseURL =
 export const faseCurrent = (current: string | number) => {
   let fase =
     (current === 1 && "Mediazione") ||
-    (current === 2 && "Ricorso 1gr") ||
-    (current === 3 && "Ricorso 2gr") ||
+    (current === 2 && "Ricorso 1°") ||
+    (current === 3 && "Ricorso 2°") ||
     (current === 4 && "Cassazione");
   return fase;
 };
