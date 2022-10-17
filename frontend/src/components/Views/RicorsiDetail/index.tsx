@@ -115,8 +115,8 @@ const RicorsiDetail = () => {
                 </p>
               </li>
             </ul>
-            <RemainderForm slug={slug} />
-            <section className="flex justify-center">
+          
+            <section className="md:flex md:flex-col">
               <WrapperStyleComponent>
                 {currentFasis?.map((fase: Fasi, id: number) => {
                   return (
@@ -173,6 +173,7 @@ const RicorsiDetail = () => {
                   );
                 })}
               </WrapperStyleComponent>
+              <RemainderForm slug={slug} />
             </section>
           </>
         </DetailPage>

@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { faseCurrent } from "../../../Utilities/index";
 import { ObjSelectType } from "../../../interfaces/interfaces";
 import { SelectStyleComponent, Wrapper } from "./style";
 
@@ -29,7 +30,7 @@ const SelectInput = ({
               value={ricorso ? ricorso[newName as keyof object] : value}
               key={index}
             >
-              {value}
+              {selectProps?.name == 'fase' ? faseCurrent(value) : value}
             </option>
           );
         })}

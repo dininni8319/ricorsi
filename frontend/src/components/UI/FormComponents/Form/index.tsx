@@ -49,7 +49,7 @@ const Form: React.FC<FormProps> = ({
       {/* {errors && errorTag(errors?.message)} */}
       <section className="form-row">
         {children}
-        <div className="flex items-center">
+        <div className="flex justify-center items-center w-full">
           <button className="btn-send border-solid text-white mt-5 py-2 w-full">
             {subMitBtn}
           </button>

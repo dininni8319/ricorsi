@@ -1,5 +1,4 @@
 //Ricorsi
-
 export const selectPropsTributi = {
   title: "Tributo",
   name: "tributo",

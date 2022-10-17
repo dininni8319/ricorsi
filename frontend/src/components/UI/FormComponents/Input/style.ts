@@ -7,7 +7,7 @@ export const InputSection = styled.div.attrs((props: { checkBox: boolean }) => p
   flex-direction: column;
   align-items: ${props => props.checkBox ? 'center' : 'flex-start' };
   margin-left: ${props => props.checkBox ? '20px' : '' };
-  padding: ${props => props.checkBox ? '10px' : '20px' };
+  padding: ${props => props.checkBox ? '10px' : '20px 5px' };
   background: ${props => props.checkBox ? '#F1F2F6' : 'transparent'};
   border-radius: ${props => props.checkBox ? '5px' : '0' };
 
@@ -19,11 +19,10 @@ export const InputSection = styled.div.attrs((props: { checkBox: boolean }) => p
   .input-style {
     width: ${props => props.checkBox ? '30px' : '90%' };
     height: ${props => props.checkBox ? '30px' : '' };
-    padding: ${props => props.checkBox ? '' : '10px' };
+    padding: ${props => props.checkBox ? '' : '10px 0' };
     margin-top: 5px;
     border-radius: ${(props) => props.theme.borderRadius};
     border: 1px solid ${(props) => props.theme.borderGrayColor};
-
     border-radius: ${props => props.checkBox ? '10px' : '' };
     background:${props => props.checkBox ? '#eee' : 'white' } ;
     outline: none;

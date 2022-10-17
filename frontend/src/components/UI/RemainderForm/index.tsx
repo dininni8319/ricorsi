@@ -33,7 +33,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
   };
   return (
     <RemainderStyleComponent>
-      <form className="p-5 bg-white mt-3 task-remainer" onSubmit={HandleSubmit}>
+      <form className="p-5 bg-white mt-3 mb-5 task-remainer shadow-lg" onSubmit={HandleSubmit}>
         <section className="mb-3 flex flex-col mx-3">
           <h5 className="font-bold">Invia una notifica</h5>
           <div className="">
@@ -58,16 +58,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
           </div>
         </section>
       </form>
-      <div className="p-5 mt-2 bg-white ml-5 ">
-        {/* <h6 className="font-bold">Scadenza impostata:</h6> */}
-        {/* @foreach ($tasks as $task)
-                  <p> {{$task->scadenza_del_compito}} </p>
-              @endforeach */}
-        <h6 className="font-bold">Descrizione del compito:</h6>
-        {/* @foreach ($tasks as $task)
-                {/* <p> {{$task->descrizione_compito}} </p> */}
-        {/* @endforeach */}
-      </div>
+
     </RemainderStyleComponent>
   );
 };
