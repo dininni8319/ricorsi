@@ -102,11 +102,11 @@ const FasiDetail = () => {
       <section className="links-detail-page mt-5">
         {fase && (
           <div className="md:flex md:justify-between md:items-end py-2">
-            <Link to={`/ricorsi_detail/${fase.ricorsi_id}`}>
+            <Link to={`/ricorsi_detail/${fase.ricorsi_id}`} className='btn btn-link'>
               Dettaglio Ricorso
             </Link>
             {currentId === fase?.id && (
-              <Link to={`/form_fase/${fase?.ricorsi_id}`}>
+              <Link to={`/form_fase/${fase?.ricorsi_id}`} className='btn btn-link'>
                 Aggiorna la Fase
               </Link>
             )}

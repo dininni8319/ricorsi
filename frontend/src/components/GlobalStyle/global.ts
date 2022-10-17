@@ -30,10 +30,7 @@ export const GlobalStyle = createGlobalStyle`
        font-size: 14px;
        transition: 1s;
        color: inherit;
-    }
-    
-    a:hover {
-        color:#10B981;
+       color: blue;
     }
 
     input, select {

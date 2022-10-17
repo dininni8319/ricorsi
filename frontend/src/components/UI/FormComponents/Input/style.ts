@@ -6,7 +6,7 @@ export const InputSection = styled.div.attrs((props: { checkBox: boolean }) => p
   display: flex;
   flex-direction: column;
   align-items: ${props => props.checkBox ? 'center' : 'flex-start' };
-  margin-left: ${props => props.checkBox ? '20px' : '' };
+  margin-left: ${props => props.checkBox ? '5px' : '' };
   padding: ${props => props.checkBox ? '10px' : '20px 5px' };
   background: ${props => props.checkBox ? '#F1F2F6' : 'transparent'};
   border-radius: ${props => props.checkBox ? '5px' : '0' };

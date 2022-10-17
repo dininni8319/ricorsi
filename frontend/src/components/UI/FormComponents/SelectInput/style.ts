@@ -28,7 +28,7 @@ export const SelectStyleComponent = styled.select`
   }
 `;
 export const Wrapper = styled.div`
-  width: 80%;
+  width: 87%;
   display: flex;
   flex-direction: column;
   align-items: center;
