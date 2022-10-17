@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavbarStyleComponent = styled.nav`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   position: absolute;
   z-index: 5;
@@ -11,26 +11,35 @@ export const NavbarStyleComponent = styled.nav`
   min-height: 6vh;
   background-color: ${(props) => props.theme.transparent};
 
+  .nav-label-style {
+    background-color: transparent;
+    font-size: 22px;
+    color: ${props => props.theme.textColorGrey};
+  }
+
   .style-logo {
     width: 100%;
-    height: 50px;
+    height: 60px;
     object-fit: cover;
   }
+
   a {
-    font-size: 22px;
-    color: ${(props) => props.theme.textColorGrey};
-    transition: 0.5s ease-in-out;
+    font-size: 18px; 
+    color: ${(props) => props.theme.blackColor}; 
   }
 
   a:hover {
-    font-size: 20px;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 20px; 
+    color: ${(props) => props.theme.textGray};
     padding-bottom: 5px;
-    border-bottom: 3px solid white;
   }
 
   @media only screen and (max-width: 765px) {
     background-color: transparent;
     border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
   }
 `;

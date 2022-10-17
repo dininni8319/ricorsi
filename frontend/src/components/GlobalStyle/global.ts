@@ -46,7 +46,7 @@ export const Theme = {
   navbarColor: "#10B981",
   footerColor: "#272D36",
   borderColor: "#F2F2F2",
-  textColorGrey: "rgba(255,255,255,0.9)",
+  textColorGrey: "rgba(255,255,255,0.8)",
 
   //color for the input and line bottom
   borderGrayColor: "#e5e5e5",

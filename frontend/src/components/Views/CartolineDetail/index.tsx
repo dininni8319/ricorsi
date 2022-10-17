@@ -46,10 +46,10 @@ const CartolineDetail = () => {
           <DetailPage slug={slug}>
             <ul className="ul-detail-style">
               <li>
-                Nome e Cognome: <span>{cartolina.nome_cognome_debitore}</span>
+                Nome e Cognome:<span>{cartolina.nome_cognome_debitore}</span>
               </li>
               <li>
-                Codice Mandante: <span>{cartolina.codice_mandate}</span>
+                Codice Mandante:<span>{cartolina.codice_mandate}</span>
               </li>
               <li>
                 CF/PIVA: <span>{cartolina.cf_piva_debitore}</span>

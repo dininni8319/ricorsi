@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
-import { ObjFormType } from "../../interfaces/interfaces";
 import { Card, Loader3, Search } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
+import { funFormatDate } from "../../Utilities/index";
 
 const CartolinePage = () => {
   const [cartoline, setCartoline] = useState<{ [key: string]: string }[]>([]);
   const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
   const [searchedTerm, setSearchedTerm] = useState("");
-
   const [selectedItem, setSelectedItem] = useState(false);
   let [cardId, setCardId] = useState<number>(0);
 
@@ -27,6 +26,7 @@ const CartolinePage = () => {
   const handleNavigate = (id: number) => {
     navigate(`/detail_cartoline/${id}`);
   };
+
   useEffect(() => {
     fetch(`${baseURL}/api/cienneffe/cartoline`)
       .then((response) => response.json())
@@ -87,7 +87,7 @@ const CartolinePage = () => {
                 </li>
                 <li>
                   <span className="font-semibold pr-1">Data Notifica:</span>
-                  {searched.data_notifica}
+                  {funFormatDate(searched.data_notifica)}
                 </li>
                 <Link to={`/detail_cartoline/${searched.id}`}>
                   Dettaglio Cartolina
@@ -131,15 +131,15 @@ const CartolinePage = () => {
                           <span className="font-semibold pr-1">
                             Data Notifica:
                           </span>
-                          {cartolina.data_notifica}
+                          {funFormatDate(cartolina.data_notifica)}
                         </li>
                         <li>
                           <span className="font-semibold pr-1">NDG:</span>
                           {cartolina.ndg}
                         </li>
                         <li>
-                          <span className="font-semibold pr-1">Esito:</span>
-                          {cartolina.esito_notifica}
+                          <span className="font-semibold pr-1">Fase:</span>
+                          {cartolina.fase}
                         </li>
                         <li>
                           <p className="font-serif text-sm">

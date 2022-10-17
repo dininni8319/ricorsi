@@ -11,6 +11,7 @@ export const SearchStyleComponent = styled.header`
   ul {
     border-left: 3px solid ${(props) => props.theme.orangeColor};
     border-bottom: 1px solid ${(props) => props.theme.borderGrayColor};
+    
   }
 
   .active-class {
@@ -29,9 +30,12 @@ export const SearchStyleComponent = styled.header`
     margin-bottom: 3px;
   }
 
-  /* @media only screen and (max-width: 765px) { */
-  /* width: 100%;
-    display: flex;
-    justify-content: center; */
-  /* } */
+  @media only screen and (max-width: 765px) { 
+    top: 28%;
+    left: 4%;
+
+    input, ul {
+      width: 200px;
+    } 
+  }
 `;

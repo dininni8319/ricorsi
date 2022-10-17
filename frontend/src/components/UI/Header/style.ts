@@ -21,10 +21,12 @@ export const HeaderComponent = styled.header`
   }
 
   @media only screen and (max-width: 765px) {
+    height: 45vh;
+
     .h2-custom-class {
-      top: 50%;
-      left: 10%;
-      font-size: 22px;
+      top: 45%;
+      left: 4%;
+      font-size: 18px;
     }
   }
 `;
