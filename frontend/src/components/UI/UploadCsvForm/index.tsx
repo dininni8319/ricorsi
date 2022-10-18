@@ -17,12 +17,12 @@ const ImportCsv = () => {
       if (file) {
         formatData.append('csv_file', file);
         
-        console.log(formatData);
         axios.post(`${baseURL}/api/cienneffe/import_cartolina`, formatData)
           .then((response) => response)
           .then(data => {
-            let message = data.data.message
-            if (message) {
+            let message = data.data.message;
+            
+            if (data.status === 200) {
               setMessage(message);
               setTimeout(() => {
                 setMessage('');
@@ -32,20 +32,6 @@ const ImportCsv = () => {
           .catch((err) => {
             alert(err);
           }); 
-        fetch(`${baseURL}/api/cienneffe/import_cartolina`, {
-          method: "POST",
-          headers: {"Content-Type": `multipart/form-data: boundary=add-random-characters`},
-          body: JSON.stringify(file),
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.message) {
-            setMessage(data.message);
-          } 
-        })
-        .catch((err) => {
-          alert(err);
-        });    
         
       } else if (file === null) {
         setError('File is required')
@@ -60,24 +46,27 @@ const ImportCsv = () => {
   };
 
   return (
-    <ImportStyleComponent onSubmit={handleSubmit}>
-      <div>
-          <label htmlFor="csv_file">File CSV</label>
-          <input 
-            type="file" 
-            accept={".csv"}
-            name="csv_file" 
-            id="csv_file" 
-            className="my-2"
-            onChange={handleFile}
-          />
-          <button type="submit">Import CSV File</button>
-          {error && <p className="text-red-600 text-sm p-2">{error}</p>}
-          {message && <p className="text-green-600 text-sm p-2">{message}</p>}
-      </div>
- 
-    </ImportStyleComponent>
-
+    <>
+      <ImportStyleComponent onSubmit={handleSubmit}>
+        <div>
+            <label htmlFor="csv_file">File CSV</label>
+            <input 
+              type="file" 
+              accept={".csv"}
+              name="csv_file" 
+              id="csv_file" 
+              className="my-2"
+              onChange={handleFile}
+            />
+            <button type="submit">Import CSV File</button>
+            <a href={`${baseURL}/export_cartolina`} className='pt-2'>Export</a>
+            {error && <p className="text-red-600 text-sm p-2">{error}</p>}
+            {message && <p className="text-green-600 text-sm p-2">{message}</p>}
+        </div>
+  
+      </ImportStyleComponent>
+      {/* <button type="submit" onClick={handleExportCsvFile}>Export CSV File</button> */}
+    </>
   );
 }
 

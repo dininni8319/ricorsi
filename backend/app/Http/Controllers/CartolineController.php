@@ -250,6 +250,6 @@ class CartolineController extends Controller
 
     public function exportExcel()
     {
-        return Excel::download(new CartolineExport, 'cartoline.xlsx');
+       return Excel::download(new CartolineExport, 'cartoline.xlsx');
     }
 }
