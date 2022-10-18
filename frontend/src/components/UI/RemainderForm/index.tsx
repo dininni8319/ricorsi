@@ -5,21 +5,21 @@ import { defaultRemainderData } from "../FormComponents/defaultData";
 import useInput from "../../../Hooks/useInput";
 import { RemainderStyleComponent } from "./style";
 import { useNavigate } from "react-router";
-import { memo, useState } from "react";
-import { Modal } from '../index';
+import { useState, useEffect, memo,} from "react";
+import { Modal, RemainderList } from '../index';
 
 const RemainderForm = ({ slug }: { slug?: string }) => {
   const navigate = useNavigate();
   const [ isOpen, setIsOpen ] = useState(false);
-  const [ message, setMessage ] = useState('')
-   console.log(isOpen);
-     
-  const handleOpen = (event: any) => {
-    event.preventDefault();
-    setIsOpen(prev => !prev);
-  }
+  const [ message, setMessage ] = useState('');
+  const [ tasks, setTasks ] = useState<any>([]);
   const { data, handleData } = useInput(defaultRemainderData);
-  console.log("testing the rendering");
+
+  useEffect(() => {
+    fetch(`${baseURL}/api/cienneffe/tasks/${slug}}`)
+      .then((response) => response.json())
+      .then((data) => setTasks([...data.tasks])) 
+  },[])
 
   const HandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -34,10 +34,11 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
         if (data.success === true) {
           setMessage(data.message);
           setIsOpen(true);
+          
           setTimeout(() => {
             setIsOpen(false);
           },2000)
-          
+
         } else {
           setMessage(data.message);
           setIsOpen(true);
@@ -49,34 +50,40 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
       });
   };
   return (
-    <RemainderStyleComponent>
-      <form className="p-5 bg-white mt-3 mb-5 shadow-lg" onSubmit={HandleSubmit}>
-        <section className="mb-3 flex flex-col mx-3">
-          <h5 className="font-bold">Invia una notifica</h5>
-          <div className="">
-            <Input
-              type="date"
-              label="Scadenza del Compito"
-              name="scadenza_del_compito"
-              handleData={handleData}
-            />
-            <Input
-              type="text"
-              label="Descrizione Compito"
-              name="descrizione_compito"
-              handleData={handleData}
-            />
-          </div>
-          <div className="md:flex md:flex-col">
-            <SelectInput selectProps={selectTasks} handleData={handleData} />
-            <button className="btn-send border-solid bg-orange-500 text-white mt-5 py-2 w-full">
-              Inserisci
-            </button>
-          </div>
-        </section>
-       {isOpen && <Modal setIsOpen={setIsOpen} message={message}/>}
-      </form>
-    </RemainderStyleComponent>
+      <RemainderStyleComponent>
+        <div>
+          <form className="p-5 bg-white mt-3 mb-5 shadow-lg" onSubmit={HandleSubmit}>
+            <section className="mb-3 flex flex-col mx-3">
+              <h5 className="font-bold">Invia una notifica</h5>
+              <div className="">
+                <Input
+                  type="date"
+                  label="Scadenza del Compito"
+                  name="scadenza_del_compito"
+                  handleData={handleData}
+                />
+                <Input
+                  type="text"
+                  label="Descrizione Compito"
+                  name="descrizione_compito"
+                  handleData={handleData}
+                />
+              </div>
+              <div className="md:flex md:flex-col">
+                <SelectInput selectProps={selectTasks} handleData={handleData} />
+                <button className="btn-send border-solid bg-orange-500 text-white mt-5 py-2 w-full">
+                  Inserisci
+                </button>
+              </div>
+            </section>
+          {isOpen && <Modal setIsOpen={setIsOpen} message={message}/>}
+          </form>
+        </div>
+        <div>
+          <RemainderList tasks={tasks} setTasks={setTasks}/>
+        </div>
+      </RemainderStyleComponent>
+  
   );
 };
 

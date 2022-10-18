@@ -13,7 +13,6 @@ class TaskCotroller extends Controller
     //     /* $this->middleware("auth"); */
     //     $this->middleware("auth.revisor");
     // }
-
     public $due_date;
     public $note;
     public $reminder_date;
@@ -60,22 +59,46 @@ class TaskCotroller extends Controller
                 }     
             }
             
-    
         return response()->json([
             'success' => false,
             'message' => "The task was not created!2",
-        ], 404);
-       
+        ], 404); 
+    }
+
+    public function allTasks($id) {
+        $tasks = Task::where('ricorsi_id', $id)->get();
+        
+        if(!$tasks){
+            return response()->json([
+                'success' => false,
+                'message' => "The tasks were not found!",
+            ], 404);
+        } else {
+           
+            return response()->json([
+                'success' => true,
+                'message' => 'Success, here are all the tasks!',
+                'tasks'=> $tasks,
+            ], 200);
+        }     
     }
 
     public function deleteTask($id) {
         
-        $task = Task::find($id);
-        
-        $ricorsi_id = $task->ricorsi_id;
-
-        $task->delete();
-        
-        return redirect("/detail_ricorso/" . $ricorsi_id)->with("id", $ricorsi_id);
+        if(!$id){
+            return response()->json([
+                'success' => false,
+                'message' => "The tasks were not found!",
+            ], 404);
+        } else {
+            $task = Task::find($id);
+            $task->delete();
+           
+            return response()->json([
+                'success' => true,
+                'message' => 'Success, the task is been deleted!',
+                'task'=> $task,
+            ], 200);
+        }     
     }
 }

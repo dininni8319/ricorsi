@@ -1,10 +1,6 @@
 import styles from "./style.module.css";
 import { createPortal } from "react-dom";
 import { RiCloseLine } from "react-icons/ri";
-import { defaultFasiData } from "../FormComponents/defaultData";
-import { fasiFormData } from "../FormComponents/defaultProps";
-import { Input, SelectInput, Form } from "../index";
-import useInput from "../../../Hooks/useInput";
 
 const Backdrop = ({ setIsOpen }: any) => {
 
@@ -13,7 +9,7 @@ const Backdrop = ({ setIsOpen }: any) => {
   );
 };
 
-const Overlay = ({ setIsOpen, message }: any) => {
+const Overlay = ({ setIsOpen, setSure, message }: any) => {
   return (
     <div className={styles.modal}>
     <div className={styles.modalHeader}></div>
@@ -28,11 +24,15 @@ const Overlay = ({ setIsOpen, message }: any) => {
         <div className={styles.actionsContainer}>
           <h3 className={styles.heading}>{message}</h3>
         </div>
+        {setSure && <button className='btn bg-red-500' onClick={() => {
+          setSure((prev: any) => prev = true)
+          setIsOpen(false)
+        }}>OK</button>}
     </div>
   );
 };
 
-const Modal: any = ({ setIsOpen, message }: any) => {
+const Modal: any = ({ setIsOpen, setSure, message }: any) => {
   return (
     <>
       {createPortal(
@@ -42,7 +42,7 @@ const Modal: any = ({ setIsOpen, message }: any) => {
         document.getElementById("backdrop") as HTMLElement
       )}
       {createPortal(
-        <Overlay setIsOpen={setIsOpen} message={message} />,
+        <Overlay setIsOpen={setIsOpen} message={message} setSure={setSure} />,
         document.getElementById("overlay") as HTMLElement
       )}
     </>

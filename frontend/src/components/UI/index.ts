@@ -12,3 +12,4 @@ export { default as Modal } from "./Modal/index";
 export { default as Loader3 } from "./Loaders/Loader3/index";
 export { default as Search } from "./Search/";
 export { default as RemainderForm } from "./RemainderForm/";
+export { default as RemainderList } from "./RemainderList/";

@@ -46,8 +46,9 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
     
     //TaskReminder
+    Route::get("/tasks/{id}", [TaskCotroller::class, "allTasks"])->withoutMiddleware('throttle:api');
     Route::post("/taskrimender/{id}", [TaskCotroller::class, "setReminder"])->withoutMiddleware('throttle:api');
-    Route::delete("/delete_task/{task}", [TaskCotroller::class,"deleteTask",])->name("delete.task");
+    Route::delete("/task/delete/{id}", [TaskCotroller::class,"deleteTask",])->name("delete.task");
 
     //Cartoline 
     Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
