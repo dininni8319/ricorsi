@@ -34,8 +34,21 @@ export const GlobalStyle = createGlobalStyle`
        font-weight: 600;
     }
 
-    input, select {
+    input, select, button {
         outline: none;
+        cursor: pointer;
+    }
+
+
+    input[type="file"]::-webkit-file-upload-button {
+        background-color: #F1F2F6;
+        border: none;
+        width: 60%;
+        font-weight: 700;
+        font-size: 14px;
+        color: #888888;
+        display: inline-block;
+        padding: 10px 30px;
         cursor: pointer;
     }
 `;

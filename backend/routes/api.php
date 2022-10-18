@@ -55,7 +55,9 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get("/cartoline" , [CartolineController::class, "cartoline"])->name("cartoline")->withoutMiddleware('throttle:api');
     Route::get("/detail_cartoline/{id}" , [CartolineController::class, "detailCartoline"])->name("detail.cartoline");
     Route::delete("/cartolina/delete/{id}", [CartolineController::class,"cartolinaDelete",])->name("delete.cartolina");
-    
+    Route::post('/import_cartolina', [CartolineController::class, "importCsv"])->name("import.cartolina");
+    Route::get('/export_cartolina', [CartolineController::class, "exportExcel"])->name("export.cartolina");
+
     //Lotti di spedizioni 
     Route::get("/riscossione", [RiscossioneController::class, "riscossione"])->name("riscossione");
     Route::post("/create_riscossione/{id?}", [RiscossioneController::class, "creazioneRisc"])->name("creazioneRisc");

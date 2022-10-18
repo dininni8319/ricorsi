@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
-import { Card, Loader3, Search } from "../../UI/index";
+import { Card, Loader3, Search, ImportCsv } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
 import { funFormatDate } from "../../Utilities/index";
 
@@ -97,6 +97,7 @@ const CartolinePage = () => {
           })}
         </Search>
         <h1>Cartoline</h1>
+        <ImportCsv />
       </>
       <WrapperStyleComponent>
         <>

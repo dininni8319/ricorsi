@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
         $schedule->command("task_reminder:send")->everyMinute();
         $schedule->command("email:send")->everyMinute();
         $schedule->command("enddate:send")->everyMinute();
-        $schedule->command("clean:pending-files")->everyMinute();
+        // $schedule->command("clean:pending-files")->everyMinute();
 
         /* $schedule->command("datedeposit:send")->everyMinute(); */
         /* $schedule->command("datedeposit:send")->weeklyOn(1, '10:00'); */

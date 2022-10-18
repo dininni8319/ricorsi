@@ -24,18 +24,6 @@ export const FormContainer = styled.form`
     font-size: 20px;
   }
 
-  input[type="file"]::-webkit-file-upload-button {
-    background-color: ${(props) => props.theme.backgroundGrayColor};
-    border: none;
-    width: 60%;
-    font-weight: 700;
-    font-size: 14px;
-    color: ${(props) => props.theme.grayInputText};
-    display: inline-block;
-    padding: 10px 30px;
-    cursor: pointer;
-  }
-
   .checkbox-style {
     display: flex;
     background: ${(props) => props.theme.backgroundGrayColor};
