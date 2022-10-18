@@ -25,9 +25,8 @@ export const CardStyleComponent = styled.div`
     }
   }
 
-  
   @media only screen and (max-width: 765px) {
-    .link-detail-style{
+    .link-detail-style {
       font-size: 10px;
     }
   }

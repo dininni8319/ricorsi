@@ -16,7 +16,7 @@
   min-height: 15%;
   z-index: 1000;
   background: white;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   backdrop-filter: blur(8px);
 }
@@ -65,5 +65,21 @@
   transform: translate(-5px, 5px);
 }
 
+.btn-accect-style {
+  background-color: transparent;
+  border: 2px solid rgba(255, 0, 0, 0.829);
+  padding: 10px 70px;
+  border-radius: 30px;
+  margin-bottom: 5px;
+  transition: 1s ease-in;
+}
 
+.btn-accect-style:hover {
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 10px 70px;
+  border-radius: 30px;
+  margin-bottom: 5px;
+}
 

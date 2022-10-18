@@ -7,7 +7,7 @@ export const RemainderStyleComponent = styled.section`
   display: flex;
   border-radius: 10px;
 
-  @media only screen and (max-width: 765px) { 
+  @media only screen and (max-width: 765px) {
     width: 100%;
   }
 `;

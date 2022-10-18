@@ -30,7 +30,7 @@ const SelectInput = ({
               value={ricorso ? ricorso[newName as keyof object] : value}
               key={index}
             >
-              {selectProps?.name == 'fase' ? faseCurrent(value) : value}
+              {selectProps?.name == "fase" ? faseCurrent(value) : value}
             </option>
           );
         })}

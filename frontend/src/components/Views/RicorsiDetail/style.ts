@@ -69,7 +69,7 @@ export const DetailStyleComponent = styled.div`
       min-width: 100%;
       font-size: 12px;
     }
-    
+
     .ul-detail-style {
       width: 95%;
     }
@@ -79,6 +79,5 @@ export const DetailStyleComponent = styled.div`
       padding: 10px 5px;
       border-radius: 15px;
     }
-
   }
 `;

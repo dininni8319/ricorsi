@@ -11,11 +11,11 @@ export const NavbarStyleComponent = styled.nav`
   min-height: 6vh;
   background-color: ${(props) => props.theme.transparent};
   z-index: 100;
-  
+
   .nav-label-style {
     background-color: transparent;
     font-size: 22px;
-    color: ${props => props.theme.textColorGrey};
+    color: ${(props) => props.theme.textColorGrey};
   }
 
   .style-logo {
@@ -25,12 +25,12 @@ export const NavbarStyleComponent = styled.nav`
   }
 
   a {
-    font-size: 18px; 
-    color: ${(props) => props.theme.blackColor}; 
+    font-size: 18px;
+    color: ${(props) => props.theme.blackColor};
   }
 
   a:hover {
-    font-size: 20px; 
+    font-size: 20px;
     color: ${(props) => props.theme.textGray};
     padding-bottom: 5px;
   }

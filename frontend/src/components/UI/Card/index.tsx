@@ -18,7 +18,6 @@ const Card = ({
   current?: any;
   setCurrent?: any;
 }) => {
-  
   const [{ status, response }, makeRequest] = useApiRequest(
     `${baseURL}/api/cienneffe/${path}/${taxunit.id}`,
     {

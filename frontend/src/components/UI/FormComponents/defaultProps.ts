@@ -159,7 +159,7 @@ export const formRicorsiLabels = {
       type: "checkbox",
       id: 19,
       errorMessage: "",
-      className: 'checkbox-style'
+      className: "checkbox-style",
     },
   ],
 };
@@ -328,11 +328,11 @@ export const fasiFormData = {
       errorMessage: "",
     },
     {
-        label: 'File',
-        name: 'nome_file',
-        type: 'file',
-        id: 11,
-        errorMessage: ''
+      label: "File",
+      name: "nome_file",
+      type: "file",
+      id: 11,
+      errorMessage: "",
     },
   ],
 };
@@ -432,11 +432,11 @@ export const LottiSpedizioneFormData = {
       errorMessage: "",
     },
     {
-        label: 'File',
-        name: 'nome_file',
-        type: 'file',
-        id: 11,
-        errorMessage: ''
+      label: "File",
+      name: "nome_file",
+      type: "file",
+      id: 11,
+      errorMessage: "",
     },
   ],
 };

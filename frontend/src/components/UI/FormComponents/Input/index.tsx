@@ -10,7 +10,7 @@ const Input: React.FC<PropsInput> = (props) => {
     setFocused(true);
   };
   return (
-    <InputSection checkBox={type === 'checkbox' ? true : false}>
+    <InputSection checkBox={type === "checkbox" ? true : false}>
       {/* <div className="input-wrapper"> */}
       <label htmlFor={name} className="font-bold input-label">
         {label}

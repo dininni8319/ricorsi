@@ -3,36 +3,41 @@ import { createPortal } from "react-dom";
 import { RiCloseLine } from "react-icons/ri";
 
 const Backdrop = ({ setIsOpen }: any) => {
-
   return (
     <div className={styles.backdrop} onClick={() => setIsOpen(false)}></div>
   );
 };
 
-const Overlay = ({ setIsOpen, setSure, message }: any) => {
+const Overlay = ({ setIsOpen, handleDelete, message, id }: any) => {
   return (
     <div className={styles.modal}>
-    <div className={styles.modalHeader}></div>
+      <div className={styles.modalHeader}></div>
       <div className={styles.centered}>
-        <button
-          className={styles.closeBtn}
-          onClick={() => setIsOpen(false)}
-        >
+        <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
           <RiCloseLine style={{ marginBottom: "-3px" }} />
-        </button>    
+        </button>
       </div>
-        <div className={styles.actionsContainer}>
-          <h3 className={styles.heading}>{message}</h3>
-        </div>
-        {setSure && <button className='btn bg-red-500' onClick={() => {
-          setSure((prev: any) => prev = true)
-          setIsOpen(false)
-        }}>OK</button>}
+      <div className={styles.actionsContainer}>
+        <h3 className={styles.heading}>{message}</h3>
+      </div>
+      <div className="flex items-center justify-center">
+        {handleDelete && (
+          <button
+            className={`border-red-500 border-none p-3 ${styles['btn-accect-style']}`}
+            onClick={(event) => {
+              setIsOpen(false);
+              handleDelete(event, id);
+            }}
+          >
+            OK
+          </button>
+        )}
+      </div>
     </div>
   );
 };
 
-const Modal: any = ({ setIsOpen, setSure, message }: any) => {
+const Modal: any = ({ setIsOpen, handleDelete, message, id }: any) => {
   return (
     <>
       {createPortal(
@@ -42,7 +47,12 @@ const Modal: any = ({ setIsOpen, setSure, message }: any) => {
         document.getElementById("backdrop") as HTMLElement
       )}
       {createPortal(
-        <Overlay setIsOpen={setIsOpen} message={message} setSure={setSure} />,
+        <Overlay
+          setIsOpen={setIsOpen}
+          message={message}
+          handleDelete={handleDelete}
+          id={id}
+        />,
         document.getElementById("overlay") as HTMLElement
       )}
     </>
