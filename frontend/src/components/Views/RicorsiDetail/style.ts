@@ -59,14 +59,26 @@ export const DetailStyleComponent = styled.div`
   }
 
   .links-detail-page {
-    width: 80%;
+    min-width: 30%;
     background-color: ${(props) => props.theme.colorWhite};
     padding: 10px;
   }
 
   @media only screen and (max-width: 765px) {
+    .link-detail-style {
+      min-width: 100%;
+      font-size: 12px;
+    }
+    
     .ul-detail-style {
       width: 95%;
     }
+
+    .primaryBtn {
+      margin-right: 4px;
+      padding: 10px 5px;
+      border-radius: 15px;
+    }
+
   }
 `;

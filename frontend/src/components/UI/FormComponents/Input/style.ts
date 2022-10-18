@@ -19,7 +19,7 @@ export const InputSection = styled.div.attrs((props: { checkBox: boolean }) => p
   .input-style {
     width: ${props => props.checkBox ? '30px' : '90%' };
     height: ${props => props.checkBox ? '30px' : '' };
-    padding: ${props => props.checkBox ? '' : '10px 0' };
+    padding: ${props => props.checkBox ? '' : '10px 5px' };
     margin-top: 5px;
     border-radius: ${(props) => props.theme.borderRadius};
     border: 1px solid ${(props) => props.theme.borderGrayColor};

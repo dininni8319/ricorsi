@@ -36,8 +36,8 @@ const Card = ({
   };
 
   return (
-    <CardStyleComponent className="card-style bg-base-100 m-2">
-      <section className="p-6">{children}</section>
+    <CardStyleComponent className="card-style bg-base-100 m-1">
+      <section className="p-3">{children}</section>
       <div className="btn-delete">
         <button
           onClick={(e) => handleDelete(e, taxunit.id)}

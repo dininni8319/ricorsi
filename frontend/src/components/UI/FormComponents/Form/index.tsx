@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { FormProps } from "../../../interfaces/interfaces";
 import { baseURL } from "../../../Utilities/index";
-import FormWrapper from "../FormWrapper";
 import { FormContainer } from "./style";
+import { Modal } from '../../index';
 
 const Form: React.FC<FormProps> = ({
   id,
@@ -16,6 +16,8 @@ const Form: React.FC<FormProps> = ({
   data,
 }) => {
   const navigate = useNavigate();
+  const [ isOpen, setIsOpen ] = useState(false);
+  const [ message, setMessage ] = useState('');
 
   const errorTag = (message: string) => {
     return <span className="text-red-600 text-sm">{message}</span>;
@@ -33,7 +35,11 @@ const Form: React.FC<FormProps> = ({
       .then((response) => response.json())
       .then((data) => {
         if (data.id) {
-          navigate(`/${navPath}/${data.id}`);
+          setMessage(data.message);
+          setIsOpen(true);
+          setTimeout(() => {
+            navigate(`/${navPath}/${data.id}`);
+          },2000)
         } else {
           navigate("/");
         }
@@ -55,6 +61,7 @@ const Form: React.FC<FormProps> = ({
           </button>
         </div>
       </section>
+      {isOpen && <Modal setIsOpen={setIsOpen} message={message}/>}
     </FormContainer>
   );
 };

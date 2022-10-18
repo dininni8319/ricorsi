@@ -16,20 +16,18 @@ const Backdrop = ({ setIsOpen }: any) => {
 const Overlay = ({ setIsOpen, message }: any) => {
   return (
     <div className={styles.modal}>
-        <div className={styles.modalHeader}>
-        </div>
+    <div className={styles.modalHeader}></div>
       <div className={styles.centered}>
-        
         <button
           className={styles.closeBtn}
           onClick={() => setIsOpen(false)}
         >
           <RiCloseLine style={{ marginBottom: "-3px" }} />
         </button>    
-          <div className={styles.actionsContainer}>
-            <h3 className={styles.heading}>{message}</h3>
-          </div>
       </div>
+        <div className={styles.actionsContainer}>
+          <h3 className={styles.heading}>{message}</h3>
+        </div>
     </div>
   );
 };

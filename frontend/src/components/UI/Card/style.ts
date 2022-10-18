@@ -6,6 +6,7 @@ export const CardHeaderStyle = styled.div`
   margin-top: 5px;
   background-color: ${(props) => props.theme.blackColor};
 `;
+
 export const CardStyleComponent = styled.div`
   border-top-left-radius: 10px;
   display: flex;
@@ -24,6 +25,12 @@ export const CardStyleComponent = styled.div`
     }
   }
 
+  
+  @media only screen and (max-width: 765px) {
+    .link-detail-style{
+      font-size: 10px;
+    }
+  }
   .btn-delete {
     display: flex;
     justify-content: end;

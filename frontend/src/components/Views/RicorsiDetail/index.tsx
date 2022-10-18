@@ -173,6 +173,23 @@ const RicorsiDetail = () => {
                   );
                 })}
               </WrapperStyleComponent>
+              <section className="links-detail-page">
+                  {/* //you can use a fragment or a custom wrapper */}
+                  {ricorso && (
+                    <div className="flex justify-around items-end py-2">
+                      <Link to={`/form_fase/${ricorso?.id}`} className="primaryBtn">
+                        Avvia una Fase
+                      </Link>
+                      <Link to={`/ricorsi/${ricorso?.id}`} className='mx-1'>Aggiorna Ricorso</Link>
+                      <button
+                        onClick={(e) => handleDelete(e)}
+                        className="bg-red-500 text-white outline-none cursor-pointer md:w-18 md:px-3 md:py-2 p-2 font-semibold"
+                      >
+                        Cancella
+                      </button>
+                    </div>
+                  )}
+              </section>
               <RemainderForm slug={slug} />
             </section>
           </>
@@ -180,24 +197,6 @@ const RicorsiDetail = () => {
       ) : (
         <Loader3 />
       )}
-
-      <section className="links-detail-page">
-        {/* //you can use a fragment or a custom wrapper */}
-        {ricorso && (
-          <div className="flex justify-between items-end py-2">
-            <Link to={`/form_fase/${ricorso?.id}`} className="primaryBtn">
-              Avvia una Fase
-            </Link>
-            <Link to={`/ricorsi/${ricorso?.id}`}>Aggiorna Ricorso</Link>
-            <button
-              onClick={(e) => handleDelete(e)}
-              className="bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold"
-            >
-              Cancella
-            </button>
-          </div>
-        )}
-      </section>
     </DetailStyleComponent>
   );
 };

@@ -34,10 +34,13 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
         if (data.success === true) {
           setMessage(data.message);
           setIsOpen(true);
-        
+          setTimeout(() => {
+            setIsOpen(false);
+          },2000)
+          
         } else {
-          // setMessage(data.message);
-          // setIsOpen(true);
+          setMessage(data.message);
+          setIsOpen(true);
           navigate(`/ricorsi_detail/${slug}`);
         }
       })
@@ -47,7 +50,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
   };
   return (
     <RemainderStyleComponent>
-      <form className="p-5 bg-white mt-3 mb-5 task-remainer shadow-lg" onSubmit={HandleSubmit}>
+      <form className="p-5 bg-white mt-3 mb-5 shadow-lg" onSubmit={HandleSubmit}>
         <section className="mb-3 flex flex-col mx-3">
           <h5 className="font-bold">Invia una notifica</h5>
           <div className="">
@@ -71,8 +74,8 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
             </button>
           </div>
         </section>
+       {isOpen && <Modal setIsOpen={setIsOpen} message={message}/>}
       </form>
-      {isOpen && <Modal setIsOpen={setIsOpen} message={message}/>}
     </RemainderStyleComponent>
   );
 };
