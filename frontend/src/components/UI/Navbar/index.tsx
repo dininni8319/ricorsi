@@ -36,6 +36,7 @@ const Navbar = () => {
           />
         </>
       </Dropdown>}
+      {user && <span className='text-xl text-green-500 font-bold'>{`Hello ${user?.first_name} ${user?.last_name}`}</span>}
       {user && <button type='submit' onClick={logout} className='text-green-600 text-2xl font-bolder'>Logout</button>}
     </NavbarStyleComponent>
   );
