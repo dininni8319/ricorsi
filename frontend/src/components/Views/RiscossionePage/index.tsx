@@ -112,8 +112,8 @@ const RiscossionePage = () => {
               return (
                 <>
                   <Card
+                    id={id}
                     taxunit={riscossione}
-                    key={id}
                     path="riscossione/delete"
                     current={riscossioni}
                     setCurrent={setRiscossioni}

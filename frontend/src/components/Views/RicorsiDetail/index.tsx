@@ -121,8 +121,8 @@ const RicorsiDetail = () => {
                 {currentFasis?.map((fase: Fasi, id: number) => {
                   return (
                     <Card
+                      id={id}
                       taxunit={fase}
-                      key={id}
                       path="fase/delete"
                       current={currentFasis}
                       setCurrent={setCurrentFasis}

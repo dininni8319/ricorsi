@@ -17,7 +17,7 @@ class RiscossioneController extends Controller
     // }
  
     protected $messageUnSuccess = 'Nessun ricorso trovato!';
-    protected $messageSuccess = 'Importi trovati!';
+    protected $messageSuccess = 'Success, the Riscossione was successfull!';
 
     public function funResponse($status, $success,$message, $data, $id){
         return response()->json([

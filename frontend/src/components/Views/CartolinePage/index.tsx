@@ -107,7 +107,7 @@ const CartolinePage = () => {
                 <>
                   <Card
                     taxunit={cartolina}
-                    key={id}
+                    id={id}
                     path="cartolina/delete"
                     current={cartoline}
                     setCurrent={setCartoline}

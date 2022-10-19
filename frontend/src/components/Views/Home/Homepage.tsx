@@ -104,12 +104,12 @@ const Homepage = () => {
                 <>
                   <Card
                     taxunit={ricorso}
-                    key={id}
+                    id={id}
                     path="ricorso/delete"
                     current={ricorsi}
                     setCurrent={setRicorsi}
                   >
-                    <>
+                    <section key={id}>
                       <h3 className="card-title mb-3">
                         Tributo: <span>{ricorso.tributo}</span>
                       </h3>
@@ -159,7 +159,7 @@ const Homepage = () => {
                           Dettaglio Ricorso
                         </Link>
                       </div>
-                    </>
+                    </section>
                   </Card>
                 </>
               );

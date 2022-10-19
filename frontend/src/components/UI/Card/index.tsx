@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { memo } from "react";
 
 const Card = ({
+  id,
   taxunit,
   path,
   children,
@@ -17,6 +18,7 @@ const Card = ({
   children?: JSX.Element;
   current?: any;
   setCurrent?: any;
+  id:number,
 }) => {
   const [{ status, response }, makeRequest] = useApiRequest(
     `${baseURL}/api/cienneffe/${path}/${taxunit.id}`,
@@ -36,7 +38,7 @@ const Card = ({
   };
 
   return (
-    <CardStyleComponent className="card-style bg-base-100 m-1">
+    <CardStyleComponent className="card-style bg-base-100 m-1" key={id}>
       <section className="p-3">{children}</section>
       <div className="btn-delete">
         <button
