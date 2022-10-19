@@ -8,7 +8,8 @@ import { memo } from "react";
 import { AuthContext } from '../../../Contexts/Auth';
 
 const Navbar = () => {
-  const { user, logout } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext);
+  
   return (
     <NavbarStyleComponent>
       <LogoComponent imageUrl={logo} />

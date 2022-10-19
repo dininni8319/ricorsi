@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import img from "../../../assets/images/man_suit.webp";
 
-export const HeaderComponent = styled.header`
+export const HeaderComponent = styled.header.attrs(
+  (props: { user: boolean }) => props
+)`
   width: 100%;
   min-height: 40vh;
   background: linear-gradient(transparent, rgba(0, 10, 0, 0.7)),
@@ -9,7 +11,7 @@ export const HeaderComponent = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 calc(100% - 1vw));
+  clip-path: ${props => props.user ? 'polygon(0 0, 100% 0, 100% 75%, 0 calc(100% - 1vw))' : ''};
 
   .h2-custom-class {
     position: absolute;
