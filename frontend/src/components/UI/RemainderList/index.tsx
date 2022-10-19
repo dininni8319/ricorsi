@@ -56,16 +56,16 @@ const RemainderList = ({ tasks, setTasks }: { tasks: any; setTasks: any }) => {
                 Delete
               </button>
             </ul>
-            {isOpen && (
-              <Modal
-                setIsOpen={setIsOpen}
-                message={message}
-                handleDelete={handleDelete}
-                id={el.id}
-              />
-            )}
           </RemainderListStyle>
         );
+        {isOpen && (
+          <Modal
+            setIsOpen={setIsOpen}
+            message={message}
+            handleDelete={handleDelete}
+            id={el.id}
+          />
+        )}
       })}
     </div>
   );

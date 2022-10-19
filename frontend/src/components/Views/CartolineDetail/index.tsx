@@ -1,27 +1,27 @@
 import { Link } from "react-router-dom";
 import { RicorsoProps } from "../../interfaces/interfaces";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { useParams, useNavigate } from "react-router";
-import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "../RicorsiDetail/style";
-import { Card, DetailPage, Loader3 } from "../../UI/index";
+import { DetailPage, Loader3 } from "../../UI/index";
 import useApiRequest from "../../state/useApiRequest";
-import { faseCurrent, funFormatDate } from "../../Utilities/index";
+import { funFormatDate } from "../../Utilities/index";
+import { ConfigContext } from "../../../Contexts/Config";
 
 const CartolineDetail = () => {
   let { slug } = useParams();
   let navigate = useNavigate();
-
+  let { api_urls: { backend } } = useContext(ConfigContext);
   let { payload, setData } = useFetch(
-    `${baseURL}/api/cienneffe/detail_cartoline/${slug}`,
+    `${backend}/api/cienneffe/detail_cartoline/${slug}`,
     {
       verb: "get",
     }
   );
 
   const [{ status, response }, makeRequest] = useApiRequest(
-    `${baseURL}/api/cienneffe/cartolina/delete/${slug}`,
+    `${backend}/api/cienneffe/cartolina/delete/${slug}`,
     {
       verb: "delete",
     }

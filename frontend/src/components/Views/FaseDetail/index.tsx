@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
 import { RicorsoProps } from "../../interfaces/interfaces";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "../RicorsiDetail/style";
-import { Card, DetailPage, Loader3 } from "../../UI/index";
+import { DetailPage, Loader3 } from "../../UI/index";
 import useApiRequest from "../../state/useApiRequest";
 import { faseCurrent, funFormatDate } from "../../Utilities/index";
-import { fasiFormData } from "../../UI/FormComponents/defaultProps";
+import { ConfigContext } from "../../../Contexts/Config";
 
 const FasiDetail = () => {
-  let { slug } = useParams();
+  const { api_urls: { backend } } = useContext(ConfigContext);
+  const { slug } = useParams();
   let navigate = useNavigate();
 
   let { payload, setData } = useFetch(
-    `${baseURL}/api/cienneffe/detail_fase/${slug}`,
+    `${backend}/api/cienneffe/detail_fase/${slug}`,
     {
       verb: "get",
     }
@@ -23,7 +24,7 @@ const FasiDetail = () => {
   let { fase }: any = payload;
 
   let { payload: currentFase } = useFetch(
-    `${baseURL}/api/cienneffe/last_fase/${fase?.ricorsi_id}`,
+    `${backend}/api/cienneffe/last_fase/${fase?.ricorsi_id}`,
     {
       verb: "get",
     }
@@ -32,7 +33,7 @@ const FasiDetail = () => {
   let { id: currentId }: any = currentFase;
 
   const [{ status, response }, makeRequest] = useApiRequest(
-    `${baseURL}/api/cienneffe/fase/delete/${slug}`,
+    `${backend}/api/cienneffe/fase/delete/${slug}`,
     {
       verb: "delete",
     }

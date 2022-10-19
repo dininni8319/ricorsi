@@ -1,13 +1,13 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, useContext, ChangeEvent } from "react";
 import { useNavigate } from "react-router";
-import { baseURL } from "../../Utilities/index";
 import { Card, Loader3, Search, ImportCsv } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
 import { funFormatDate } from "../../Utilities/index";
+import { ConfigContext } from "../../../Contexts/Config";
 
 const CartolinePage = () => {
+  const { api_urls: { backend } } = useContext(ConfigContext);
   const [cartoline, setCartoline] = useState<{ [key: string]: string }[]>([]);
   const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
   const [searchedTerm, setSearchedTerm] = useState("");
@@ -28,7 +28,7 @@ const CartolinePage = () => {
   };
 
   useEffect(() => {
-    fetch(`${baseURL}/api/cienneffe/cartoline`)
+    fetch(`${backend}/api/cienneffe/cartoline`)
       .then((response) => response.json())
       .then((data) => {
         if (data.cartoline) {
@@ -42,7 +42,7 @@ const CartolinePage = () => {
 
   useEffect(() => {
     if (searchedTerm.length > 3) {
-      fetch(`${baseURL}/api/cienneffe/cartolina/search=${searchedTerm}`)
+      fetch(`${backend}/api/cienneffe/cartolina/search=${searchedTerm}`)
         .then((response) => response.json())
         .then((data) => setSearchedCartoline(data?.cartoline))
         .catch((error: unknown) => {

@@ -144,3 +144,19 @@ export interface FasiFieldsTypes {
 export type ChildrenProps = {
   children: JSX.Element,
 }
+
+export type LoginTypes ={
+  username: string,
+  token: string,
+  id: number
+}
+
+export type AuthConfigType = {
+  user: any,
+  login: any,
+  logout: any,
+}
+
+export type ConfigContextType = {
+  api_urls: { backend?: string }
+}

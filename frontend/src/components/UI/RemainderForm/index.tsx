@@ -23,7 +23,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
       });
   }, []);
 
-  const HandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     fetch(`${baseURL}/api/cienneffe/taskrimender/${slug}}`, {
@@ -55,7 +55,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
       <div>
         <form
           className="p-5 bg-white mt-3 mb-5 shadow-lg"
-          onSubmit={HandleSubmit}
+          onSubmit={handleSubmit}
         >
           <section className="mb-3 flex flex-col mx-3">
             <h5 className="font-bold">Invia una notifica</h5>

@@ -1,13 +1,18 @@
 import { useState, useContext, createContext } from "react";
 import { ConfigContext } from "../Config";
-import { ChildrenProps } from '../../components/interfaces/interfaces';
-export const AuthContext = createContext();
+import { ChildrenProps, AuthConfigType } from '../../components/interfaces/interfaces';
+
+export const AuthContext = createContext<AuthConfigType>({
+  user: null,
+  login: null,
+  logout: null,
+});
 
 export function AuthProvider({ children }:ChildrenProps) {
 
-  const initialUser:any = localStorage.getItem("user");
+  const initialUser: any = localStorage.getItem("user");
 
-  let { api_urls }:any = useContext(ConfigContext);
+  let { api_urls } = useContext(ConfigContext);
 
   const [user, setUser] = useState(JSON.parse(initialUser));
 

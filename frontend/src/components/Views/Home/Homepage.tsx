@@ -61,7 +61,7 @@ const Homepage = () => {
           setSearchFC={setSearchedRicorsi}
           setSearchedTerm={setSearchedTerm}
         >
-          {searchedRicorsi?.map((searched: { [key: string]: string }) => {
+          {searchedRicorsi?.map((searched: { [key: string]: string }, id: number) => {
             return (
               <ul
                 className={`bg-white p-2 shadow-md ${
@@ -73,6 +73,7 @@ const Homepage = () => {
                   handleSelectedItem(e, parseInt(searched?.id))
                 }
                 onClick={() => handleNavigate(parseInt(searched.id))}
+                key={id}
               >
                 <li>
                   <span className="font-semibold pr-1">Numero Ricorso:</span>
