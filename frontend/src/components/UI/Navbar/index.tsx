@@ -1,30 +1,32 @@
 import NavItem from "./NavItem";
+import { useContext } from "react";
 import LogoComponent from "./LogoComponent";
 import { NavbarStyleComponent } from "./style";
 import Dropdown from "./dropDown";
 import logo from "../../../assets/icons/logo_inv2.png";
 import { memo } from "react";
+import { AuthContext } from '../../../Contexts/Auth';
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext)
   return (
     <NavbarStyleComponent>
       <LogoComponent imageUrl={logo} />
 
-      <Dropdown title="Ricorsi">
+     {user && <Dropdown title="Ricorsi">
         <>
-          <NavItem content="Ricorsi" href="/home" />
+          <NavItem content="Ricorsi" href="/" />
           <NavItem content="Avvia Ricorso" href="/ricorsi" />
         </>
-      </Dropdown>
+      </Dropdown>}
 
-      <Dropdown title="Cartoline">
+    {user && <Dropdown title="Cartoline">
         <>
           <NavItem content="Caroline" href={`/cartoline`} />
           <NavItem content="Avvia una Caroline" href={`/work_flow`} />
         </>
-      </Dropdown>
-
-      <Dropdown title="Riscossione">
+      </Dropdown>}
+     {user && <Dropdown title="Riscossione">
         <>
           <NavItem content="Riscossione" href={`/riscossione`} />
           <NavItem
@@ -32,7 +34,8 @@ const Navbar = () => {
             href={`/form_riscossione`}
           />
         </>
-      </Dropdown>
+      </Dropdown>}
+      {user && <button type='submit' onClick={logout} className='text-green-600 text-2xl font-bolder'>Logout</button>}
     </NavbarStyleComponent>
   );
 };

@@ -13,14 +13,16 @@ const Register = () => {
     const navigate = useNavigate();
 
     const { api_urls: { backend } } = useContext(ConfigContext);
-    const { user, login } = useContext(AuthContext);
+    const { user, login }: any = useContext(AuthContext);
+    
     const { data, handleData } = useInput(defaultRegisterData);
     // console.log(password.value, passwordConfirm.value);
+    
     const SignUp = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        if (data.password === data.passwordConfirm) {
-            fetch(`${backend}/api/users/register`, {
+         
+        if (data.password === data.password_confirmation) {
+            fetch(`${backend}/api/cienneffe/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -35,7 +37,7 @@ const Register = () => {
                     }
                 })
                 .then(() => {
-                    fetch(`${backend}/api/users/login`, {
+                    fetch(`${backend}/api/cienneffe/login`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -102,9 +104,10 @@ const Register = () => {
                     </label>
                     <input
                         type="password"
-                        name='passwordConfirm'
+                        name='password_confirmation'
                         id="userPasswordConfirm"
                         className="rounded"
+                        onChange={handleData}
                     />
                     <ButtonStyle type="submit">Register</ButtonStyle>
                     <Link to="/login" className="pt-3 text-sm">

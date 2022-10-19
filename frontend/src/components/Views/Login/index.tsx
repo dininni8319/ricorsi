@@ -1,4 +1,5 @@
 import useInput from '../../../Hooks/useInput';
+import { UserType } from "../../interfaces/interfaces";
 import { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { ConfigContext } from '../../../Contexts/Config';
@@ -24,13 +25,7 @@ const Login = () => {
         })
             .then((resp) => resp.json())
             .then((data) => {
-                let loginData = data.data;
-                login(
-                    loginData.first_name,
-                    loginData.last_name,
-                    data.token,
-                    loginData.id
-                );
+                login(data.data.first_name,data.data.last_name,data.token,data.data.id);
                 navigate('/');
             });
     };

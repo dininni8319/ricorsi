@@ -89,5 +89,5 @@ export const defaultRegisterData = {
   last_name: '',
   email: '',
   password: '',
-  passwordConfirm: '',
+  password_confirmation: '',
 }

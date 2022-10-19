@@ -5,18 +5,21 @@ import Router from '../Router';
 import { useContext } from 'react';
 import { Navbar, Footer, Header } from "../../UI/index";
 import { AuthContext } from "../../../Contexts/Auth";
-
+import { AuthProvider } from '../../../Contexts/Auth';
 const App = () => {
-  const { user } = useContext(AuthContext)
+  const { user }:any = useContext(AuthContext);
+  
+  
   return (
     <ConfigProvider>
-      <BrowserRouter>
-       {user  && <Navbar />} 
-       {user  && <Header />} 
-        <Router />
-       {user  && <Footer />} 
-        
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Header />  
+         <Router />
+         <Footer />
+        </BrowserRouter>
+      </AuthProvider>
     </ConfigProvider>
   );
 };

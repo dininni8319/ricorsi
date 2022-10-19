@@ -151,10 +151,16 @@ export type LoginTypes ={
   id: number
 }
 
+export interface UserType {
+  last_name: string,
+  first_name: string,
+  token: string,
+  id: number,
+}
 export type AuthConfigType = {
-  user: any,
-  login: any,
-  logout: any,
+  user?: UserType,
+  login?: any,
+  logout?: any,
 }
 
 export type ConfigContextType = {

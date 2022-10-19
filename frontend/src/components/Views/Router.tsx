@@ -21,7 +21,7 @@ const Router = () => {
   return (
       <Routes>
         <Route
-          path="/home"
+          path="/"
           element={
             <Suspense fallback={<Loader3 />}>
               <ProtectedRoute>
