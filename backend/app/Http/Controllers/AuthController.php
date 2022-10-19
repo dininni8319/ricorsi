@@ -145,7 +145,6 @@ class AuthController extends Controller
             'success' => true,
             'message' => $responseMessage,
             'data' => $user
-        
         ], 200);
     }
 

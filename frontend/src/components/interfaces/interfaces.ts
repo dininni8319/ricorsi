@@ -140,3 +140,7 @@ export interface FasiFieldsTypes {
   data_deposito_sentenza: string;
   data_notifica_sentenza: string;
 }
+
+export type ChildrenProps = {
+  children: JSX.Element,
+}

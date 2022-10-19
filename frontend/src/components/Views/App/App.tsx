@@ -1,6 +1,7 @@
 import "./App.css";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ConfigProvider } from "../../../Contexts/Config";
 // import { Homepage, Ricorsi, Cartoline, Fase, RicorsiDetail, FaseDetail } from '../index';
 import { Navbar, Footer, Header, Loader3 } from "../../UI/index";
 
@@ -18,6 +19,7 @@ const App = () => {
   const RiscossionePage = lazy(() => import("../RiscossionePage"));
 
   return (
+    <ConfigProvider>
     <BrowserRouter>
       <Navbar />
       <Header />
@@ -148,6 +150,7 @@ const App = () => {
       </Routes>
       <Footer />
     </BrowserRouter>
+    </ConfigProvider>
   );
 };
 
