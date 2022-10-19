@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const RemainderListStyle = styled.div`
- 
-   span {
+  span {
     font-weight: bolder;
     padding-right: 5px;
   }

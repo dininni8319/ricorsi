@@ -35,15 +35,11 @@ const RemainderList = ({ tasks, setTasks }: { tasks: any; setTasks: any }) => {
                 {funFormatDate(el.reminder_at)}
               </li>
               <li>
-                <span className=" mr-1">
-                  Scadenza del compito:
-                </span>
+                <span className=" mr-1">Scadenza del compito:</span>
                 {funFormatDate(el.scadenza_del_compito)}
               </li>
               <li>
-                <span>
-                  Descrizione del compito:
-                </span>
+                <span>Descrizione del compito:</span>
                 {el.descrizione_compito}
               </li>
               <li>

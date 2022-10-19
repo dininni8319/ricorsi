@@ -23,7 +23,7 @@ const Overlay = ({ setIsOpen, handleDelete, message, id }: any) => {
       <div className="flex items-center justify-center">
         {handleDelete && (
           <button
-            className={`border-red-500 border-none p-3 ${styles['btn-accect-style']}`}
+            className={`border-red-500 border-none p-3 ${styles["btn-accect-style"]}`}
             onClick={(event) => {
               setIsOpen(false);
               handleDelete(event, id);

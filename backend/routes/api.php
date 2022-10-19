@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskCotroller;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChartController;
@@ -28,6 +29,14 @@ use App\Http\Controllers\TaxUnitEditController;
 }); */
 
 Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
+    //Public Routes
+    Route::post('/register', [AuthController::class, 'register'])->name('register.user');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.user');
+    Route::post('/count', [AuthController::class, 'countUsers'])->name('count.user');
+
+    //Private Route
+    Route::get('/view-profile', [AuthController::class, 'viewProfile'])->name('profile.user');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout.user');
     
     //Ricorsi        withoutMiddleware('throttle:api') is usefull went you want allow illimited request from the api          
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home")->withoutMiddleware('throttle:api');
