@@ -14,3 +14,4 @@ export { default as Search } from "./Search/";
 export { default as RemainderForm } from "./RemainderForm/";
 export { default as RemainderList } from "./RemainderList/";
 export { default as ImportCsv } from "./UploadCsvForm";
+export { default as SideHeader } from "./SideHeader";

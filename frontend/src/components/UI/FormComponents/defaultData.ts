@@ -78,3 +78,8 @@ export let defaultRemainderData = {
   descrizione_compito: "",
   reminder: "",
 };
+
+export const defaultLoginData = {
+  email: '',
+  password: ''
+}

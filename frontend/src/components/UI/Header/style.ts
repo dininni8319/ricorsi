@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import img from "../../../assets/icons/man_suit.webp";
+import img from "../../../assets/images/man_suit.webp";
 
 export const HeaderComponent = styled.header`
   width: 100%;
   min-height: 40vh;
   background: linear-gradient(transparent, rgba(0, 10, 0, 0.7)),
-    linear-gradient(180deg, rgba(0, 10, 0, 0.1), #0f084b), url(${img});
+  linear-gradient(180deg, rgba(0, 10, 0, 0.1), #0f084b), url(${img});
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;

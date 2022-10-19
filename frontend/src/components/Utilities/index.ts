@@ -1,5 +1,3 @@
-import { spawn } from "child_process";
-
 export const arrMonths = [
   "Notifiche positive",
   "Notifiche negative",
@@ -22,6 +20,7 @@ export const arrMonths1 = [
   "Nov",
   "Dic",
 ];
+
 export const baseURL =
   process.env.NODE_ENV === "development"
     ? "http://127.0.0.1:8000"
@@ -43,9 +42,11 @@ export const isTextarea = (id: number) => {
 };
 
 export const funFormatDate = (str: string) => {
+  if ( str === '') return 'The date was not found!';
+
   let myDate = new Date(str);
   let utc = `${myDate.getDate()}.${myDate.getMonth()}.${myDate.getFullYear()}`;
-
+  
   return utc;
 };
 
@@ -61,6 +62,7 @@ export function validate(values: string) {
 }
 
 export function formatDate(date: string) {
+  if ( date === '') return 'The date was not found!';
   let time = new Date(date);
   let timeNow = new Date().getDay();
 

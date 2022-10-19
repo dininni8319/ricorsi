@@ -8,8 +8,10 @@ export const ConfigContext = createContext<ConfigContextType>({
 });
 
 export function ConfigProvider({ children }:ChildrenProps) {
+  let proc = process.env;
+  
   const api_urls = {
-    backend: process.env.REACT_APP_LOCAL,
+    backend: proc.NODE_ENV === "development" ? proc.REACT_APP_LOCAL : proc.REACT_APP_PROD,
   };
   
   return (
