@@ -12,8 +12,7 @@ const Login = () => {
     const { api_urls: { backend } } = useContext(ConfigContext);
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
-    
-    const { data, handleData } = useInput(defaultLoginData);;
+    const { data, handleData } = useInput(defaultLoginData);
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -44,16 +43,16 @@ const Login = () => {
                     <h1 className={`text-black font-medium text-3xl mb-2`}>
                         Login
                     </h1>
-                    <label htmlFor="" className="mb-2">
+                    <label htmlFor="userEmailLogin" className="mb-2">
                         Email
                     </label>
-                    <input type="email" onChange={handleData} className="rounded"/>
+                    <input type="email" id='userEmailLogin' name='email' onChange={handleData} className="rounded"/>
                 </InputSection>
                 <InputSection className="mb-5 flex flex-col">
-                    <label htmlFor="" className="mb-2">
+                    <label htmlFor="passwordLogin" className="mb-2">
                         Password
                     </label>
-                    <input type="password" onChange={handleData} className="rounded"/>
+                    <input type="password" id='passwordLogin' name='password' onChange={handleData} className="rounded"/>
                     <ButtonStyle type="submit">Submit</ButtonStyle>
                     <Link to="/register" className="pt-3 text-sm">
                         Did you already register? Please Login!

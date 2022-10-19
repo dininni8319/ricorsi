@@ -1,19 +1,19 @@
-// import lakePhoto from './../../assets/maldives.jpeg';
+import photo from '../../../assets/images/man_suit.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCameraAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
 
 const SideHeader = () => {
     return (
         <section className="section-img">
             <FontAwesomeIcon
-                icon={faCameraAlt}
+                icon={faFontAwesome}
                 className={`fa-3x mx-1 icon-custom-style`}
             />
-            <h2>Welcome to Paradise</h2>
+            <h2>I Professionisti dei Crediti Problematici!</h2>
             <p>
-               Where all your dreams come to life.
+               Siamo conosciuti per la nostra alta professionalità!
             </p>
-            {/* <img src={lakePhoto} alt="" /> */}
+            <img src={photo} alt="man with suit" />
         </section>
     );
 };

@@ -83,3 +83,11 @@ export const defaultLoginData = {
   email: '',
   password: ''
 }
+
+export const defaultRegisterData = {
+  first_name: '',
+  last_name: '',
+  email: '',
+  password: '',
+  passwordConfirm: '',
+}

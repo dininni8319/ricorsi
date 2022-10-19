@@ -12,7 +12,7 @@ const Navbar = () => {
 
       <Dropdown title="Ricorsi">
         <>
-          <NavItem content="Ricorsi" href="/" />
+          <NavItem content="Ricorsi" href="/home" />
           <NavItem content="Avvia Ricorso" href="/ricorsi" />
         </>
       </Dropdown>

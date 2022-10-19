@@ -41,7 +41,7 @@ const Form: React.FC<FormProps> = ({
             navigate(`/${navPath}/${data.id}`);
           }, 2000);
         } else {
-          navigate("/");
+          navigate("/home");
         }
       })
       .catch((err) => {
