@@ -16,8 +16,8 @@ class RiscossioneController extends Controller
     //     $this->middleware("auth");
     // }
  
-    protected $messageUnSuccess = 'Nessun ricorso trovato!';
-    protected $messageSuccess = 'Success, the Riscossione was successfull!';
+    protected $messageUnSuccess = 'Qualcosa è andato storto!';
+    protected $messageSuccess = 'Successo, la task è stata assegnata correttamente!';
 
     public function funResponse($status, $success,$message, $data, $id){
         return response()->json([

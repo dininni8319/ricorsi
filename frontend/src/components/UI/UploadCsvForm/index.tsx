@@ -65,7 +65,6 @@ const ImportCsv = () => {
           {message && <p className="text-green-600 text-sm p-2">{message}</p>}
         </div>
       </ImportStyleComponent>
-      {/* <button type="submit" onClick={handleExportCsvFile}>Export CSV File</button> */}
     </>
   );
 };
@@ -94,7 +93,7 @@ export const ImportStyleComponent = styled.form`
   }
 
   button {
-    background-color: ${(props) => props.theme.orangeColor};
+    background-color: ${(props) => props.theme.buttonColor};
     color: ${(props) => props.theme.colorWhite};
     padding: 10px 30px;
     font-weight: 500;
