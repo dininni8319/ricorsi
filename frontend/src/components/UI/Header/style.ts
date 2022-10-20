@@ -19,7 +19,7 @@ export const HeaderComponent = styled.header.attrs(
     color: transparent;
     top: 40%;
     left: 30%;
-    font-size: 35px;
+    font-size: 30px;
     color: ${(props) => props.theme.colorWhite};
   }
 

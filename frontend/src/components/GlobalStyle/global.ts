@@ -13,8 +13,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-        font-size: 40px;
-        font-weight: 300;
+        font-size: 38px;
+        font-weight:normal;
         padding: 25px 0;
     }
     
@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
        font-size: 14px;
        transition: 1s;
        color: inherit;
-       color: #4361ee;
+       color: #03045e;
        font-weight: 600;
     }
 
@@ -65,7 +65,7 @@ export const Theme = {
   bodyBackgroundColor: "rgba(222,222,222)",
   //not in use
   backgroundGrayColor: "#F1F2F6",
-  buttoncolor: "",
+  buttonColor: "#fca311",
   blueColor: "",
   grayInputText: "#888888",
   //////////////

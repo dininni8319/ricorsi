@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { useNavigate } from "react-router";
 import { ConfigContext } from "../../../Contexts/Config";
 import { AuthContext } from "../../../Contexts/Auth";
-import { RegisterStyle, ButtonStyle } from "./style";
+
+import { LoginStyled, ButtonStyle } from "../Login/style";
 import { InputSection } from "../Login/style";
 import { Link } from "react-router-dom";
 import { SideHeader } from "./../../UI/index";
@@ -62,78 +63,73 @@ const Register = () => {
   };
 
   return (
-    <RegisterStyle onSubmit={SignUp} className="form-custom">
+    <LoginStyled onSubmit={SignUp} className="form-custom">
       <SideHeader />
       <section className="row-form mt-5">
         <InputSection className="mb-3 flex flex-col">
-          <h1 className={`text-black font-medium text-3xl mb-3 mt-12`}>
-            Register
+          <h1>
+            Registrati
           </h1>
           <label className="form-label mb-2" htmlFor="userName">
-            Enter your First Name
+           Inserisci il tuo nome
           </label>
           <input
             type="text"
             id="userName"
             name="first_name"
             onChange={handleData}
-            className="rounded"
           />
         </InputSection>
         <InputSection className="mb-3 flex flex-col">
           <label className="form-label mb-2" htmlFor="userName">
-            Enter your Last Name
+           Inserisci il tuo Cognome
           </label>
           <input
             type="text"
             id="userName"
             name="last_name"
             onChange={handleData}
-            className="rounded"
           />
         </InputSection>
         <InputSection className="mb-3 flex flex-col">
           <label className="form-label mb-2" htmlFor="userMail">
-            Enter your Email
+          Inserisci un Email
           </label>
           <input
             type="email"
             id="userMail"
             name="email"
             onChange={handleData}
-            className="rounded"
           />
         </InputSection>
         <InputSection className="mb-5 flex flex-col">
           <label className="form-label mb-2 font-light" htmlFor="userPassword">
-            Enter a new Password
+          Inserisci una nuova Password
           </label>
           <input
             type="password"
             id="userPassword"
             onChange={handleData}
             name="password"
-            className="rounded"
           />
         </InputSection>
         <InputSection className="flex flex-col">
           <label className="form-label mb-2" htmlFor="userPasswordConfirm">
-            Confirm the entered Password
+            Conferma la Password
           </label>
           <input
             type="password"
             name="password_confirmation"
             id="userPasswordConfirm"
-            className="rounded"
             onChange={handleData}
           />
-          <ButtonStyle type="submit">Register</ButtonStyle>
+          <ButtonStyle type="submit">Registrati</ButtonStyle>
           <Link to="/login" className="pt-3 text-sm">
-            Did you registerd already? Please Login!
+           Sei Registrato? Entra!
           </Link>
         </InputSection>
       </section>
-    </RegisterStyle>
+    </LoginStyled>
   );
 };
 

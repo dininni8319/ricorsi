@@ -6,6 +6,8 @@ import Dropdown from "./dropDown";
 import logo from "../../../assets/icons/logo_inv2.png";
 import { memo } from "react";
 import { AuthContext } from "../../../Contexts/Auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -43,16 +45,15 @@ const Navbar = () => {
         </Dropdown>
       )}
       {user && (
-        <span className="text-xl text-green-500 font-bold">{`Hello ${user?.first_name} ${user?.last_name}`}</span>
+        <span className="nav-label-style text-base capitalize">ciao {user?.first_name}</span>
       )}
       {user && (
-        <button
-          type="submit"
-          onClick={logout}
-          className="text-green-600 text-2xl font-bolder"
-        >
-          Logout
-        </button>
+      <FontAwesomeIcon
+         onClick={logout}
+         icon={faArrowRightFromBracket}
+         className={`fa-1x mx-1 text-white logout-icon-style`}
+       /> 
+    
       )}
     </NavbarStyleComponent>
   );

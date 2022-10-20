@@ -42,32 +42,30 @@ const Login = () => {
       <SideHeader />
       <section className="row-form mt-12">
         <InputSection className="mb-5 flex flex-col">
-          <h1 className={`text-black font-medium text-3xl mb-2`}>Login</h1>
+          <h1>Entra</h1>
           <label htmlFor="userEmailLogin" className="mb-2">
-            Email
+           Inserisci un Email
           </label>
           <input
             type="email"
             id="userEmailLogin"
             name="email"
             onChange={handleData}
-            className="rounded"
           />
         </InputSection>
         <InputSection className="mb-5 flex flex-col">
           <label htmlFor="passwordLogin" className="mb-2">
-            Password
+            Inserisci una Password
           </label>
           <input
             type="password"
             id="passwordLogin"
             name="password"
             onChange={handleData}
-            className="rounded"
           />
-          <ButtonStyle type="submit">Submit</ButtonStyle>
+          <ButtonStyle type="submit">Entra</ButtonStyle>
           <Link to="/register" className="pt-3 text-sm">
-            Did you already register? Please Login!
+            Non sei Registrato? Registrati!
           </Link>
         </InputSection>
       </section>
