@@ -16,8 +16,8 @@ export const SearchStyleComponent = styled.header`
 
   .active-class {
     cursor: pointer;
-    transition: 0.6s ease-out;
-    background: ${(props) => props.theme.bodyBackgroundColor};
+    transition: ease-out;
+    background: #F1F2F6;
   }
 
   input {

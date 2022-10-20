@@ -9,6 +9,8 @@ import useApiRequest from "../../state/useApiRequest";
 import { WrapperStyleComponent } from "../Home/style";
 import { Card, DetailPage, Loader3, RemainderForm, ButtonDelete } from "../../UI/index";
 import { faseCurrent, funFormatDate } from "../../Utilities/index";
+import Details from './details';
+import CardDetails from "./cardDetails";
 
 const RicorsiDetail = () => {
   let { slug } = useParams();
@@ -63,58 +65,7 @@ const RicorsiDetail = () => {
       {ricorso ? (
         <DetailPage slug={slug}>
           <>
-            <ul className="ul-detail-style">
-              <li>
-                Nominativo:<span>{ricorso.nominativo}</span>
-              </li>
-              <li>
-                Numero Ricorso:
-                <span>{ricorso.numero_ricorso}</span>
-              </li>
-              <li>
-                Tributo:<span>{ricorso.tributo}</span>
-              </li>
-              <li>
-                Ente:<span>{ricorso.ente}</span>
-              </li>
-              <li>
-                Anno imposta:<span>{ricorso.anno_imposta}</span>
-              </li>
-              <li>
-                Importo Atto:<span>{ricorso.importo_atto}</span>
-              </li>
-              <li>
-                Esito:<span>{ricorso.esito}</span>
-              </li>
-
-              <li>
-                Numero di protocollo interno:
-                <span>{ricorso.numero_protocollo_interno}</span>
-              </li>
-              <li>
-                Indirizzo:<span>{ricorso.indirizzo}</span>
-              </li>
-              <li>
-                Email:<span>{ricorso.mail}</span>
-              </li>
-              <li>
-                Telefono:<span>{ricorso.telefono}</span>
-              </li>
-
-              <li>
-                Cod. Fiscale/P.Iva:
-                <span>{ricorso.cf_piva}</span>
-              </li>
-              <li>
-                Cod. Fiscale/P.Iva:
-                <span>{ricorso.tipologia_atto}</span>
-              </li>
-              <li>
-                <p className="font-serif mt-5">
-                  Oggetto Ricorso: <span>{ricorso.oggetto_ricorso}</span>
-                </p>
-              </li>
-            </ul>
+           <Details ricorso={ricorso}/>
 
             <section className="md:flex md:flex-col">
               <WrapperStyleComponent>
@@ -127,48 +78,11 @@ const RicorsiDetail = () => {
                       current={currentFasis}
                       setCurrent={setCurrentFasis}
                     >
-                      <>
-                        <h3 className="card-title mb-2">
-                          Fase corrente: <span>{faseCurrent(fase.fase)}</span>
-                        </h3>
-                        <ul className="border-custom ul-style-custom">
-                          <li>
-                            Esito: <span>{fase.esito}</span>
-                          </li>
-                          <li>
-                            Esito definitivo:{" "}
-                            <span>{fase.esito_definitivo}</span>
-                          </li>
-                          <li>
-                            Sede: <span>{fase.sede}</span>
-                          </li>
-                          <li>
-                            Spese: <span>{fase.spese}</span>
-                          </li>
-                          <li>
-                            Data presentazione:{" "}
-                            <span>
-                              {funFormatDate(String(fase.data_presentazione))}
-                            </span>
-                          </li>
-                          <li>
-                            Data convocazione:{" "}
-                            <span>
-                              {funFormatDate(String(fase.data_convocazione))}
-                            </span>
-                          </li>
-                        </ul>
-                        <div className="flex justify-between py-1">
-                          <Link to={`/fase_detail/${fase.id}`}>
-                            Dettaglio Fase
-                          </Link>
-                          {currentId === fase?.id && (
-                            <Link to={`/form_fase/${fase?.ricorsi_id}`}>
-                              Aggiorna la Fase
-                            </Link>
-                          )}
-                        </div>
-                      </>
+                      <CardDetails 
+                        fase={fase} 
+                        currentId={currentId} 
+                      />
+
                     </Card>
                   );
                 })}

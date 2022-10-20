@@ -14,8 +14,8 @@ class CartolineController extends Controller
     //     $this->middleware("auth"); 
     //     $this->middleware("auth.revisor");
     // }
-    protected $messageUnSuccess = 'Sorry, something went wrong';
-    protected $messageSuccess = 'Success, the task was successfull!';
+    protected $messageUnSuccess = 'Qualcosa è andato storto!';
+    protected $messageSuccess = 'Successo, la task è stata completata correttamente!';
 
     protected function findCartoline($id) 
     {
@@ -144,7 +144,7 @@ class CartolineController extends Controller
             if(!$id){
                 return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong!',
+                'message' => $this->messageUnSuccess,
             ], 404);
             } else {
                 $formatData = [
@@ -161,7 +161,7 @@ class CartolineController extends Controller
 
                 return response()->json([
                     'success' => true,
-                    'message' => $this->messageSuccess ,
+                    'message' => $this->messageSuccess,
                     'cartolina' => $cartolina,
                     'id' => $cartolina->id,
                 ], 200);
@@ -176,13 +176,13 @@ class CartolineController extends Controller
         if(!$cartolina){
             return response()->json([
             'success' => false,
-            'message' => 'Something went wrong!',
+            'message' => $this->messageUnSuccess,
         ], 404);
         } else {
             
             return response()->json([
                 'success' => true,
-                'message' => 'The ricorso is been deleted!',
+                'message' => 'La cartolina è stata creata!',
                 'cartolina' => $cartolina,
                 'id' => $cartolina->id,
             ], 200);
@@ -212,7 +212,7 @@ class CartolineController extends Controller
         if(!$request){
             return response()->json([
             'success' => false,
-            'message' => 'Something went wrong!',
+            'message' => $this->messageUnSuccess,
             ], 404); 
         }
 
@@ -236,7 +236,7 @@ class CartolineController extends Controller
         if(!$parts){
             return response()->json([
             'success' => false,
-            'message' => 'Something went wrong!',
+            'message' => $this->messageUnSuccess,
         ], 404);
         } else {
             return response()->json([

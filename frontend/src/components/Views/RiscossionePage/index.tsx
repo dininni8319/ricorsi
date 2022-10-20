@@ -5,6 +5,7 @@ import { baseURL } from "../../Utilities/index";
 import { Card, Loader3, Search } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
 import { funFormatDate } from "../../Utilities/index";
+import { RiSliceLine } from "react-icons/ri";
 
 const RiscossionePage = () => {
   const [riscossioni, setRiscossioni] = useState<{ [key: string]: string }[]>(
@@ -15,6 +16,7 @@ const RiscossionePage = () => {
   const [selectedItem, setSelectedItem] = useState(false);
   let [cardId, setCardId] = useState<number>(0);
 
+  
   const handleSelectedItem = (e: any, id: number) => {
     if (id) {
       setSelectedItem(true);
@@ -65,7 +67,7 @@ const RiscossionePage = () => {
           setSearchFC={setSearchedRiscossione}
           setSearchedTerm={setSearchedTerm}
         >
-          {searchedRiscossione?.map((searched: { [key: string]: string }) => {
+          {searchedRiscossione?.slice(0,6).map((searched: { [key: string]: string }) => {
             return (
               <ul
                 className={`bg-white p-2 shadow-md border-slate-400 ${

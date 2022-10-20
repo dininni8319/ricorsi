@@ -5,6 +5,7 @@ import { baseURL } from "../../Utilities/index";
 import { ObjFormType } from "../../interfaces/interfaces";
 import { Card, Loader3, Search } from "../../UI/index";
 import { WrapperStyleComponent } from "./style";
+import { funFormatDate } from "../../Utilities/index";
 
 const Homepage = () => {
   const [ricorsi, setRicorsi] = useState<{ [key: string]: string }[]>([]);

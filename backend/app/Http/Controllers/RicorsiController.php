@@ -16,8 +16,8 @@ class RicorsiController extends Controller
     //    /*  $this->middleware("auth"); */
     //     $this->middleware("auth.revisor");
     // }
-    protected $messageUnSuccess = 'Nessun ricorso trovato!';
-    protected $messageSuccess = 'Importi trovati!';
+    protected $messageUnSuccess = 'Qualcosa è andato storto!';
+    protected $messageSuccess = 'Successo, la task è stata completata correttamente!';
 
     protected function getFormData($req) {
 
@@ -63,7 +63,7 @@ class RicorsiController extends Controller
              return response()->json([
                 'success' => true,
                 'ricorsi' => $ricorsi,
-                'message' => 'All the ricorsi'
+                'message' => 'Tutti i ricorsi'
              ], 200);
          }   
     }
@@ -103,7 +103,7 @@ class RicorsiController extends Controller
                 
                 return response()->json([
                     'success' => true,
-                    'message' => 'The ricorso is been deleted!',
+                    'message' => 'Il ricorso è stato aggiornato!',
                     'ricorso' => $ricorso,
                     'id' => $id,
                 ], 200);
@@ -122,13 +122,13 @@ class RicorsiController extends Controller
             if(!$ricorso){
                 return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong!',
+                'message' => $this->messageUnSuccess,
             ], 404);
             } else {
                 
                 return response()->json([
                     'success' => true,
-                    'message' => 'The ricorso is been created!',
+                    'message' => 'Il ricorso è stato creato!',
                     'ricorso' => $ricorso,
                     'id' => $ricorso->id,
                 ], 200);
@@ -142,7 +142,7 @@ class RicorsiController extends Controller
         if(!$id){
             return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong!',
+                'message' => $this->messageUnSuccess,
             ], 404);
         } else {
             
@@ -150,7 +150,7 @@ class RicorsiController extends Controller
             
             return response()->json([
                 'success' => true,
-                'message' => 'Success, the ricorso has been found!',
+                'message' => 'Successo, il ricorso è stato trovato!',
                 'ricorso' => $ricorso,
                 'id' => $id,
             ], 200);
