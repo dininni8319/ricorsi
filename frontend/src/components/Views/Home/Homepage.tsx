@@ -61,38 +61,40 @@ const Homepage = () => {
           setSearchFC={setSearchedRicorsi}
           setSearchedTerm={setSearchedTerm}
         >
-          {searchedRicorsi?.map((searched: { [key: string]: string }, id: number) => {
-            return (
-              <ul
-                className={`bg-white p-2 shadow-md ${
-                  selectedItem && cardId === parseInt(searched.id)
-                    ? "active-class"
-                    : ""
-                }`}
-                onMouseOver={(e) =>
-                  handleSelectedItem(e, parseInt(searched?.id))
-                }
-                onClick={() => handleNavigate(parseInt(searched.id))}
-                key={id}
-              >
-                <li>
-                  <span className="font-semibold pr-1">Numero Ricorso:</span>
-                  {searched.numero_ricorso}
-                </li>
-                <li>
-                  <span className="font-semibold pr-1">Ente:</span>
-                  {searched.ente}
-                </li>
-                <li>
-                  <span className="font-semibold pr-1">Anno imposta:</span>
-                  {searched.anno_imposta}
-                </li>
-                <Link to={`/ricorsi_detail/${searched.id}`}>
-                  Dettaglio Ricorso
-                </Link>
-              </ul>
-            );
-          })}
+          {searchedRicorsi?.map(
+            (searched: { [key: string]: string }, id: number) => {
+              return (
+                <ul
+                  className={`bg-white p-2 shadow-md ${
+                    selectedItem && cardId === parseInt(searched.id)
+                      ? "active-class"
+                      : ""
+                  }`}
+                  onMouseOver={(e) =>
+                    handleSelectedItem(e, parseInt(searched?.id))
+                  }
+                  onClick={() => handleNavigate(parseInt(searched.id))}
+                  key={id}
+                >
+                  <li>
+                    <span className="font-semibold pr-1">Numero Ricorso:</span>
+                    {searched.numero_ricorso}
+                  </li>
+                  <li>
+                    <span className="font-semibold pr-1">Ente:</span>
+                    {searched.ente}
+                  </li>
+                  <li>
+                    <span className="font-semibold pr-1">Anno imposta:</span>
+                    {searched.anno_imposta}
+                  </li>
+                  <Link to={`/ricorsi_detail/${searched.id}`}>
+                    Dettaglio Ricorso
+                  </Link>
+                </ul>
+              );
+            }
+          )}
         </Search>
         <h1>Ricorsi</h1>
       </>

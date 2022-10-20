@@ -80,14 +80,14 @@ export let defaultRemainderData = {
 };
 
 export const defaultLoginData = {
-  email: '',
-  password: ''
-}
+  email: "",
+  password: "",
+};
 
 export const defaultRegisterData = {
-  first_name: '',
-  last_name: '',
-  email: '',
-  password: '',
-  password_confirmation: '',
-}
+  first_name: "",
+  last_name: "",
+  email: "",
+  password: "",
+  password_confirmation: "",
+};

@@ -142,27 +142,27 @@ export interface FasiFieldsTypes {
 }
 
 export type ChildrenProps = {
-  children: JSX.Element,
-}
+  children: JSX.Element;
+};
 
-export type LoginTypes ={
-  username: string,
-  token: string,
-  id: number
-}
+export type LoginTypes = {
+  username: string;
+  token: string;
+  id: number;
+};
 
 export interface UserType {
-  last_name: string,
-  first_name: string,
-  token: string,
-  id: number,
+  last_name: string;
+  first_name: string;
+  token: string;
+  id: number;
 }
 export type AuthConfigType = {
-  user?: UserType,
-  login?: any,
-  logout?: any,
-}
+  user?: UserType;
+  login?: any;
+  logout?: any;
+};
 
 export type ConfigContextType = {
-  api_urls: { backend?: string }
-}
+  api_urls: { backend?: string };
+};

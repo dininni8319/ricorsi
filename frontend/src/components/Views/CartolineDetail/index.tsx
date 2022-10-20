@@ -12,7 +12,9 @@ import { ConfigContext } from "../../../Contexts/Config";
 const CartolineDetail = () => {
   let { slug } = useParams();
   let navigate = useNavigate();
-  let { api_urls: { backend } } = useContext(ConfigContext);
+  let {
+    api_urls: { backend },
+  } = useContext(ConfigContext);
   let { payload, setData } = useFetch(
     `${backend}/api/cienneffe/detail_cartoline/${slug}`,
     {

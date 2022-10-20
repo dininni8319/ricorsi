@@ -11,7 +11,9 @@ import { faseCurrent, funFormatDate } from "../../Utilities/index";
 import { ConfigContext } from "../../../Contexts/Config";
 
 const FasiDetail = () => {
-  const { api_urls: { backend } } = useContext(ConfigContext);
+  const {
+    api_urls: { backend },
+  } = useContext(ConfigContext);
   const { slug } = useParams();
   let navigate = useNavigate();
 

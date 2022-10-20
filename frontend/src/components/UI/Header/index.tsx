@@ -1,5 +1,5 @@
 import { HeaderComponent } from "./style";
-import { AuthContext } from '../../../Contexts/Auth';
+import { AuthContext } from "../../../Contexts/Auth";
 import { useContext } from "react";
 
 const Header = ({ className }: any) => {

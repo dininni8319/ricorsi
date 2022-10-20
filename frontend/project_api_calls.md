@@ -9,40 +9,47 @@ make install = performs installations setup
 ###To test httpie
 https httpie.io/hello
 
-### register 
+### register
+
 http POST http://localhost:8001/api/users/register name=Salvatore email=s.dininni@yahoo.com password=12345678 password_confirmation=12345678
 
-### login 
+### login
 
 http POST http://localhost:8001/api/users/login email=s.dininni@yahoo.com password=12345678
 
 ### logout
 
-http POST http://localhost:8001/api/users/logout Authorization:Bearer\ eii...tr3    -> token
+http POST http://localhost:8001/api/users/logout Authorization:Bearer\ eii...tr3 -> token
 
-### user profile 
+### user profile
 
-http GET http://localhost:8001/api/users/view-profile Authorization:Bearer\ eii...tr3    -> token
+http GET http://localhost:8001/api/users/view-profile Authorization:Bearer\ eii...tr3 -> token
 
-### create new room 
+### create new room
 
-http POST http://localhost:8001/api/users/room game_id=35 game_name=zelda max_seats_available=4 Authorization:Bearer\ 
+http POST http://localhost:8001/api/users/room game_id=35 game_name=zelda max_seats_available=4 Authorization:Bearer\
 
-### close room 
+### close room
+
 http POST http://localhost:8001/api/users/room/close Authorization:Bearer\
 
-### join room 
+### join room
+
 http POST http://localhost:8001/api/users/room/join room_id=60 Authorization:Bearer\
 
 ### streamer info
+
 http GET http://localhost:8001/api/users/room/streamer/7 Authorization:Bearer\
 
-### roosActive 
+### roosActive
+
 http GET http://localhost:8001/api/users/room/roomsActive
 
-### roosActive 
+### roosActive
+
 http GET http://localhost:8001/api/users/room/roomsByGame
 
 ### count users
+
 http GET http://localhost:8001/api/users/count
 s.dininni@yahoo.com

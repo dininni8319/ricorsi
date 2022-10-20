@@ -18,7 +18,7 @@ const Card = ({
   children?: JSX.Element;
   current?: any;
   setCurrent?: any;
-  id:number,
+  id: number;
 }) => {
   const [{ status, response }, makeRequest] = useApiRequest(
     `${baseURL}/api/cienneffe/${path}/${taxunit.id}`,

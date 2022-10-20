@@ -42,11 +42,11 @@ export const isTextarea = (id: number) => {
 };
 
 export const funFormatDate = (str: string) => {
-  if ( str === '') return 'The date was not found!';
+  if (str === "") return "The date was not found!";
 
   let myDate = new Date(str);
   let utc = `${myDate.getDate()}.${myDate.getMonth()}.${myDate.getFullYear()}`;
-  
+
   return utc;
 };
 
@@ -62,7 +62,7 @@ export function validate(values: string) {
 }
 
 export function formatDate(date: string) {
-  if ( date === '') return 'The date was not found!';
+  if (date === "") return "The date was not found!";
   let time = new Date(date);
   let timeNow = new Date().getDay();
 

@@ -7,7 +7,9 @@ import { funFormatDate } from "../../Utilities/index";
 import { ConfigContext } from "../../../Contexts/Config";
 
 const CartolinePage = () => {
-  const { api_urls: { backend } } = useContext(ConfigContext);
+  const {
+    api_urls: { backend },
+  } = useContext(ConfigContext);
   const [cartoline, setCartoline] = useState<{ [key: string]: string }[]>([]);
   const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
   const [searchedTerm, setSearchedTerm] = useState("");
