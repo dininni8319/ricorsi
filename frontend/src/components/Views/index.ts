@@ -8,3 +8,4 @@ export { default as CartolinePage } from "./CartolinePage/index";
 export { default as LottiSpedizione } from "./LottiSpedizione";
 export { default as LottiSpedizioneDetail } from "./LottiSpedizioneDetail";
 export { default as RiscossionePage } from "./RiscossionePage";
+

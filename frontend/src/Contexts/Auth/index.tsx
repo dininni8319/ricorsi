@@ -42,7 +42,6 @@ export function AuthProvider({ children }: ChildrenProps) {
       setUser(null);
     });
   };
-  console.log(user, "in the auth");
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

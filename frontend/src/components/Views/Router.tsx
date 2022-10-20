@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Loader3 } from "../UI/index";
+import { Loader3,Frame } from "../UI/index";
 import ProtectedRoute from "../Utilities/ProtectedRoutes";
 
 const Router = () => {
@@ -17,6 +17,7 @@ const Router = () => {
   const RiscossionePage = lazy(() => import("./RiscossionePage"));
   const Login = lazy(() => import("./Login"));
   const Register = lazy(() => import("./Register"));
+
 
   return (
     <Routes>
