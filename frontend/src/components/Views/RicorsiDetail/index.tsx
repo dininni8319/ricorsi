@@ -7,7 +7,7 @@ import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "./style";
 import useApiRequest from "../../state/useApiRequest";
 import { WrapperStyleComponent } from "../Home/style";
-import { Card, DetailPage, Loader3, RemainderForm } from "../../UI/index";
+import { Card, DetailPage, Loader3, RemainderForm, ButtonDelete } from "../../UI/index";
 import { faseCurrent, funFormatDate } from "../../Utilities/index";
 
 const RicorsiDetail = () => {
@@ -186,12 +186,7 @@ const RicorsiDetail = () => {
                     <Link to={`/ricorsi/${ricorso?.id}`} className="mx-1">
                       Aggiorna Ricorso
                     </Link>
-                    <button
-                      onClick={(e) => handleDelete(e)}
-                      className="bg-red-500 text-white outline-none cursor-pointer md:w-18 md:px-3 md:py-2 p-2 font-semibold"
-                    >
-                      Cancella
-                    </button>
+                    <ButtonDelete  handleDelete={handleDelete}/>
                   </div>
                 )}
               </section>

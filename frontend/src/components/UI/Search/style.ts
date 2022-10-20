@@ -7,6 +7,7 @@ export const SearchStyleComponent = styled.header`
   position: absolute;
   z-index: 50;
   top: 25%;
+  left: 35%;
 
   ul {
     border-left: 3px solid ${(props) => props.theme.orangeColor};
@@ -21,8 +22,9 @@ export const SearchStyleComponent = styled.header`
 
   input {
     width: 100%;
-    padding: 0.7rem 0.4rem;
+    padding: 0.5rem 0.3rem;
     outline: none;
+    border-radius: 30px;
     cursor: pointer;
     text-align: center;
     box-shadow: ${(props) => props.theme.boxShadow2};

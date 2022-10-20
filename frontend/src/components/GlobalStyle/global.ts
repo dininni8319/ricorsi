@@ -27,11 +27,13 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a {
-       font-size: 14px;
-       transition: 1s;
+       font-size: 12px;
        color: inherit;
        color: #03045e;
-       font-weight: 600;
+    }
+
+    label {
+      font-size: 12px;
     }
 
     input, select, button {

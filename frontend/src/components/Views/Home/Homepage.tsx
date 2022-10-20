@@ -77,15 +77,15 @@ const Homepage = () => {
                   key={id}
                 >
                   <li>
-                    <span className="font-semibold pr-1">Numero Ricorso:</span>
+                    <span className="font-semibold pr-2">Numero Ricorso:</span>
                     {searched.numero_ricorso}
                   </li>
                   <li>
-                    <span className="font-semibold pr-1">Ente:</span>
+                    <span className="font-semibold pr-2">Ente:</span>
                     {searched.ente}
                   </li>
                   <li>
-                    <span className="font-semibold pr-1">Anno imposta:</span>
+                    <span className="font-semibold pr-2">Anno imposta:</span>
                     {searched.anno_imposta}
                   </li>
                   <Link to={`/ricorsi_detail/${searched.id}`}>
@@ -118,37 +118,37 @@ const Homepage = () => {
 
                       <ul className="border-custom ul-style-custom">
                         <li>
-                          <span className="font-semibold pr-1">
+                          <span className="font-bold">
                             Numero Ricorso:
                           </span>
-                          {ricorso.numero_ricorso}
+                          <span>{ricorso.numero_ricorso}</span>
                         </li>
                         <li>
-                          <span className="font-semibold pr-1">Ente:</span>
-                          {ricorso.ente}
+                          <span className="font-bold">Ente:</span>
+                          <span>{ricorso.ente}</span>
                         </li>
                         <li>
-                          <span className="font-semibold pr-1">
+                          <span className="font-bold">
                             Anno imposta:
                           </span>
-                          {ricorso.anno_imposta}
+                          <span>{ricorso.anno_imposta}</span>
                         </li>
                         <li>
-                          <span className="font-semibold pr-1">
+                          <span>
                             Importo Atto:
                           </span>
-                          {ricorso.importo_atto}
+                          <span>{ricorso.importo_atto}</span>
                         </li>
                         <li>
-                          <span className="font-semibold pr-1">Esito:</span>
-                          {ricorso.esito}
+                          <span className="font-bold">Esito:</span>
+                          <span>{ricorso.esito}</span>
                         </li>
                         <li>
-                          <p className="font-serif text-sm">
-                            <span className="font-semibold pr-1">
+                          <p>
+                            <span className="pr-2">
                               Descrizione:
                             </span>
-                            {ricorso.oggetto_ricorso}
+                            <span>{ricorso.oggetto_ricorso}</span>
                           </p>
                         </li>
                       </ul>

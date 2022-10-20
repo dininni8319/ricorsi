@@ -8,6 +8,8 @@ import { DetailPage, Loader3 } from "../../UI/index";
 import useApiRequest from "../../state/useApiRequest";
 import { funFormatDate } from "../../Utilities/index";
 import { ConfigContext } from "../../../Contexts/Config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const CartolineDetail = () => {
   let { slug } = useParams();
@@ -97,9 +99,12 @@ const CartolineDetail = () => {
             <>
               <button
                 onClick={(event) => handleDelete(event)}
-                className="bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold"
+                className="text-red-600 outline-none cursor-pointer w-18 px-3 py-2 font-semibold"
               >
-                Cancella
+                <FontAwesomeIcon
+                  icon={faTrashAlt}
+                  className={`fa-1x`}
+                />
               </button>
             </>
           </div>

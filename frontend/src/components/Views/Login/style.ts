@@ -26,10 +26,6 @@ export const LoginStyled = styled.form`
     padding: 20px 0;
   }
 
-  label {
-    font-size: 12px;
-  }
-
 `;
 export const InputSection = styled.section`
   width: 50%;

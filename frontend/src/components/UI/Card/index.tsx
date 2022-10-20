@@ -4,6 +4,7 @@ import { baseURL } from "../../Utilities/index";
 import useApiRequest from "../../state/useApiRequest";
 import { useNavigate } from "react-router";
 import { memo } from "react";
+import { ButtonDelete } from "../index";
 
 const Card = ({
   id,
@@ -41,12 +42,10 @@ const Card = ({
     <CardStyleComponent className="card-style bg-base-100 m-1" key={id}>
       <section className="p-3">{children}</section>
       <div className="btn-delete">
-        <button
-          onClick={(e) => handleDelete(e, taxunit.id)}
-          className="bg-red-500 text-white outline-none cursor-pointer px-5 mr-1 py-2 font-semibold"
-        >
-          Cancella
-        </button>
+        <ButtonDelete 
+          handleDelete={handleDelete}
+          id={taxunit.id}
+        />
       </div>
       <CardHeaderStyle></CardHeaderStyle>
     </CardStyleComponent>

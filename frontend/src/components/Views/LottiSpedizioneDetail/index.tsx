@@ -4,9 +4,11 @@ import { useParams, useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "../RicorsiDetail/style";
-import { DetailPage, Loader3 } from "../../UI/index";
+import { DetailPage, Loader3, ButtonDelete } from "../../UI/index";
 import useApiRequest from "../../state/useApiRequest";
 import { funFormatDate } from "../../Utilities/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const LottiSpedizioneDetail = () => {
   let { slug } = useParams();
@@ -116,11 +118,15 @@ const LottiSpedizioneDetail = () => {
               Aggiorna la Riscossione
             </Link>
             <>
+          
               <button
                 onClick={(event) => handleDelete(event)}
-                className="bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold"
+                className="text-red-600 outline-none cursor-pointer w-18 px-3 py-2 font-semibold"
               >
-                Cancella
+                <FontAwesomeIcon
+                  icon={faTrashAlt}
+                  className={`fa-1x`}
+                />
               </button>
             </>
           </div>
