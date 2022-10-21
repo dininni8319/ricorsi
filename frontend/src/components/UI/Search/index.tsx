@@ -5,20 +5,14 @@ const Search = ({
   title,
   children,
   handleChange,
-  setSearchFC,
-  setSearchedTerm,
+  handleResetSearch,
 }: {
   title: string;
   children?: JSX.Element;
-  setSearchFC: any;
   handleChange: any;
-  setSearchedTerm: any;
+  handleResetSearch: any;
 }) => {
-  const handleResetSearch = (e: any) => {
-    let val = (e.target.value = "");
-    setSearchedTerm(() => val);
-    setSearchFC([]);
-  };
+  
   return (
     <SearchStyleComponent>
       <>

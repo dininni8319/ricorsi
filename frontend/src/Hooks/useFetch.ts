@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Methods } from "../components/interfaces/interfaces";
 import axios from "axios";
 

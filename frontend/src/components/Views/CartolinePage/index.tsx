@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect, useContext, ChangeEvent } from "react";
-import { useNavigate } from "react-router";
+import { useState, useEffect, useCallback, useContext, ChangeEvent } from "react";
 import { Card, Loader3, Search, ImportCsv } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
-import { funFormatDate } from "../../Utilities/index";
 import { ConfigContext } from "../../../Contexts/Config";
 import DetailsCard from "./detailsCard";
 import SearchedDetails from "./searchedDetails";
+import useHttp from "../../../Hooks/useHttp";
+import useSearch from '../../../Hooks/useSearch';
 
 const CartolinePage = () => {
   const {
@@ -14,35 +13,26 @@ const CartolinePage = () => {
   } = useContext(ConfigContext);
   const [cartoline, setCartoline] = useState<{ [key: string]: string }[]>([]);
   const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
-  const [searchedTerm, setSearchedTerm] = useState("");
-  const [selectedItem, setSelectedItem] = useState(false);
-  let [cardId, setCardId] = useState<number>(0);
-  const navigate = useNavigate();
 
-  const handleSelectedItem = (e: any, id: number) => {
-    if (id) {
-      setSelectedItem(true);
-      setCardId(id);
-    }
-  };
+  const handleCartoline = useCallback(( {cartoline }: { cartoline: { [key: string]: string }[]}) => {
+    setCartoline(() => [...cartoline]);
+  },[])
 
-  const handleNavigate = (id: number) => {
-    navigate(`/detail_cartoline/${id}`);
-  };
+  const { isLoading, error, sendRequest: fetchCartoline } = useHttp(handleCartoline);
+  const {
+    searchedTerm,
+    selectedItem,
+    cardId,
+    handleSelectedItem,
+    handleChange,
+    handleResetSearch,
+    handleNavigate,
+  } = useSearch(setSearchedCartoline);
 
-  useEffect(() => {
-    fetch(`${backend}/api/cienneffe/cartoline`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.cartoline) {
-          setCartoline(() => [...data?.cartoline]);
-        }
-      })
-      .catch((error: unknown) => {
-        console.log(error);
-      });
-  }, []);
-
+  useEffect(() =>  {
+    fetchCartoline({url:`${backend}/api/cienneffe/cartoline`}) 
+  }, [fetchCartoline]);
+  
   useEffect(() => {
     if (searchedTerm.length > 3) {
       fetch(`${backend}/api/cienneffe/cartolina/search=${searchedTerm}`)
@@ -54,18 +44,13 @@ const CartolinePage = () => {
     }
   }, [searchedTerm]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchedTerm(e.target.value);
-  };
-
   return (
     <div className="height-custom flex flex-col items-center">
       <>
         <Search
           title="Cartolina"
           handleChange={handleChange}
-          setSearchFC={setSearchedCartoline}
-          setSearchedTerm={setSearchedTerm}
+          handleResetSearch={handleResetSearch}
         >
           {searchedCartoline?.slice(0,6).map((searched: { [key: string]: string }) => {
             return (

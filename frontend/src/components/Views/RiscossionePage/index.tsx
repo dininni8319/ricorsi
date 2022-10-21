@@ -1,34 +1,26 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef, ChangeEvent, useCallback } from "react";
-import { useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
 import { Card, Loader3, Search } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
 import { funFormatDate } from "../../Utilities/index";
 import { RiSliceLine } from "react-icons/ri";
+import useSearch from '../../../Hooks/useSearch';
 
 const RiscossionePage = () => {
   const [riscossioni, setRiscossioni] = useState<{ [key: string]: string }[]>(
     []
   );
   const [searchedRiscossione, setSearchedRiscossione] = useState<any>([]);
-  const [searchedTerm, setSearchedTerm] = useState("");
-  const [selectedItem, setSelectedItem] = useState(false);
-  let [cardId, setCardId] = useState<number>(0);
-
-  
-  const handleSelectedItem = (e: any, id: number) => {
-    if (id) {
-      setSelectedItem(true);
-      setCardId(id);
-    }
-  };
-
-  const navigate = useNavigate();
-
-  const handleNavigate = (id: number) => {
-    navigate(`/detail_riscossione/${id}`);
-  };
+  const {
+    searchedTerm,
+    selectedItem,
+    cardId,
+    handleSelectedItem,
+    handleChange,
+    handleResetSearch,
+    handleNavigate,
+  } = useSearch(setSearchedRiscossione);
 
   useEffect(() => {
     fetch(`${baseURL}/api/cienneffe/riscossione`)
@@ -54,9 +46,6 @@ const RiscossionePage = () => {
     }
   }, [searchedTerm]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchedTerm(e.target.value);
-  };
 
   return (
     <div className="height-custom flex flex-col items-center">
@@ -64,8 +53,7 @@ const RiscossionePage = () => {
         <Search
           title="Riscossione"
           handleChange={handleChange}
-          setSearchFC={setSearchedRiscossione}
-          setSearchedTerm={setSearchedTerm}
+          handleResetSearch={handleResetSearch}
         >
           {searchedRiscossione?.slice(0,6).map((searched: { [key: string]: string }) => {
             return (
@@ -75,10 +63,10 @@ const RiscossionePage = () => {
                     ? "active-class"
                     : ""
                 }`}
-                onMouseOver={(e) =>
-                  handleSelectedItem(e, parseInt(searched?.id))
+                onMouseOver={() =>
+                  handleSelectedItem(parseInt(searched?.id))
                 }
-                onClick={() => handleNavigate(parseInt(searched.id))}
+                onClick={() => handleNavigate('detail_riscossione', parseInt(searched.id))}
               >
                 <li>
                   <span className="font-semibold pr-1">

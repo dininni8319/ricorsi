@@ -1,5 +1,4 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { type } from "os";
 
 export type Methods =
   | "head"
@@ -51,7 +50,6 @@ export interface PropsInput {
   value?: string | number;
   errorMessage?: string;
   focused?: string;
-  // inputProps: string,
   handleData: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     index?: number
@@ -93,6 +91,13 @@ export type ObjSelectType = {
 
 export interface FasiListProps {
   fasi?: Fasi[];
+}
+
+export type RequestConfigType = {
+  url: string,
+  method?: string,
+  headers?: Fasi,
+  body?: Fasi;
 }
 
 export interface Fasi {

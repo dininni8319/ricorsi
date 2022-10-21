@@ -20,9 +20,8 @@ export const FormContainer = styled.form`
   }
 
   .btn-send {
-    width: 90%;
+    width: 100%;
     background-color: ${(props) => props.theme.buttonColor};
-    border-radius: 30px;
     font-size: 20px;
   }
 
