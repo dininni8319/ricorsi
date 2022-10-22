@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
-import { RicorsoProps } from "../../interfaces/interfaces";
 import { useContext } from "react";
 import { useParams, useNavigate } from "react-router";
 import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "../RicorsiDetail/style";
 import { DetailPage, Loader3 } from "../../UI/index";
-import useApiRequest from "../../state/useApiRequest";
 import { funFormatDate } from "../../Utilities/index";
 import { ConfigContext } from "../../../Contexts/Config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import useHttp from "../../../Hooks/useHttp";
 
 const CartolineDetail = () => {
   let { slug } = useParams();
@@ -17,27 +16,27 @@ const CartolineDetail = () => {
   let {
     api_urls: { backend },
   } = useContext(ConfigContext);
-  let { payload, setData } = useFetch(
+
+  let { payload } = useFetch(
     `${backend}/api/cienneffe/detail_cartoline/${slug}`,
     {
       verb: "get",
     }
   );
 
-  const [{ status, response }, makeRequest] = useApiRequest(
-    `${backend}/api/cienneffe/cartolina/delete/${slug}`,
-    {
-      verb: "delete",
-    }
-  );
-
   let { cartolina }: any = payload;
-
+  
   const handleDelete = (e: any) => {
     e.preventDefault();
-    makeRequest();
-    navigate("/");
+    deleteCartolina({
+      url:`${backend}/api/cienneffe/cartolina/delete/${slug}`, 
+      method: 'DELETE',
+      headers: {"Content-Type": "application/json"},
+    });
+    navigate("/cartoline");
   };
+
+  const { sendRequest: deleteCartolina } = useHttp(handleDelete);
 
   return (
     <DetailStyleComponent>

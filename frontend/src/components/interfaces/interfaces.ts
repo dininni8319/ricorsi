@@ -101,7 +101,7 @@ export type RequestConfigType = {
 }
 
 export interface Fasi {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 export interface ObjFormType {
   id?: number;
@@ -130,7 +130,9 @@ export interface ObjFormType {
 }
 
 export interface FasiFieldsTypes {
-  fase: string;
+  ricorsi_id: number,
+  id: number,
+  fase: number;
   contro_deduzioni_tax_unit: string;
   contro_deduzioni_uff_legale: string;
   presentato: string;

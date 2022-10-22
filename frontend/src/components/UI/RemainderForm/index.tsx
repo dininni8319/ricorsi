@@ -5,23 +5,28 @@ import { defaultRemainderData } from "../FormComponents/defaultData";
 import useInput from "../../../Hooks/useInput";
 import { RemainderStyleComponent } from "./style";
 import { useNavigate } from "react-router";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { Modal, RemainderList } from "../index";
+import { Fasi } from "../../interfaces/interfaces";
+import useHttp from '../../../Hooks/useHttp';
 
 const RemainderForm = ({ slug }: { slug?: string }) => {
+
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [tasks, setTasks] = useState<any>([]);
   const { data, handleData } = useInput(defaultRemainderData);
 
+  const getRicorsoTasks = useCallback(({ tasks }: { tasks:Fasi[] }) => {
+    setTasks((prev: Fasi[]) =>  [...tasks]);
+  },[]);
+
+  const {isLoading, error, sendRequest: fetchAllTasks } = useHttp(getRicorsoTasks);
+
   useEffect(() => {
-    fetch(`${baseURL}/api/cienneffe/tasks/${slug}}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setTasks((prev: any) => [...data.tasks]);
-      });
-  }, []);
+    fetchAllTasks({url: `${baseURL}/api/cienneffe/tasks/${slug}`})
+  }, [fetchAllTasks]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -50,6 +55,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
         alert(err);
       });
   };
+
   return (
     <RemainderStyleComponent>
       <div>
