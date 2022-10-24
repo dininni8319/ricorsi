@@ -13,6 +13,8 @@ class RiconciliazioneController extends Controller
     //     $this->middleware("auth");
     //     /* $this->middleware("auth.revisor"); */
     // }
+    protected $messageUnSuccess = "Qualcosa è andato storto con la";
+    protected $messageSuccess = "La Riconciliazione è stata";
 
     protected function getFormData($req) {
         return [
@@ -27,27 +29,23 @@ class RiconciliazioneController extends Controller
 
     public function creaRiconciliazione(Request $request, $id)
     {
-        $formData = $this->getFormData($request);
-        $formData['riscossione_id'] = $id;
-        
-        if ($id) {
+        if(!$id){
+            return response()->json([
+            'success' => false,
+            'message' => $this->messageUnSuccess,
+        ], 404);
+        } else {
+
+            $formData = $this->getFormData($request);
+            $formData['riscossione_id'] = $id;
             $riconciliazione = Riconciliazione::create($formData);
-            return redirect("/detail_riscossione/" . $id);
-        } 
-        
-        return redirect("/detail_riscossione/" . $id);
-    }
 
-    public function updateFormRedicontazione($riconciliazione)
-    {
-        $id = intval($riconciliazione);
-        
-        if ($id) {
-            
-            $riconciliazione = Riconciliazione::find($id);
-
-            return  view('riscossione.aggiornaRendicontazione', compact('riconciliazione'));
-        }
+            return response()->json([
+                'success' => true,
+                'message' => $this->messageSuccess,
+                'riconciliazione' => $riconciliazione,
+            ], 200);
+        }  
     }
 
     public function updateRidicontazione(Request $request, $id) 

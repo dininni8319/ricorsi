@@ -1,16 +1,16 @@
-import useInput from "../../Hooks/useInput";
-import { defaultFasiData } from "../UI/FormComponents/defaultData";
+import useInput from "../../../Hooks/useInput";
+import { defaultFasiData } from "../../UI/FormComponents/defaultData";
 import {
   selectStatoFase,
   selectEsitoSentenza,
   selectEsitoDefinitivo,
   selectTipologiaFile,
-} from "../UI/FormComponents/selectPropsTributi";
-import { fasiFormData } from "../UI/FormComponents/defaultProps";
-import { Input, SelectInput, Form, Modal } from "../UI/index";
+} from "../../UI/FormComponents/selectPropsTributi";
+import { fasiFormData } from "../../UI/FormComponents/defaultProps";
+import { Input, SelectInput, Form, Modal } from "../../UI/index";
 import { useParams } from "react-router";
-import { baseURL } from "../Utilities/index";
-import useFetch from "../../Hooks/useFetch";
+import { baseURL } from "../../Utilities/index";
+import useFetch from "../../../Hooks/useFetch";
 
 const Fase = () => {
   const { data, handleData } = useInput(defaultFasiData);

@@ -1,13 +1,13 @@
-import { formRicorsiLabels } from "../UI/FormComponents/defaultProps";
-import { defaultRicorsiData } from "../UI/FormComponents/defaultData";
+import { formRicorsiLabels } from "../../UI/FormComponents/defaultProps";
+import { defaultRicorsiData } from "../../UI/FormComponents/defaultData";
 import {
   selectPropsTributi,
   selectPropsTipologiaAtto,
   selectPropsEsito,
-} from "../UI/FormComponents/selectPropsTributi";
-import useInput from "../../Hooks/useInput";
-import { Input, SelectInput, TextArea, Form } from "../UI/index";
-import { isTextarea, validate } from "../Utilities/index";
+} from "../../UI/FormComponents/selectPropsTributi";
+import useInput from "../../../Hooks/useInput";
+import { Input, SelectInput, TextArea, Form } from "../../UI/index";
+import { isTextarea, validate } from "../../Utilities/index";
 import { useParams } from "react-router";
 
 const Workflow = () => {

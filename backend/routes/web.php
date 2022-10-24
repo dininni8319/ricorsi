@@ -26,7 +26,6 @@ use App\Http\Controllers\TaxUnitEditController;
 
 
 //Ricorso
-
 Route::get("/", [HomeController::class, "index"])->name("home");
 Route::get("/paginaricorsi", [RicorsiController::class, "index"])->name("paginaricorsi");
 Route::get("/work_flow/{ricorso?}", [RicorsiController::class, "workFlow"])->name("workflow");
@@ -72,7 +71,6 @@ Route::get('/export_lotti', [RiscossioneController::class, "exportLotti"])->name
 Route::delete("/delete_riconciliazione/{id}/{riscossione}" , [RiconciliazioneController::class, "deleteRiconciliazione"])->name("delete.riconciliazione");
 Route::post("/crea_riconciliazione/{id}", [RiconciliazioneController::class, "creaRiconciliazione"])->name("crea.riconciliazione");
 Route::get("/enteRiscossione", [RiconciliazioneController::class, "enteRiscossione"])->name("enteRiscossione");
-
 Route::get("/pagina_riconciliazione_form/{riconciliazione}", [RiconciliazioneController::class, "updateFormRedicontazione"])->name("update.form.rendicontazione");
 Route::post("/update_riconciliazione/{id}", [RiconciliazioneController::class, "updateRidicontazione"])->name("update.riconciliazione");
 

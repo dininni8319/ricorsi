@@ -1,8 +1,8 @@
-import { RiconciliazioneFormData } from "../UI/FormComponents/defaultProps";
-import { defaultRicorsiData } from "../UI/FormComponents/defaultData";
-import { selectMeseRendicondazione } from "../UI/FormComponents/selectPropsTributi";
-import useInput from "../../Hooks/useInput";
-import { Input, SelectInput, Form } from "../UI/index";
+import { RiconciliazioneFormData } from "../../UI/FormComponents/defaultProps";
+import { defaultRicorsiData } from "../../UI/FormComponents/defaultData";
+import { selectMeseRendicondazione } from "../../UI/FormComponents/selectPropsTributi";
+import useInput from "../../../Hooks/useInput";
+import { Input, SelectInput, Form } from "../../UI/index";
 import { useParams } from "react-router";
 
 const RiconciliazioneForm = () => {

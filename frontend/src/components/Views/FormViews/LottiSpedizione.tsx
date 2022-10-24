@@ -1,12 +1,12 @@
-import useInput from "../../Hooks/useInput";
-import { defaultLottoData } from "../UI/FormComponents/defaultData";
-import { LottiSpedizioneFormData } from "../UI/FormComponents/defaultProps";
+import useInput from "../../../Hooks/useInput";
+import { defaultLottoData } from "../../UI/FormComponents/defaultData";
+import { LottiSpedizioneFormData } from "../../UI/FormComponents/defaultProps";
 import {
   selectEntrataTributo,
   selectTipologiaDocumenti,
   selectTipologiaSpedizione,
-} from "../UI/FormComponents/selectPropsTributi";
-import { Input, SelectInput, Form } from "../UI/index";
+} from "../../UI/FormComponents/selectPropsTributi";
+import { Input, SelectInput, Form } from "../../UI/index";
 
 const LottoSpedizione = () => {
   const { data, handleData } = useInput(defaultLottoData);

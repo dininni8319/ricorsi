@@ -5,17 +5,17 @@ import ProtectedRoute from "../Utilities/ProtectedRoutes";
 
 const Router = () => {
   const Homepage = lazy(() => import("./Home/Homepage"));
-  const Ricorsi = lazy(() => import("./RicorsiWorkflow"));
-  const Cartoline = lazy(() => import("./Cartoline"));
-  const Fase = lazy(() => import("./Fase"));
+  const Ricorsi = lazy(() => import("./FormViews/RicorsiWorkflow"));
+  const Cartoline = lazy(() => import("./FormViews/Cartoline"));
+  const Fase = lazy(() => import("./FormViews/Fase"));
   const RicorsiDetail = lazy(() => import("./RicorsiDetail"));
   const FaseDetail = lazy(() => import("./FaseDetail"));
   const CartolineDetail = lazy(() => import("./CartolineDetail"));
   const CartolinePage = lazy(() => import("./CartolinePage"));
   const LottiSpedizioneDetail = lazy(() => import("./LottiSpedizioneDetail"));
-  const LottiSpedizione = lazy(() => import("./LottiSpedizione"));
+  const LottiSpedizione = lazy(() => import("./FormViews/LottiSpedizione"));
   const RiscossionePage = lazy(() => import("./RiscossionePage"));
-  const Riconciliazione = lazy(() => import("./Riconciliazione"));
+  const Riconciliazione = lazy(() => import("./FormViews/Riconciliazione"));
   const Login = lazy(() => import("./Login"));
   const Register = lazy(() => import("./Register"));
   
