@@ -44,6 +44,7 @@ class RiconciliazioneController extends Controller
                 'success' => true,
                 'message' => $this->messageSuccess,
                 'riconciliazione' => $riconciliazione,
+                'id' => $riconciliazione->id,
             ], 200);
         }  
     }

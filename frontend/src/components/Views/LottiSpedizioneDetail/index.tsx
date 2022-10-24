@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "../RicorsiDetail/style";
-import { DetailPage, Loader3, ButtonDelete } from "../../UI/index";
+import { DetailPage, Loader3 } from "../../UI/index";
 import useApiRequest from "../../state/useApiRequest";
 import { funFormatDate } from "../../Utilities/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -114,11 +113,14 @@ const LottiSpedizioneDetail = () => {
       <section className="links-detail-page mt-5">
         {riscossione && (
           <div className="md:flex md:justify-between md:items-end py-2">
+            <Link 
+              to={`/form_rendicondazione/${slug}`}
+              className="primaryBtn"
+            >
+              Avvia una Rendicontazione
+            </Link>
             <Link to={`/form_riscossione/${slug}`}>
               Aggiorna la Riscossione
-            </Link>
-            <Link to={`/form_rendicondazione/`}>
-              Avvia una Rendicontazione
             </Link>
             <>
           

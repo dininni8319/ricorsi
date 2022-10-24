@@ -165,7 +165,7 @@ const Router = () => {
       />
 
       <Route
-        path="/form_rendicondazione/"
+        path="/form_rendicondazione/:slug"
         element={
           <Suspense fallback={<Loader3 />}>
             <ProtectedRoute>

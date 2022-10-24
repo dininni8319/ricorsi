@@ -1,5 +1,5 @@
 import { RiconciliazioneFormData } from "../../UI/FormComponents/defaultProps";
-import { defaultRicorsiData } from "../../UI/FormComponents/defaultData";
+import { defaultRiconciliazioneData } from "../../UI/FormComponents/defaultData";
 import { selectMeseRendicondazione } from "../../UI/FormComponents/selectPropsTributi";
 import useInput from "../../../Hooks/useInput";
 import { Input, SelectInput, Form } from "../../UI/index";
@@ -8,13 +8,14 @@ import { useParams } from "react-router";
 const RiconciliazioneForm = () => {
   let { slug } = useParams();
 
-  const { data, handleData } = useInput(defaultRicorsiData, slug);
+  const { data, handleData } = useInput(defaultRiconciliazioneData, slug);
 
   return (
     <div className="height-custom">
       <Form
+        id={slug}
         title="Avvia un Rendicondazione"
-        createPath="crea_riconciliazione"
+        createPath="create_riconciliazione"
         navPath="riconciliazione_detail"
         subMitBtn="Invio"
         data={data}
