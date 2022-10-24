@@ -15,9 +15,10 @@ const Router = () => {
   const LottiSpedizioneDetail = lazy(() => import("./LottiSpedizioneDetail"));
   const LottiSpedizione = lazy(() => import("./LottiSpedizione"));
   const RiscossionePage = lazy(() => import("./RiscossionePage"));
+  const Riconciliazione = lazy(() => import("./Riconciliazione"));
   const Login = lazy(() => import("./Login"));
   const Register = lazy(() => import("./Register"));
-
+  
 
   return (
     <Routes>
@@ -158,6 +159,17 @@ const Router = () => {
           <Suspense fallback={<Loader3 />}>
             <ProtectedRoute>
               <LottiSpedizione />
+            </ProtectedRoute>
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/form_rendicondazione/"
+        element={
+          <Suspense fallback={<Loader3 />}>
+            <ProtectedRoute>
+              <Riconciliazione />
             </ProtectedRoute>
           </Suspense>
         }

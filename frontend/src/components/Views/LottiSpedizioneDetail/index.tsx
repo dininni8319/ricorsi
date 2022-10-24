@@ -117,6 +117,9 @@ const LottiSpedizioneDetail = () => {
             <Link to={`/form_riscossione/${slug}`}>
               Aggiorna la Riscossione
             </Link>
+            <Link to={`/form_rendicondazione/`}>
+              Avvia una Rendicontazione
+            </Link>
             <>
           
               <button

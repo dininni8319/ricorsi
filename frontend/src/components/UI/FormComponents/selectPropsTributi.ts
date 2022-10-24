@@ -395,3 +395,46 @@ export const selectTasks = {
     },
   ],
 };
+
+export const selectMeseRendicondazione = {
+  title: "Mese",
+  name: "mese",
+  values: [
+    {
+      value: "Gennaio",
+    },
+    {
+      value: "Febbraio",
+    },
+    {
+      value: "Marzo",
+    },
+    {
+      value: "Aprile",
+    },
+    {
+      value: "Maggio",
+    },
+    {
+      value: "Giugno",
+    },
+    {
+      value: "Luglio",
+    },
+    {
+      value: "Agosto",
+    },
+    {
+      value: "Settembre",
+    },
+    {
+      value: "Ottobre",
+    },
+    {
+      value: "Novembre",
+    },
+    {
+      value: "Dicembre",
+    },
+  ],
+};

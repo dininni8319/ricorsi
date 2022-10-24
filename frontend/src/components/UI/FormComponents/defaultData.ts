@@ -91,3 +91,12 @@ export const defaultRegisterData = {
   password: "",
   password_confirmation: "",
 };
+
+export const defaultRiconciliazioneData = {
+  mese: "",
+  anno: "",
+  totale: "",
+  oneri_riscossione: "",
+  spese_notifica: "",
+  diritti_vari: "",
+};

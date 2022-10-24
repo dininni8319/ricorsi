@@ -440,3 +440,45 @@ export const LottiSpedizioneFormData = {
     },
   ],
 };
+
+export const RiconciliazioneFormData = {
+  title: "Avvia una Redicondazione",
+  formArr: [
+    {
+      label: "Anno",
+      name: "anno",
+      type: "text",
+      id: 0,
+      errorMessage: "",
+    },
+    {
+      label: "Totale",
+      name: "totale",
+      type: "number",
+      id: 1,
+      errorMessage: "",
+    },
+    {
+      label: "Oneri di riscossione",
+      name: "oneri_riscossione",
+      type: "number",
+      id: 2,
+      errorMessage: "",
+    },
+    {
+      label: "Spese di Notifica",
+      name: "spese_notifica",
+      type: "number",
+      id: 3,
+      errorMessage: "",
+    },
+    {
+      label: "Diritti Vari",
+      name: "diritti_vari",
+      type: "number",
+      id: 4,
+      errorMessage: "",
+    },
+  ],
+};
+

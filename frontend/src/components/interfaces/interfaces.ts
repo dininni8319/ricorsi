@@ -96,7 +96,7 @@ export interface FasiListProps {
 export type RequestConfigType = {
   url: string,
   method?: string,
-  headers?: Fasi,
+  headers?: any,
   body?: Fasi;
 }
 
