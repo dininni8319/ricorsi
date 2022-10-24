@@ -14,8 +14,8 @@ class CartolineController extends Controller
     //     $this->middleware("auth"); 
     //     $this->middleware("auth.revisor");
     // }
-    protected $messageUnSuccess = 'Sorry, something went wrong';
-    protected $messageSuccess = 'Success, the task was successfull!';
+    protected $messageUnSuccess = 'Qualcosa è andato storto!';
+    protected $messageSuccess = 'Successo, la task è stata completata correttamente!';
 
     protected function findCartoline($id) 
     {
@@ -144,7 +144,7 @@ class CartolineController extends Controller
             if(!$id){
                 return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong!',
+                'message' => $this->messageUnSuccess,
             ], 404);
             } else {
                 $formatData = [
@@ -161,7 +161,7 @@ class CartolineController extends Controller
 
                 return response()->json([
                     'success' => true,
-                    'message' => $this->messageSuccess ,
+                    'message' => $this->messageSuccess,
                     'cartolina' => $cartolina,
                     'id' => $cartolina->id,
                 ], 200);
@@ -176,13 +176,13 @@ class CartolineController extends Controller
         if(!$cartolina){
             return response()->json([
             'success' => false,
-            'message' => 'Something went wrong!',
+            'message' => $this->messageUnSuccess,
         ], 404);
         } else {
             
             return response()->json([
                 'success' => true,
-                'message' => 'The ricorso is been deleted!',
+                'message' => 'La cartolina è stata creata!',
                 'cartolina' => $cartolina,
                 'id' => $cartolina->id,
             ], 200);
@@ -209,6 +209,13 @@ class CartolineController extends Controller
 
     public function importCsv(Request $request){
     
+        if(!$request){
+            return response()->json([
+            'success' => false,
+            'message' => $this->messageUnSuccess,
+            ], 404); 
+        }
+
         $request->validate([
             'csv_file' => 'required|mimes:csv,txt,xlsx,xls'
         ]);
@@ -218,7 +225,7 @@ class CartolineController extends Controller
         $data = array_slice($file, 1);
         //allowing php to process the data in chunks
         $parts = (array_chunk($data, 2000));
-
+        
         foreach ($parts as $index => $part) {
             $fileName = resource_path('pending-files/'.date('y-m-d-H-i-s').$index. '.csv');
             file_put_contents($fileName, $part);
@@ -226,12 +233,23 @@ class CartolineController extends Controller
        
         (new Cartoline())->importToDb();
 
-        session()->flash('status', 'queued for importing!');
-        return redirect(route('cartoline'));
+        if(!$parts){
+            return response()->json([
+            'success' => false,
+            'message' => $this->messageUnSuccess,
+        ], 404);
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => 'La cartolina è stata importata!',
+            ], 200);
+        }   
+        // session()->flash('status', 'queued for importing!');
+        // return redirect(route('cartoline'));
+    }
 
-    } 
-     public function exportExcel()
-     {
-        return Excel::download(new CartolineExport, 'cartoline.xlsx');
-     }
+    public function exportExcel()
+    {
+       return Excel::download(new CartolineExport, 'cartoline.xlsx');
+    }
 }

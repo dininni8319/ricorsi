@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\WorkFlow;
 use Laravel\Scout\Searchable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,7 +19,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ["name", "email", "password"];
+    protected $fillable = ["first_name","last_name", "email", "password"];
 
     /**
      * The attributes that should be hidden for serialization.

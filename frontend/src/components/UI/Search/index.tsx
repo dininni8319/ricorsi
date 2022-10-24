@@ -1,29 +1,32 @@
-import { Link } from 'react-router-dom';
-import { SearchStyleComponent } from './style';
+import { SearchStyleComponent } from "./style";
 
 const Search = ({
-    title,
-    children,
-    handleChange
+  title,
+  children,
+  handleChange,
+  handleResetSearch,
 }: {
-    title: string;
-    children?: JSX.Element;
-    handleChange: any;
+  title: string;
+  children?: JSX.Element;
+  handleChange: any;
+  handleResetSearch: any;
 }) => {
-    return (
-        <SearchStyleComponent>
-            <>
-                <input
-                    type="text"
-                    placeholder={`Cerca un ${title}`}
-                    onChange={handleChange}
-                    name="query"
-                />
-            </>
+  
+  return (
+    <SearchStyleComponent>
+      <>
+        <input
+          type="text"
+          placeholder={`Cerca un ${title}`}
+          onChange={handleChange}
+          name="query"
+          onClick={handleResetSearch}
+        />
+      </>
 
-            {children}
-        </SearchStyleComponent>
-    );
+      {children}
+    </SearchStyleComponent>
+  );
 };
 
 export default Search;

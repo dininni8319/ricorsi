@@ -20,9 +20,9 @@ class TaxUnitEditController extends Controller
     //     $this->middleware("auth.revisor");
     // }
 
-    public function lastCreatedFase()
+    public function lastCreatedFase($id)
     {
-        $lastFase =  Fasi::orderBy("created_at", "desc")->first();
+        $lastFase =  Fasi::where('ricorsi_id', $id)->orderBy("created_at", "desc")->first();
         $id = $lastFase->id;
 
         if(!$id){
@@ -61,6 +61,9 @@ class TaxUnitEditController extends Controller
     {   
         if ($id) {
             $fase = Fasi::find($id);
+            $lastFase =  Fasi::orderBy("created_at", "desc")->first();
+            $currentId = $lastFase->id;
+
             $ricorsoId = $fase->ricorsi_id;
             //per adesso non lo sto utilizzando la riga 48 e 50
             $documents = Document::where('ricorsi_id', $ricorsoId)->where('fase', $fase->fase)->get();
@@ -68,6 +71,7 @@ class TaxUnitEditController extends Controller
             return response()->json([
                     'success' => true,
                     'fase' => $fase,
+                    'fase_current_id' => $currentId,
                     'message' => $this->messageSuccess,
                 ], 200);
         } else {

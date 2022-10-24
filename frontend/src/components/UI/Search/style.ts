@@ -1,23 +1,43 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SearchStyleComponent = styled.header`
-    width: 30vw;
-    min-height: 20%;
-    background: inherit;
+  width: 20vw;
+  min-height: 20%;
+  background: inherit;
+  position: absolute;
+  z-index: 50;
+  top: 25%;
+  left: 35%;
 
-    input {
-        width: 100%;
-        padding: 0.7rem 0.4rem;
-        outline: none;
-        cursor: pointer;
-        border-radius: 20px;
-        text-align: center;
-        box-shadow: ${(props) => props.theme.boxShadow2};
-    }
+  ul {
+    border-left: 3px solid ${(props) => props.theme.orangeColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderGrayColor};
+  }
 
-    @media only screen and (max-width: 765px) {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+  .active-class {
+    cursor: pointer;
+    transition: ease-out;
+    background: #F1F2F6;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem 0.3rem;
+    outline: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: ${(props) => props.theme.boxShadow2};
+    margin-bottom: 3px;
+  }
+
+  @media only screen and (max-width: 765px) {
+    top: 28%;
+    left: 4%;
+
+    input,
+    ul {
+      width: 200px;
     }
+  }
 `;

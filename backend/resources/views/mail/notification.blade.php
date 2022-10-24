@@ -22,7 +22,7 @@
             .mail-mail {
               padding: 20px;
               width: 90%;
-              border: 3px solid #79c09c;
+              border: 1px solid #272D36;
               border-radius: 5px;
             }
 

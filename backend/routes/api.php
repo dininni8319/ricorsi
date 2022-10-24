@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskCotroller;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChartController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\TaxUnitController;
 use App\Http\Controllers\CartolineController;
 use App\Http\Controllers\RiscossioneController;
 use App\Http\Controllers\TaxUnitEditController;
+use App\Http\Controllers\RiconciliazioneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +30,14 @@ use App\Http\Controllers\TaxUnitEditController;
 }); */
 
 Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
+    //Public Routes
+    Route::post('/register', [AuthController::class, 'register'])->name('register.user');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.user');
+    Route::post('/count', [AuthController::class, 'countUsers'])->name('count.user');
+
+    //Private Route
+    Route::get('/view-profile', [AuthController::class, 'viewProfile'])->name('profile.user');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout.user');
     
     //Ricorsi        withoutMiddleware('throttle:api') is usefull went you want allow illimited request from the api          
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home")->withoutMiddleware('throttle:api');
@@ -38,18 +49,25 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     
     //Fasi
     Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create")->withoutMiddleware('throttle:api');
-    Route::get("/last_fase/", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase");
+    Route::get("/last_fase/{id}", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase");
     Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current")->withoutMiddleware('throttle:api');
     Route::get("/detail_fase/{id}", [TaxUnitEditController::class,"detailFase",])->name("detail.fase")->withoutMiddleware('throttle:api');
     Route::get("/cartolina/search={query}", [CartolineController::class, "searchCartolina"])->name("search.cartoline");
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
     
+    //TaskReminder
+    Route::get("/tasks/{id}", [TaskCotroller::class, "allTasks"])->withoutMiddleware('throttle:api');
+    Route::post("/taskrimender/{id}", [TaskCotroller::class, "setReminder"])->withoutMiddleware('throttle:api');
+    Route::delete("/task/delete/{id}", [TaskCotroller::class,"deleteTask",])->name("delete.task");
+
     //Cartoline 
     Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
     Route::get("/cartoline" , [CartolineController::class, "cartoline"])->name("cartoline")->withoutMiddleware('throttle:api');
     Route::get("/detail_cartoline/{id}" , [CartolineController::class, "detailCartoline"])->name("detail.cartoline");
     Route::delete("/cartolina/delete/{id}", [CartolineController::class,"cartolinaDelete",])->name("delete.cartolina");
-    
+    Route::post('/import_cartolina', [CartolineController::class, "importCsv"])->name("import.cartolina");
+    Route::get('/export_cartolina', [CartolineController::class, "exportExcel"])->name("export.cartolina");
+
     //Lotti di spedizioni 
     Route::get("/riscossione", [RiscossioneController::class, "riscossione"])->name("riscossione");
     Route::post("/create_riscossione/{id?}", [RiscossioneController::class, "creazioneRisc"])->name("creazioneRisc");
@@ -58,6 +76,12 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get('/export_lotti', [RiscossioneController::class, "exportLotti"])->name("export.lotti");
     Route::delete("/riscossione/delete/{id}", [RiscossioneController::class,"deleteRiscossione",])->name("riscossione.cartolina");
     
+    //Riconciliazione
+    Route::get("/enteRiscossione", [RiconciliazioneController::class, "enteRiscossione"])->name("enteRiscossione");
+    Route::post("/create_riconciliazione/{id}", [RiconciliazioneController::class, "creaRiconciliazione"])->name("crea.riconciliazione");
+    Route::post("/update_riconciliazione/{id}", [RiconciliazioneController::class, "updateRidicontazione"])->name("update.riconciliazione");
+    Route::delete("/delete_riconciliazione/{id}/{riscossione}" , [RiconciliazioneController::class, "deleteRiconciliazione"])->name("delete.riconciliazione");
+
     // //Chart Notifiche
     Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");
     Route::get("/notifiche_totali", [ChartController::class, "notificheTotali"])->name("notifichetotali.data");
