@@ -1,40 +1,36 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useParams, useNavigate } from "react-router";
-import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
+import useHttp from "../../../Hooks/useHttp";
 import { DetailStyleComponent } from "../RicorsiDetail/style";
 import { DetailPage, Loader3 } from "../../UI/index";
-import useApiRequest from "../../state/useApiRequest";
 import { funFormatDate } from "../../Utilities/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { ConfigContext } from '../../../Contexts/Config';
 
 const LottiSpedizioneDetail = () => {
   let { slug } = useParams();
   let navigate = useNavigate();
-
+  const { api_urls: { backend }} = useContext(ConfigContext)
   let { payload, setData } = useFetch(
-    `${baseURL}/api/cienneffe/detail_riscossione/${slug}`,
-    {
-      verb: "get",
-    }
-  );
-
-  const [{ status, response }, makeRequest] = useApiRequest(
-    `${baseURL}/api/cienneffe/cartolina/delete/${slug}`,
-    {
-      verb: "delete",
-    }
+    `${backend}/api/cienneffe/detail_riscossione/${slug}`,
+    {verb: "get"}
   );
 
   let { data: riscossione }: any = payload;
 
   const handleDelete = (e: any) => {
     e.preventDefault();
-    makeRequest();
+    deleteLotto({
+      url:`${backend}/api/cienneffe/cartolina/delete/${slug}`, 
+      method: 'DELETE',
+      headers: {"Content-Type": "application/json"},
+    });
     navigate("/");
   };
-
+  const { sendRequest: deleteLotto } = useHttp(handleDelete);
   return (
     <DetailStyleComponent>
       <>
@@ -72,7 +68,6 @@ const LottiSpedizioneDetail = () => {
                   {funFormatDate(riscossione.data_conferma_anteprime)}
                 </span>
               </li>
-
               <li>
                 Cartoline di Ritorno Inserite:{" "}
                 <span>{riscossione.cartoline_ritorno_inserite}</span>
@@ -123,7 +118,6 @@ const LottiSpedizioneDetail = () => {
               Aggiorna la Riscossione
             </Link>
             <>
-          
               <button
                 onClick={(event) => handleDelete(event)}
                 className="text-red-600 outline-none cursor-pointer w-18 px-3 py-2 font-semibold"

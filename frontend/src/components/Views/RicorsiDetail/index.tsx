@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { Fasi } from "../../interfaces/interfaces";
 import { baseURL } from "../../Utilities/index";
 import useFetch from "../../../Hooks/useFetch";
 import { DetailStyleComponent } from "./style";
+import useHttp from '../../../Hooks/useHttp';
 import useApiRequest from "../../state/useApiRequest";
 import { WrapperStyleComponent } from "../Home/style";
 import { Card, DetailPage, Loader3, RemainderForm, ButtonDelete } from "../../UI/index";
@@ -24,14 +25,15 @@ const RicorsiDetail = () => {
     { verb: "get" }
   );
 
+  const handleCurrentFasis = useCallback(({ fasi}: any) => {
+    setCurrentFasis(() => [...fasi])
+  },[])
+
+  const { isLoading, error, sendRequest: fetchCurrentFasis } = useHttp(handleCurrentFasis);
+
   useEffect(() => {
-    fetch(`${baseURL}/api/cienneffe/current_fasis/${slug}`)
-      .then((response) => response.json())
-      .then((data) => setCurrentFasis([...data.fasi]))
-      .catch((error: unknown) => {
-        console.log(error);
-      });
-  }, []);
+    fetchCurrentFasis({url: `${baseURL}/api/cienneffe/current_fasis/${slug}`})
+  }, [fetchCurrentFasis]);
 
   let { payload: currentFase } = useFetch(
     `${baseURL}/api/cienneffe/last_fase/${currentFasis[0]?.ricorsi_id}`,

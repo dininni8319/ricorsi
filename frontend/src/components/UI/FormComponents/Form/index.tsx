@@ -20,10 +20,6 @@ const Form: React.FC<FormProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
 
-  // const errorTag = (message: string) => {
-  //   return <span className="text-red-600 text-sm">{message}</span>;
-  // };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

@@ -19,9 +19,7 @@ const CartolineDetail = () => {
 
   let { payload } = useFetch(
     `${backend}/api/cienneffe/detail_cartoline/${slug}`,
-    {
-      verb: "get",
-    }
+    {verb: "get"}
   );
 
   let { cartolina }: any = payload;

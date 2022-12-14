@@ -32,7 +32,7 @@ const CartolinePage = () => {
   useEffect(() =>  {
     fetchCartoline({url:`${backend}/api/cienneffe/cartoline`}) 
   }, [fetchCartoline]);
-  
+
   useEffect(() => {
     if (searchedTerm.length > 3) {
       fetch(`${backend}/api/cienneffe/cartolina/search=${searchedTerm}`)

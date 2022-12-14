@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { RequestConfigType } from "../components/interfaces/interfaces";
 
 const useHttp = ( applyData: any) => {
+  
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
   const sendRequest = useCallback(async(requestConfig: RequestConfigType) => {
