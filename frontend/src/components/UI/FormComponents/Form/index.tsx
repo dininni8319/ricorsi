@@ -1,5 +1,5 @@
 // import { string } from "yup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { FormProps } from "../../../interfaces/interfaces";
 import { baseURL } from "../../../Utilities/index";
@@ -19,9 +19,9 @@ const Form: React.FC<FormProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
 
-  const errorTag = (message: string) => {
-    return <span className="text-red-600 text-sm">{message}</span>;
-  };
+  // const errorTag = (message: string) => {
+  //   return <span className="text-red-600 text-sm">{message}</span>;
+  // };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

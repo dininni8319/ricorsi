@@ -97,7 +97,7 @@ const RicorsiDetail = () => {
                     >
                       Avvia una Fase
                     </Link>
-                    <Link to={`/ricorsi/${ricorso?.id}`} className="mx-1">
+                    <Link to={`/update_ricorso/${ricorso?.id}`} className="mx-1">
                       Aggiorna Ricorso
                     </Link>
                     <ButtonDelete  handleDelete={handleDelete}/>

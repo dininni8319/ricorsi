@@ -12,7 +12,6 @@ import { isTextarea, validate } from "../../Utilities/index";
 import { useParams } from "react-router";
 import useFetch from '../../../Hooks/useFetch';
 import { ConfigContext } from '../../../Contexts/Config';
-import { ObjFormType } from "../../interfaces/interfaces";
 
 const Workflow = () => {
   let { slug } = useParams();
@@ -20,13 +19,13 @@ const Workflow = () => {
     api_urls: { backend },
   } = useContext(ConfigContext);
   
-  let { payload }: any = useFetch(`${backend}/api/cienneffe/detail_ricorso/${slug}`)
+  let { payload: { ricorso } }: any = useFetch(`${backend}/api/cienneffe/detail_ricorso/${slug}`)
   const { data, handleData } = useInput(defaultRicorsiData, slug);
   
   return (
     <div className="height-custom">
       <Form
-        title="Avvia un Ricorso"
+        title="Aggiorna questo Ricorso"
         createPath="crea_ricorso"
         navPath="ricorsi_detail"
         subMitBtn="Invio"
@@ -38,7 +37,7 @@ const Workflow = () => {
               <TextArea
                 handleData={handleData}
                 key={index}
-                // value={slug && payload[input.name]}
+                value={ricorso ? ricorso[input?.name] : ''}
                 {...input}
               />
             ) : (
@@ -46,6 +45,7 @@ const Workflow = () => {
                 handleData={handleData}
                 key={index}
                 {...input}
+                value={ricorso ? ricorso[input?.name] : ''}
                 // value={slug && data && data[input.name]}
               />
             );

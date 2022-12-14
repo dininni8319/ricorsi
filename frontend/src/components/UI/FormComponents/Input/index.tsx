@@ -4,6 +4,7 @@ import { memo, useState } from "react";
 
 const Input: React.FC<PropsInput> = (props) => {
   const [focused, setFocused] = useState(false);
+  
   let { type, name, label, id, value, errorMessage, handleData, ...inputAttr } =
     props;
 
@@ -21,7 +22,7 @@ const Input: React.FC<PropsInput> = (props) => {
         className="input-style"
         onChange={(e) => handleData(e)}
         name={name}
-        value={value}
+        defaultValue={value}
         onBlur={handleFocus}
         focused={focused.toString()}
         {...inputAttr}

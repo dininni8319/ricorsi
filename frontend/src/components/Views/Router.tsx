@@ -18,8 +18,7 @@ const Router = () => {
   const Riconciliazione = lazy(() => import("./FormViews/Riconciliazione"));
   const Login = lazy(() => import("./Login"));
   const Register = lazy(() => import("./Register"));
-  
-
+  const UpdateRicorso = lazy(() => import('./UpdateForms/UpdateRicorso'))
   return (
     <Routes>
       <Route
@@ -170,6 +169,16 @@ const Router = () => {
           <Suspense fallback={<Loader3 />}>
             <ProtectedRoute>
               <Riconciliazione />
+            </ProtectedRoute>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/update_ricorso/:slug"
+        element={
+          <Suspense fallback={<Loader3 />}>
+            <ProtectedRoute>
+              <UpdateRicorso />
             </ProtectedRoute>
           </Suspense>
         }
