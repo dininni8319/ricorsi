@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, ChangeEvent } from "react";
 import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router";
 import { baseURL } from "../../Utilities/index";
 import { Search } from "../../UI/index";
 import { ObjFormType } from "../../interfaces/interfaces";
@@ -19,8 +18,8 @@ const Searched = () => {
     handleNavigate,
   } = useSearch(setSearchedRicorsi);
 
-  const handleSearched = useCallback(({ ricorsi }:{ ricorsi: ObjFormType[]}) => {
-    setSearchedRicorsi(() => [...ricorsi])
+  const handleSearched = useCallback(({ data }:{ data: ObjFormType[]}) => {
+    setSearchedRicorsi(() => [...data])
   }, [searchedTerm])
 
   const { isLoading: loadingSearch, error: errSearch, sendRequest: fetchSearched } = useHttp(handleSearched)

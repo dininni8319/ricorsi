@@ -14,6 +14,7 @@ const Form: React.FC<FormProps> = ({
   subMitBtn,
   children,
   data,
+  method
 }) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,7 @@ const Form: React.FC<FormProps> = ({
 
     //post a ricorso
     fetch(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ""}`, {
-      method: "POST",
+      method:  method ? method : "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })

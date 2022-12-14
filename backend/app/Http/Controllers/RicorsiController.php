@@ -7,6 +7,8 @@ use App\Models\Task;
 use App\Models\Ricorsi;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use App\Actions\RicorsoAction;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class RicorsiController extends Controller
@@ -49,35 +51,23 @@ class RicorsiController extends Controller
         ];
     }
 
-    public function index()
+    public function index(RicorsoAction $action)
     {
         $ricorsi = Ricorsi::orderBy("created_at", "desc")->get();
 
-        if(!$ricorsi){
-            return response()->json([
-             'success' => false,
-             'message' => $this->messageUnSuccess,
-          ], 404);
-         } else {
-            
-             return response()->json([
-                'success' => true,
-                'ricorsi' => $ricorsi,
-                'message' => 'Tutti i ricorsi'
-             ], 200);
-         }   
+        $data = $action->handleResponse($ricorsi, $this->messageUnSuccess, $this->messageSuccess);
+    
+        return $data;
     }
 
     public function workFlow($id = null)
     {       
-        if ($id) {
-            
+        if ($id) { 
             $ricorso = Ricorsi::find($id);
             $userIsRevisor = Auth()->user()->is_revisor;
 
             return view("ricorsi.createRicorsi", compact('userIsRevisor', 'ricorso'));
         }
-    
         return view("ricorsi.createRicorsi");
     }
 
@@ -136,61 +126,49 @@ class RicorsiController extends Controller
         } 
     }
 
-    public function detailRicorso($id)
+    public function detailRicorso($id, RicorsoAction $action)
     {
-        // $documents = Document::where("fasi_id", $id)->get();
-        if(!$id){
+        if ($id) {
+            $ricorso = Ricorsi::find($id);
+            $data = $action->handleResponse($ricorso, $this->messageUnSuccess, $this->messageSuccess, $id);
+       
+            return $data;
+        } else {
             return response()->json([
                 'success' => false,
                 'message' => $this->messageUnSuccess,
             ], 404);
-        } else {
-            
-            $ricorso = Ricorsi::find($id);
-            
-            return response()->json([
-                'success' => true,
-                'message' => 'Successo, il ricorso è stato trovato!',
-                'ricorso' => $ricorso,
-                'id' => $id,
-            ], 200);
-        }   
+        } 
     }
 
-    public function deleteRicorso($id)
+    public function deleteRicorso($id, RicorsoAction $action)
     {
-        if(!$id){
+        if($id){
+            $ricorso = Ricorsi::find($id)->delete();
+            $data = $action->handleResponse($ricorso,$this->messageUnSuccess, $this->messageSuccess, $id);
+
+            return $data;
+        } else {
             return response()->json([
                 'success' => false,
                 'message' => $this->messageUnSuccess,
             ], 404);
-        } else {
-
-            $ricorso = Ricorsi::find($id)->delete();
-
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-                'id' => $id,
-            ], 200);
         }     
     }
 
-    public function searchRicorso($query)
+    public function searchRicorso($query, RicorsoAction $action)
     {  
-        if(!$query){
+        if($query){
+            $ricorsi = Ricorsi::search($query)->get();
+            $data = $action->handleResponse($ricorsi,$this->messageUnSuccess, $this->messageSuccess);
+
+            return $data;
+        } else {
+            
             return response()->json([
                 'success' => false,
                 'message' => $this->messageUnSuccess,
             ], 404);
-        } else {
-            $ricorsi = Ricorsi::search($query)->get();
-
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-                'ricorsi'=> $ricorsi,
-            ], 200);
         }     
     }
 
@@ -211,6 +189,28 @@ class RicorsiController extends Controller
                 'message' => $this->messageSuccess,
                 'id' => $id,
                 'lastRicorso'=> $lastRicorso,
+            ], 200);
+        }     
+    }
+
+    public function upDateRicorso(Request $request, $id)
+    {
+        $formData = $this->getFormData($request);
+        // dd($id, $formData);
+
+        if(!$formData){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+            $ricorso = Ricorsi::find(intval($id))->update($formData);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Il ricorso è stato aggiornato!',
+                // 'ricorso' => $ricorso,
+                'id' => $id,
             ], 200);
         }     
     }

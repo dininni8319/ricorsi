@@ -28,6 +28,7 @@ export interface FormProps {
   //key and value pair definition in typescript
   data: { [key: string]: string | number };
   children?: JSX.Element;
+  method?: string
   // ricorso: {[key: string]: string} | undefined,
   // errors?: ErrorType
   // formData: ObjSelectType,

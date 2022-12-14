@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, ChangeEvent } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ObjFormType } from "../../interfaces/interfaces";
 import { baseURL } from "../../Utilities/index";
 import useHttp from "../../../Hooks/useHttp";
@@ -10,8 +10,8 @@ import CardDetail from "./CardDetail";
 const Homepage = () => {
   const [ricorsi, setRicorsi] = useState<ObjFormType[]>([]);
 
-  const handleRicorsi = useCallback(({ ricorsi }:{ ricorsi: ObjFormType[]}) => {
-    setRicorsi(() => [...ricorsi]);
+  const handleRicorsi = useCallback(({ data }:{ data: ObjFormType[]}) => {
+    setRicorsi(() => [...data]);
   },[])
 
   const { isLoading, error, sendRequest: fetchRicorsi } = useHttp(handleRicorsi);

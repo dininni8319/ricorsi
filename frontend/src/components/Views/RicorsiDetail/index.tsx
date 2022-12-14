@@ -49,7 +49,7 @@ const RicorsiDetail = () => {
     }
   );
 
-  let { ricorso }: any = payload;
+  let { data: ricorso }: any = payload;
 
   const handleDelete = (e: any, id?: number) => {
     e.preventDefault();

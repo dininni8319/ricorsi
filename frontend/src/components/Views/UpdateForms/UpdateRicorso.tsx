@@ -13,23 +13,23 @@ import { useParams } from "react-router";
 import useFetch from '../../../Hooks/useFetch';
 import { ConfigContext } from '../../../Contexts/Config';
 
-const Workflow = () => {
+const UpdateRicorso = () => {
   let { slug } = useParams();
-  let {
-    api_urls: { backend },
-  } = useContext(ConfigContext);
-  
+  let { api_urls: { backend } } = useContext(ConfigContext);
   let { payload: { ricorso } }: any = useFetch(`${backend}/api/cienneffe/detail_ricorso/${slug}`)
   const { data, handleData } = useInput(defaultRicorsiData, slug);
+  console.log('helloooooo');
   
   return (
     <div className="height-custom">
       <Form
+        id={slug}
         title="Aggiorna questo Ricorso"
-        createPath="crea_ricorso"
+        createPath="update_ricorso"
         navPath="ricorsi_detail"
         subMitBtn="Invio"
         data={data}
+        method={'PATCH'}
       >
         <>
           {formRicorsiLabels?.formArr.map((input, index) => {
@@ -67,9 +67,8 @@ const Workflow = () => {
           </div>
         </>
       </Form>
-      {/* {errors && <span></span>} */}
     </div>
   );
 };
 
-export default Workflow;
+export default UpdateRicorso;
