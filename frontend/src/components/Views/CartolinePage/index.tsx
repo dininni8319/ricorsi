@@ -1,113 +1,137 @@
-import { useState, useEffect, useCallback, useContext, ChangeEvent } from "react";
-import { Card, Loader3, Search, ImportCsv, Paginate } from "../../UI/index";
-import { WrapperStyleComponent } from "../Home/style";
-import { ConfigContext } from "../../../Contexts/Config";
-import DetailsCard from "./detailsCard";
-import SearchedDetails from "./searchedDetails";
-import useHttp from "../../../Hooks/useHttp";
+import {
+    useState,
+    useEffect,
+    useCallback,
+    useContext,
+    ChangeEvent
+} from 'react';
+import { Card, Loader3, Search, ImportCsv, Paginate } from '../../UI/index';
+import { WrapperStyleComponent } from '../Home/style';
+import { ConfigContext } from '../../../Contexts/Config';
+import DetailsCard from './detailsCard';
+import SearchedDetails from './searchedDetails';
+import useHttp from '../../../Hooks/useHttp';
 import useSearch from '../../../Hooks/useSearch';
-import { perPage } from "../../Utilities/index";
-import { CartolinaType, Fasi } from "../../interfaces/interfaces";
+import { perPage } from '../../Utilities/index';
+import { CartolinaType } from '../../interfaces/interfaces';
 
 const CartolinePage = () => {
-  const {
-    api_urls: { backend },
-  } = useContext(ConfigContext);
-  const [cartoline, setCartoline] = useState<CartolinaType[]>([]);
-  const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
-  const [ itemOffset, setItemOffset ] = useState(0);
-  const itemsPerPage = 10; 
-  const { pageCount, currentItems } = perPage(itemOffset, itemsPerPage, cartoline);
+    const {
+        api_urls: { backend }
+    } = useContext(ConfigContext);
+    const [cartoline, setCartoline] = useState<CartolinaType[]>([]);
+    const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
+    const [itemOffset, setItemOffset] = useState(0);
+    const itemsPerPage = 10;
+    const { pageCount, currentItems } = perPage(
+        itemOffset,
+        itemsPerPage,
+        cartoline
+    );
 
-  const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * itemsPerPage) % cartoline.length;
-    setItemOffset(newOffset);
-  };
+    const handlePageClick = (event: any) => {
+        const newOffset = (event.selected * itemsPerPage) % cartoline.length;
+        setItemOffset(newOffset);
+    };
 
-  const handleCartoline = useCallback(({ data }: { data: CartolinaType[]}) => {
-    setCartoline(() => [...data]);
-  },[])
+    const handleCartoline = useCallback(
+        ({ data }: { data: CartolinaType[] }) => {
+            setCartoline(() => [...data]);
+        },
+        []
+    );
 
-  const { isLoading, error, sendRequest: fetchCartoline } = useHttp(handleCartoline);
-  const {
-    searchedTerm,
-    selectedItem,
-    cardId,
-    handleSelectedItem,
-    handleChange,
-    handleResetSearch,
-    handleNavigate,
-  } = useSearch(setSearchedCartoline);
+    const {
+        isLoading,
+        error,
+        sendRequest: fetchCartoline
+    } = useHttp(handleCartoline);
+    const {
+        searchedTerm,
+        selectedItem,
+        cardId,
+        handleSelectedItem,
+        handleChange,
+        handleResetSearch,
+        handleNavigate
+    } = useSearch(setSearchedCartoline);
 
-  useEffect(() =>  {
-    fetchCartoline({url:`${backend}/api/cienneffe/cartoline`}) 
-  }, [fetchCartoline]);
+    useEffect(() => {
+        fetchCartoline({ url: `${backend}/api/cienneffe/cartoline` });
+    }, [fetchCartoline]);
 
-  useEffect(() => {
-    if (searchedTerm.length > 3) {
-      fetch(`${backend}/api/cienneffe/cartolina/search=${searchedTerm}`)
-        .then((response) => response.json())
-        .then((data) => setSearchedCartoline(data?.cartoline))
-        .catch((error: unknown) => {
-          console.log(error);
-        });
-    }
-  }, [searchedTerm]);
+    useEffect(() => {
+        if (searchedTerm.length > 3) {
+            fetch(`${backend}/api/cienneffe/cartolina/search=${searchedTerm}`)
+                .then((response) => response.json())
+                .then((data) => setSearchedCartoline(data?.cartoline))
+                .catch((error: unknown) => {
+                    console.log(error);
+                });
+        }
+    }, [searchedTerm]);
 
-  return (
-    <div className="height-custom flex flex-col items-center">
-      <>
-        <Search
-          title="Cartolina"
-          handleChange={handleChange}
-          handleResetSearch={handleResetSearch}
-        >
-          {searchedCartoline?.slice(0,6).map((searched: { [key: string]: string }, id: number) => {
-            return (
-              <SearchedDetails 
-                // key={id}
-                selectedItem={selectedItem}
-                searched={searched}
-                cardId={cardId}
-                handleSelectedItem={handleSelectedItem} 
-                handleNavigate={handleNavigate}
-              />
-            );
-          })}
-        </Search>
-        <h1>Cartoline</h1>
-        <ImportCsv />
-        <Paginate 
-          currentItems={currentItems} 
-          pageCount={pageCount}
-          handlePageClick={handlePageClick}
-        />
-      </>
-      <WrapperStyleComponent>
-        <>
-          {cartoline ? (
-            cartoline?.map((cartolina, id: number) => {
-              return (
+    return (
+        <div className="height-custom flex flex-col items-center">
+            <>
+                <Search
+                    title="Cartolina"
+                    handleChange={handleChange}
+                    handleResetSearch={handleResetSearch}
+                >
+                    {searchedCartoline
+                        ?.slice(0, 6)
+                        .map(
+                            (
+                                searched: { [key: string]: string },
+                                id: number
+                            ) => {
+                                return (
+                                    <SearchedDetails
+                                        // key={id}
+                                        selectedItem={selectedItem}
+                                        searched={searched}
+                                        cardId={cardId}
+                                        handleSelectedItem={handleSelectedItem}
+                                        handleNavigate={handleNavigate}
+                                    />
+                                );
+                            }
+                        )}
+                </Search>
+                <h1>Cartoline</h1>
+                <ImportCsv />
+                <Paginate
+                    currentItems={currentItems}
+                    pageCount={pageCount}
+                    handlePageClick={handlePageClick}
+                />
+            </>
+            <WrapperStyleComponent>
                 <>
-                  <Card
-                    taxunit={cartolina}
-                    id={id}
-                    path="cartolina/delete"
-                    current={cartoline}
-                    setCurrent={setCartoline}
-                  >
-                    <DetailsCard  cartolina={cartolina}/>
-                  </Card>
+                    {cartoline ? (
+                        cartoline?.map((cartolina, id: number) => {
+                            return (
+                                <>
+                                    <Card
+                                        taxunit={cartolina}
+                                        id={id}
+                                        path="cartolina/delete"
+                                        current={cartoline}
+                                        setCurrent={setCartoline}
+                                    >
+                                        <DetailsCard cartolina={cartolina} />
+                                    </Card>
+                                </>
+                            );
+                        })
+                    ) : (
+                        <Loader3 />
+                    )}
                 </>
-              );
-            })
-          ) : (
-            <Loader3 />
-          )}
-        </>
-      </WrapperStyleComponent>
-    </div>
-  );
+            </WrapperStyleComponent>
+        </div>
+    );
 };
 
 export default CartolinePage;

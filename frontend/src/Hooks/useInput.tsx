@@ -1,21 +1,23 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from 'react';
 
 export default function useInput(
-  initialSate: { [key: string]: string | number },
-  slug?: number | string
+    initialSate: { [key: string]: string | number },
+    slug?: number | string
 ) {
-  const [data, setData] = useState(initialSate);
+    const [data, setData] = useState(initialSate);
 
-  const handleData = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
-    index?: number
-  ) => {
-    let { name, value } = e.target;
+    const handleData = (
+        e: ChangeEvent<
+            HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+        >,
+        index?: number
+    ) => {
+        let { name, value } = e.target;
 
-    setData((prevState) => ({ ...prevState, [name]: value }));
-  };
-  return {
-    data,
-    handleData,
-  };
+        setData((prevState) => ({ ...prevState, [name]: value }));
+    };
+    return {
+        data,
+        handleData
+    };
 }
