@@ -41,7 +41,7 @@ class CartolineController extends Controller
 
     public function cartoline(RicorsoAction $action) 
     {
-        $cartoline = Cartoline::orderBy("created_at")->limit(15)->get();;
+        $cartoline = Cartoline::orderBy("created_at")->get();;
         $response = $action->handleResponse($cartoline, $this->messageUnSuccess, $this->messageSuccess);
         
         return $response;

@@ -11,7 +11,7 @@ const Paginate = ({
     handlePageClick: any;
 }) => {
     return (
-        <div className="d-flex justify-content-center align-items-end my-3">
+        <div className="my-3 flex">
             {currentItems && (
                 <ReactPaginate
                     nextLabel="next >"
@@ -23,7 +23,6 @@ const Paginate = ({
                     containerClassName={'pagination'}
                     previousLinkClassName={'pagination__link'}
                     nextLinkClassName={'pagination__link'}
-                    // pageRangeDisplayed={5}
                     disabledClassName={'pagination__link--disabled'}
                     activeClassName={'pagination__link--active'}
                 />

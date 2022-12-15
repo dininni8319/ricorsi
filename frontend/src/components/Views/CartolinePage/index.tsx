@@ -22,7 +22,7 @@ const CartolinePage = () => {
     const [cartoline, setCartoline] = useState<CartolinaType[]>([]);
     const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
     const [itemOffset, setItemOffset] = useState(0);
-    const itemsPerPage = 10;
+    const itemsPerPage = 9;
     const { pageCount, currentItems } = perPage(
         itemOffset,
         itemsPerPage,
@@ -109,8 +109,8 @@ const CartolinePage = () => {
             </>
             <WrapperStyleComponent>
                 <>
-                    {cartoline ? (
-                        cartoline?.map((cartolina, id: number) => {
+                    {currentItems ? (
+                        currentItems?.map((cartolina, id: number) => {
                             return (
                                 <>
                                     <Card
