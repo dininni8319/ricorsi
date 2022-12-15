@@ -60,7 +60,7 @@ const LottiSpedizioneDetail = () => {
             >
               Avvia una Rendicontazione
             </Link>
-            <Link to={`/form_riscossione/${slug}`}>
+            <Link to={`/update_riscossione/${slug}`}>
               Aggiorna la Riscossione
             </Link>
             <>

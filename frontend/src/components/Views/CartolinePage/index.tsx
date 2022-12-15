@@ -52,9 +52,10 @@ const CartolinePage = () => {
           handleChange={handleChange}
           handleResetSearch={handleResetSearch}
         >
-          {searchedCartoline?.slice(0,6).map((searched: { [key: string]: string }) => {
+          {searchedCartoline?.slice(0,6).map((searched: { [key: string]: string }, id: number) => {
             return (
               <SearchedDetails 
+                // key={id}
                 selectedItem={selectedItem}
                 searched={searched}
                 cardId={cardId}
@@ -80,7 +81,7 @@ const CartolinePage = () => {
                     current={cartoline}
                     setCurrent={setCartoline}
                   >
-                    <DetailsCard  cartolina={cartolina} />
+                    <DetailsCard  cartolina={cartolina}/>
                   </Card>
                 </>
               );

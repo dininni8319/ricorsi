@@ -18,6 +18,7 @@ const Input: React.FC<PropsInput> = (props) => {
         {label}
       </label>
       <input
+        key={id}
         type={type}
         className="input-style"
         onChange={(e) => handleData(e)}

@@ -1,24 +1,11 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Loader3,Frame } from "../UI/index";
+import { Loader3 } from "../UI/index";
+import { Homepage, Ricorsi, Cartoline, Fase, RicorsiDetail, FaseDetail, CartolineDetail, CartolinePage, LottiSpedizione, LottiSpedizioneDetail, Login, Register, UpdateRicorso, UpdateRiscossione, RiscossionePage, Riconciliazione,
+} from'./lazyLoadingViews';
 import ProtectedRoute from "../Utilities/ProtectedRoutes";
 
 const Router = () => {
-  const Homepage = lazy(() => import("./Home/Homepage"));
-  const Ricorsi = lazy(() => import("./FormViews/RicorsiWorkflow"));
-  const Cartoline = lazy(() => import("./FormViews/Cartoline"));
-  const Fase = lazy(() => import("./FormViews/Fase"));
-  const RicorsiDetail = lazy(() => import("./RicorsiDetail"));
-  const FaseDetail = lazy(() => import("./FaseDetail"));
-  const CartolineDetail = lazy(() => import("./CartolineDetail"));
-  const CartolinePage = lazy(() => import("./CartolinePage"));
-  const LottiSpedizioneDetail = lazy(() => import("./LottiSpedizioneDetail"));
-  const LottiSpedizione = lazy(() => import("./FormViews/LottiSpedizione"));
-  const RiscossionePage = lazy(() => import("./RiscossionePage"));
-  const Riconciliazione = lazy(() => import("./FormViews/Riconciliazione"));
-  const Login = lazy(() => import("./Login"));
-  const Register = lazy(() => import("./Register"));
-  const UpdateRicorso = lazy(() => import('./UpdateForms/UpdateRicorso'))
   return (
     <Routes>
       <Route
@@ -31,7 +18,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/ricorsi"
         element={
@@ -42,7 +28,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/ricorsi/:slug"
         element={
@@ -53,7 +38,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/cartoline"
         element={
@@ -74,7 +58,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/work_flow/:slug"
         element={
@@ -85,7 +68,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/form_fase/:slug"
         element={
@@ -96,7 +78,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/ricorsi_detail/:slug"
         element={
@@ -107,7 +88,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/fase_detail/:slug"
         element={
@@ -118,7 +98,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/detail_cartoline/:slug"
         element={
@@ -129,7 +108,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/riscossione/"
         element={
@@ -140,7 +118,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/form_riscossione/"
         element={
@@ -151,7 +128,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/form_riscossione/:slug"
         element={
@@ -162,7 +138,6 @@ const Router = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/form_rendicondazione/:slug"
         element={
@@ -179,6 +154,17 @@ const Router = () => {
           <Suspense fallback={<Loader3 />}>
             <ProtectedRoute>
               <UpdateRicorso />
+            </ProtectedRoute>
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/update_riscossione/:slug"
+        element={
+          <Suspense fallback={<Loader3 />}>
+            <ProtectedRoute>
+              <UpdateRiscossione />
             </ProtectedRoute>
           </Suspense>
         }

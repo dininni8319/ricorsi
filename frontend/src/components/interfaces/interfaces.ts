@@ -14,11 +14,13 @@ export interface FormWrapperType {
   subMitBtn: string;
   children?: JSX.Element;
   handleSubmit: React.FormEventHandler<HTMLFormElement>;
-}
+};
+
 export type InitialState = {
   status: number | undefined;
   response: object | undefined;
 };
+
 export interface FormProps {
   id?: string | number;
   title: string;
@@ -32,17 +34,20 @@ export interface FormProps {
   // ricorso: {[key: string]: string} | undefined,
   // errors?: ErrorType
   // formData: ObjSelectType,
-}
+};
+
 export type ErrorType = {
   status: boolean;
   message: string;
 };
+
 export interface DefaultData {
   type: string;
   name: string;
   label: string;
   id: number;
-}
+};
+
 export interface PropsInput {
   type?: string;
   label: string;
@@ -60,7 +65,7 @@ export interface PropsInput {
 export interface RicorsoProps {
   slug?: string | number;
   children?: JSX.Element;
-}
+};
 
 export interface PropsTextArea {
   label: string;
@@ -72,16 +77,16 @@ export interface PropsTextArea {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     index?: number
   ) => any;
-}
+};
 
 export interface PropsIcons {
   fontIcon: IconProp;
   href: string;
-}
+};
 
 export interface LogoProps {
   imageUrl: string | undefined;
-}
+};
 
 export type ObjSelectType = {
   title: string;
@@ -92,18 +97,19 @@ export type ObjSelectType = {
 
 export interface FasiListProps {
   fasi?: Fasi[];
-}
+};
 
 export type RequestConfigType = {
   url: string,
   method?: string,
   headers?: any,
   body?: Fasi;
-}
+};
 
 export interface Fasi {
   [key: string]: string | number;
-}
+};
+
 export interface ObjFormType {
   id?: number;
   nominativo: string;
@@ -128,7 +134,7 @@ export interface ObjFormType {
   tributo: string;
   tipologia_atto: string;
   informazioni_aggiuntive: string;
-}
+};
 
 export interface FasiFieldsTypes {
   ricorsi_id: number,
@@ -147,7 +153,7 @@ export interface FasiFieldsTypes {
   spese: string;
   data_deposito_sentenza: string;
   data_notifica_sentenza: string;
-}
+};
 
 export interface IRiscossione {
   atti_rettificati: string;
@@ -166,7 +172,8 @@ export interface IRiscossione {
   numero_atti_rinotificare: string;
   tipologia_documenti: string;
   tipologia_spedizioni: string;
-}
+};
+
 export type ChildrenProps = {
   children: JSX.Element;
 };
@@ -182,7 +189,8 @@ export interface UserType {
   first_name: string;
   token: string;
   id: number;
-}
+};
+
 export type AuthConfigType = {
   user?: UserType;
   login?: any;

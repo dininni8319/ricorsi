@@ -32,7 +32,6 @@ const Card = ({
       headers: {"Content-Type": "application/json"},
     });
   };
-
   const {isLoading, error, sendRequest: deleteCard } = useHttp(handleDelete);
 
   return (

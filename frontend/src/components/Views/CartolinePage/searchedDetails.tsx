@@ -13,6 +13,7 @@ const SearchedDetails = ( { selectedItem, searched, cardId, handleSelectedItem, 
           handleSelectedItem(parseInt(searched?.id))
         }
         onClick={() => handleNavigate('detail_cartoline',parseInt(searched.id))}
+        key={cardId}
       >
         <li>
           <span className="font-semibold pr-1">Nome e Cognome:</span>

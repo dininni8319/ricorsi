@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef, ChangeEvent, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { baseURL } from "../../Utilities/index";
 import { Card, Loader3, Search } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
 import { funFormatDate } from "../../Utilities/index";
-import { RiSliceLine } from "react-icons/ri";
 import useSearch from '../../../Hooks/useSearch';
 
 const RiscossionePage = () => {
@@ -46,7 +45,6 @@ const RiscossionePage = () => {
     }
   }, [searchedTerm]);
 
-
   return (
     <div className="height-custom flex flex-col items-center">
       <>
@@ -58,6 +56,7 @@ const RiscossionePage = () => {
           {searchedRiscossione?.slice(0,6).map((searched: { [key: string]: string }) => {
             return (
               <ul
+                key={searched.id}
                 className={`bg-white p-2 shadow-md border-slate-400 ${
                   selectedItem && cardId === parseInt(searched.id)
                     ? "active-class"
@@ -103,6 +102,7 @@ const RiscossionePage = () => {
                 <>
                   <Card
                     id={id}
+                    key={id}
                     taxunit={riscossione}
                     path="riscossione/delete"
                     current={riscossioni}
@@ -113,7 +113,6 @@ const RiscossionePage = () => {
                         Descrizione spedizione:{" "}
                         <span>{riscossione.descrizione_spedizione}</span>
                       </h3>
-
                       <ul className="border-custom ul-style-custom">
                         <li>
                           <span className="font-semibold pr-1">
@@ -156,7 +155,7 @@ const RiscossionePage = () => {
                       </ul>
 
                       <div className="flex justify-between py-1">
-                        <Link to={`/form_riscossione/${riscossione.id}`}>
+                        <Link to={`/update_riscossione/${riscossione.id}`}>
                           Aggiorna il Lotto di Spedizione
                         </Link>
                         <Link to={`/detail_riscossione/${riscossione.id}`}>
