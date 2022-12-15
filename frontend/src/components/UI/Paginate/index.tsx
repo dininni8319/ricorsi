@@ -1,12 +1,12 @@
 import ReactPaginate from 'react-paginate';
-import { CartolinaType } from '../../interfaces/interfaces';
+import { CartolinaType, ObjFormType, IRiscossione } from '../../interfaces/interfaces';
 
 const Paginate = ({
     currentItems,
     pageCount,
     handlePageClick
 }: {
-    currentItems: CartolinaType[];
+    currentItems: CartolinaType[] | ObjFormType[] | IRiscossione[];
     pageCount: number;
     handlePageClick: any;
 }) => {

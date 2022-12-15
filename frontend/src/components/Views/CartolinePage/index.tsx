@@ -3,7 +3,6 @@ import {
     useEffect,
     useCallback,
     useContext,
-    ChangeEvent
 } from 'react';
 import { Card, Loader3, Search, ImportCsv, Paginate } from '../../UI/index';
 import { WrapperStyleComponent } from '../Home/style';
@@ -110,7 +109,7 @@ const CartolinePage = () => {
             <WrapperStyleComponent>
                 <>
                     {currentItems ? (
-                        currentItems?.map((cartolina, id: number) => {
+                        currentItems?.map((cartolina: any, id: number) => {
                             return (
                                 <>
                                     <Card

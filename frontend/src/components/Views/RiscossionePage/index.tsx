@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect} from 'react';
+import { IRiscossione } from "../../interfaces/interfaces";
 import { baseURL } from '../../Utilities/index';
-import { Card, Loader3, Search } from '../../UI/index';
+import { Card, Loader3, Search, Paginate } from '../../UI/index';
 import { WrapperStyleComponent } from '../Home/style';
-import { funFormatDate } from '../../Utilities/index';
+import { funFormatDate, perPage } from '../../Utilities/index';
 import useSearch from '../../../Hooks/useSearch';
 
 const RiscossionePage = () => {
-    const [riscossioni, setRiscossioni] = useState<{ [key: string]: string }[]>(
+    const [riscossioni, setRiscossioni] = useState<IRiscossione[]>(
         []
     );
     const [searchedRiscossione, setSearchedRiscossione] = useState<any>([]);
@@ -21,6 +22,18 @@ const RiscossionePage = () => {
         handleNavigate
     } = useSearch(setSearchedRiscossione);
 
+    const [itemOffset, setItemOffset] = useState(0);
+    const itemsPerPage = 9;
+    const { pageCount, currentItems } = perPage(
+        itemOffset,
+        itemsPerPage,
+        riscossioni
+    );
+
+    const handlePageClick = (event: any) => {
+        const newOffset = (event.selected * itemsPerPage) % riscossioni.length;
+        setItemOffset(newOffset);
+    };
     useEffect(() => {
         fetch(`${baseURL}/api/cienneffe/riscossione`)
             .then((response) => response.json())
@@ -107,11 +120,16 @@ const RiscossionePage = () => {
                         })}
                 </Search>
                 <h1>Lotto di Spedizione</h1>
+                <Paginate
+                    currentItems={currentItems}
+                    pageCount={pageCount}
+                    handlePageClick={handlePageClick}
+                />
             </>
             <WrapperStyleComponent>
                 <>
                     {riscossioni ? (
-                        riscossioni?.map((riscossione, id: number) => {
+                        riscossioni?.map((riscossione: IRiscossione, id: number) => {
                             return (
                                 <>
                                     <Card

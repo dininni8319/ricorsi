@@ -1,7 +1,8 @@
 import {
     PerPageType,
     CartolinaType,
-    ErrorObjType
+    ObjFormType,
+    IRiscossione
 } from '../interfaces/interfaces';
 export const arrMonths = [
     'Notifiche positive',
@@ -84,7 +85,7 @@ export function formatDate(date: string): string {
 export const perPage = (
     itemOffSet: number,
     itemsPerPage: number,
-    data: CartolinaType[]
+    data: CartolinaType[] | ObjFormType[] |IRiscossione[]
 ): PerPageType => {
     const endOffset = itemOffSet + itemsPerPage;
     const currentItems = data?.slice(itemOffSet, endOffset);

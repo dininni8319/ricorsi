@@ -32,8 +32,9 @@ body {
 }
 
 .pagination {
-    width: 50vw;
+    min-width: 25vw;
     padding: 7px;
+    border-radius: 5px;
     background-color: #e5e5e5;
     display: flex;
     justify-content: space-between;

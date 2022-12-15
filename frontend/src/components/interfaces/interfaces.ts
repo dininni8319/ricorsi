@@ -156,6 +156,7 @@ export interface FasiFieldsTypes {
 }
 
 export interface IRiscossione {
+    id: string | number;
     atti_rettificati: string;
     cartoline_ritorno_inserite: string;
     data_conferma_anteprime: string;
@@ -203,7 +204,7 @@ export type ConfigContextType = {
 
 export type PerPageType = {
     pageCount: number;
-    currentItems: CartolinaType[];
+    currentItems: CartolinaType[] | ObjFormType[] | IRiscossione[];
 };
 
 export type CartolinaType = {
