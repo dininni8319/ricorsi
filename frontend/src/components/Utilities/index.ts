@@ -1,3 +1,4 @@
+import { PerPageType, CartolinaType, ErrorObjType } from "../interfaces/interfaces";
 export const arrMonths = [
   "Notifiche positive",
   "Notifiche negative",
@@ -50,7 +51,7 @@ export const funFormatDate = (str: string) => {
   return utc;
 };
 
-export function validate(values: string) {
+export function validate(values: string):{[key: string]: string } {
   let errors = { errorTitle: "" };
   if (!values) {
     errors.errorTitle = "Email address is required";
@@ -61,16 +62,30 @@ export function validate(values: string) {
   return errors;
 }
 
-export function formatDate(date: string) {
+export function formatDate(date: string):string {
   if (date === "") return "The date was not found!";
+
   let time = new Date(date);
   let timeNow = new Date().getDay();
 
   let day = time.getDay();
   let hours = time.getHours();
-
   let minutes = time.getMinutes();
+
   return ` ${day === timeNow ? "Today" : "Yesterday"} ${
     hours < 10 ? "0" + hours : hours
   }:${minutes < 10 ? "0" + minutes : minutes}`;
+}
+
+export const perPage = (
+  itemOffSet: number, 
+  itemsPerPage: number, 
+  data: CartolinaType[]
+  ):PerPageType => {
+  
+  const endOffset = itemOffSet + itemsPerPage;
+  const currentItems = data?.slice(itemOffSet, endOffset);
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
+  return { pageCount, currentItems }
 }

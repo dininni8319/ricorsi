@@ -200,3 +200,31 @@ export type AuthConfigType = {
 export type ConfigContextType = {
   api_urls: { backend?: string };
 };
+
+export type PerPageType = {
+  pageCount: number
+  currentItems: CartolinaType[]
+}
+
+export type CartolinaType = {
+  cf_piva_debitore: string;
+  chiave_pratica: string;
+  codice_mandate: string
+  created_at: string;
+  data_notifica: string;
+  data_spedizione: string;
+  descrizione_mandante: string;
+  esito_notifica: string;
+  fase: string; 
+  id: number;
+  ndg: string;
+  nome_cognome_debitore: string;
+  nome_file: string;
+  numero_raccomandata: string;
+  path_file: string;
+  updated_at: string;
+}
+
+export type ErrorObjType = {
+  errorsTitle: string 
+}

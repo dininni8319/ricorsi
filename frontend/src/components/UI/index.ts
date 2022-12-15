@@ -16,3 +16,4 @@ export { default as ImportCsv } from "./UploadCsvForm";
 export { default as SideHeader } from "./SideHeader";
 export { default as Frame } from "./Frame";
 export { default as ButtonDelete } from "./ButtonDelete";
+export { default as Paginate } from "./Paginate";

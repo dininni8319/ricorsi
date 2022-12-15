@@ -1,4 +1,4 @@
-import { ObjFormType, Fasi } from "../../interfaces/interfaces";
+import { CartolinaType, Fasi, ObjFormType } from "../../interfaces/interfaces";
 import { CardStyleComponent, CardHeaderStyle } from "./style";
 import { baseURL } from "../../Utilities/index";
 import { memo } from "react";
@@ -13,7 +13,7 @@ const Card = ({
   current,
   setCurrent,
 }: {
-  taxunit: ObjFormType | Fasi;
+  taxunit: CartolinaType | Fasi | ObjFormType;
   path: string;
   children?: JSX.Element;
   current?: any;

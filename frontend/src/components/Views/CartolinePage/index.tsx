@@ -1,20 +1,30 @@
 import { useState, useEffect, useCallback, useContext, ChangeEvent } from "react";
-import { Card, Loader3, Search, ImportCsv } from "../../UI/index";
+import { Card, Loader3, Search, ImportCsv, Paginate } from "../../UI/index";
 import { WrapperStyleComponent } from "../Home/style";
 import { ConfigContext } from "../../../Contexts/Config";
 import DetailsCard from "./detailsCard";
 import SearchedDetails from "./searchedDetails";
 import useHttp from "../../../Hooks/useHttp";
 import useSearch from '../../../Hooks/useSearch';
+import { perPage } from "../../Utilities/index";
+import { CartolinaType, Fasi } from "../../interfaces/interfaces";
 
 const CartolinePage = () => {
   const {
     api_urls: { backend },
   } = useContext(ConfigContext);
-  const [cartoline, setCartoline] = useState<{ [key: string]: string }[]>([]);
+  const [cartoline, setCartoline] = useState<CartolinaType[]>([]);
   const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
+  const [ itemOffset, setItemOffset ] = useState(0);
+  const itemsPerPage = 10; 
+  const { pageCount, currentItems } = perPage(itemOffset, itemsPerPage, cartoline);
 
-  const handleCartoline = useCallback(( {data }: { data: { [key: string]: string }[]}) => {
+  const handlePageClick = (event: any) => {
+    const newOffset = (event.selected * itemsPerPage) % cartoline.length;
+    setItemOffset(newOffset);
+  };
+
+  const handleCartoline = useCallback(({ data }: { data: CartolinaType[]}) => {
     setCartoline(() => [...data]);
   },[])
 
@@ -67,6 +77,11 @@ const CartolinePage = () => {
         </Search>
         <h1>Cartoline</h1>
         <ImportCsv />
+        <Paginate 
+          currentItems={currentItems} 
+          pageCount={pageCount}
+          handlePageClick={handlePageClick}
+        />
       </>
       <WrapperStyleComponent>
         <>
