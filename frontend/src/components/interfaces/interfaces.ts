@@ -149,6 +149,24 @@ export interface FasiFieldsTypes {
   data_notifica_sentenza: string;
 }
 
+export interface IRiscossione {
+  atti_rettificati: string;
+  cartoline_ritorno_inserite: string;
+  data_conferma_anteprime: string;
+  data_consegna_service: string;
+  descrizione_spedizione: string;
+  entrata_tributo: string;
+  importo_atti_annullati: string;
+  importo_atti_rettificati: string;
+  notifiche_negative: string;
+  notifiche_positive: string;
+  nr_atti: string;
+  nr_atti_annullati: string;
+  nr_atti_spediti: string;
+  numero_atti_rinotificare: string;
+  tipologia_documenti: string;
+  tipologia_spedizioni: string;
+}
 export type ChildrenProps = {
   children: JSX.Element;
 };

@@ -63,14 +63,16 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
 
     //Cartoline 
     Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
+    // Route::patch("/update_cartolina/{id}", [CartolineController::class, "upDateCartolina"])->name("update_cartolina");
     Route::get("/cartoline" , [CartolineController::class, "cartoline"])->name("cartoline")->withoutMiddleware('throttle:api');
     Route::get("/detail_cartoline/{id}" , [CartolineController::class, "detailCartoline"])->name("detail.cartoline");
     Route::delete("/cartolina/delete/{id}", [CartolineController::class,"cartolinaDelete",])->name("delete.cartolina");
     Route::post('/import_cartolina', [CartolineController::class, "importCsv"])->name("import.cartolina");
     Route::get('/export_cartolina', [CartolineController::class, "exportExcel"])->name("export.cartolina");
-
-    //Lotti di spedizioni 
+    
+    //Lotti di spedizioni
     Route::get("/riscossione", [RiscossioneController::class, "riscossione"])->name("riscossione");
+    Route::patch("/update_riscossione/{id}", [RiscossioneController::class, "upDateRiscossione"])->name("update_riscossione");
     Route::post("/create_riscossione/{id?}", [RiscossioneController::class, "creazioneRisc"])->name("creazioneRisc");
     Route::get("/detail_riscossione/{id}" , [RiscossioneController::class, "detailRiscossione"])->name("detail.riscossione");
     Route::get("/riscossione/search={query}" , [RiscossioneController::class, "searchRiscossioni"])->name("search.riscossione");

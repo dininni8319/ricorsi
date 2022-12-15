@@ -22,7 +22,7 @@ const CartolineDetail = () => {
     {verb: "get"}
   );
 
-  let { cartolina }: any = payload;
+  let { data: cartolina }: any = payload;
   
   const handleDelete = (e: any) => {
     e.preventDefault();

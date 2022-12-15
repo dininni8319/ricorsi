@@ -15,7 +15,6 @@ class RiscossioneController extends Controller
     // {
     //     $this->middleware("auth");
     // }
- 
     protected $messageUnSuccess = 'Qualcosa è andato storto!';
     protected $messageSuccess = 'Successo, la task è stata assegnata correttamente!';
 
@@ -67,15 +66,12 @@ class RiscossioneController extends Controller
         $notificheRitorno = $this->addNotifications('cartoline_ritorno_inserite');
         $notificheAnnullati = $this->addNotifications('nr_atti_annullati');
         $notificheRettificati = $this->addNotifications('atti_rettificati');
-
         $riscossioni = Riscossione::orderBy("created_at", "desc")->limit(5)->get();
 
         if(!$riscossioni){
             return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null,$id = null);
-
         } else {
             return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossioni, $id = null);
-
         }   
     }
 
@@ -85,9 +81,8 @@ class RiscossioneController extends Controller
             return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
 
         } else {
-
             $riscossione = Riscossione::find($id);
-            
+
             return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $id);   
         }   
     }
@@ -108,37 +103,49 @@ class RiscossioneController extends Controller
         $formData = $this->getFormData($request);
       
         if ($request && $id == null) {
-
             $riscossione = Riscossione::create($formData);
 
             if(!$riscossione){
                 return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
             } else {
-
                 return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $riscossione->id);
             }  
             
         } elseif ($id) {
-
             return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
-
             } else {
                 $riscossione = Riscossione::find($id);
-     
                 $riscossione->update($formData);
                 
                 return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $riscossione->id);
-              
             }    
+        }
+
+        public function upDateRiscossione(Request $request, $id)
+        {
+            $formData = $this->getFormData($request);
+    
+            if(!$formData){
+                return response()->json([
+                    'success' => false,
+                    'message' => $this->messageUnSuccess,
+                ], 404);
+            } else {
+                $riscossione = Riscossione::find(intval($id))->update($formData);
+    
+                return response()->json([
+                    'success' => true,
+                    'message' => 'La riscossione è stata aggiornata!',
+                    'id' => $id,
+                ], 200);
+            }     
         }
 
     public function deleteRiscossione($id)
     {
         if(!$id){
-            
             return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
         } else {
-
             $riscossione = Riscossione::find($id)->delete();
 
             return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $id);
@@ -146,8 +153,7 @@ class RiscossioneController extends Controller
     }
 
     public function exportLotti()
-     {
+    {
         return Excel::download(new RiscossioneExport(), 'lottiexport.xlsx',);
-     }
-
+    }
 }

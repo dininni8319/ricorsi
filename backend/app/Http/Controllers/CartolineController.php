@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cartoline;
 use Illuminate\Http\Request;
+use App\Actions\RicorsoAction;
 use App\Exports\CartolineExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -38,60 +39,29 @@ class CartolineController extends Controller
         ];
     }
 
-    public function cartoline() 
+    public function cartoline(RicorsoAction $action) 
     {
         $cartoline = Cartoline::orderBy("created_at")->limit(15)->get();;
-         
-        if(!$cartoline){
-            return response()->json([
-            'success' => false,
-            'message' => $this->messageUnSuccess,
-        ], 404);
-        } else {
-
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-                'cartoline' => $cartoline,
-            ], 200);
-        }  
-    }
-
-    public function detailCartoline($id)
-    {
-        if(!$id){
-            return response()->json([
-            'success' => false,
-            'message' => $this->messageUnSuccess,
-        ], 404);
-        } else {
-            $cartolina = $this->findCartoline($id);
+        $response = $action->handleResponse($cartoline, $this->messageUnSuccess, $this->messageSuccess);
         
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-                'cartolina' => $cartolina,
-                'id' => $cartolina->id,
-            ], 200);
-        }    
+        return $response;
     }
 
-    public function cartolinaDelete($id)
+    public function detailCartoline($id, RicorsoAction $action)
     {
-        if(!$id){
-            return response()->json([
-            'success' => false,
-            'message' => $this->messageUnSuccess,
-        ], 404);
-        } else {
-            $cartolina = $this->findCartoline($id);
-            $cartolina->delete();
+        $cartolina = $this->findCartoline($id);
+        $response = $action->handleResponse($cartolina, $this->messageUnSuccess, $this->messageSuccess, $id);
+        
+        return $response;
+    }
 
-            return response()->json([
-                'success' => true,
-                'message' => $this->messageSuccess,
-            ], 200);
-        }  
+    public function cartolinaDelete($id, RicorsoAction $action)
+    {
+        $cartolina = $this->findCartoline($id);
+        $cartolina->delete();
+        $response = $action->handleResponse($cartolina, 'Cartolina non eliminata', 'Cartolina eliminata', $id);
+        
+        return $response;
     }
 
     public function createCartolina(Request $request, $id = null){
@@ -182,7 +152,7 @@ class CartolineController extends Controller
             
             return response()->json([
                 'success' => true,
-                'message' => 'La cartolina è stata creata!',
+                'message' => 'La cartolina è stata aggiornata!',
                 'cartolina' => $cartolina,
                 'id' => $cartolina->id,
             ], 200);
@@ -244,8 +214,6 @@ class CartolineController extends Controller
                 'message' => 'La cartolina è stata importata!',
             ], 200);
         }   
-        // session()->flash('status', 'queued for importing!');
-        // return redirect(route('cartoline'));
     }
 
     public function exportExcel()

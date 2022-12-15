@@ -18,8 +18,7 @@ const UpdateRicorso = () => {
   let { api_urls: { backend } } = useContext(ConfigContext);
   let { payload: { ricorso } }: any = useFetch(`${backend}/api/cienneffe/detail_ricorso/${slug}`)
   const { data, handleData } = useInput(defaultRicorsiData, slug);
-  console.log('helloooooo');
-  
+ 
   return (
     <div className="height-custom">
       <Form
@@ -27,7 +26,7 @@ const UpdateRicorso = () => {
         title="Aggiorna questo Ricorso"
         createPath="update_ricorso"
         navPath="ricorsi_detail"
-        subMitBtn="Invio"
+        subMitBtn="Aggiorna"
         data={data}
         method={'PATCH'}
       >

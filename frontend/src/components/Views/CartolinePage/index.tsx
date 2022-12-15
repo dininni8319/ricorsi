@@ -14,8 +14,8 @@ const CartolinePage = () => {
   const [cartoline, setCartoline] = useState<{ [key: string]: string }[]>([]);
   const [searchedCartoline, setSearchedCartoline] = useState<any>([]);
 
-  const handleCartoline = useCallback(( {cartoline }: { cartoline: { [key: string]: string }[]}) => {
-    setCartoline(() => [...cartoline]);
+  const handleCartoline = useCallback(( {data }: { data: { [key: string]: string }[]}) => {
+    setCartoline(() => [...data]);
   },[])
 
   const { isLoading, error, sendRequest: fetchCartoline } = useHttp(handleCartoline);

@@ -20,9 +20,7 @@ class RicorsiController extends Controller
     // }
     protected $messageUnSuccess = 'Qualcosa è andato storto!';
     protected $messageSuccess = 'Successo, la task è stata completata correttamente!';
-
     protected function getFormData($req) {
-
         return [
             "numero_protocollo_interno" => $req->numero_protocollo_interno,
             "numero_ricorso" => $req->numero_ricorso,
@@ -54,7 +52,6 @@ class RicorsiController extends Controller
     public function index(RicorsoAction $action)
     {
         $ricorsi = Ricorsi::orderBy("created_at", "desc")->get();
-
         $data = $action->handleResponse($ricorsi, $this->messageUnSuccess, $this->messageSuccess);
     
         return $data;
@@ -81,7 +78,6 @@ class RicorsiController extends Controller
             : false;
 
             $formData = $this->getFormData($request);
-            
             $ricorso->update($formData);
             
             if(!$ricorso){
@@ -90,7 +86,6 @@ class RicorsiController extends Controller
                 'message' => 'Something went wrong!',
             ], 404);
             } else {
-                
                 return response()->json([
                     'success' => true,
                     'message' => 'Il ricorso è stato aggiornato!',
@@ -106,7 +101,6 @@ class RicorsiController extends Controller
             : false;
             
             $formData = $this->getFormData($request);
-            
             $ricorso = Ricorsi::create($formData);
             
             if(!$ricorso){
@@ -183,7 +177,6 @@ class RicorsiController extends Controller
                 'message' => $this->messageUnSuccess,
             ], 404);
         } else {
-
             return response()->json([
                 'success' => true,
                 'message' => $this->messageSuccess,
@@ -196,7 +189,6 @@ class RicorsiController extends Controller
     public function upDateRicorso(Request $request, $id)
     {
         $formData = $this->getFormData($request);
-        // dd($id, $formData);
 
         if(!$formData){
             return response()->json([
