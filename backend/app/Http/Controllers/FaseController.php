@@ -45,7 +45,6 @@ class FaseController extends Controller
         if ($id) {
             
             $fase = Fasi::find($id);
-    
             $obj = [
                 "mediazione" => 1,
                 "ricorso_1g" => 2,
@@ -54,7 +53,6 @@ class FaseController extends Controller
             ];
     
             $fase_req = $request->fase;
-    
             $req_value = 0;
     
             //cerca la righa nella colonna fase
@@ -63,7 +61,7 @@ class FaseController extends Controller
                 ->where("id", "=", $id)
                 ->first();
     
-            //assegna il valore numerico se alla request  è uguale alla $key dello oggetto $obj
+            //assegna il valore numerico se alla request è uguale alla $key dello oggetto $obj
             foreach ($obj as $key => $value) {
                 if ($fase_req == $key) {
                     $req_value = $obj[$key];
@@ -80,9 +78,7 @@ class FaseController extends Controller
                     Fasi::where("id", $id)->update(["fase" => $req_value]);
     
                     return redirect("/detail_fase/" . $id)->with("message", 'La Fase è stata aggiornata!');
-               
                 } else {
-    
                     $fase->update([
                         "fase" => $req_value,
                         "contro_deduzioni_tax_unit" => $request->contro_deduzioni_tax_unit,
@@ -125,12 +121,10 @@ class FaseController extends Controller
                                     'document_id' => intval($idDocument),
                                 ]);  
                             }
-        
                             return redirect("/detail_fase/" . $faseId->id)->with("message", 'La Fase è stata aggiornata');
                         }
                     }
                     return redirect("/detail_fase/" . $id)->with("message", 'La Fase è stata aggiornata');
-                    
                 }  
 
                 $ultimo_ricorso = Ricorsi::orderBy("created_at", "desc")->first();

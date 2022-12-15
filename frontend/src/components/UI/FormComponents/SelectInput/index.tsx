@@ -13,6 +13,8 @@ const SelectInput = ({
   handleData: React.ChangeEventHandler<HTMLSelectElement>;
 }) => {
   let newName = selectProps?.name;
+  console.log();
+  
   return (
     <Wrapper>
       <label htmlFor={selectProps?.name} className="input-label">

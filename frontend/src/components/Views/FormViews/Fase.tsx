@@ -17,21 +17,18 @@ const Fase = () => {
   const { slug } = useParams();
 
   let {
-    payload: { lastFase },
+    payload ,
   }: any = useFetch(`${baseURL}/api/cienneffe/last_fase/${slug}`, {
     verb: "get",
   });
+  
+  let val = selectStatoFase.values.filter((val) => val.value >= payload?.lastFase?.fase);
+  // we are deep coping the object
+  let newSelectStateFase = JSON.parse(JSON.stringify(selectStatoFase));
+  newSelectStateFase.values = [...val]
 
-  let val = selectStatoFase.values.filter((val) => val.value >= lastFase?.fase);
-
-  const selectStatoFase2 = {
-    title: "Stato Fase",
-    name: "fase",
-    values: [...val],
-  };
-
-  let faseCur = lastFase?.fase ? selectStatoFase2 : selectStatoFase;
-
+  let faseCur = Object.keys(val).length > 0 ? newSelectStateFase : selectStatoFase;
+  
   return (
     <div className="height-custom">
       <Form
@@ -43,7 +40,7 @@ const Fase = () => {
         data={data}
       >
         <>
-          <SelectInput selectProps={faseCur} handleData={handleData} />
+         <SelectInput selectProps={faseCur} handleData={handleData} />
 
           {fasiFormData?.formArr.map((input, index) => {
             return (

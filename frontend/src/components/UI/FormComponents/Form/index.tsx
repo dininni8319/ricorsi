@@ -31,8 +31,9 @@ const Form: React.FC<FormProps> = ({
     })
       .then((response) => response.json())
       .then((data) => {
-  
+      
         if (data.id) {
+          
           setMessage(data.message);
           setIsOpen(true);
           setTimeout(() => {

@@ -50,22 +50,22 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     
     //Fasi
     Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate",])->name("fase.create")->withoutMiddleware('throttle:api');
-    Route::get("/last_fase/{id}", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase");
+    Route::get("/last_fase/{id}", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase")->withoutMiddleware('throttle:api');
     Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis",])->name("fase.current")->withoutMiddleware('throttle:api');
     Route::get("/detail_fase/{id}", [TaxUnitEditController::class,"detailFase",])->name("detail.fase")->withoutMiddleware('throttle:api');
-    Route::get("/cartolina/search={query}", [CartolineController::class, "searchCartolina"])->name("search.cartoline");
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");
     
     //TaskReminder
     Route::get("/tasks/{id}", [TaskCotroller::class, "allTasks"])->withoutMiddleware('throttle:api');
     Route::post("/taskrimender/{id}", [TaskCotroller::class, "setReminder"])->withoutMiddleware('throttle:api');
     Route::delete("/task/delete/{id}", [TaskCotroller::class,"deleteTask",])->name("delete.task");
-
+    
     //Cartoline 
-    Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
     // Route::patch("/update_cartolina/{id}", [CartolineController::class, "upDateCartolina"])->name("update_cartolina");
     Route::get("/cartoline" , [CartolineController::class, "cartoline"])->name("cartoline")->withoutMiddleware('throttle:api');
     Route::get("/detail_cartoline/{id}" , [CartolineController::class, "detailCartoline"])->name("detail.cartoline");
+    Route::get("/cartolina/search={query}", [CartolineController::class, "searchCartolina"])->name("search.cartoline");
+    Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
     Route::delete("/cartolina/delete/{id}", [CartolineController::class,"cartolinaDelete",])->name("delete.cartolina");
     Route::post('/import_cartolina', [CartolineController::class, "importCsv"])->name("import.cartolina");
     Route::get('/export_cartolina', [CartolineController::class, "exportExcel"])->name("export.cartolina");
