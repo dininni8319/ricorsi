@@ -203,14 +203,14 @@ const Router = () => {
                     </Suspense>
                 }
             />
-            <Route
+            {/* <Route
                 path="/register"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <Register />
                     </Suspense>
                 }
-            />
+            /> */}
         </Routes>
     );
 };

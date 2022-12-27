@@ -82,9 +82,9 @@ class RicorsiController extends Controller
             
             if(!$ricorso){
                 return response()->json([
-                'success' => false,
-                'message' => 'Something went wrong!',
-            ], 404);
+                    'success' => false,
+                    'message' => 'Something went wrong!',
+                ], 404);
             } else {
                 return response()->json([
                     'success' => true,
@@ -93,7 +93,7 @@ class RicorsiController extends Controller
                     'id' => $id,
                 ], 200);
             }   
-
+            
         } else {
             // $user = Auth::user()->id;
             $request->email_notification = $request->input("email_notification")
@@ -102,6 +102,7 @@ class RicorsiController extends Controller
             
             $formData = $this->getFormData($request);
             $ricorso = Ricorsi::create($formData);
+            // dd($formData, 'testing the mail notification');
             
             if(!$ricorso){
                 return response()->json([

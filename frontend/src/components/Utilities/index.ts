@@ -85,7 +85,7 @@ export function formatDate(date: string): string {
 export const perPage = (
     itemOffSet: number,
     itemsPerPage: number,
-    data: CartolinaType[] | ObjFormType[] |IRiscossione[]
+    data: CartolinaType[] | ObjFormType[] | IRiscossione[]
 ): PerPageType => {
     const endOffset = itemOffSet + itemsPerPage;
     const currentItems = data?.slice(itemOffSet, endOffset);

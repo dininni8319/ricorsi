@@ -1,5 +1,9 @@
 import ReactPaginate from 'react-paginate';
-import { CartolinaType, ObjFormType, IRiscossione } from '../../interfaces/interfaces';
+import {
+    CartolinaType,
+    ObjFormType,
+    IRiscossione
+} from '../../interfaces/interfaces';
 
 const Paginate = ({
     currentItems,

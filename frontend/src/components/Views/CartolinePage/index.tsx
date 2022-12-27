@@ -1,9 +1,4 @@
-import {
-    useState,
-    useEffect,
-    useCallback,
-    useContext,
-} from 'react';
+import { useState, useEffect, useCallback, useContext } from 'react';
 import { Card, Loader3, Search, ImportCsv, Paginate } from '../../UI/index';
 import { WrapperStyleComponent } from '../Home/style';
 import { ConfigContext } from '../../../Contexts/Config';

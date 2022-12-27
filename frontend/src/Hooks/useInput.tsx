@@ -5,16 +5,24 @@ export default function useInput(
     slug?: number | string
 ) {
     const [data, setData] = useState(initialSate);
-
+    
     const handleData = (
         e: ChangeEvent<
-            HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+            HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | any
         >,
         index?: number
     ) => {
-        let { name, value } = e.target;
-
-        setData((prevState) => ({ ...prevState, [name]: value }));
+        let { name, value, checked } = e.target;
+        if (name === 'email_notification') {
+            let val = checked ? 'on' : '';
+            // console.log('====================================');
+            // console.log(name === 'email_notification', checked, val);
+            // console.log('====================================');
+            setData((prevState) => ({ ...prevState, [name]:  val}));
+        } else {
+            setData((prevState) => ({ ...prevState, [name]: value }));
+        }
+    
     };
     return {
         data,

@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create("fasis", function (Blueprint $table) {
             $table->id();
             $table->integer("fase")->default(0);
-            $table->string("contro_deduzioni_tax_unit");
+            $table->longText("contro_deduzioni_tax_unit");
             $table->string("contro_deduzioni_uff_legale");
             $table->string("presentato");
             $table->string("data_presentazione");

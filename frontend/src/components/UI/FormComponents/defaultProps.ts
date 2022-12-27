@@ -124,7 +124,7 @@ export const formRicorsiLabels = {
             errorMessage: ''
         },
         {
-            label: 'Oggetto Ricorso textarea',
+            label: 'Oggetto Ricorso',
             name: 'oggetto_ricorso',
             type: 'text',
             id: 15,
@@ -156,6 +156,7 @@ export const formRicorsiLabels = {
         {
             label: 'Notifica tramite Email',
             name: 'email_notification',
+            checked: null,
             type: 'checkbox',
             id: 19,
             errorMessage: '',

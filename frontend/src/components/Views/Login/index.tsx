@@ -64,9 +64,9 @@ const Login = () => {
                         onChange={handleData}
                     />
                     <ButtonStyle type="submit">Entra</ButtonStyle>
-                    <Link to="/register" className="pt-3 text-sm">
+                    {/* <Link to="/register" className="pt-3 text-sm">
                         Non sei Registrato? Registrati!
-                    </Link>
+                    </Link> */}
                 </InputSection>
             </section>
         </LoginStyled>

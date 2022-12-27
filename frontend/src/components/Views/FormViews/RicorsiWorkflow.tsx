@@ -45,7 +45,7 @@ const Workflow = () => {
                             />
                         ) : (
                             <Input
-                                handleData={handleData}
+                                handleData={(e) => handleData(e)}
                                 key={index}
                                 {...input}
                                 // value={slug && data && data[input.name]}

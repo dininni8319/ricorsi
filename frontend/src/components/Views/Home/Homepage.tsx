@@ -6,7 +6,7 @@ import { Card, Loader3, Paginate } from '../../UI/index';
 import { WrapperStyleComponent } from './style';
 import Searched from './Searched';
 import CardDetail from './CardDetail';
-import { perPage } from "../../Utilities/index";
+import { perPage } from '../../Utilities/index';
 
 const Homepage = () => {
     const [ricorsi, setRicorsi] = useState<ObjFormType[]>([]);

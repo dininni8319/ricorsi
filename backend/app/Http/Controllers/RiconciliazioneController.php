@@ -71,11 +71,18 @@ class RiconciliazioneController extends Controller
         }
         return view('riscossione.riscossione');
     }
+
+    // public function getRiscossioni($id)
+    // {
+    //     if ($id) {
+    //         $riconciliazioni = Riconciliazione::where('ricorsi');
+
+    //     }
+    // }
     
     public function enteRiscossione()
     {
-
-         return view("riscossione.enteRiscossione");
+        return view("riscossione.enteRiscossione");
     }
 
     public function sommaNotifichePositive() 

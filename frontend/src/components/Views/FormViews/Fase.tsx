@@ -7,7 +7,7 @@ import {
     selectTipologiaFile
 } from '../../UI/FormComponents/selectPropsTributi';
 import { fasiFormData } from '../../UI/FormComponents/defaultProps';
-import { Input, SelectInput, Form, Modal } from '../../UI/index';
+import { Input, SelectInput, Form, Modal, TextArea } from '../../UI/index';
 import { useParams } from 'react-router';
 import { baseURL } from '../../Utilities/index';
 import useFetch from '../../../Hooks/useFetch';
@@ -50,7 +50,14 @@ const Fase = () => {
                     />
 
                     {fasiFormData?.formArr.map((input, index) => {
-                        return (
+                        return input.id === 0 ? (
+                            <TextArea
+                                handleData={handleData}
+                                key={index}
+                                // value={slug && payload[input.name]}
+                                {...input}
+                            />
+                        ) : (
                             <Input
                                 handleData={handleData}
                                 key={index}
