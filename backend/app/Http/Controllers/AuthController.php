@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Actions\ResetPasswordAction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -41,12 +42,12 @@ class AuthController extends Controller
         ],200);  //success
     }
     
-    public function login(Request $request) {
-
+    public function login(Request $request, ResetPasswordAction $action) {
         $validator = Validator::make($request->all(),[
             'email' => 'required|string|email',
             'password' => 'required|min:6', 
         ]);
+
 
         if ($validator->fails()) {
             return response()->json([
@@ -60,8 +61,8 @@ class AuthController extends Controller
         $user = User::where('email', $credentials['email'])->first();
 
         if($user) {
-
-            if (! auth()->attempt($credentials)) {
+            
+            if (!auth()->attempt($credentials)) {
                 $responseMessage = 'Invalid username or password';
                 return response()->json([
                     'success' => false,
@@ -73,6 +74,14 @@ class AuthController extends Controller
             $accessToken = auth()->user()->createToken('authToken')->accessToken; 
 
             $responseMessage = "Login Successful";
+
+            $firstLogin = User::where('email', $request->email)->value('isloggedin');
+
+            if (!$firstLogin) {
+               $resetCredendials = $action->handleReset($request->email);
+        
+               return $resetCredendials;
+            }
 
             return response()->json([
                 'success' => true,
@@ -148,10 +157,5 @@ class AuthController extends Controller
             'message' => $responseMessage,
             'data' => $user
         ], 200);
-    }
-
-    public function countUsers(){
-        return User::count();
-        
     }
 }

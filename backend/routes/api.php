@@ -12,6 +12,7 @@ use App\Http\Controllers\TaxUnitController;
 use App\Http\Controllers\CartolineController;
 use App\Http\Controllers\RiscossioneController;
 use App\Http\Controllers\TaxUnitEditController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\RiconciliazioneController;
 
 /*
@@ -34,10 +35,13 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::post('/register', [AuthController::class, 'register'])->name('register.user');
     Route::post('/login', [AuthController::class, 'login'])->name('login.user');
     Route::post('/count', [AuthController::class, 'countUsers'])->name('count.user');
+    Route::post('/forgot_password', [ResetPasswordController::class, 'forgotPassword']);
+    Route::post('/reset', [ResetPasswordController::class, 'resetPassword']);
 
     //Private Route
     Route::get('/view-profile', [AuthController::class, 'viewProfile'])->name('profile.user');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout.user');
+    
     
     //Ricorsi        withoutMiddleware('throttle:api') is usefull went you want allow illimited request from the api          
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home")->withoutMiddleware('throttle:api');
