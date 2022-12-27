@@ -4,6 +4,7 @@ import {
     ObjFormType,
     IRiscossione
 } from '../interfaces/interfaces';
+
 export const arrMonths = [
     'Notifiche positive',
     'Notifiche negative',
@@ -12,6 +13,7 @@ export const arrMonths = [
     'Atti Annullati',
     'Atti rettificati'
 ];
+
 export const arrMonths1 = [
     'Gen',
     'Feb',
@@ -93,3 +95,12 @@ export const perPage = (
 
     return { pageCount, currentItems };
 };
+
+export function isEmptyObject(obj: any) {
+    for(let prop in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        return false;
+      }
+    }
+    return true;
+  }

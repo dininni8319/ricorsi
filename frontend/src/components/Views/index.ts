@@ -8,3 +8,4 @@ export { default as CartolinePage } from './CartolinePage/index';
 export { default as LottiSpedizione } from './FormViews/LottiSpedizione';
 export { default as LottiSpedizioneDetail } from './LottiSpedizioneDetail';
 export { default as RiscossionePage } from './RiscossionePage';
+export { default as ResetPassword } from './ResetPassword';
