@@ -18,7 +18,8 @@ import {
     UpdateRiscossione,
     RiscossionePage,
     Riconciliazione,
-    ResetPassword
+    ResetPassword,
+    ResetLinkView
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -208,7 +209,13 @@ const Router = () => {
                 <Suspense fallback={<Loader3 />}>
                    <ResetPassword />
                 </Suspense>
-        } />
+            } />
+
+            <Route path="/send_email" element={
+                <Suspense fallback={<Loader3 />}>
+                   <ResetLinkView />
+                </Suspense>
+            } />
 
             {/* <Route
                 path="/register"

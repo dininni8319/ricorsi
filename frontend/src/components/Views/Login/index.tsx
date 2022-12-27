@@ -64,9 +64,9 @@ const Login = () => {
                         onChange={handleData}
                     />
                     <ButtonStyle type="submit">Entra</ButtonStyle>
-                    {/* <Link to="/register" className="pt-3 text-sm">
-                        Non sei Registrato? Registrati!
-                    </Link> */}
+                    <Link to="/send_email" className="pt-3 text-sm">
+                        Hai dimenticato la password?
+                    </Link>
                 </InputSection>
             </section>
         </LoginStyled>
