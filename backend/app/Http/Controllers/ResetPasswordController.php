@@ -42,8 +42,9 @@ class ResetPasswordController extends Controller
 
         $user->password = Hash::make($request->password);
 
+        $user->isloggedin = true;
         $user->save();
-
+        
         return response([
             'success' => true,
             'message' => 'Password updated!'

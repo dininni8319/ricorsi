@@ -48,7 +48,6 @@ class AuthController extends Controller
             'password' => 'required|min:6', 
         ]);
 
-
         if ($validator->fails()) {
             return response()->json([
                   'success' => false,
@@ -79,7 +78,7 @@ class AuthController extends Controller
 
             if (!$firstLogin) {
                $resetCredendials = $action->handleReset($request->email);
-        
+            
                return $resetCredendials;
             }
 

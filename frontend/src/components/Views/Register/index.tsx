@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { ConfigContext } from '../../../Contexts/Config';
 import { AuthContext } from '../../../Contexts/Auth';
-
 import { LoginStyled, ButtonStyle } from '../Login/style';
 import { InputSection } from '../Login/style';
 import { Link } from 'react-router-dom';
