@@ -16,6 +16,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
     const [message, setMessage] = useState('');
     const [tasks, setTasks] = useState<any>([]);
     const { data, handleData } = useInput(defaultRemainderData);
+    const disabled = !(data.scadenza_del_compito && true || (data.reminder && true))
 
     const getRicorsoTasks = useCallback(({ tasks }: { tasks: Fasi[] }) => {
         setTasks((prev: Fasi[]) => [...tasks]);
@@ -29,7 +30,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
 
     useEffect(() => {
         fetchAllTasks({ url: `${baseURL}/api/cienneffe/tasks/${slug}` });
-    }, [fetchAllTasks]);
+    }, [fetchAllTasks, isOpen]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -44,7 +45,7 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
                 if (data.success === true) {
                     setMessage(data.message);
                     setIsOpen(true);
-
+                    
                     setTimeout(() => {
                         setIsOpen(false);
                     }, 2000);
@@ -87,7 +88,9 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
                                 selectProps={selectTasks}
                                 handleData={handleData}
                             />
-                            <button className="btn-send border-solid bg-orange-500 text-white mt-5 py-2 w-full">
+                            <button className={`btn-send border-solid ${disabled ? 'bg-orange-200': 'bg-orange-500' } text-white mt-5 py-2 w-full`}
+                              disabled={disabled}
+                            >
                                 Inserisci
                             </button>
                         </div>
