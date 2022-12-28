@@ -38,7 +38,7 @@ class PasswordRequest extends FormRequest
         
         $response = response()->json([
             'success' => false,
-            'message' => 'Dati invalidi',
+            'message' => 'I dati forniti non sono validi',
             'details' => $errors->messages(),
         ], 422);
     

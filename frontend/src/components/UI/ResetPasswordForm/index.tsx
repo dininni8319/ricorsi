@@ -2,7 +2,6 @@ import { useState, useContext } from 'react';
 import classes from './style.module.css';
 import { ConfigContext } from "../../../Contexts/Config";
 import { useNavigate } from "react-router";
-import { isEmptyObject } from "../../Utilities/index";
 import { LoginStyled, ButtonStyle } from '../../Views/Login/style';
 import { SideHeader } from './../../UI/index';
 
@@ -16,8 +15,7 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
     token: '',
   });
 
-  const [ error, setError ] = useState<any>({});
-  console.log(formData, api_urls.backend, 'testing the form data');
+  const [ error, setError ] = useState('');
 
   // Handler
   const handleSubmit = (e:any) => {
@@ -34,14 +32,15 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
       .then((response) => response.json())
       .then(data => {
         if (data.success) {
-          navigate('/')
+          navigate('/login')
         } else {
-          setError({...error, data})
+          setError(data.message)
         }
       })
   };
 
   const handleFieldChange = (e:any) => {
+    setError('');
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -56,7 +55,7 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
       <SideHeader />
       <section className="row-form p-5">
         <h2 className='h2 mb-3 font-extrabold'>Crea le nuove credenziali!</h2>
-        <div className="mb-3 col-12">
+        <div className="mb-3">
           <input
             placeholder='Nuova Password'
             value={formData.password}
@@ -66,7 +65,7 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
             className={`form-control ${classes['form-group-reset-p']}`}
           />
         </div>
-        <div className="mb-3 col-12">
+        <div className="mb-3">
           <input
             placeholder='Conferma la Password'
             value={formData.password_confirm}
@@ -75,6 +74,7 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
             type="password"
             className={`form-control ${classes['form-group-reset-p']}`}
           />
+          {error && <span className='text-red-500 py-1 text-sm'>{error}</span>}
         </div>
         <div className="col-12">
           <ButtonStyle
@@ -85,7 +85,6 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
             Invia
           </ButtonStyle>
         </div>
-        {error?.data?.message && <span className='text-red-500'>{error?.data.message}</span>}
     </section>
   </LoginStyled>
   );

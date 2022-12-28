@@ -15,9 +15,7 @@ const Login = () => {
     } = useContext(ConfigContext);
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
-    const { data, handleData } = useInput(defaultLoginData);
-
-    console.log(data, 'testing the data');
+    const { data, error, setError, handleData } = useInput(defaultLoginData);
     
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -29,13 +27,17 @@ const Login = () => {
         })
             .then((resp) => resp.json())
             .then((data) => {
-                login(
-                    data.data.first_name,
-                    data.data.last_name,
-                    data.token,
-                    data.data.id
-                );
-                navigate('/');
+                if (data.success) {
+                    login(
+                        data.data.first_name,
+                        data.data.last_name,
+                        data.token,
+                        data.data.id
+                    );
+                    navigate('/');
+                } else {
+                   setError(data.message)
+                }
             });
     };
 
@@ -65,10 +67,11 @@ const Login = () => {
                         name="password"
                         onChange={handleData}
                     />
+                      {error && <span className='text-red-600 py-1 text-sm'>{error}</span>}
                     <ButtonStyle 
                       type="submit" 
                       disabled={!data.email || !data.password}
-                    >Entra</ButtonStyle>
+                      >Entra</ButtonStyle>
                     <Link to="/send_email" className="pt-3 text-sm">
                         Hai dimenticato la password?
                     </Link>

@@ -15,7 +15,7 @@ class ResetPasswordAction
     $user = DB::table('users')->where('email', '=', $email)
       ->first();
 
-    if (count(array($user)) < 1) {
+    if (!$user) {
       return response()->json([
           'success' => false,
           'message' => "L'utente non è stato trovato!"
@@ -32,7 +32,7 @@ class ResetPasswordAction
       if ($email) {
           Mail::to($email)->send(new MailForgotPassword($token, $email));
           return response([
-              'message' => "Check your email!"
+              'message' => "Controlla la tua mail!"
           ]);
       }
 

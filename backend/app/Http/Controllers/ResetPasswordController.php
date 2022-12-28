@@ -48,7 +48,7 @@ class ResetPasswordController extends Controller
         
         return response([
             'success' => true,
-            'message' => 'Password updated!'
+            'message' => 'La password è stata aggiornata!'
         ], 201);
     }
 }

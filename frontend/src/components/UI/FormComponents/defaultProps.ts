@@ -333,6 +333,7 @@ export const fasiFormData = {
             name: 'nome_file',
             type: 'file',
             id: 11,
+            multiple: true,
             errorMessage: ''
         }
     ]

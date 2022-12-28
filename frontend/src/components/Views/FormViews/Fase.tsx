@@ -7,7 +7,7 @@ import {
     selectTipologiaFile
 } from '../../UI/FormComponents/selectPropsTributi';
 import { fasiFormData } from '../../UI/FormComponents/defaultProps';
-import { Input, SelectInput, Form, Modal, TextArea } from '../../UI/index';
+import { Input, SelectInput, Form, TextArea } from '../../UI/index';
 import { useParams } from 'react-router';
 import { baseURL } from '../../Utilities/index';
 import useFetch from '../../../Hooks/useFetch';
@@ -33,6 +33,8 @@ const Fase = () => {
     let faseCur =
         Object.keys(val).length > 0 ? newSelectStateFase : selectStatoFase;
 
+    // 👇 files is not an array, but it's iterable, spread to get an array of files
+
     return (
         <div className="height-custom">
             <Form
@@ -57,14 +59,13 @@ const Fase = () => {
                                 // value={slug && payload[input.name]}
                                 {...input}
                             />
-                        ) : (
-                            <Input
+                            ) : 
+                            ( <Input
                                 handleData={handleData}
                                 key={index}
                                 {...input}
                                 // value={payload[input.name as keyof object]}
-                            />
-                        );
+                            />)
                     })}
 
                     <div className="md:flex">

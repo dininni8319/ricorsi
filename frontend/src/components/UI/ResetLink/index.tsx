@@ -24,7 +24,13 @@ const ResetLink = () => {
       body: JSON.stringify(formData)
     })
       .then(resp => resp.json())
-      .then(data => console.log(data, 'testing the data'))
+      .then(data => {
+        if (data.success) {
+          setError(data.message)
+        } else {
+          setError(data.message)
+        }
+      })
   };
 
   const handleFieldChange = (e:any) => {
@@ -52,7 +58,7 @@ const ResetLink = () => {
                 className={`form-control`}
               />
             </div>
-          
+            {error && <span className='text-red-500 py-1 text-sm'>{error}</span>}
             <div className="d-flex justify-content-center">
               <ButtonStyle
                 type="submit"
