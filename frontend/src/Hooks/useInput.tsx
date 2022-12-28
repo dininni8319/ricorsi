@@ -16,7 +16,6 @@ export default function useInput(
     })
    
     data = {...data, nome_file}
-    console.log(data, 'testing the data of the files');
     
     const handleData = (
         e: ChangeEvent<

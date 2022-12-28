@@ -26,7 +26,7 @@ const Form: React.FC<FormProps> = ({
         //post a ricorso
         fetch(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, {
             method: method ? method : 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'multipart/form-data' },
             body: JSON.stringify(data)
         })
             .then((response) => response.json())

@@ -15,7 +15,7 @@ import useFetch from '../../../Hooks/useFetch';
 const Fase = () => {
     const { data, handleData } = useInput(defaultFasiData);
     const { slug } = useParams();
-
+    
     let { payload }: any = useFetch(
         `${baseURL}/api/cienneffe/last_fase/${slug}`,
         {
