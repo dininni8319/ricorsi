@@ -59,6 +59,7 @@ class TaxUnitController extends Controller
         $documents = $request->nome_file;
         $folderName = $request->tipologia_file;
 
+        
         $formFaseData = $this->getFormFaseData($request);
         $fase_req = intval($request->fase);
     
@@ -92,24 +93,23 @@ class TaxUnitController extends Controller
             $formFaseData['ricorsi_id'] = $id;
             
             $fase = Fasi::create($formFaseData);
- 
+            
             if ($documents) {
-
+                
                 $faseId = $this->findRicorsoID($id)->orderBy("created_at", "desc")->first();
                 $storeDoc = Document::create([
                     "fase" => intval($fase_req),
                     "fasi_id" => intval($faseId->id),
                     'tipologia_file' => $folderName,
                     'ricorsi_id' => intval($id),
-                ]);
-
-                //cerca l'ultimo documento salvato e trova l'id
-                $last_document = Document::orderBy("created_at", "desc")->first();
-                $idDocument = $last_document->id;
-                
-                if ($documents) {
-                   
+                    ]);
+                    
+                    //cerca l'ultimo documento salvato e trova l'id
+                    $last_document = Document::orderBy("created_at", "desc")->first();
+                    $idDocument = $last_document->id;
+                    
                     foreach ($documents as $key => $document) {
+
                         $fileName = $document->getClientOriginalName();
                         $path = $document->store('public/upload/'.$folderName.'/'.$fileName);
                         
@@ -119,15 +119,28 @@ class TaxUnitController extends Controller
                             'document_id' => intval($idDocument),
                         ]);  
                     }
-                    return redirect("/detail_ricorso/" . $id)->with("message", 'La fase è stata aggiunta');
-                }
+                        
+                    if (!$fase){
+                        return response()->json([
+                        'success' => false,
+                        'message' => 'Questa fase è stata gia creata vai alla successiva!',
+                    ], 404);
+                    } 
 
                 if (!$fase){
                     return response()->json([
                      'success' => false,
                      'message' => 'Questa fase è stata gia creata vai alla successiva!',
                   ], 404);
-                } 
+                } else {
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'La fase è stata creata!',
+                        'fase' => $fase,
+                        'id' => $fase->id,
+                    ], 200);  
+                }
+
             } else {
                 return response()->json([
                     'success' => true,

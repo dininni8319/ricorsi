@@ -9,13 +9,15 @@ export default function useInput(
     const [ fileList, setFileList ] = useState<any>(null);
    
     const fileData = new FormData();
-    const files = fileList ? [...fileList] : [];
+    const nome_file = fileList ? [...fileList] : [];
     
-    files.forEach((file, i) => {
+    nome_file.forEach((file, i) => {
         fileData.append(`file-${i}`, file, file.name);
     })
    
-    data = {...data, files}
+    data = {...data, nome_file}
+    console.log(data, 'testing the data of the files');
+    
     const handleData = (
         e: ChangeEvent<
             HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | any

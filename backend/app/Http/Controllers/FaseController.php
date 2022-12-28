@@ -93,9 +93,9 @@ class FaseController extends Controller
                         "motivazione" => $request->motivazione,
                         "spese" => $request->spese,
                     ]);
-                    
-                    if ($request->nome_file) {
                 
+                    if ($request->nome_file) {
+                        
                         $faseId = Fasi::orderBy("created_at", "desc")->first();
                         $storeDoc = Document::create([
                             "fase" => intval($req_value),
