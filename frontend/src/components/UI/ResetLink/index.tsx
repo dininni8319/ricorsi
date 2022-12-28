@@ -1,16 +1,15 @@
 import { useState, useContext } from "react";
-import classes from "./style.module.css";
-import { AuthContext } from "../../../Contexts/Auth";
 import { ConfigContext } from "../../../Contexts/Config";
-import { ButtonStyle } from '../../Views/Login/style';
+import {LoginStyled, ButtonStyle } from '../../Views/Login/style';
+import { SideHeader } from '../../UI/index';
 
 const ResetLink = () => {
 
   let { api_urls } = useContext(ConfigContext);
-  let { user } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: '',
   });
+  
   const [ error, setError ] = useState('');
 
   const handleSubmit = (event:any) => {
@@ -37,34 +36,35 @@ const ResetLink = () => {
   };
 
   return ( 
-    <form
-      className='w-full md:flex justify-center'
-      onSubmit={handleSubmit}
-    >
-      <div className="row flex-column p-5 w-6/12">
-        <h2 className='h2 mb-3 fw-bold'>Invia il Link</h2>
-        <label className='mb-3'>Inserisci la tua email e ti manderemo un link per il reset!</label>
-        <div className="mb-3 col-md-8">
-          <input
-            placeholder={'Email'}
-            value={formData.email}
-            name="email"
-            onChange={handleFieldChange}
-            type="email"
-            className={`form-control ${classes['form-group-reset-p']}`}
-          />
-        </div>
-        <div className="d-flex justify-content-center">
-          <ButtonStyle
-            type="submit"
-            className="btn-grad px-5 fw-bold"
-            disabled={!formData.email}
-          >
-            Invia il link
-          </ButtonStyle>
-        </div>
-      </div>
-  </form>
+    <LoginStyled onSubmit={handleSubmit} className="form-custom">
+        <SideHeader />
+        <section className="row-form p-5">
+          <div className='w-6/12'>
+            <h2 className='h2 mb-3 fw-bold text-2xl'>Invia il Link</h2>
+            <p className='mb-3 text-sm'>Inserisci la tua email e ti manderemo un link per il reset!</p>
+            <div className="mb-3 col-md-8">
+              <input
+                placeholder={'Email'}
+                value={formData.email}
+                name="email"
+                onChange={handleFieldChange}
+                type="email"
+                className={`form-control`}
+              />
+            </div>
+          
+            <div className="d-flex justify-content-center">
+              <ButtonStyle
+                type="submit"
+                className="btn-grad px-5 fw-bold"
+                disabled={!formData.email}
+              >
+                Invia il link
+              </ButtonStyle>
+            </div>
+          </div>
+        </section>
+    </LoginStyled>
    );
 }
  

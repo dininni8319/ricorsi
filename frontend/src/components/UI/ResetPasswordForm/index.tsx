@@ -3,9 +3,11 @@ import classes from './style.module.css';
 import { ConfigContext } from "../../../Contexts/Config";
 import { useNavigate } from "react-router";
 import { isEmptyObject } from "../../Utilities/index";
-import { ButtonStyle } from '../../Views/Login/style';
+import { LoginStyled, ButtonStyle } from '../../Views/Login/style';
+import { SideHeader } from './../../UI/index';
 
 const PasswordResetForm = ({ token }: { token?: string}) => {
+
   const navigate = useNavigate();
   let { api_urls } = useContext(ConfigContext);
   const [formData, setFormData] = useState({
@@ -15,11 +17,13 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
   });
 
   const [ error, setError ] = useState<any>({});
+  console.log(formData, api_urls.backend, 'testing the form data');
+
   // Handler
   const handleSubmit = (e:any) => {
     e.preventDefault();
 
-    fetch(`${api_urls.backend}api/cienneffe/reset`, {
+    fetch(`${api_urls.backend}/api/cienneffe/reset`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
@@ -46,11 +50,11 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
   };
 
   return (
-    <form
-      className='w-full md:flex justify-center'
+    <LoginStyled className="form-custom"
       onSubmit={handleSubmit}
     >
-      <div className="row flex-column p-5 w-6/12">
+      <SideHeader />
+      <section className="row-form p-5">
         <h2 className='h2 mb-3 font-extrabold'>Crea le nuove credenziali!</h2>
         <div className="mb-3 col-12">
           <input
@@ -81,9 +85,9 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
             Invia
           </ButtonStyle>
         </div>
-        {!isEmptyObject(error) && <span className='text-red-500'>{error?.data.message}</span>}
-    </div>
-  </form>
+        {error?.data?.message && <span className='text-red-500'>{error?.data.message}</span>}
+    </section>
+  </LoginStyled>
   );
 };
 

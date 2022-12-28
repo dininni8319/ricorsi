@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Loader3 } from '../UI/index';
+import { ResetLinkView } from "./index";
 import {
     Homepage,
     Ricorsi,
@@ -19,7 +20,6 @@ import {
     RiscossionePage,
     Riconciliazione,
     ResetPassword,
-    ResetLinkView
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 

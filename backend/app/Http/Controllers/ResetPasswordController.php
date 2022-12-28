@@ -32,14 +32,15 @@ class ResetPasswordController extends Controller
         }
 
         $user = User::where('email', $passwordResets->email)->first();
-
+        
         if (!$user) {
             return response()->json([
                 'success' => false,
                 'message' => "L'utente non è stato trovato!"
             ],404); //bad request
         }
-
+        
+        // dd($request->password, 'testing the  user');
         $user->password = Hash::make($request->password);
 
         $user->isloggedin = true;
