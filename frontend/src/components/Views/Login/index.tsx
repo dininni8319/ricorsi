@@ -17,6 +17,8 @@ const Login = () => {
     const navigate = useNavigate();
     const { data, handleData } = useInput(defaultLoginData);
 
+    console.log(data, 'testing the data');
+    
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -63,7 +65,10 @@ const Login = () => {
                         name="password"
                         onChange={handleData}
                     />
-                    <ButtonStyle type="submit">Entra</ButtonStyle>
+                    <ButtonStyle 
+                      type="submit" 
+                      disabled={!data.email || !data.password}
+                    >Entra</ButtonStyle>
                     <Link to="/send_email" className="pt-3 text-sm">
                         Hai dimenticato la password?
                     </Link>

@@ -82,7 +82,7 @@ export const Theme = {
     orangeColor: '#fc8414',
     //we could usse this colour for the text, not in use at the moment
     textGray: '#1C1C1C',
-
+    disabledColor: 'rgb(255, 213, 128, 0.8)',
     boxShadow: 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)',
     //that for the details pages
     boxShadow2: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',

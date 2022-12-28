@@ -35,12 +35,19 @@ export const InputSection = styled.section`
     }
 `;
 
-export const ButtonStyle = styled.button`
+export const ButtonStyle = styled.button.attrs(
+    (props: { disabled: boolean }) => props
+)`  
     color: ${(props) => props.theme.colorWhite};
-    background-color: ${(props) => props.theme.buttonColor};
+    background-color: ${(props) => (props.disabled ? props.theme.disabledColor : props.theme.buttonColor)};
     font-weight: bold;
     width: 15rem;
     height: 2.5rem;
     border-radius: 20px;
     margin-top: 40px;
+
+    &:hover {
+        width: ${(props) => (props.disabled ? '' : '15.3rem')};
+        height: ${(props) => (props.disabled ? '' : '2.6rem')};
+    }
 `;
