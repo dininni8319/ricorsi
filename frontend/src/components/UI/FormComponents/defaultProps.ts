@@ -329,14 +329,6 @@ export const fasiFormData = {
             errorMessage: ''
         },
         {
-            label: 'Tipologia file',
-            name: 'tipologia_file',
-            type: 'text',
-            id: 11,
-            required: true,
-            errorMessage: ''
-        },
-        {
             label: 'File',
             name: 'nome_file',
             type: 'file',

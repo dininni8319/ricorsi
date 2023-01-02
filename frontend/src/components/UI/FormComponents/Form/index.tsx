@@ -1,4 +1,3 @@
-// import { string } from "yup";
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
@@ -6,7 +5,6 @@ import { FormProps } from '../../../interfaces/interfaces';
 import { baseURL } from '../../../Utilities/index';
 import { FormContainer } from './style';
 import { Modal } from '../../index';
-// import { getFormData } from "../../../Utilities/index";
 
 const Form: React.FC<FormProps> = ({
     id,
@@ -22,7 +20,6 @@ const Form: React.FC<FormProps> = ({
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('');
 
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         //post a ricorso
@@ -32,11 +29,12 @@ const Form: React.FC<FormProps> = ({
         }
         axios.post(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, data, config)
             .then((data: any) => {
-                if (data.id) {
-                    setMessage(data.message);
+                let { success, id , message } = data?.data;
+                if (success) {
+                    setMessage(message);
                     setIsOpen(true);
                     setTimeout(() => {
-                        navigate(`/${navPath}/${data.id}`);
+                        navigate(`/${navPath}/${id}`);
                     }, 2000);
                 } else {
                     navigate('/home');

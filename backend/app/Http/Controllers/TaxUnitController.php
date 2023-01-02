@@ -107,23 +107,16 @@ class TaxUnitController extends Controller
                 $idDocument = $last_document->id;
                 
                 foreach ($documents as $key => $document) {
-                        $fileName = $document->getClientOriginalName();
-                        $path = $document->store('public/upload/'.$folderName.'/'.$fileName);
+                    $fileName = $document->getClientOriginalName();
+                    $path = $document->store('public/upload/'.$folderName.'/'.$fileName);
+                    
+                    $documentStore = File::create([
+                        'nome_file' => $fileName,
+                        'path' => $path, 
+                        'document_id' => intval($idDocument),
+                    ]);  
+                }
                         
-                        $documentStore = File::create([
-                            'nome_file' => $fileName,
-                            'path' => $path, 
-                            'document_id' => intval($idDocument),
-                        ]);  
-                    }
-                        
-                    if (!$fase){
-                        return response()->json([
-                        'success' => false,
-                        'message' => 'Questa fase è stata gia creata vai alla successiva!',
-                    ], 404);
-                    } 
-
                 if (!$fase){
                     return response()->json([
                      'success' => false,

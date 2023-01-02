@@ -323,6 +323,32 @@ export const selectEntrataTributo = {
     ]
 };
 
+export const tipologiaFile = {
+        label: 'Tipologia file',
+        name: 'tipologia_file',
+        type: 'text',
+        id: 11,
+        required: true,
+        values: [
+            {id: 0, title: 'Ricorso', value: 'Ricorso'},
+            {id: 1, title: 'Istruttoria', value: 'Istruttoria'},
+            {id: 2, title: 'Doc Varia Ricorso', value: 'DocVaria_Ricorso'},
+            {id: 3, title: 'Accertamento', value: 'Accertamento'},
+            {id: 4, title: 'Note Tecniche', value: 'Note_Tecniche'},
+            {id: 5, title: 'Controdeduzioni', value: 'Controdeduzioni'},
+            {id: 6, title: 'Nota Integrativa', value: 'Nota_Integrativa'},
+            {id: 7, title: 'Dispositivo', value: 'Dispositivo'},
+            {id: 8, title: 'Appello', value: 'Appello'},
+            {id: 9, title: 'Controdeduzioni Appello', value: 'Controdeduzioni_Appello'},
+            {id: 10, title: 'Doc Varia Appello', value: 'DocVaria_Appello'},
+            {id: 11, title: 'Sentenza II Grado', value: 'Sentenza_II_Grado'},
+            {id: 12, title: 'Ricorso Cassazione', value: 'Ricorso_Cassazione'},
+            {id: 13, title: 'Controdeduzioni Cassazione', value: '16_Controdeduzioni_Cassazione'},
+            {id: 14, title: 'Dispositivo Cassazione', value: 'Dispositivo_Cassazione'},
+            {id: 15, title: 'Varie', value: 'Varie'},
+        ]
+    
+}
 export const selectTipologiaDocumenti = {
     title: 'Tipologia Documenti',
     name: 'tipologia_documenti',

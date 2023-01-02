@@ -1,11 +1,11 @@
 import useInput from '../../../Hooks/useInput';
-import { getFormData } from "../../Utilities/index";
 import { defaultFasiData } from '../../UI/FormComponents/defaultData';
 import {
     selectStatoFase,
     selectEsitoSentenza,
     selectEsitoDefinitivo,
-    selectTipologiaFile
+    selectTipologiaFile,
+    tipologiaFile,
 } from '../../UI/FormComponents/selectPropsTributi';
 import { fasiFormData } from '../../UI/FormComponents/defaultProps';
 import { Input, SelectInput, Form, TextArea } from '../../UI/index';
@@ -51,6 +51,12 @@ const Fase = () => {
                         selectProps={faseCur}
                         handleData={handleData}
                     />
+                     <div className="md:flex">
+                        <SelectInput
+                            selectProps={selectTipologiaFile}
+                            handleData={handleData}
+                        />
+                    </div>
 
                     {fasiFormData?.formArr.map((input, index) => {
                         return input.id === 0 ? (
@@ -71,15 +77,15 @@ const Fase = () => {
 
                     <div className="md:flex">
                         <SelectInput
+                            selectProps={tipologiaFile}
+                            handleData={handleData}
+                        />
+                        <SelectInput
                             selectProps={selectEsitoSentenza}
                             handleData={handleData}
                         />
                         <SelectInput
                             selectProps={selectEsitoDefinitivo}
-                            handleData={handleData}
-                        />
-                        <SelectInput
-                            selectProps={selectTipologiaFile}
                             handleData={handleData}
                         />
                     </div>

@@ -26,7 +26,7 @@ const SelectInput = ({
                 onChange={(e) => handleData(e)}
                 required
             >
-                {selectProps?.values.map(({ value }: any, index: number) => {
+                {selectProps?.values.map(({title, value }: any, index: number) => {
                     return (
                         <option
                             value={
@@ -38,7 +38,7 @@ const SelectInput = ({
                         >
                             {selectProps?.name == 'fase'
                                 ? faseCurrent(value)
-                                : value}
+                                : (title ? title:  value)}
                         </option>
                     );
                 })}
