@@ -6,17 +6,13 @@ export default function useInput(
 ) {
     let [data, setData] = useState(initialSate);
     const [ error, setError ] = useState('');
-    const [ fileList, setFileList ] = useState<any>(null);
-   
-    const fileData = new FormData();
-    const nome_file = fileList ? [...fileList] : [];
     
-    nome_file.forEach((file, i) => {
-        fileData.append(`file-${i}`, file, file.name);
-    })
-   
-    data = {...data, nome_file}
-    
+    const handleUploadFiles = (files: any) =>  {
+      const uploaded = [...files];
+  
+      setData((prevState) => ({...prevState, 'nome_file': uploaded}));
+    }
+
     const handleData = (
         e: ChangeEvent<
             HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | any
@@ -27,12 +23,14 @@ export default function useInput(
         if (name === 'email_notification') {
             let val = checked ? 'on' : '';
             setError('');
-            setData((prevState) => ({ ...prevState, [name]: val}));
+            setData((prevState) => ({...prevState, [name]: val}));
         } else if (name === 'nome_file') {
-            setFileList(e.target.files);
+            const chosenFiles = Array.prototype.slice.call(e.target.files);
+            
+            handleUploadFiles(chosenFiles);
         } else {
             setError('');
-            setData((prevState) => ({ ...prevState, [name]: value }));
+            setData((prevState) => ({...prevState, [name]: value }));
         }
     };
     return {

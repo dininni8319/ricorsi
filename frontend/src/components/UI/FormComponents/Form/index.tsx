@@ -1,10 +1,12 @@
 // import { string } from "yup";
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { FormProps } from '../../../interfaces/interfaces';
 import { baseURL } from '../../../Utilities/index';
 import { FormContainer } from './style';
 import { Modal } from '../../index';
+// import { getFormData } from "../../../Utilities/index";
 
 const Form: React.FC<FormProps> = ({
     id,
@@ -20,17 +22,16 @@ const Form: React.FC<FormProps> = ({
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('');
 
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         //post a ricorso
-        fetch(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, {
-            method: method ? method : 'POST',
-            headers: { 'Content-Type': 'multipart/form-data' },
-            body: JSON.stringify(data)
-        })
-            .then((response) => response.json())
-            .then((data) => {
+        const config: any = { 
+          method: method ? method : 'POST',
+          headers: {  'Content-Type': 'multipart/form-data' },
+        }
+        axios.post(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, data, config)
+            .then((data: any) => {
                 if (data.id) {
                     setMessage(data.message);
                     setIsOpen(true);

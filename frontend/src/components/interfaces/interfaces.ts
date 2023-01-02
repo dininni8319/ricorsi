@@ -28,7 +28,7 @@ export interface FormProps {
     createPath: string;
     subMitBtn: string;
     //key and value pair definition in typescript
-    data: { [key: string]: string | number };
+    data: { [key: string]: any };
     children?: JSX.Element;
     method?: string;
     // ricorso: {[key: string]: string} | undefined,

@@ -42,7 +42,6 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get('/view-profile', [AuthController::class, 'viewProfile'])->name('profile.user');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout.user');
     
-    
     //Ricorsi        withoutMiddleware('throttle:api') is usefull went you want allow illimited request from the api          
     Route::get("/ricorsi", [RicorsiController::class, "index"])->name("home")->withoutMiddleware('throttle:api');
     Route::post("/crea_ricorso/{id?}", [RicorsiController::class, "creaRicorso"])->name("crea_ricorso");

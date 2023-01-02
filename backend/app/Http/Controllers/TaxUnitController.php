@@ -58,8 +58,6 @@ class TaxUnitController extends Controller
     {
         $documents = $request->nome_file;
         $folderName = $request->tipologia_file;
-
-        
         $formFaseData = $this->getFormFaseData($request);
         $fase_req = intval($request->fase);
     
@@ -102,14 +100,13 @@ class TaxUnitController extends Controller
                     "fasi_id" => intval($faseId->id),
                     'tipologia_file' => $folderName,
                     'ricorsi_id' => intval($id),
-                    ]);
+                ]);
                     
-                    //cerca l'ultimo documento salvato e trova l'id
-                    $last_document = Document::orderBy("created_at", "desc")->first();
-                    $idDocument = $last_document->id;
-                    
-                    foreach ($documents as $key => $document) {
-
+                //cerca l'ultimo documento salvato e trova l'id
+                $last_document = Document::orderBy("created_at", "desc")->first();
+                $idDocument = $last_document->id;
+                
+                foreach ($documents as $key => $document) {
                         $fileName = $document->getClientOriginalName();
                         $path = $document->store('public/upload/'.$folderName.'/'.$fileName);
                         
