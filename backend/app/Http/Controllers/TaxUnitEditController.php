@@ -67,12 +67,13 @@ class TaxUnitEditController extends Controller
             $ricorsoId = $fase->ricorsi_id;
             //per adesso non lo sto utilizzando la riga 48 e 50
             $documents = Document::where('ricorsi_id', $ricorsoId)->where('fase', $fase->fase)->get();
-                
+            
             return response()->json([
                     'success' => true,
                     'fase' => $fase,
                     'fase_current_id' => $currentId,
                     'message' => $this->messageSuccess,
+                    'documents' =>  $documents 
                 ], 200);
         } else {
 

@@ -116,6 +116,7 @@ class TaxUnitController extends Controller
                         'document_id' => intval($idDocument),
                     ]);  
                 }
+
                         
                 if (!$fase){
                     return response()->json([
@@ -148,50 +149,50 @@ class TaxUnitController extends Controller
             
             $currentFase = Fasi::find($faseId);
             $currentFase->update($formFaseData);
-                
+              
             if ($currentFase) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'La fase è stata aggiornata!',
-                    'currentFase' => $currentFase,
-                    'id' => $faseId,
-                ], 200);  
+                if ($request->tipologia_file && $documents) {
+                
+                    $faseId = $this->findRicorsoID($id)->orderBy("created_at", "desc")->first();
+                    
+                     $storeDoc = Document::create([
+                         "fase" => intval($fase_req),
+                         "fasi_id" => intval($faseId->id),
+                         'tipologia_file' => $folderName,
+                         'ricorsi_id' => intval($id),
+                     ]);
+    
+                    //  cerca l'ultimo documento salvato e troviamo l'id
+                     $last_document = Document::orderBy("created_at", "desc")->first();
+                     $idDocument = $last_document->id;
+                    
+                     if ($documents) {
+                       
+                        foreach ($documents as $key => $document) {
+                             $fileName = $document->getClientOriginalName();
+                             $path = $document->store('public/upload/'.$folderName.'/'.$fileName);
+                            
+                             $documentStore = File::create([
+                                 'nome_file' => $fileName,
+                                 'path' => $path, 
+                                 'document_id' => intval($idDocument),
+                             ]);  
+                         }
+
+                        return response()->json([
+                            'success' => true,
+                            'message' => 'La fase è stata aggiornata!',
+                            'fase' => $currentFase,
+                            'id' => $faseId->id,
+                        ], 200);  
             } else {
                 return response()->json([
                     'success' => false,
                     'message' => 'There is a problem with backend!',
                 ], 500);     
             }
-            
-            if ($request->tipologia_file && $documents) {
-                
-                $faseId = $this->findRicorsoID($id)->orderBy("created_at", "desc")->first();
-                
-                 $storeDoc = Document::create([
-                     "fase" => intval($fase_req),
-                     "fasi_id" => intval($faseId->id),
-                     'tipologia_file' => $folderName,
-                     'ricorsi_id' => intval($id),
-                 ]);
-
-                //  cerca l'ultimo documento salvato e troviamo l'id
-                 $last_document = Document::orderBy("created_at", "desc")->first();
-                 $idDocument = $last_document->id;
-                
-                 if ($documents) {
-                   
-                     foreach ($documents as $key => $document) {
-                         $fileName = $document->getClientOriginalName();
-                         $path = $document->store('public/upload/'.$folderName.'/'.$fileName);
-                        
-                         $documentStore = File::create([
-                             'nome_file' => $fileName,
-                             'path' => $path, 
-                             'document_id' => intval($idDocument),
-                         ]);  
-                     }
-                     return redirect("/detail_ricorso/" . $id)->with("message", 'La fase è stata aggiunta');
-                 }
+                     
+            }
              }
              return redirect("/detail_ricorso/" . $id)->with("message", 'La fase è stata aggiunta');
         } else {

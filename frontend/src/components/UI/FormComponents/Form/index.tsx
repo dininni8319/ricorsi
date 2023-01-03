@@ -29,12 +29,12 @@ const Form: React.FC<FormProps> = ({
         }
         axios.post(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, data, config)
             .then((data: any) => {
-                let { success, id , message } = data?.data;
-                if (success) {
-                    setMessage(message);
+                               
+                if (data?.data.success) {
+                    setMessage(data?.data.message);
                     setIsOpen(true);
                     setTimeout(() => {
-                        navigate(`/${navPath}/${id}`);
+                        navigate(`/${navPath}/${data?.data.id}`);
                     }, 2000);
                 } else {
                     navigate('/home');
