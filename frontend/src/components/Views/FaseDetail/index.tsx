@@ -18,15 +18,12 @@ const FasiDetail = () => {
         api_urls: { backend }
     } = useContext(ConfigContext);
 
-    console.log(faseDetail?.documents);
-    
     const handleFadeDetail = useCallback(
         ({ fase }: { fase: FasiFieldsTypes }) => {
             setFaseDetail(fase);
         },
         []
     );
-
 
     const { sendRequest: fetchFaseDetail } = useHttp(handleFadeDetail);
 
@@ -134,12 +131,13 @@ const FasiDetail = () => {
                     faseDetail?.documents.map((document: any) => {
                         return (
                             <li key={document.id} className='files-style'>
-                            <a href={`http://localhost:8000/${document.path}`}>{document.nome_file}</a> 
+                            <a href={`http://localhost:8000/${document.path}`} target='_blank'>{document.nome_file}</a> 
                             </li> 
                         )
                     })
                 }
             </ul>
+              
             <section className="links-detail-page mt-5">
                 {faseDetail && (
                     <div className="md:flex md:justify-between md:items-end py-2">
@@ -161,6 +159,7 @@ const FasiDetail = () => {
                         </>
                     </div>
                 )}
+                
             </section>
         </DetailStyleComponent>
     );
