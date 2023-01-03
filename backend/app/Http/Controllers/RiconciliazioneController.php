@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Riconciliazione;
 use App\Models\Riscossione;
 use Illuminate\Http\Request;
+use App\Actions\RicorsoAction;
+use App\Models\Riconciliazione;
 
 class RiconciliazioneController extends Controller
 {
@@ -14,7 +15,7 @@ class RiconciliazioneController extends Controller
     //     /* $this->middleware("auth.revisor"); */
     // }
     protected $messageUnSuccess = "Qualcosa è andato storto con la";
-    protected $messageSuccess = "La Riconciliazione è stata";
+    protected $messageSuccess = "La Riconciliazione è stata ";
 
     protected function getFormData($req) {
         return [
@@ -42,13 +43,23 @@ class RiconciliazioneController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => $this->messageSuccess,
+                'message' => $this->messageSuccess. ''. 'creata',
                 'riconciliazione' => $riconciliazione,
                 'id' => $riconciliazione->id,
             ], 200);
         }  
     }
 
+    public function detailRiconciliazione($id, RicorsoAction $action)
+    {
+        if(intval($id)){
+           
+            $riconciliazione = Riconciliazione::find($id);
+            $data = $action->handleResponse($riconciliazione, $this->messageUnSuccess, $this->messageSuccess. 'trovata');
+        
+            return $data;
+        } 
+    }
     public function updateRidicontazione(Request $request, $id) 
     {
         $formData = $this->getFormData($request);
@@ -71,14 +82,6 @@ class RiconciliazioneController extends Controller
         }
         return view('riscossione.riscossione');
     }
-
-    // public function getRiscossioni($id)
-    // {
-    //     if ($id) {
-    //         $riconciliazioni = Riconciliazione::where('ricorsi');
-
-    //     }
-    // }
     
     public function enteRiscossione()
     {

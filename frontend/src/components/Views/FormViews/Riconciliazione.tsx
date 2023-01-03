@@ -16,7 +16,7 @@ const RiconciliazioneForm = () => {
                 id={slug}
                 title="Avvia un Rendicondazione"
                 createPath="create_riconciliazione"
-                navPath="riconciliazione_detail"
+                navPath="detail_riconciliazione"
                 subMitBtn="Invio"
                 data={data}
             >

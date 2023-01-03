@@ -176,6 +176,14 @@ export interface IRiscossione {
     tipologia_spedizioni: string;
 }
 
+export interface IRiconciliazione {
+    mese: string;
+    anno: string;
+    oneri_riscossione: string;
+    diritti_vari: string;
+    spese_notifica: string;
+    totale: string;
+}
 export type ChildrenProps = {
     children: JSX.Element;
 };

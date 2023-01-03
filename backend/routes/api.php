@@ -82,11 +82,12 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get('/export_lotti', [RiscossioneController::class, "exportLotti"])->name("export.lotti");
     Route::delete("/riscossione/delete/{id}", [RiscossioneController::class,"deleteRiscossione",])->name("riscossione.cartolina");
     
-    //Riconciliazione
+    //Riconciliazione 
     Route::get("/enteRiscossione", [RiconciliazioneController::class, "enteRiscossione"])->name("enteRiscossione");
+    Route::get("/detail_riconciliazione/{id}", [RiconciliazioneController::class, "detailRiconciliazione"])->name("detailRiconciliazione");
     Route::post("/create_riconciliazione/{id}", [RiconciliazioneController::class, "creaRiconciliazione"])->name("crea.riconciliazione");
     Route::post("/update_riconciliazione/{id}", [RiconciliazioneController::class, "updateRidicontazione"])->name("update.riconciliazione");
-    Route::delete("/delete_riconciliazione/{id}/{riscossione}" , [RiconciliazioneController::class, "deleteRiconciliazione"])->name("delete.riconciliazione");
+    Route::delete("/riconciliazione/delete/{id}" , [RiconciliazioneController::class, "deleteRiconciliazione"])->name("delete.riconciliazione");
 
     // //Chart Notifiche
     Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");
