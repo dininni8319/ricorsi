@@ -153,6 +153,7 @@ export interface FasiFieldsTypes {
     spese: string;
     data_deposito_sentenza: string;
     data_notifica_sentenza: string;
+    documents: Fasi[]
 }
 
 export interface IRiscossione {

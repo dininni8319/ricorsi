@@ -108,7 +108,6 @@ class TaskCotroller extends Controller
     }
 
     public function deleteTask($id) {
-        
         if(!$id){
             return response()->json([
                 'success' => false,

@@ -64,6 +64,21 @@ export const DetailStyleComponent = styled.div`
         padding: 10px;
     }
 
+    .ul-files-class {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: space-between;
+        padding: 20px 5px;
+        width: 80vw;
+    }
+    
+    .files-style {
+        background-color: white;
+        padding: 5px;
+        box-shadow: ${(props) => props.theme.boxShadow2};
+        
+    }
+
     @media only screen and (max-width: 765px) {
         .link-detail-style {
             min-width: 100%;

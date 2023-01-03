@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
 
+use App\Models\File;
+use App\Models\Document;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -29,5 +31,10 @@ class Fasi extends Model
     public function ricorso()
     {
         return $this->belongsTo(Ricorsi::class);
+    }
+
+    public function documents()
+    {
+       return $this->hasManyThrough(File::class, Document::class);
     }
 }

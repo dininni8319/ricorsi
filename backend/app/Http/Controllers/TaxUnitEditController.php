@@ -63,17 +63,15 @@ class TaxUnitEditController extends Controller
             $fase = Fasi::find($id);
             $lastFase =  Fasi::orderBy("created_at", "desc")->first();
             $currentId = $lastFase->id;
-
             $ricorsoId = $fase->ricorsi_id;
             //per adesso non lo sto utilizzando la riga 48 e 50
-            $documents = Document::where('ricorsi_id', $ricorsoId)->where('fase', $fase->fase)->get();
-            
+           
             return response()->json([
                     'success' => true,
                     'fase' => $fase,
                     'fase_current_id' => $currentId,
                     'message' => $this->messageSuccess,
-                    'documents' =>  $documents 
+                    'documents' =>  $fase->documents 
                 ], 200);
         } else {
 
@@ -82,9 +80,6 @@ class TaxUnitEditController extends Controller
                 'message' => $this->messageUnSuccess,
             ], 404);
         }
-       
-    
-        return view("fasi.detailFase", compact("fase", "documents"));
     }
 
     public function faseDelete($id)
