@@ -8,8 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { ConfigContext } from '../../../Contexts/Config';
 import Details from './Details';
+import DetailsCard from './DetailsCard';
 import { DetailStyleComponent } from "../RicorsiDetail/style";
 import { WrapperStyleComponent } from "../Home/style";
+
 const LottiSpedizioneDetail = () => {
     const [ riconcil, setRiconcil] = useState<{ [key: string]: string }[]>([]);
     let { slug } = useParams();
@@ -38,7 +40,6 @@ const LottiSpedizioneDetail = () => {
         });
     }, [fetchCurrentRiconcil]);
 
-    console.log(riconcil, 'test riconcil');
     let { data: riscossione }: any = payload;
 
     const handleDelete = (e: any) => {
@@ -78,7 +79,7 @@ const LottiSpedizioneDetail = () => {
                                             path="fase/delete"
                                             
                                         >
-                                           <div></div>
+                                           <DetailsCard  riconcil={riconcil}/>
                                         </Card>
                                     );
                                 })}
