@@ -1,16 +1,17 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router';
 import useFetch from '../../../Hooks/useFetch';
 import useHttp from '../../../Hooks/useHttp';
-import { DetailStyleComponent } from '../RicorsiDetail/style';
-import { DetailPage, Loader3 } from '../../UI/index';
+import { DetailPage, Loader3, Card } from '../../UI/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { ConfigContext } from '../../../Contexts/Config';
 import Details from './Details';
-
+import { DetailStyleComponent } from "../RicorsiDetail/style";
+import { WrapperStyleComponent } from "../Home/style";
 const LottiSpedizioneDetail = () => {
+    const [ riconcil, setRiconcil] = useState<{ [key: string]: string }[]>([]);
     let { slug } = useParams();
     let navigate = useNavigate();
     const {
@@ -21,6 +22,23 @@ const LottiSpedizioneDetail = () => {
         { verb: 'get' }
     );
 
+    const handleCurrentRiconcil = useCallback(({ data }: any) => {
+        setRiconcil(() => [...data]);
+    }, []);
+
+    const {
+        isLoading,
+        error,
+        sendRequest: fetchCurrentRiconcil
+    } = useHttp(handleCurrentRiconcil);
+
+    useEffect(() => {
+        fetchCurrentRiconcil({
+            url: `${backend}/api/cienneffe/riconciliazione/find/${slug}`
+        });
+    }, [fetchCurrentRiconcil]);
+
+    console.log(riconcil, 'test riconcil');
     let { data: riscossione }: any = payload;
 
     const handleDelete = (e: any) => {
@@ -49,6 +67,23 @@ const LottiSpedizioneDetail = () => {
                     <Loader3 />
                 )}
             </>
+
+            <section className="md:flex md:flex-col">
+                            <WrapperStyleComponent>
+                                {riconcil?.map((riconcil: any, id: number) => {
+                                    return (
+                                        <Card
+                                            id={id}
+                                            taxunit={riconcil}
+                                            path="fase/delete"
+                                            
+                                        >
+                                           <div></div>
+                                        </Card>
+                                    );
+                                })}
+                            </WrapperStyleComponent>
+            </section>
             <section className="links-detail-page mt-5">
                 {riscossione && (
                     <div className="md:flex md:justify-between md:items-end py-2">

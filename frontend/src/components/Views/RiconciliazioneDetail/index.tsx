@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router';
 import useFetch from '../../../Hooks/useFetch';
@@ -12,10 +12,12 @@ import Details from './Details';
 
 const RiconciliazioneDetail = () => {
     let { slug } = useParams();
+    
     let navigate = useNavigate();
     const {
         api_urls: { backend }
     } = useContext(ConfigContext);
+    
     let { payload, setData } = useFetch(
         `${backend}/api/cienneffe/detail_riconciliazione/${slug}`,
         { verb: 'get' }
@@ -23,6 +25,7 @@ const RiconciliazioneDetail = () => {
 
     let { data: riconciliazione }: any = payload;
 
+    // riconciliazioni/find
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteLotto({
@@ -32,6 +35,7 @@ const RiconciliazioneDetail = () => {
         });
         navigate('/');
     };
+    
     const { sendRequest: deleteLotto } = useHttp(handleDelete);
 
     return (

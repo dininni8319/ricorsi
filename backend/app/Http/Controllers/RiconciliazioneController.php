@@ -73,6 +73,18 @@ class RiconciliazioneController extends Controller
         } 
     }
 
+    public function getAllRiconciliazione($id, RicorsoAction $action)
+    {
+        if($id) {
+            $riconciliazione = Riscossione::find($id)->riconciliazioni;
+           
+            $data = $action->handleResponse($riconciliazione, $this->messageUnSuccess, $this->messageSuccess. 'trovata');
+
+            return $data;
+        }
+
+    }
+
     public function deleteRiconciliazione($id, $riscossioneId)
     {
         if ($id) {
