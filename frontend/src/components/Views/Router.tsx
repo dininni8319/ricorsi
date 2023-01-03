@@ -20,6 +20,7 @@ import {
     RiscossionePage,
     Riconciliazione,
     ResetPassword,
+    RiconciliazioneDetail,
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -193,6 +194,16 @@ const Router = () => {
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
                             <LottiSpedizioneDetail />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
+             <Route
+                path="/detail_riconciliazione/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <RiconciliazioneDetail />
                         </ProtectedRoute>
                     </Suspense>
                 }

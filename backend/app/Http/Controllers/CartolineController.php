@@ -41,7 +41,7 @@ class CartolineController extends Controller
 
     public function cartoline(RicorsoAction $action) 
     {
-        $cartoline = Cartoline::orderBy("created_at")->get();;
+        $cartoline = Cartoline::orderBy("created_at", "desc")->get();;
         $response = $action->handleResponse($cartoline, $this->messageUnSuccess, $this->messageSuccess);
         
         return $response;
@@ -69,6 +69,7 @@ class CartolineController extends Controller
         $fileName = '';
         $path_file = '';
 
+        // dd($request->esito_notifica, 'testing the request');
         $esiti_obj = [
             "ricevuto_destinatario",
             "ricevuto_familiare_conveniente", 
@@ -104,10 +105,11 @@ class CartolineController extends Controller
                 $file = $request->nome_file;
                 $fileName = $file->getClientOriginalName();
                 $date = date('Ymd');
-            
-                $path_file = $file->store('public/'.$date.'/'.$folderName.'/'.$fileName);  
+                $document = $file->move('upload', $fileName);
+                $path_file = "upload/".$date.'/'.$folderName.'/'.$fileName;  
             }  
         }
+        
 
         if ($id) {
             
@@ -142,7 +144,6 @@ class CartolineController extends Controller
         $formData = array_merge($formData, ['nome_file' => $fileName]);
         
         $cartolina = Cartoline::create($formData);
-
         if(!$cartolina){
             return response()->json([
             'success' => false,

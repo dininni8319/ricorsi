@@ -29,10 +29,10 @@ class FaseController extends Controller
             $fasi = json_decode($fasiData, true);
     
             return response()->json([
-            'success' => true,
-            'fasi' => $fasi,
-            'message' => 'success, the upload was successfull'
-         ], 200);
+                'success' => true,
+                'fasi' => $fasi,
+                'message' => 'success, the upload was successfull'
+            ], 200);
         }   
     }
 

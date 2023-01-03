@@ -13,6 +13,10 @@ export const CartolinePage = lazy(() => import('./CartolinePage'));
 export const LottiSpedizioneDetail = lazy(
     () => import('./LottiSpedizioneDetail')
 );
+export const RiconciliazioneDetail = lazy(
+    () => import('./RiconciliazioneDetail')
+);
+
 export const LottiSpedizione = lazy(
     () => import('./FormViews/LottiSpedizione')
 );

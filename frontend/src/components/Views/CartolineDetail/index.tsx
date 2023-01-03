@@ -24,6 +24,8 @@ const CartolineDetail = () => {
 
     let { data: cartolina }: any = payload;
 
+    console.log(cartolina, 'test');
+    
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteCartolina({
@@ -89,7 +91,12 @@ const CartolineDetail = () => {
                             <li>
                                 Fase: <span>{cartolina.fase}</span>
                             </li>
-                            {/* <li>
+                            <li>
+                             File: <span>
+                              <a href={`http://localhost:8000/upload/${cartolina.nome_file}`} target='_blank' className=''>{cartolina.nome_file}</a>
+                             </span>
+                            </li>
+                            {/* <li>path_file
                           Data notifica Sentenza: <span>{cartolina.data_notifica_sentenza}</span>
                       </li> */}
                         </ul>

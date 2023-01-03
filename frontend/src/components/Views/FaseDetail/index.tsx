@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router';
 import { baseURL } from '../../Utilities/index';
 import useFetch from '../../../Hooks/useFetch';
 import { DetailStyleComponent } from '../RicorsiDetail/style';
-import { DetailPage, Loader3 } from '../../UI/index';
+import { DetailPage, Loader3, DocumentComponent } from '../../UI/index';
 import { faseCurrent, funFormatDate } from '../../Utilities/index';
 import { ConfigContext } from '../../../Contexts/Config';
 import useHttp from '../../../Hooks/useHttp';
@@ -18,15 +18,12 @@ const FasiDetail = () => {
         api_urls: { backend }
     } = useContext(ConfigContext);
 
-    console.log(faseDetail?.documents);
-    
     const handleFadeDetail = useCallback(
         ({ fase }: { fase: FasiFieldsTypes }) => {
             setFaseDetail(fase);
         },
         []
     );
-
 
     const { sendRequest: fetchFaseDetail } = useHttp(handleFadeDetail);
 
@@ -129,17 +126,7 @@ const FasiDetail = () => {
                     <Loader3 />
                 )}
             </>
-            <ul className='ul-files-class'>
-                {
-                    faseDetail?.documents.map((document: any) => {
-                        return (
-                            <li key={document.id} className='files-style'>
-                            <a href={`http://localhost:8000/${document.path}`}>{document.nome_file}</a> 
-                            </li> 
-                        )
-                    })
-                }
-            </ul>
+              
             <section className="links-detail-page mt-5">
                 {faseDetail && (
                     <div className="md:flex md:justify-between md:items-end py-2">
@@ -162,6 +149,8 @@ const FasiDetail = () => {
                     </div>
                 )}
             </section>
+            <h2 className='pt-5 pb-2 text-xl'>Documentazione relativa alla fase</h2>
+            <DocumentComponent documents={faseDetail?.documents}/>
         </DetailStyleComponent>
     );
 };

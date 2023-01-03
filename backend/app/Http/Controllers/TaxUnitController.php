@@ -108,15 +108,14 @@ class TaxUnitController extends Controller
                 
                 foreach ($documents as $key => $document) {
                     $fileName = $document->getClientOriginalName();
-                    $path = $document->store('public/upload/'.$folderName.'/'.$fileName);
+                    $document = $document->move('upload', $fileName);
                     
                     $documentStore = File::create([
                         'nome_file' => $fileName,
-                        'path' => $path, 
+                        'path' => 'upload'.'/'.$fileName, 
                         'document_id' => intval($idDocument),
                     ]);  
                 }
-
                         
                 if (!$fase){
                     return response()->json([
@@ -150,6 +149,7 @@ class TaxUnitController extends Controller
             $currentFase = Fasi::find($faseId);
             $currentFase->update($formFaseData);
               
+            
             if ($currentFase) {
                 if ($request->tipologia_file && $documents) {
                 
@@ -169,12 +169,13 @@ class TaxUnitController extends Controller
                      if ($documents) {
                        
                         foreach ($documents as $key => $document) {
-                             $fileName = $document->getClientOriginalName();
-                             $path = $document->store('public/upload/'.$folderName.'/'.$fileName);
+                            
+                            $fileName = $document->getClientOriginalName();
+                            $document = $document->move('upload', $fileName);
                             
                              $documentStore = File::create([
                                  'nome_file' => $fileName,
-                                 'path' => $path, 
+                                 'path' => 'upload'.'/'.$fileName, 
                                  'document_id' => intval($idDocument),
                              ]);  
                          }
@@ -191,8 +192,10 @@ class TaxUnitController extends Controller
                     'message' => 'There is a problem with backend!',
                 ], 500);     
             }
+            
+          
                      
-            }
+                 }
              }
              return redirect("/detail_ricorso/" . $id)->with("message", 'La fase è stata aggiunta');
         } else {
