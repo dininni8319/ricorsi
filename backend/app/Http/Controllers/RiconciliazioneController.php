@@ -82,17 +82,16 @@ class RiconciliazioneController extends Controller
 
             return $data;
         }
-
     }
 
-    public function deleteRiconciliazione($id, $riscossioneId)
+    public function deleteRiconciliazione($id, RicorsoAction $action)
     {
-        if ($id) {
-
+        if (intval($id)) {
             $riconciliazione = Riconciliazione::find($id)->delete();
-            return redirect("/detail_riscossione/" . $riscossioneId);
+            $data = $action->handleResponse($riconciliazione, $this->messageUnSuccess, $this->messageSuccess. 'cancellata');
+
+            return $data;
         }
-        return view('riscossione.riscossione');
     }
     
     public function enteRiscossione()

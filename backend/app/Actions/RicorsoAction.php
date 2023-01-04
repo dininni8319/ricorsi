@@ -4,8 +4,6 @@ namespace App\Actions;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-// use App\Http\Requests\UserRegisterValidation;
-
 class RicorsoAction 
 {
   public function handleResponse($value, $unSuccessMessage = null, $message = null, $id = null)
@@ -14,15 +12,15 @@ class RicorsoAction
       return response()->json([
        'success' => false,
        'message' => $unSuccessMessage,
-    ], 404);
-   } else {
+      ], 404);
+    } else {
       
-       return response()->json([
-          'success' => true,
-          'data' => $value,
-          'message' => $message,
-          'id' => $id ?? '',
-       ], 200);
-   }   
+      return response()->json([
+        'success' => true,
+        'data' => $value,
+        'message' => $message,
+        'id' => $id ?? '',
+      ], 200);
+    }   
   }
 }
