@@ -2,7 +2,8 @@ import {
     CartolinaType,
     Fasi,
     ObjFormType,
-    IRiscossione
+    IRiscossione,
+    IRiconciliazione
 } from '../../interfaces/interfaces';
 import { CardStyleComponent, CardHeaderStyle } from './style';
 import { baseURL } from '../../Utilities/index';
@@ -18,7 +19,7 @@ const Card = ({
     current,
     setCurrent
 }: {
-    taxunit: CartolinaType | Fasi | ObjFormType | IRiscossione;
+    taxunit: CartolinaType | Fasi | ObjFormType | IRiscossione | IRiconciliazione;
     path: string;
     children?: JSX.Element;
     current?: any;

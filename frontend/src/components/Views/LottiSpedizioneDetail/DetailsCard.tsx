@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import { IRiconciliazione } from "../../interfaces/interfaces";
 
-const DetailsCard = ({ riconcil }: any) => {
+const DetailsCard = ({ riconcil }: { riconcil: IRiconciliazione }) => {
     return (
         <div>
             <h3 className="card-title mb-3">
@@ -31,10 +32,10 @@ const DetailsCard = ({ riconcil }: any) => {
             </ul>
 
             <div className="flex justify-between py-1">
-                <Link to={`/work_flow/${riconcil.id}`}>
+                <Link to={`/form_rendicondazione/${riconcil.id}`}>
                     Aggiorna riconciliazione
                 </Link>
-                <Link to={`/detail_cartoline/${riconcil.id}`}>
+                <Link to={`/detail_riconciliazione/${riconcil.id}`}>
                     Dettaglio riconciliazione
                 </Link>
             </div>

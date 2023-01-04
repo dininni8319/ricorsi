@@ -12,7 +12,6 @@ import Details from './Details';
 
 const RiconciliazioneDetail = () => {
     let { slug } = useParams();
-    
     let navigate = useNavigate();
     const {
         api_urls: { backend }
@@ -24,25 +23,25 @@ const RiconciliazioneDetail = () => {
     );
 
     let { data: riconciliazione }: any = payload;
-
+    
     // riconciliazioni/find
     const handleDelete = (e: any) => {
         e.preventDefault();
-        deleteLotto({
-            url: `${backend}/api/cienneffe/riconciliazione/delete/${slug}`,
+        deleteRiconciliazione({
+            url: `${backend}/api/cienneffe/riconciliazione/delete/${slug}/`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });
         navigate('/');
     };
     
-    const { sendRequest: deleteLotto } = useHttp(handleDelete);
+    const { sendRequest: deleteRiconciliazione } = useHttp(handleDelete);
 
     return (
         <DetailStyleComponent>
             <>
                 <h1 className="mb-2 text-center">
-                    Descrizione della Riscossione
+                    Descrizione della riconciliazione
                 </h1>
                 {riconciliazione ? (
                     <DetailPage slug={slug}>

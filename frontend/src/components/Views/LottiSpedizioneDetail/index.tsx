@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
+import { IRiconciliazione } from "../../interfaces/interfaces";
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router';
 import useFetch from '../../../Hooks/useFetch';
@@ -13,7 +14,7 @@ import { DetailStyleComponent } from "../RicorsiDetail/style";
 import { WrapperStyleComponent } from "../Home/style";
 
 const LottiSpedizioneDetail = () => {
-    const [ riconcil, setRiconcil] = useState<{ [key: string]: string }[]>([]);
+    const [ riconcil, setRiconcil] = useState<IRiconciliazione[]>([]);
     let { slug } = useParams();
     let navigate = useNavigate();
     const {
@@ -29,8 +30,6 @@ const LottiSpedizioneDetail = () => {
     }, []);
 
     const {
-        isLoading,
-        error,
         sendRequest: fetchCurrentRiconcil
     } = useHttp(handleCurrentRiconcil);
 
@@ -42,10 +41,12 @@ const LottiSpedizioneDetail = () => {
 
     let { data: riscossione }: any = payload;
 
+    console.log(riconcil);
+    
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteLotto({
-            url: `${backend}/api/cienneffe/cartolina/delete/${slug}`,
+            url: `${backend}/api/cienneffe/riconciliazione/delete/${slug}`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -70,20 +71,21 @@ const LottiSpedizioneDetail = () => {
             </>
 
             <section className="md:flex md:flex-col">
-                            <WrapperStyleComponent>
-                                {riconcil?.map((riconcil: any, id: number) => {
-                                    return (
-                                        <Card
-                                            id={id}
-                                            taxunit={riconcil}
-                                            path="fase/delete"
-                                            
-                                        >
-                                           <DetailsCard  riconcil={riconcil}/>
-                                        </Card>
-                                    );
-                                })}
-                            </WrapperStyleComponent>
+                <WrapperStyleComponent>
+                    {riconcil?.map((ricon: IRiconciliazione, id: number) => {
+                        return (
+                            <Card
+                                id={ricon.id}
+                                taxunit={ricon}
+                                path="riconciliazione/delete" 
+                                current={riconcil}
+                                setCurrent={setRiconcil}  
+                            >
+                                <DetailsCard  riconcil={ricon}/>
+                            </Card>
+                        );
+                    })}
+                </WrapperStyleComponent>
             </section>
             <section className="links-detail-page mt-5">
                 {riscossione && (

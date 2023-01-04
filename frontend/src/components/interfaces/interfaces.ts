@@ -177,6 +177,7 @@ export interface IRiscossione {
 }
 
 export interface IRiconciliazione {
+    id: number;
     mese: string;
     anno: string;
     oneri_riscossione: string;
