@@ -13,14 +13,6 @@ class Riscossione extends Model
     use Searchable;
 
     protected $fillable = [
-      /*   'ente',
-        'durata_contratto',
-        'valore_contratto',
-        'data_affidamento',
-        'nome_cognome',
-        'email',
-        'oggetto_affidamento',
-        'referente_ente', */
         'descrizione_spedizione',
         'entrata_tributo',
         'tipologia_documenti',
@@ -37,6 +29,8 @@ class Riscossione extends Model
         'importo_atti_annullati',
         "atti_rettificati",
         "importo_atti_rettificati",
+        'ente_id',
+        'servizio_id',
     ];
 
     public function riconciliazioni()

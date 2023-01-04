@@ -4,10 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskCotroller;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EnteController;
 use App\Http\Controllers\FaseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\RicorsiController;
+use App\Http\Controllers\ServiziController;
 use App\Http\Controllers\TaxUnitController;
 use App\Http\Controllers\CartolineController;
 use App\Http\Controllers\RiscossioneController;
@@ -89,6 +91,19 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::post("/create_riconciliazione/{id}", [RiconciliazioneController::class, "creaRiconciliazione"])->name("crea.riconciliazione");
     Route::post("/update_riconciliazione/{id}", [RiconciliazioneController::class, "updateRidicontazione"])->name("update.riconciliazione");
     Route::delete("/riconciliazione/delete/{id}" , [RiconciliazioneController::class, "deleteRiconciliazione"])->name("delete.riconciliazione");
+
+    //Ente
+    Route::get('/ente/{id?}', [EnteController::class, 'index'])->name("ente");
+    Route::get("/detail_ente/{ente}", [EnteController::class,"detailEnte",])->name("detail.ente");
+    Route::post("/ente_create/{id?}", [EnteController::class,"enteCreate",])->name("ente.create");
+    Route::delete("/delete_ente/{ente}", [EnteController::class,"deleteEnte",])->name("delete.ente");
+
+    //Servizi
+    Route::get('/ente_servizio/{ente}/{id?}', [ServiziController::class, 'enteServizio'])->name("ente");
+    Route::post("/servizio_create/{ente}/{id?}", [ServiziController::class,"createServizio",])->name("servizio.create");
+    // Route::post("/servizio_update/{id}", [ServiziController::class,"updateServizio",])->name("servizio.update");
+    Route::delete("/delete_servizio/{servizio}", [ServiziController::class,"deleteServizio",])->name("delete.servizio");
+    // Route::get("/detail_ente/{ente}", [ServiziController::class,"detailEnte",])->name("detail.Ente");
 
     // //Chart Notifiche
     Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");
