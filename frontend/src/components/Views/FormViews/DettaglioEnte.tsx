@@ -16,7 +16,7 @@ const DettaglioEnte = () => {
             <Form
                 id={slug}
                 title="Avvia un nuovo servizio"
-                createPath={`servizio_create/${slug}`}
+                createPath={`servizio_create`}
                 navPath="detail_servizio"
                 subMitBtn="Invio"
                 data={data}

@@ -13,8 +13,7 @@ class ServiziController extends Controller
     //     $this->middleware("auth.revisor");
     // }
   
-    protected function formEnteServizio($req, $ente = null) {
-
+    protected function formEnteServizio($req, $ente) {
         return [
             "tipologia_servizi" => $req->tipologia_servizi,
             "tipologia_attivita" => $req->tipologia_attivita,
@@ -28,66 +27,103 @@ class ServiziController extends Controller
         ];
     }
 
-    public function enteServizio($ente, $id = null){
-      $serviziEnti = DettaglioEnte::where('ente_id', $ente)->orderBy("created_at", "desc")->get();
+    public function allServices($id){
+       $servizi = Ente::find($id);
 
-      if ($ente && $id) {
-        $servizio = DettaglioEnte::find($id); 
-          return view("ente.servizio", compact('ente', 'serviziEnti', 'servizio'));
-        
-        } elseif ($ente && $serviziEnti) {
-          
-          return view("ente.servizio", compact('ente', 'serviziEnti'));
-        }
-    
-        return view("ente.ente");
-      }
-    
-      public function createServizio(Request $request, $ente, $id = null){
-        
-        
-        if ($request && $ente && $id === null) {
-       
-          $formServizio = $this->formEnteServizio($request, $ente);
-         
-          $servizio = DettaglioEnte::create($formServizio);
-
-          return redirect("/ente_servizio/".$ente);
-
-        } elseif ($request && $ente && $id) {
-          
-            $formServizio = $this->formEnteServizio($request);
-            unset($formServizio['ente_id']);
-
-            $servizio = DettaglioEnte::find($id);
-            $servizio->update($formServizio);
-     
-            return redirect("/ente_servizio/".$ente .'/'. $id);
-        }
-
-        return redirect("/ente_servizio/".$ente);
-    }
-
-    public function serviziPerEnte($id){
-       $serviziEnte = Ente::find($id);
-
-       if(!$serviziEnte){
+       if(!$servizi){
         return response()->json([
-         'success' => false,
-         'message' => 'Nessun servizio trovato!',
-      ], 404);
-     } else {
-        
-         return response()->json([
+            'success' => false,
+            'message' => 'Non ho trovato nessun servizio!',
+        ], 404);
+      } else {
+        return response()->json([
             'success' => true,
-            'serviziEnte' => $serviziEnte->servizi,
-            'message' => 'Questi sono i servizi relativi all\'Ente'
-         ], 200);
-     }   
+            'message' => "Questi sono tutti i servizi che ho trovato",
+            'servizi' => $servizi->servizi,
+        ], 201);
+      }
     }
-    public function deleteServizio($id) {
 
-        $servizio = DettaglioEnte::find($id)->delete();
-        return redirect("/ente");
+    public function createServizio(Request $request, $ente, $id = null){
+      
+      if ($ente && $id === null) {
+      
+        $formServizio = $this->formEnteServizio($request, $ente);
+        $servizio = DettaglioEnte::create($formServizio);
+
+        if(!$servizio){
+          return response()->json([
+              'success' => false,
+              'message' => 'Qualcosa è andato storto!',
+          ], 404);
+        } else {
+          return response()->json([
+              'success' => true,
+              'message' => "Il servizio è stato creato!",
+              'servizio' => $servizio,
+              'id' => $servizio->id,
+          ], 201);
+        }
+        } else {
+          return response()->json([
+            'success' => false,
+            'message' => 'Qualcosa è andato storto!',
+          ], 404);
+        }
+      // elseif ($ente && $id) {
+        
+      //     $formServizio = $this->formEnteServizio($request);
+      //     unset($formServizio['ente_id']);
+
+      //     $servizio = DettaglioEnte::find($id);
+      //     $servizio->update($formServizio);
+    
+      //     if(!$servizio){
+      //       return response()->json([
+      //           'success' => false,
+      //           'message' => 'Qualcosa è andato storto!',
+      //       ], 404);
+      //     } else {
+      //       return response()->json([
+      //           'success' => true,
+      //           'message' => "Il servizio è stato creato!",
+      //           'servizio' => $servizio,
+      //           'id' => $servizio->id,
+      //       ], 201);
+      //     }
+      // } 
+  }
+
+  public function detailServizio($id){
+      $servizio = DettaglioEnte::find($id);
+
+      if(!$servizio){
+      return response()->json([
+        'success' => false,
+        'message' => 'Nessun servizio trovato!',
+    ], 404);
+    } else {
+      
+      return response()->json([
+          'success' => true,
+          'servizio' => $servizio,
+          'message' => 'Questi sono i servizi relativi all\'Ente'
+      ], 200);
+    }   
+  }
+
+  public function deleteServizio($id) {
+    if ($id) {
+      $servizio = DettaglioEnte::find($id)->delete();
+
+      return response()->json([
+        'success' => true,
+      ], 200);
     }
+      
+    return response()->json([
+      'success' => false,
+      'message' => 'Qualcosa è andato storto!',
+    ], 404);
+  }
 }

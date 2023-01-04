@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, memo } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { EnteType } from '../../interfaces/interfaces';
+import { EnteType, ServizioType } from '../../interfaces/interfaces';
 import { baseURL } from '../../Utilities/index';
 import useFetch from '../../../Hooks/useFetch';
 import { DetailStyleComponent } from './style';
@@ -19,30 +19,30 @@ import CardDetails from './cardDetails';
 const EnteDetail = () => {
     let { slug } = useParams();
     let navigate = useNavigate();
-    const [currentFasis, setCurrentFasis] = useState<
-        { [key: string]: string }[]
+    const [currentServices, setCurrentServices] = useState<
+    ServizioType[]
     >([]);
 
+    console.log(currentServices);
+    
     let { payload } = useFetch(
         `${baseURL}/api/cienneffe/detail_ente/${slug}`,
         { verb: 'get' }
     );
 
-    // const handleCurrentFasis = useCallback(({ data }: EnteType[]) => {
-    //     setCurrentFasis(() => [...data]);
-    // }, []);
+    const handleCurrentServices = useCallback(({ servizi }: {servizi: ServizioType[]}) => {
+        setCurrentServices(() => [...servizi]);
+    }, []);
 
-    // const {
-    //     // isLoading,
-    //     // error,
-    //     sendRequest: fetchCurrentFasis
-    // } = useHttp(handleCurrentFasis);
+    const {
+        sendRequest: fetchCurrentServices
+    } = useHttp(handleCurrentServices);
 
-    // useEffect(() => {
-    //     fetchCurrentFasis({
-    //         url: `${baseURL}/api/cienneffe/current_fasis/${slug}`
-    //     });
-    // }, [fetchCurrentFasis]);
+    useEffect(() => {
+        fetchCurrentServices({
+            url: `${baseURL}/api/cienneffe/all/services/${slug}`
+        });
+    }, [fetchCurrentServices]);
 
     const handleDelete = (e: any, id?: number | string) => {
         e.preventDefault();
@@ -61,7 +61,7 @@ const EnteDetail = () => {
     return (
         <DetailStyleComponent>
             <h1 className="mb-2 text-center pr-1">
-                Tributo: <span>{ente?.descrizione_comune}</span>
+                Descrizione comune: <span>{ente?.descrizione_comune}</span>
             </h1>
             {ente ? (
                 <DetailPage slug={slug}>
@@ -69,24 +69,23 @@ const EnteDetail = () => {
                         <Details ente={ente} />
 
                         <section className="md:flex md:flex-col">
-                            {/* <WrapperStyleComponent>
-                                {currentFasis?.map((fase: Fasi, id: number) => {
+                            <WrapperStyleComponent>
+                                {currentServices?.map((servizio: ServizioType, id: number) => {
                                     return (
                                         <Card
                                             id={id}
-                                            taxunit={fase}
-                                            path="fase/delete"
-                                            current={currentFasis}
-                                            setCurrent={setCurrentFasis}
+                                            taxunit={servizio}
+                                            path="servizio/delete"
+                                            current={currentServices}
+                                            setCurrent={setCurrentServices}
                                         >
                                             <CardDetails
-                                                fase={fase}
-                                                currentId={currentId}
+                                                servizio={servizio}
                                             />
                                         </Card>
                                     );
                                 })}
-                            </WrapperStyleComponent> */}
+                            </WrapperStyleComponent>
                             <section className="links-detail-page">
                                 {/* //you can use a fragment or a custom wrapper */}
                                 {ente && (

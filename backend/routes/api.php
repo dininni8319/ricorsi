@@ -98,12 +98,13 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::post("/ente_create/{id?}", [EnteController::class,"enteCreate",])->name("ente.create");
     Route::delete("/delete/ente/{id}", [EnteController::class,"deleteEnte",])->name("delete.ente");
 
-    //Servizi
+    //Servizi 
     Route::get('/ente_servizio/{ente}/{id?}', [ServiziController::class, 'enteServizio'])->name("ente");
+    Route::get('/all/services/{id}', [ServiziController::class, 'allServices'])->name("allServices");
     Route::post("/servizio_create/{ente}/{id?}", [ServiziController::class,"createServizio",])->name("servizio.create");
     // Route::post("/servizio_update/{id}", [ServiziController::class,"updateServizio",])->name("servizio.update");
-    Route::delete("/delete_servizio/{servizio}", [ServiziController::class,"deleteServizio",])->name("delete.servizio");
-    // Route::get("/detail_ente/{ente}", [ServiziController::class,"detailEnte",])->name("detail.Ente");
+    Route::delete("/servizio/delete/{id}", [ServiziController::class,"deleteServizio",])->name("delete.servizio");
+    Route::get("/detail_servizio/{id}", [ServiziController::class,"detailServizio",])->name("detail.Ente");
 
     // //Chart Notifiche
     Route::get("/chart_data", [ChartController::class, "chartData"])->name("chart.data");

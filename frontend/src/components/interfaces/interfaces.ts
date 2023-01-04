@@ -247,6 +247,19 @@ export type EnteType = {
     id: number
 };
 
+export type ServizioType = {
+    codice_catastale: string;
+    tipologia_servizi: string;
+    tipologia_attivita: string;
+    aggio: string;
+    spese_postali: string;
+    oneri: string;
+    altri_diritti: string;
+    cig: string;
+    id: number;
+    ente_id: number; 
+};
+
 
 export type ErrorObjType = {
     errorsTitle: string;
