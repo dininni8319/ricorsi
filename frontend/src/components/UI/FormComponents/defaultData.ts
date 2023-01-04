@@ -110,3 +110,14 @@ export const defaultEnteData = {
     codice_catastale: '',
     numero_telefono: ''
 };
+
+export const defaultServizioData = {
+    codice_catastale: '',
+    tipologia_servizi: '',
+    tipologia_attivita: '',
+    aggio: '',
+    spese_postali: '',
+    oneri: '',
+    altri_diritti: '',
+    cig: '',
+};

@@ -464,3 +464,50 @@ export const selectMeseRendicondazione = {
         }
     ]
 };
+
+export const selectTipologiaAttivita = {
+    title: 'Tipologia di attivita',
+    name: 'tipologia_attivita',
+    values: [
+        {
+            value: 'ordinario'
+        },
+        {
+            value: 'accertamento'
+        },
+        {
+            value: 'riscossione'
+        },
+    ]
+};
+
+export const selectTipologiaServizi = {
+    title: 'Tipologia servizi',
+    name: 'tipologia_servizi',
+    values: [
+        {
+            value: 'imu'
+        },
+        {
+            value: 'tasi'
+        },
+        {
+            value: 'cup'
+        },
+        {
+            value: 'mense'
+        },
+        {
+            value: 'transporti'
+        },
+        {
+            value: 'rifiuti'
+        },
+        {
+            value: 'cds'
+        },
+        {
+            value: 'idrico'
+        },
+    ]
+};

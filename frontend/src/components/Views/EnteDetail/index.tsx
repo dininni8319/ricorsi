@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { EnteType } from '../../interfaces/interfaces';
@@ -16,7 +16,7 @@ import {
 import Details from './details';
 import CardDetails from './cardDetails';
 
-const RicorsiDetail = () => {
+const EnteDetail = () => {
     let { slug } = useParams();
     let navigate = useNavigate();
     const [currentFasis, setCurrentFasis] = useState<
@@ -92,10 +92,10 @@ const RicorsiDetail = () => {
                                 {ente && (
                                     <div className="flex justify-around items-end py-2">
                                         <Link
-                                            to={`/form_ente/${ente?.id}`}
+                                            to={`/form_dettaglio_ente/${ente?.id}`}
                                             className="primaryBtn"
                                         >
-                                            Crea un nuovo ente
+                                            Crea un nuovo servizio
                                         </Link>
                                         <Link
                                             to={`/form_ente/${ente?.id}`}
@@ -120,4 +120,4 @@ const RicorsiDetail = () => {
     );
 };
 
-export default RicorsiDetail;
+export default memo(EnteDetail);

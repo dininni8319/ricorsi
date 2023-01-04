@@ -498,6 +498,54 @@ export const EnteFormData = {
     ]
 };
 
+export const ServiziFormData = {
+    title: 'Avvia un nuovo servizio',
+    formArr: [
+        {
+            label: 'Codice catastale',
+            name: 'codice_catastale',
+            type: 'text',
+            id: 0,
+            errorMessage: ''
+        },
+        {
+            label: 'Aggio',
+            name: 'aggio',
+            type: 'text',
+            id: 1,
+            errorMessage: ''
+        },
+        {
+            label: 'Spese postali',
+            name: 'spese_postali',
+            type: 'text',
+            id: 2,
+            errorMessage: ''
+        },
+        {
+            label: 'Oneri',
+            name: 'oneri',
+            type: 'text',
+            id: 3,
+            errorMessage: ''
+        },
+        {
+            label: 'Altri diritti',
+            name: 'altri_diritti',
+            type: 'text',
+            id: 4,
+            errorMessage: ''
+        },  
+        {
+            label: 'Cig',
+            name: 'cig',
+            type: 'text',
+            id: 5,
+            errorMessage: ''
+        },  
+    ]
+};
+
 export const RiconciliazioneFormData = {
     title: 'Avvia una Redicondazione',
     formArr: [

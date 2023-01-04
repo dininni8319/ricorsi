@@ -25,6 +25,7 @@ import {
     EnteForm,
     EntePage,
     EnteDetail,
+    DettaglioEnte,
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -203,6 +204,16 @@ const Router = () => {
                     </Suspense>
                 }
             />
+             <Route
+                path="/form_dettaglio_ente/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <DettaglioEnte />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
             <Route
                 path="/form_rendicondazione/:slug"
                 element={
@@ -212,8 +223,7 @@ const Router = () => {
                         </ProtectedRoute>
                     </Suspense>
                 }
-            />
-            
+            />            
             <Route
                 path="/update_ricorso/:slug"
                 element={

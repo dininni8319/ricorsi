@@ -9,6 +9,7 @@ export const RicorsiDetail = lazy(() => import('./RicorsiDetail'));
 export const FaseDetail = lazy(() => import('./FaseDetail'));
 export const CartolineDetail = lazy(() => import('./CartolineDetail'));
 export const EnteDetail = lazy(() => import('./EnteDetail'));
+export const DettaglioEnte = lazy(() => import('./FormViews/DettaglioEnte'));
 export const ResetPassword = lazy(() => import('./ResetPassword'));
 export const CartolinePage = lazy(() => import('./CartolinePage'));
 // export const ResetLinkView = lazy(() => import('./ResetLinkView'));
