@@ -14,13 +14,14 @@ import {
     LottiSpedizione,
     LottiSpedizioneDetail,
     Login,
-    Register,
+    // Register,
     UpdateRicorso,
     UpdateRiscossione,
     RiscossionePage,
     Riconciliazione,
     ResetPassword,
     RiconciliazioneDetail,
+    UpdateRiconciliazione,
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -184,6 +185,17 @@ const Router = () => {
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
                             <UpdateRiscossione />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
+
+           <Route
+                path="/update_riconciliazione/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <UpdateRiconciliazione />
                         </ProtectedRoute>
                     </Suspense>
                 }

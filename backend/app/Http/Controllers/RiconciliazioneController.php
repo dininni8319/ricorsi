@@ -60,16 +60,19 @@ class RiconciliazioneController extends Controller
             return $data;
         } 
     }
-    public function updateRidicontazione(Request $request, $id) 
+    public function updateRidicontazione(Request $request, $id, RicorsoAction $action) 
     {
         $formData = $this->getFormData($request);
         $riconciliazione = Riconciliazione::find($id);
        
         if ($id) {
 
+            // unset($formData->'riscossione_id');
             $riconciliazione->update($formData);
 
-            return redirect("/detail_riscossione/" . $riconciliazione->riscossione_id);
+            $data = $action->handleResponse($riconciliazione, $this->messageUnSuccess, $this->messageSuccess. 'trovata', $id);
+        
+            return $data;
         } 
     }
 

@@ -30,3 +30,6 @@ export const UpdateRicorso = lazy(() => import('./UpdateForms/UpdateRicorso'));
 export const UpdateRiscossione = lazy(
     () => import('./UpdateForms/UpdateRiscossione')
 );
+export const UpdateRiconciliazione = lazy(
+    () => import('./UpdateForms/UpdateRiconciliazione')
+);

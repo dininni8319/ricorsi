@@ -32,7 +32,7 @@ const DetailsCard = ({ riconcil }: { riconcil: IRiconciliazione }) => {
             </ul>
 
             <div className="flex justify-between py-1">
-                <Link to={`/form_rendicondazione/${riconcil.id}`}>
+                <Link to={`/update_riconciliazione/${riconcil.id}`}>
                     Aggiorna riconciliazione
                 </Link>
                 <Link to={`/detail_riconciliazione/${riconcil.id}`}>

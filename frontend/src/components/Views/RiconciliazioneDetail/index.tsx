@@ -55,7 +55,7 @@ const RiconciliazioneDetail = () => {
                 {riconciliazione && (
                     <div className="md:flex md:justify-between md:items-end py-2">
                         <Link
-                            to={`/form_rendicondazione/${slug}`}
+                            to={`/update_riconciliazione/${slug}`}
                             className="primaryBtn"
                         >
                             Aggiorna la rendicondazione
