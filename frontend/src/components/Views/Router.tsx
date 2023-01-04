@@ -22,6 +22,7 @@ import {
     ResetPassword,
     RiconciliazioneDetail,
     UpdateRiconciliazione,
+    EnteForm,
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -158,6 +159,28 @@ const Router = () => {
                     </Suspense>
                 }
             />
+
+            <Route
+                path="/form_ente/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <EnteForm />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
+
+            <Route
+                path="/form_ente"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <EnteForm />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
             <Route
                 path="/form_rendicondazione/:slug"
                 element={
@@ -168,6 +191,7 @@ const Router = () => {
                     </Suspense>
                 }
             />
+            
             <Route
                 path="/update_ricorso/:slug"
                 element={

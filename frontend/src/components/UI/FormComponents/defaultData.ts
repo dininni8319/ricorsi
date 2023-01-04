@@ -100,3 +100,13 @@ export const defaultRiconciliazioneData = {
     spese_notifica: '',
     diritti_vari: ''
 };
+
+export const defaultEnteData = {
+    descrizione_comune: '',
+    provincia: '',
+    regione: '',
+    email: '',
+    indirizzo: '',
+    codice_catastale: '',
+    numero_telefono: ''
+};

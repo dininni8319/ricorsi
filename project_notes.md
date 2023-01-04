@@ -15,6 +15,9 @@ php artisan queue:table
 php artisan migrate
 php artisan serve
 
+Run the backend on a different port, use the flag --port
+#php artisan serve --port=8080
+
 In order to use the database queue driver, you will need a database table to hold the jobs. To generate a miration:
 #php artisan queue:table
 

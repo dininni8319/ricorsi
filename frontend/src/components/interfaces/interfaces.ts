@@ -236,6 +236,18 @@ export type CartolinaType = {
     updated_at: string;
 };
 
+export type EnteType = {
+    descrizione_comune: string;
+    provincia: string;
+    regione: string;
+    email: string;
+    indirizzo: string;
+    codice_catastale: string;
+    numero_telefono: string;
+    id: number
+};
+
+
 export type ErrorObjType = {
     errorsTitle: string;
 };

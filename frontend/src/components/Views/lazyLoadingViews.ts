@@ -24,6 +24,9 @@ export const RiscossionePage = lazy(() => import('./RiscossionePage'));
 export const Riconciliazione = lazy(
     () => import('./FormViews/Riconciliazione')
 );
+export const EnteForm = lazy(
+    () => import('./FormViews/Ente')
+);
 export const Login = lazy(() => import('./Login'));
 export const Register = lazy(() => import('./Register'));
 export const UpdateRicorso = lazy(() => import('./UpdateForms/UpdateRicorso'));

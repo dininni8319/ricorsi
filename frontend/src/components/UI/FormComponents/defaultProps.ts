@@ -443,6 +443,61 @@ export const LottiSpedizioneFormData = {
     ]
 };
 
+export const EnteFormData = {
+    title: 'Crea un nuovo ente',
+    formArr: [
+        {
+            label: 'Descrizione comune',
+            name: 'descrizione_comune',
+            type: 'text',
+            id: 0,
+            errorMessage: ''
+        },
+        {
+            label: 'Provincia',
+            name: 'provincia',
+            type: 'text',
+            id: 1,
+            errorMessage: ''
+        },
+        {
+            label: 'Regione',
+            name: 'regione',
+            type: 'text',
+            id: 2,
+            errorMessage: ''
+        },
+        {
+            label: 'Email',
+            name: 'email',
+            type: 'email',
+            id: 3,
+            errorMessage: ''
+        },
+        {
+            label: 'Indirizzo',
+            name: 'indirizzo',
+            type: 'text',
+            id: 4,
+            errorMessage: ''
+        },
+        {
+            label: 'Codice catastale',
+            name: 'codice_catastale',
+            type: 'text',
+            id: 5,
+            errorMessage: ''
+        },
+        {
+            label: 'Numero di telefono',
+            name: 'numero_telefono',
+            type: 'text',
+            id: 6,
+            errorMessage: ''
+        }
+    ]
+};
+
 export const RiconciliazioneFormData = {
     title: 'Avvia una Redicondazione',
     formArr: [
