@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DettaglioEnte;
 use App\Models\Ente;
 use Illuminate\Http\Request;
+use App\Models\DettaglioEnte;
+use App\Actions\RicorsoAction;
 use Illuminate\Support\Facades\Validator;
 
 class EnteController extends Controller
 {
-  public function __construct()
-  {
-     $this->middleware("auth.revisor");
-  }
+  // public function __construct()
+  // {
+  //   $this->middleware("auth.revisor");
+  // }
 
+  protected $messageUnSuccess = 'Non ho trovato nessun ente';
+  protected $messageSuccess = 'Successo, ho trovato ';
   protected function getFormData($req) {
 
     return [
@@ -31,14 +34,42 @@ class EnteController extends Controller
   {
     $enti = Ente::orderBy("created_at", "desc")->get();
     
-    if ($enti && $id) {
-       $ente = Ente::find($id);
-       
-       return view("ente.entePage", compact('enti', 'id', 'ente'));
+    if ($id) {
+      $ente = Ente::find($id);
+      
+      if(!$ente){
+        return response()->json([
+            'success' => false,
+            'message' => 'Qualcosa è andato storto!',
+        ], 404);
+      } else {
+        return response()->json([
+            'success' => true,
+            'message' => "L'è stato creato!",
+            'ente' => $ente,
+            'id' => $ente->id,
+        ], 200);
+      }   
+
     } else if ($enti) {
-      return view("ente.entePage", compact('enti'));
+       
+      if(!$enti){
+        return response()->json([
+            'success' => false,
+            'message' => 'Qualcosa è andato storto!',
+        ], 404);
+      } else {
+        return response()->json([
+            'success' => true,
+            'message' => "L'ente stato creato!",
+            'data' => $enti,
+        ], 200);
+      }   
     }
-    return view("ente.entePage");
+    return response()->json([
+      'success' => false,
+      'message' => 'Qualcosa è andato storto!',
+    ], 404);
   }
 
   public function enteCreate(Request $request, $id = null)
@@ -63,32 +94,59 @@ class EnteController extends Controller
           $formData = $this->getFormData($request);
           $ente->update($formData);
       
-          return redirect("/ente/" . $id);
-
+          return response()->json([
+                'success' => true,
+                'message' => "L'ente è stato aggiornato!",
+                'ente' => $ente,
+                'id' => $id,
+          ], 200);
+        
       } else if($validator) {
-          
           $formData = $this->getFormData($request);
           $ente = Ente::create($formData);
-  
-          return redirect("/ente/". $id);
+
+          if(!$ente){
+            return response()->json([
+                'success' => false,
+                'message' => 'Qualcosa è andato storto!',
+            ], 404);
+          } else {
+            return response()->json([
+                'success' => true,
+                'message' => "L'ente è stato creato!",
+                'ente' => $ente,
+                'id' => $ente->id,
+            ], 200);
+          }   
       }        
   }
 
-  public function detailEnte($id)
+  public function detailEnte($id, RicorsoAction $action)
   {
     if ($id) {
-    
       $ente = Ente::find($id);
-    
-      return view("ente.dettaglioEnte", compact("ente"));
+      $response = $action->handleResponse($ente, $this->messageUnSuccess, $this->messageUnSuccess. "quest'ente", $id);
+          
+      return $response;
     }
-    
-    return view("ente.entePage");
+
+    return response()->json([
+      'success' => false,
+      'message' => 'Qualcosa è andato storto!',
+  ], 404);
   }
 
-  public function deleteEnte($id) {
-    $ente = Ente::find($id)->delete();
+  public function deleteEnte($id, RicorsoAction $action) {
+    if ($id) {
+      $ente = Ente::find($id)->delete();
+      $response = $action->handleResponse($ente, $this->messageUnSuccess, "Ho eliminato l'ente", $id);
+          
+      return $response;
+    }
 
-    return redirect("/ente");
+    return response()->json([
+      'success' => false,
+      'message' => 'Qualcosa è andato storto!',
+  ], 404);
   }
 }

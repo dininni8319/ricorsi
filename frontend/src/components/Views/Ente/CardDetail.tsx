@@ -35,10 +35,10 @@ const CardDetail = ({ ente, id }: { ente: EnteType; id: number }) => {
             </ul>
 
             <div className="flex justify-between py-1">
-                <Link to={`/update_ente/${ente.id}`}>
+                <Link to={`/form_ente/${ente.id}`}>
                     Aggiorna l'ente
                 </Link>
-                <Link to={`/ricorsi_detail/${ente.id}`}>
+                <Link to={`/detail_ente/${ente.id}`}>
                     Dettaglio dell'ente
                 </Link>
             </div>

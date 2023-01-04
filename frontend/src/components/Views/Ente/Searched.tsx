@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, ChangeEvent } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { baseURL } from '../../Utilities/index';
 import { Search } from '../../UI/index';
@@ -41,7 +41,7 @@ const Searched = () => {
 
     return (
         <Search
-            title="Ricorsi"
+            title="Ente"
             handleChange={handleChange}
             handleResetSearch={handleResetSearch}
         >

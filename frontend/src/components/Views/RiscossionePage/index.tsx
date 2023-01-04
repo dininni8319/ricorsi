@@ -33,6 +33,7 @@ const RiscossionePage = () => {
         const newOffset = (event.selected * itemsPerPage) % riscossioni.length;
         setItemOffset(newOffset);
     };
+    
     useEffect(() => {
         fetch(`${baseURL}/api/cienneffe/riscossione`)
             .then((response) => response.json())

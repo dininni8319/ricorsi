@@ -24,6 +24,7 @@ import {
     UpdateRiconciliazione,
     EnteForm,
     EntePage,
+    EnteDetail,
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -136,6 +137,16 @@ const Router = () => {
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
                             <CartolineDetail />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
+             <Route
+                path="/detail_ente/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <EnteDetail />
                         </ProtectedRoute>
                     </Suspense>
                 }

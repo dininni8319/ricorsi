@@ -9,9 +9,8 @@ import CardDetail from './CardDetail';
 import { perPage } from '../../Utilities/index';
 
 const EntePage = () => {
-    const [enti, setEnti] = useState<EnteType[]>([]);
-
-    const handleRicorsi = useCallback(({ data }: { data: EnteType[] }) => {
+    const [enti, setEnti] = useState<EnteType[]>([]);    
+    const handleEnti = useCallback(({ data }: { data: EnteType[] }) => {
         setEnti(() => [...data]);
     }, []);
 
@@ -30,9 +29,8 @@ const EntePage = () => {
 
     const {
         isLoading,
-        error,
         sendRequest: fetchEnti
-    } = useHttp(handleRicorsi);
+    } = useHttp(handleEnti);
 
     useEffect(() => {
         fetchEnti({ url:`${baseURL}/api/cienneffe/ente` });
@@ -60,7 +58,7 @@ const EntePage = () => {
                                     <Card
                                         taxunit={ente}
                                         id={id}
-                                        path="ente/delete"
+                                        path="delete/ente"
                                         current={enti}
                                         setCurrent={setEnti}
                                     >

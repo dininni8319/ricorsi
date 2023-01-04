@@ -40,8 +40,6 @@ const LottiSpedizioneDetail = () => {
     }, [fetchCurrentRiconcil]);
 
     let { data: riscossione }: any = payload;
-
-    console.log(riconcil);
     
     const handleDelete = (e: any) => {
         e.preventDefault();
