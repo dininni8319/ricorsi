@@ -3,6 +3,7 @@ import { defaultEnteData } from '../../UI/FormComponents/defaultData';
 import useInput from '../../../Hooks/useInput';
 import { Input, Form } from '../../UI/index';
 import { useParams } from 'react-router';
+import { memo } from "react";
 
 const EnteForm = () => {
     let { slug } = useParams();
@@ -15,7 +16,7 @@ const EnteForm = () => {
                 id={slug}
                 title="Crea un nuovo ente"
                 createPath="ente_create"
-                navPath="detail_riconciliazione"
+                navPath="detail_ente"
                 subMitBtn="Invio"
                 data={data}
             >
@@ -41,4 +42,4 @@ const EnteForm = () => {
     );
 };
 
-export default EnteForm;
+export default memo(EnteForm);

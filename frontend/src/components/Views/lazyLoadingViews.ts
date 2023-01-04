@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 
 export const Homepage = lazy(() => import('./Home/Homepage'));
+export const EntePage = lazy(() => import('./Ente/Ente'));
 export const Ricorsi = lazy(() => import('./FormViews/RicorsiWorkflow'));
 export const Cartoline = lazy(() => import('./FormViews/Cartoline'));
 export const Fase = lazy(() => import('./FormViews/Fase'));

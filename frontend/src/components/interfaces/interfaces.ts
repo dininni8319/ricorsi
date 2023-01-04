@@ -214,7 +214,7 @@ export type ConfigContextType = {
 
 export type PerPageType = {
     pageCount: number;
-    currentItems: CartolinaType[] | ObjFormType[] | IRiscossione[];
+    currentItems: CartolinaType[] | ObjFormType[] | IRiscossione[] | EnteType[];
 };
 
 export type CartolinaType = {

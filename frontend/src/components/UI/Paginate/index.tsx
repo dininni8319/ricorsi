@@ -2,7 +2,8 @@ import ReactPaginate from 'react-paginate';
 import {
     CartolinaType,
     ObjFormType,
-    IRiscossione
+    IRiscossione, 
+    EnteType,
 } from '../../interfaces/interfaces';
 
 const Paginate = ({
@@ -10,7 +11,7 @@ const Paginate = ({
     pageCount,
     handlePageClick
 }: {
-    currentItems: CartolinaType[] | ObjFormType[] | IRiscossione[];
+    currentItems: CartolinaType[] | ObjFormType[] | IRiscossione[] | EnteType[];
     pageCount: number;
     handlePageClick: any;
 }) => {

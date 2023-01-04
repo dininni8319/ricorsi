@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { ObjFormType } from '../../interfaces/interfaces';
+import { useState, useEffect, useCallback, memo } from 'react';
+import { EnteType } from '../../interfaces/interfaces';
 import { baseURL } from '../../Utilities/index';
 import useHttp from '../../../Hooks/useHttp';
 import { Card, Loader3, Paginate } from '../../UI/index';
@@ -8,10 +8,10 @@ import Searched from './Searched';
 import CardDetail from './CardDetail';
 import { perPage } from '../../Utilities/index';
 
-const Homepage = () => {
-    const [enti, setEnti] = useState<ObjFormType[]>([]);
+const EntePage = () => {
+    const [enti, setEnti] = useState<EnteType[]>([]);
 
-    const handleRicorsi = useCallback(({ data }: { data: ObjFormType[] }) => {
+    const handleRicorsi = useCallback(({ data }: { data: EnteType[] }) => {
         setEnti(() => [...data]);
     }, []);
 
@@ -35,7 +35,7 @@ const Homepage = () => {
     } = useHttp(handleRicorsi);
 
     useEffect(() => {
-        fetchEnti({ url: `${baseURL}/api/cienneffe/ricorsi` });
+        fetchEnti({ url:`${baseURL}/api/cienneffe/ente` });
     }, [fetchEnti]);
 
     return (
@@ -78,4 +78,4 @@ const Homepage = () => {
     );
 };
 
-export default Homepage;
+export default memo(EntePage);

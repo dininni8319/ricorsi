@@ -48,6 +48,17 @@ const Navbar = () => {
                 </Dropdown>
             )}
             {user && (
+                <Dropdown title="Ente">
+                    <>
+                        <NavItem content="Ente" href={`/ente`} />
+                        <NavItem
+                            content="Crea un nuovo ente"
+                            href={`/form_ente`}
+                        />
+                    </>
+                </Dropdown>
+            )}
+            {user && (
                 <span className="nav-label-style text-base capitalize">
                     ciao {user?.first_name}
                 </span>
