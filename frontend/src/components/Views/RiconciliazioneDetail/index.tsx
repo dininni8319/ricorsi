@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext, useCallback } from 'react';
+import { useContext } from 'react';
+import { IRiconciliazione } from "../../interfaces/interfaces";
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router';
 import useFetch from '../../../Hooks/useFetch';
@@ -22,9 +23,8 @@ const RiconciliazioneDetail = () => {
         { verb: 'get' }
     );
 
-    let { data: riconciliazione }: any = payload;
-    
-    // riconciliazioni/find
+    let { data: riconciliazione }:any = payload;
+
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteRiconciliazione({
@@ -61,6 +61,9 @@ const RiconciliazioneDetail = () => {
                             Aggiorna la rendicondazione
                         </Link>
                         
+                        <Link to={`/detail_riscossione/${riconciliazione?.riscossione_id}`}>
+                            Dettaglio della riscossione
+                        </Link>
                         <>
                             <button
                                 onClick={(event) => handleDelete(event)}

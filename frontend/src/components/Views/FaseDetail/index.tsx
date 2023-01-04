@@ -9,6 +9,8 @@ import { DetailPage, Loader3, DocumentComponent } from '../../UI/index';
 import { faseCurrent, funFormatDate } from '../../Utilities/index';
 import { ConfigContext } from '../../../Contexts/Config';
 import useHttp from '../../../Hooks/useHttp';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const FasiDetail = () => {
     const [faseDetail, setFaseDetail] = useState<FasiFieldsTypes | null>(null);
@@ -139,11 +141,14 @@ const FasiDetail = () => {
                             </Link>
                         )}
                         <>
-                            <button
+                        <button
                                 onClick={(event) => handleDelete(event)}
-                                className="bg-red-500 text-white outline-none cursor-pointer w-18 px-3 py-2 font-semibold"
+                                className="text-red-600 outline-none cursor-pointer w-18 px-3 py-2 font-semibold"
                             >
-                                Cancella
+                                <FontAwesomeIcon
+                                    icon={faTrashAlt}
+                                    className={`fa-1x`}
+                                />
                             </button>
                         </>
                     </div>

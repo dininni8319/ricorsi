@@ -22,7 +22,7 @@ const UpdateLottiSpedizione = () => {
                 createPath="update_riscossione"
                 subMitBtn="Aggiorna"
                 data={data}
-                method={'PATCH'}
+                method={'POST'}
             >
                 <>
                     {LottiSpedizioneFormData?.formArr.map((input, index) => {

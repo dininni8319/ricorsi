@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { FormProps } from '../../../interfaces/interfaces';
+import { FormProps, Methods } from '../../../interfaces/interfaces';
 import { baseURL } from '../../../Utilities/index';
 import { FormContainer } from './style';
 import { Modal } from '../../index';
@@ -19,15 +19,17 @@ const Form: React.FC<FormProps> = ({
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('');
-
+    
+    let verb = method?.toLowerCase() || 'post';
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
         //post a ricorso
         const config: any = { 
           method: method ? method : 'POST',
           headers: {  'Content-Type': 'multipart/form-data' },
         }
-        axios.post(`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, data, config)
+        axios[verb as Methods](`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, data, config)
             .then((data: any) => {
                                
                 if (data?.data.success) {

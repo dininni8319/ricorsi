@@ -6,6 +6,7 @@ import { Card, Loader3, Search, Paginate } from '../../UI/index';
 import { WrapperStyleComponent } from '../Home/style';
 import { funFormatDate, perPage } from '../../Utilities/index';
 import useSearch from '../../../Hooks/useSearch';
+import CardDetails from './CardDetails';
 
 const RiscossionePage = () => {
     const [riscossioni, setRiscossioni] = useState<IRiscossione[]>([]);
@@ -139,84 +140,7 @@ const RiscossionePage = () => {
                                             current={riscossioni}
                                             setCurrent={setRiscossioni}
                                         >
-                                            <>
-                                                <h3 className="card-title mb-3">
-                                                    Descrizione spedizione:{' '}
-                                                    <span>
-                                                        {
-                                                            riscossione.descrizione_spedizione
-                                                        }
-                                                    </span>
-                                                </h3>
-                                                <ul className="border-custom ul-style-custom">
-                                                    <li>
-                                                        <span className="font-semibold pr-1">
-                                                            Entrata Tributo:
-                                                        </span>
-                                                        {
-                                                            riscossione.entrata_tributo
-                                                        }
-                                                    </li>
-                                                    <li>
-                                                        <span className="font-semibold pr-1">
-                                                            Tipologia
-                                                            Spedizione:
-                                                        </span>
-                                                        {
-                                                            riscossione.tipologia_spedizioni
-                                                        }
-                                                    </li>
-                                                    <li>
-                                                        <span className="font-semibold pr-1">
-                                                            Tipologia Documenti:
-                                                        </span>
-                                                        {
-                                                            riscossione.tipologia_documenti
-                                                        }
-                                                    </li>
-                                                    <li>
-                                                        <span className="font-semibold pr-1">
-                                                            Numeri Atti:
-                                                        </span>
-                                                        {riscossione.nr_atti}
-                                                    </li>
-                                                    <li>
-                                                        <span className="font-semibold pr-1">
-                                                            Data di Consegna al
-                                                            Service:
-                                                        </span>
-                                                        {funFormatDate(
-                                                            riscossione.data_consegna_service
-                                                        )}
-                                                    </li>
-                                                    <li>
-                                                        <p className="font-serif text-sm">
-                                                            <span className="font-semibold pr-1">
-                                                                Numberi Atti
-                                                                Spediti:
-                                                            </span>
-                                                            {
-                                                                riscossione.nr_atti_spediti
-                                                            }
-                                                        </p>
-                                                    </li>
-                                                </ul>
-
-                                                <div className="flex justify-between py-1">
-                                                    <Link
-                                                        to={`/update_riscossione/${riscossione.id}`}
-                                                    >
-                                                        Aggiorna il Lotto di
-                                                        Spedizione
-                                                    </Link>
-                                                    <Link
-                                                        to={`/detail_riscossione/${riscossione.id}`}
-                                                    >
-                                                        Dettaglio Lotto di
-                                                        Spedizione
-                                                    </Link>
-                                                </div>
-                                            </>
+                                           <CardDetails  riscossione={riscossione} />
                                         </Card>
                                     </>
                                 );

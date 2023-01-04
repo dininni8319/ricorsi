@@ -104,39 +104,44 @@ class RiscossioneController extends Controller
       
         if ($request && $id == null) {
             $riscossione = Riscossione::create($formData);
-
+            
             if(!$riscossione){
                 return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
             } else {
                 return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $riscossione->id);
             }  
             
-        } elseif ($id) {
+        } elseif (!$id) {
+            
             return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null, $id = null);
-            } else {
-                $riscossione = Riscossione::find($id);
-                $riscossione->update($formData);
-                
-                return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $riscossione->id);
-            }    
-        }
+        } else {
+            $riscossione = Riscossione::find(intval($id));
 
-        public function upDateRiscossione(Request $request, $id)
-        {
-            $formData = $this->getFormData($request);
+            // dd($formData);
+            $riscossione->update($formData);
+            
+            return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossione, $riscossione->id);
+        }    
+    }
     
-            if(!$formData){
-                return response()->json([
-                    'success' => false,
-                    'message' => $this->messageUnSuccess,
-                ], 404);
-            } else {
-                $riscossione = Riscossione::find(intval($id))->update($formData);
-    
+    public function upDateRiscossione(Request $request, $id)
+    {
+        $formData = $this->getFormData($request);
+        
+        if(!$formData){
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        } else {
+            $riscossione = Riscossione::find(intval($id))->update($formData);
+            $data = Riscossione::find(intval($id));
+            
                 return response()->json([
                     'success' => true,
                     'message' => 'La riscossione è stata aggiornata!',
                     'id' => $id,
+                    'data' => $data,
                 ], 200);
             }     
         }

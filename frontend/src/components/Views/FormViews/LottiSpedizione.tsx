@@ -10,7 +10,7 @@ import { Input, SelectInput, Form } from '../../UI/index';
 
 const LottoSpedizione = () => {
     const { data, handleData } = useInput(defaultLottoData);
-
+    
     return (
         <div className="height-custom">
             <Form
@@ -19,6 +19,7 @@ const LottoSpedizione = () => {
                 createPath="create_riscossione"
                 subMitBtn="Invio"
                 data={data}
+                // method='POST'
             >
                 <>
                     {LottiSpedizioneFormData?.formArr.map((input, index) => {
