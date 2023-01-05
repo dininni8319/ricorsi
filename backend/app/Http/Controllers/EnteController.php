@@ -30,47 +30,42 @@ class EnteController extends Controller
     ];
   }
 
-  public function index($id = null)
-  {
-    $enti = Ente::orderBy("created_at", "desc")->get();
-    
+  public function index($id = null){
+    $enti = Ente::orderBy("created_at", "desc")->with('servizi')->get();
+  
     if ($id) {
       $ente = Ente::find($id);
       
       if(!$ente){
+        
         return response()->json([
-            'success' => false,
-            'message' => 'Qualcosa è andato storto!',
+          'success' => false,
+          'message' => 'Qualcosa è andato storto!',
         ], 404);
+        
       } else {
         return response()->json([
-            'success' => true,
-            'message' => "L'è stato creato!",
-            'ente' => $ente,
-            'id' => $ente->id,
+          'success' => true,
+          'message' => "L'è stato creato!",
+          'ente' => $ente,
+          'id' => $ente->id,
         ], 200);
-      }   
-
+      }
     } else if ($enti) {
-       
-      if(!$enti){
-        return response()->json([
-            'success' => false,
-            'message' => 'Qualcosa è andato storto!',
-        ], 404);
-      } else {
+      
         return response()->json([
             'success' => true,
             'message' => "L'ente stato creato!",
-            'data' => $enti,
+            'enti' => $enti,
         ], 200);
-      }   
     }
+
     return response()->json([
       'success' => false,
       'message' => 'Qualcosa è andato storto!',
     ], 404);
   }
+
 
   public function enteCreate(Request $request, $id = null)
   {

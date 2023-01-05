@@ -4,7 +4,7 @@ export default function useInput(
     initialSate: { [key: string]: string | number | any } ,
     slug?: number | string
 ) {
-    let [data, setData] = useState(initialSate);
+    let [ data, setData ] = useState(initialSate);
     const [ error, setError ] = useState('');
     
     const handleUploadFiles = (files: any) =>  {

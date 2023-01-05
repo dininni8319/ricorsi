@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback, memo } from 'react';
+import { useState, useEffect, useContext, useCallback, memo } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { EnteType, ServizioType } from '../../interfaces/interfaces';
-import { baseURL } from '../../Utilities/index';
+import { ServizioType } from '../../interfaces/interfaces';
+import { ConfigContext } from "../../../Contexts/Config";
 import useFetch from '../../../Hooks/useFetch';
 import { DetailStyleComponent } from './style';
 import useHttp from '../../../Hooks/useHttp';
@@ -17,16 +17,15 @@ import Details from './details';
 import CardDetails from './cardDetails';
 
 const EnteDetail = () => {
-    let { slug } = useParams();
-    let navigate = useNavigate();
+    const { slug } = useParams();
+    const { api_urls: { backend } } = useContext(ConfigContext)
+    const navigate = useNavigate();
     const [currentServices, setCurrentServices] = useState<
     ServizioType[]
     >([]);
-
-    console.log(currentServices);
     
     let { payload } = useFetch(
-        `${baseURL}/api/cienneffe/detail_ente/${slug}`,
+        `${backend}/api/cienneffe/detail_ente/${slug}`,
         { verb: 'get' }
     );
 
@@ -40,7 +39,7 @@ const EnteDetail = () => {
 
     useEffect(() => {
         fetchCurrentServices({
-            url: `${baseURL}/api/cienneffe/all/services/${slug}`
+            url: `${backend}/api/cienneffe/all/services/${slug}`
         });
     }, [fetchCurrentServices]);
 
@@ -48,7 +47,7 @@ const EnteDetail = () => {
         e.preventDefault();
         
         deleteCard({
-            url: `${baseURL}/api/cienneffe/delete/ente/${slug}`,
+            url: `${backend}/api/cienneffe/delete/ente/${slug}`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });

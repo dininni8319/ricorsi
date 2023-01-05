@@ -30,4 +30,9 @@ class Ente extends Model
     {
         return $this->hasOne(Riscossione::class, 'ente_id');
     }
+
+    // public function documents()
+    // {
+    //    return $this->hasManyThrough(DettaglioEnte::class);
+    // }
 }

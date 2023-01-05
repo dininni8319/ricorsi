@@ -20,7 +20,6 @@ export const LottiSpedizioneDetail = lazy(
 export const RiconciliazioneDetail = lazy(
     () => import('./RiconciliazioneDetail')
 );
-
 export const LottiSpedizione = lazy(
     () => import('./FormViews/LottiSpedizione')
 );

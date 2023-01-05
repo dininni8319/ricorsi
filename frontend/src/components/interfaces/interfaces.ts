@@ -244,7 +244,8 @@ export type EnteType = {
     indirizzo: string;
     codice_catastale: string;
     numero_telefono: string;
-    id: number
+    id: number;
+    servizi: ServizioType[]
 };
 
 export type ServizioType = {

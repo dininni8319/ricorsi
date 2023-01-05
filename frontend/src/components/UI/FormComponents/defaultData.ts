@@ -120,4 +120,6 @@ export const defaultServizioData = {
     oneri: '',
     altri_diritti: '',
     cig: '',
+    ente_id: '',
+    servizio_id: ''
 };
