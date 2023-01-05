@@ -10,6 +10,7 @@ import { perPage } from '../../Utilities/index';
 
 const EntePage = () => {
     const [enti, setEnti] = useState<EnteType[]>([]);    
+    
     const handleEnti = useCallback(({ enti }: { enti: EnteType[] }) => {
         setEnti(() => [...enti]);
     }, []);

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { IRiscossione } from '../../interfaces/interfaces';
 import { baseURL } from '../../Utilities/index';
-import { Card, Loader3, Search, Paginate } from '../../UI/index';
+import { Card, Loader3, Search, Paginate, NotificheTotali } from '../../UI/index';
 import { WrapperStyleComponent } from '../Home/style';
 import { funFormatDate, perPage } from '../../Utilities/index';
 import useSearch from '../../../Hooks/useSearch';
@@ -126,6 +126,7 @@ const RiscossionePage = () => {
                     handlePageClick={handlePageClick}
                 />
             </>
+            <NotificheTotali />
             <WrapperStyleComponent>
                 <>
                     {riscossioni ? (

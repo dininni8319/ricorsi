@@ -62,18 +62,27 @@ class RiscossioneController extends Controller
 
     public function riscossione()
     {
-        $notifichePositive = $this->addNotifications('notifiche_positive');
-        $notificheNegative = $this->addNotifications('notifiche_negative');
-        $notificheNotificare = $this->addNotifications('numero_atti_rinotificare');
-        $notificheRitorno = $this->addNotifications('cartoline_ritorno_inserite');
-        $notificheAnnullati = $this->addNotifications('nr_atti_annullati');
-        $notificheRettificati = $this->addNotifications('atti_rettificati');
         $riscossioni = Riscossione::orderBy("created_at", "desc")->limit(5)->get();
-
+        
         if(!$riscossioni){
             return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null,$id = null);
         } else {
             return $response = $this->funResponse(200, true, $this->messageSuccess, $riscossioni, $id = null);
+        }   
+    }
+    
+    public function notificheTotali()
+    {
+        // $notifichePositive = $this->addNotifications('notifiche_positive');
+        // $notificheNegative = $this->addNotifications('notifiche_negative');
+        // $notificheNotificare = $this->addNotifications('numero_atti_rinotificare');
+        // $notificheRitorno = $this->addNotifications('cartoline_ritorno_inserite');
+        // $notificheAnnullati = $this->addNotifications('nr_atti_annullati');
+        // $notificheRettificati = $this->addNotifications('atti_rettificati');
+        if($data) {
+            return $response = $this->funResponse(200, true, $this->messageSuccess, $data, $id = null);
+        } else {
+            return $response = $this->funResponse(404, false, $this->messageUnSuccess, $data = null,$id = null);
         }   
     }
 

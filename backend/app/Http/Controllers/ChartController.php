@@ -114,7 +114,16 @@ class ChartController extends Controller
         $messageUnSuccess = 'Nessuna notifica trovata!';
         $messageSuccess = 'Queste sono le notifiche che sono state trovate!';
         
-        if(!$notificheRitorno){
+        $data = collect([
+            'positive' => $notifichePositive,
+            'negative' => $notificheNegative,
+            'notificare' => $notificheNotificare,
+            'ritorno' => $notificheRitorno,
+            'annullati' => $notificheAnnullati,
+            'rettificare' => $notificheRettificati,
+        ]);
+
+        if(!$data){
             return response()->json([
              'success' => false,
              'message' => $messageUnSuccess,
@@ -123,12 +132,7 @@ class ChartController extends Controller
             
             return response()->json([
                 'success' => true,
-                'notifiche_positive' => $notifichePositive,
-                'notifiche_negative' => $notificheNegative,
-                'notifiche_notificare' => $notificheNotificare,
-                'notifiche_ritorno' => $notificheRitorno,
-                'notifiche_annulate' => $notificheAnnullati,
-                'notifiche_rettificate' => $notificheRettificati,
+                'data' => $data,
                 'message' => $messageSuccess
             ], 200);
          }   
