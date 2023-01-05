@@ -32,9 +32,8 @@ export const SearchStyleComponent = styled.header`
     }
 
     @media only screen and (max-width: 765px) {
-        top: 28%;
-        left: 4%;
-
+        top: 34%;
+        left: 25%;
         input,
         ul {
             width: 200px;

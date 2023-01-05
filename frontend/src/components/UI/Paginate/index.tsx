@@ -1,4 +1,5 @@
 import ReactPaginate from 'react-paginate';
+import { PaginateStyleComponent } from "./style";
 import {
     CartolinaType,
     ObjFormType,
@@ -16,7 +17,7 @@ const Paginate = ({
     handlePageClick: any;
 }) => {
     return (
-        <div className="my-3 flex">
+        <PaginateStyleComponent>
             {currentItems && (
                 <ReactPaginate
                     nextLabel="next >"
@@ -32,7 +33,7 @@ const Paginate = ({
                     activeClassName={'pagination__link--active'}
                 />
             )}
-        </div>
+        </PaginateStyleComponent>
     );
 };
 

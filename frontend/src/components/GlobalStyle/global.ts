@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 38px;
         font-weight:normal;
         padding: 25px 0;
+        text-align: center;
     }
     
     h5 {

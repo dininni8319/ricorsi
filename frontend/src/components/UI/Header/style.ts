@@ -5,7 +5,7 @@ export const HeaderComponent = styled.header.attrs(
     (props: { user: boolean }) => props
 )`
     width: 100%;
-    min-height: 35vh;
+    min-height: 40vh;
     background: linear-gradient(transparent, rgba(0, 10, 0, 0.7)),
         linear-gradient(180deg, rgba(0, 10, 0, 0.1), #0f084b), url(${img});
     background-size: cover;
@@ -26,11 +26,10 @@ export const HeaderComponent = styled.header.attrs(
     }
 
     @media only screen and (max-width: 765px) {
+
         clip-path: none;
         .h2-custom-class {
-            top: 50%;
-            left: 4%;
-            font-size: 18px;
+           display: none;
         }
     }
 `;

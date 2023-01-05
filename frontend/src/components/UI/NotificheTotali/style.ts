@@ -10,7 +10,7 @@ export const NotificheStyleComponent = styled.div`
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 5px;
-
+    
     h3 {
       text-align: center;
       color: orange;
@@ -21,7 +21,8 @@ export const NotificheStyleComponent = styled.div`
     th, td {
       text-align: center;
     }
-    /* @media only screen and (max-width: 765px) {
-        
-    } */
+    @media only screen and (max-width: 765px) {
+      width: 100%;
+      margin-bottom: 5px;
+    }
 `;

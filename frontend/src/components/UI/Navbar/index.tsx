@@ -67,7 +67,7 @@ const Navbar = () => {
                 <FontAwesomeIcon
                     onClick={logout}
                     icon={faArrowRightFromBracket}
-                    className={`fa-1x mx-1 text-white logout-icon-style`}
+                    className={`fa-1x mx-1 text-white logout-icon-style my-2`}
                 />
             )}
         </NavbarStyleComponent>
