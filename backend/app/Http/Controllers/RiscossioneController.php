@@ -55,6 +55,8 @@ class RiscossioneController extends Controller
             "importo_atti_annullati"=>$req->importo_atti_annullati,
             "atti_rettificati"=>$req->atti_rettificati,
             "importo_atti_rettificati"=>$req->importo_atti_rettificati,
+            "ente_id" => $req->ente_id,
+            "servizio_id" => $req->servizio_id
         ];
     }
 

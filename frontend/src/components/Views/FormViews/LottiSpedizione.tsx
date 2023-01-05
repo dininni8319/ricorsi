@@ -62,9 +62,9 @@ const LottoSpedizione = () => {
                                 Ente
                             </label>
                             <SelectStyleComponent
-                            name='ente_id'
-                            onChange={(e) => handleData(e)}
-                            required
+                                name='ente_id'
+                                onChange={(e) => handleData(e)}
+                                required
                             >
                                 {
                                     currentEntities?.map((entity: EnteType) => {
@@ -79,7 +79,11 @@ const LottoSpedizione = () => {
                             <label htmlFor='Ente' className="input-label">
                                 Servizi
                             </label>
-                            <SelectStyleComponent>
+                            <SelectStyleComponent
+                                name='servizio_id'
+                                onChange={(e) => handleData(e)}
+                                required
+                            >
                                 { 
                                     // { selectedEntity[0]? }
                                       selectedEntity?.servizi?.map((servizio: ServizioType) => {
