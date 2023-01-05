@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { baseURL } from '../../Utilities';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ConfigContext } from "../../../Contexts/Config";
 import axios from 'axios';
 
 const ImportCsv = () => {
     const [file, setFile] = useState<any>([]);
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+    const { api_urls: { backend }} = useContext(ConfigContext);
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
@@ -15,9 +16,8 @@ const ImportCsv = () => {
 
         if (file) {
             formatData.append('csv_file', file);
-
             axios
-                .post(`${baseURL}/api/cienneffe/import_cartolina`, formatData)
+                .post(`${backend}/api/cienneffe/import_cartolina`, formatData)
                 .then((response) => response)
                 .then((data) => {
                     let message = data.data.message;
@@ -58,7 +58,7 @@ const ImportCsv = () => {
                         onChange={handleFile}
                     />
                     <button type="submit">Import CSV File</button>
-                    <a href={`${baseURL}/export_cartolina`} className="pt-2">
+                    <a href={`${backend}/export_cartolina`} className="pt-2">
                         Export
                     </a>
                     {error && (

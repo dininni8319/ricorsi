@@ -21,4 +21,4 @@ export { default as ResetPasswordForm } from './ResetPasswordForm';
 export { default as ResetLink } from "./ResetLink";
 export { default as DocumentComponent } from "./DocumentComponent";
 export { default as NotificheTotali } from "./NotificheTotali";
-
+export { default as ExportCSV } from './ExportCSV';

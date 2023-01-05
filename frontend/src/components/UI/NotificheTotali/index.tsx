@@ -2,14 +2,13 @@ import { useState, useEffect, useContext, useCallback } from 'react';
 import { ConfigContext } from '../../../Contexts/Config';
 import useHttp from '../../../Hooks/useHttp';
 import { NotificheStyleComponent } from "./style";
+
 const NotificheTotali = () => {
   const [ notifiche, setNotifiche ] = useState<any>({})
   const { api_urls: { backend }} = useContext(ConfigContext);
   const handleNotifiche = useCallback(({ data }: any) => {
     setNotifiche(data);
   }, []);
-
-  console.log(notifiche);
   
   const {
     isLoading,
@@ -17,11 +16,11 @@ const NotificheTotali = () => {
   } = useHttp(handleNotifiche);
 
   useEffect(() => {
-    fetchNotifiche({ url:`${backend}/api/cienneffe/notifiche_totali` });
+    fetchNotifiche({ url:`${backend}/api/cienneffe/notifiche_totali`});
   }, [fetchNotifiche]);
 
     return (
-        <NotificheStyleComponent className='shadow-lg my-10'>
+        <NotificheStyleComponent>
             <h3 className="uppercase">
                 Notifiche totali
             </h3>

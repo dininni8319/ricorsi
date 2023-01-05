@@ -70,6 +70,7 @@ export const Theme = {
     buttonColor: '#fca311',
     blueColor: '',
     grayInputText: '#888888',
+    linkColor: '#03045e',
     //////////////
 
     //General Colors
