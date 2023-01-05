@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const NavbarStyleComponent = styled.nav`
+    box-sizing: border-box;
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: absolute;
     z-index: 5;
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
     width: 100vw;
     min-height: 6vh;
     background-color: ${(props) => props.theme.transparent};
@@ -14,12 +16,12 @@ export const NavbarStyleComponent = styled.nav`
 
     .nav-label-style {
         background-color: transparent;
-        font-size: 22px;
+        font-size: 18px;
         color: ${(props) => props.theme.textColorGrey};
     }
 
     .logout-icon-style {
-        padding: 4px;
+        padding: 2px;
         border: 2px solid ${(props) => props.theme.textColorGrey};
         border-radius: 2px;
         cursor: pointer;
@@ -28,7 +30,7 @@ export const NavbarStyleComponent = styled.nav`
 
     .logout-icon-style:hover {
         transition: 0.6s ease-in;
-        padding: 8px;
+        padding: 6px;
     }
 
     .style-logo {
@@ -38,7 +40,7 @@ export const NavbarStyleComponent = styled.nav`
     }
 
     a {
-        font-size: 18px;
+        font-size: 16px;
         color: ${(props) => props.theme.blackColor};
     }
 
@@ -54,6 +56,6 @@ export const NavbarStyleComponent = styled.nav`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding-left: 10px;
+        /* padding-left: 10px; */
     }
 `;

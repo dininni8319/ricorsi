@@ -7,7 +7,7 @@ const dropDown = ({
 }) => {
     return (
         <div className="dropdown dropdown-hover">
-            <label tabIndex={0} className="nav-label-style m-1">
+            <label tabIndex={0} className="nav-label-style">
                 {title}
             </label>
             <ul
