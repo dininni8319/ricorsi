@@ -433,13 +433,13 @@ export const LottiSpedizioneFormData = {
             id: 12,
             errorMessage: ''
         },
-        {
-            label: 'File',
-            name: 'nome_file',
-            type: 'file',
-            id: 11,
-            errorMessage: ''
-        }
+        // {
+        //     label: 'File',
+        //     name: 'nome_file',
+        //     type: 'file',
+        //     id: 11,
+        //     errorMessage: ''
+        // }
     ]
 };
 

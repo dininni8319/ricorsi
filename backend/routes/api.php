@@ -77,7 +77,7 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     
     //Lotti di spedizioni
     Route::get("/riscossione", [RiscossioneController::class, "riscossione"])->name("riscossione");
-    Route::post("/update_riscossione/{id}", [RiscossioneController::class, "upDateRiscossione"])->name("update_riscossione");
+    Route::patch("/update_riscossione/{id}", [RiscossioneController::class, "upDateRiscossione"])->name("update_riscossione");
     Route::post("/create_riscossione/{id?}", [RiscossioneController::class, "creazioneRisc"])->name("creazioneRisc");
     Route::get("/detail_riscossione/{id}" , [RiscossioneController::class, "detailRiscossione"])->name("detail.riscossione");
     Route::get("/riscossione/search={query}" , [RiscossioneController::class, "searchRiscossioni"])->name("search.riscossione");

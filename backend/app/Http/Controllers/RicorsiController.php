@@ -192,11 +192,9 @@ class RicorsiController extends Controller
         
         if($formData){
             foreach ($formData as $key => $value) {
-                
                 if (!$value) {
                     unset($formData[$key]);
-                }
-                
+                }  
             }
 
             $ricorso = Ricorsi::find(intval($id))->update($formData);

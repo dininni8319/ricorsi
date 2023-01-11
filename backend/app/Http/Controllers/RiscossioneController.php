@@ -139,12 +139,13 @@ class RiscossioneController extends Controller
     {
         $formData = $this->getFormData($request);
         
-        if(!$formData){
-            return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
-        } else {
+        if($formData){
+            foreach ($formData as $key => $value) {
+                if (!$value) {
+                    unset($formData[$key]);
+                }  
+            }
+
             $riscossione = Riscossione::find(intval($id))->update($formData);
             $data = Riscossione::find(intval($id));
             
@@ -154,8 +155,14 @@ class RiscossioneController extends Controller
                     'id' => $id,
                     'data' => $data,
                 ], 200);
-            }     
+            
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
         }
+    }
 
     public function deleteRiscossione($id)
     {
