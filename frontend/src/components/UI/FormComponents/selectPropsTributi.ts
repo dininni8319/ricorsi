@@ -405,6 +405,9 @@ export const selectTasks = {
     name: 'reminder',
     values: [
         {
+           value: 'Seleziona un opzione'
+        },
+        {
             value: 'uno'
         },
         {
