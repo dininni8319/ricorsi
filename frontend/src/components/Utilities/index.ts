@@ -51,10 +51,11 @@ export const isTextarea = (id: number) => {
 };
 
 export const funFormatDate = (str: string) => {
-    if (str === '') return 'The date was not found!';
-
+    if (str === '' || str === null) return 'Nessun dato fornito';
+    
     let myDate = new Date(str);
-    let utc = `${myDate.getDate()}.${myDate.getMonth()}.${myDate.getFullYear()}`;
+    let utc = `
+    ${myDate.getDate() < 10 ? '0' + myDate.getDate(): myDate.getDate()}.${(myDate.getMonth() + 1) < 10 ? '0' + (myDate.getMonth() + 1) : (myDate.getMonth() + 1)}.${myDate.getFullYear()}`;
 
     return utc;
 };

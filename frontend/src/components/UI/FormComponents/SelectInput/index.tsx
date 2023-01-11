@@ -26,7 +26,11 @@ const SelectInput = ({
                 onChange={(e) => handleData(e)}
                 required
             >
+                <option value="none" selected disabled> 
+                 ------
+                </option>
                 {selectProps?.values.map(({title, value }: any, index: number) => {
+                    
                     return (
                         <option
                             value={

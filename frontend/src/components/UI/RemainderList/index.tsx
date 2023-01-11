@@ -46,7 +46,7 @@ const RemainderList = ({ tasks, setTasks }: { tasks: any; setTasks: any }) => {
                             </li>
                             <li>
                                 <span>Descrizione del compito:</span>
-                                {el.descrizione_compito}
+                                {el.descrizione_compito ?  el.descrizione_compito: 'Dato non trovato'}
                             </li>
                             <li>
                                 <span>Creato il:</span>

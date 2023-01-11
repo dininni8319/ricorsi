@@ -30,7 +30,7 @@ class TaskCotroller extends Controller
 
         $reminder_at = $request->reminder;
         
-        $scadenza = $request->scadenza_del_compito;
+        $scadenza = $request->scadenza_del_compito; 
 
             if ($reminder_at) {
                 // dd($scadenza, 'testando la scadenza');
