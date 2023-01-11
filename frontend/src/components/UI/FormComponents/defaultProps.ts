@@ -57,7 +57,7 @@ export const formRicorsiLabels = {
         },
         {
             label: 'Città',
-            name: 'città',
+            name: 'citta',
             type: 'text',
             id: 6,
             errorMessage: ''

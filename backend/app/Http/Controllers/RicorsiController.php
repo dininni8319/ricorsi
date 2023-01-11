@@ -102,8 +102,7 @@ class RicorsiController extends Controller
             
             $formData = $this->getFormData($request);
             $ricorso = Ricorsi::create($formData);
-            // dd($formData, 'testing the mail notification');
-            
+        
             if(!$ricorso){
                 return response()->json([
                 'success' => false,
@@ -190,21 +189,29 @@ class RicorsiController extends Controller
     public function upDateRicorso(Request $request, $id)
     {
         $formData = $this->getFormData($request);
+        
+        if($formData){
+            foreach ($formData as $key => $value) {
+                
+                if (!$value) {
+                    unset($formData[$key]);
+                }
+                
+            }
 
-        if(!$formData){
-            return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
-        } else {
             $ricorso = Ricorsi::find(intval($id))->update($formData);
-
+            
             return response()->json([
                 'success' => true,
                 'message' => 'Il ricorso è stato aggiornato!',
                 // 'ricorso' => $ricorso,
                 'id' => $id,
             ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
         }     
     }
 }

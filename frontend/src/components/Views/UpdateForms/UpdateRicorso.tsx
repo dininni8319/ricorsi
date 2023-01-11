@@ -19,10 +19,11 @@ const UpdateRicorso = () => {
         api_urls: { backend }
     } = useContext(ConfigContext);
     let {
-        payload: { ricorso }
+        payload: { data: ricorso }
     }: any = useFetch(`${backend}/api/cienneffe/detail_ricorso/${slug}`);
     const { data, handleData } = useInput(defaultRicorsiData, slug);
-
+    console.log(ricorso);
+    
     return (
         <div className="height-custom">
             <Form

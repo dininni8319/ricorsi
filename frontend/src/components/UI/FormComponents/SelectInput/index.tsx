@@ -21,12 +21,13 @@ const SelectInput = ({
                 {selectProps?.title}
             </label>
             <SelectStyleComponent
+                defaultValue={'DEFAULT'}
                 name={selectProps?.name}
                 id={selectProps?.name}
                 onChange={(e) => handleData(e)}
                 required
             >
-                <option value="none" selected disabled> 
+                <option value="DEFAULT" disabled> 
                  ------
                 </option>
                 {selectProps?.values.map(({title, value }: any, index: number) => {

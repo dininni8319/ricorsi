@@ -4,7 +4,7 @@ export let defaultRicorsiData = {
     cf_piva: '',
     telefono: '',
     cap: '',
-    città: '',
+    citta: '',
     numero_ricorso: '',
     numero_protocollo_interno: '',
     ente: '',

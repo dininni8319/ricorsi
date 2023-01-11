@@ -43,7 +43,7 @@ const Details = ({ ricorso }: any) => {
                 <span>{ricorso.cf_piva}</span>
             </li>
             <li>
-                Cod. Fiscale/P.Iva:
+                Tipologia atto:
                 <span>{ricorso.tipologia_atto}</span>
             </li>
             <li>
