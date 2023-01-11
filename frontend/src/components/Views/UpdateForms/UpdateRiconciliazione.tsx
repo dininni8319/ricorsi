@@ -30,7 +30,7 @@ const UpdateRiconciliazione = () => {
                 createPath="update_riconciliazione"
                 subMitBtn="Aggiorna"
                 data={data}
-                method={'PATCH'}
+                method={'POST'}
             >
                 <>
                     {RiconciliazioneFormData?.formArr.map((input, index) => {

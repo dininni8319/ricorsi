@@ -14,6 +14,7 @@ import useFetch from '../../../Hooks/useFetch';
 
 const UpdateLottiSpedizione = () => {
     const { data, handleData } = useInput(defaultLottoData);
+    
     const { slug } = useParams();
     let {
         api_urls: { backend }
@@ -32,7 +33,7 @@ const UpdateLottiSpedizione = () => {
                 createPath="update_riscossione"
                 subMitBtn="Aggiorna"
                 data={data}
-                method={'PATCH'}
+                method={'POST'}
             >
                 <>
                     {LottiSpedizioneFormData?.formArr.map((input, index) => {

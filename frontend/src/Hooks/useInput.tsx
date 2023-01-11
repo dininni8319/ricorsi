@@ -6,7 +6,6 @@ export default function useInput(
 ) {
     let [ data, setData ] = useState(initialSate);
     const [ error, setError ] = useState('');
-    
     const handleUploadFiles = (files: any) =>  {
       const uploaded = [...files];
   
@@ -20,6 +19,7 @@ export default function useInput(
         index?: number
     ) => {
         let { name, value, checked } = e.target;
+
         if (name === 'email_notification') {
             let val = checked ? 'on' : '';
             setError('');

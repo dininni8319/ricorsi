@@ -32,7 +32,7 @@ const UpdateRicorso = () => {
                 navPath="ricorsi_detail"
                 subMitBtn="Aggiorna"
                 data={data}
-                method={'PATCH'}
+                method={'POST'}
             >
                 <>
                     {formRicorsiLabels?.formArr.map((input, index) => {
@@ -49,7 +49,6 @@ const UpdateRicorso = () => {
                                 key={index}
                                 {...input}
                                 value={ricorso ? ricorso[input?.name] : ''}
-                                // value={slug && data && data[input.name]}
                             />
                         );
                     })}

@@ -20,16 +20,28 @@ const Form: React.FC<FormProps> = ({
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('');
     
+    const formData = new FormData();
+    console.log(id);
+    
+    if (id) {
+       formData.append("_method", 'PATCH')
+    }
+
+    for (let key in data) {
+        formData.append(key, data[key]); 
+    }
+    
     let verb = method?.toLowerCase() || 'post';
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+         
         //post a ricorso
         const config: any = { 
           method: method ? method : 'POST',
-          headers: {  'Content-Type': 'multipart/form-data' },
+          headers: {'Content-Type': 'multipart/form-data'},
         }
-        axios[verb as Methods](`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, data, config)
+        
+        axios[verb as Methods](`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, formData, config)
             .then((data: any) => {
                                
                 if (data?.data.success) {
