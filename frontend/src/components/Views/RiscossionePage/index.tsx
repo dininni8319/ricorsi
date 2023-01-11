@@ -8,6 +8,7 @@ import { funFormatDate, perPage } from '../../Utilities/index';
 import useSearch from '../../../Hooks/useSearch';
 import CardDetails from './CardDetails';
 
+const DoneImg = require('../../../assets/icons/icon-done.png');
 const RiscossionePage = () => {
     const [riscossioni, setRiscossioni] = useState<IRiscossione[]>([]);
     const [searchedRiscossione, setSearchedRiscossione] = useState<any>([]);
@@ -128,6 +129,9 @@ const RiscossionePage = () => {
                 <div className='md:flex w-full items-end justify-center'>
                     <NotificheTotali />
                     <ExportCSV />
+                </div>
+                <div className='flex justify-center'>
+                  {currentItems.length === 0 && <img src={DoneImg} alt="done image"  width='200px' height='200px'/>}
                 </div>
             </>
             <WrapperStyleComponent>

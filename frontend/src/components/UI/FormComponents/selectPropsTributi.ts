@@ -153,9 +153,6 @@ export const selectEsitoSentenza = {
     title: 'Esito Sentenza',
     name: 'esito',
     values: [
-        // {
-        //     value: '----'
-        // },
         {
             value: 'accolto'
         },
@@ -175,9 +172,6 @@ export const selectEsitoDefinitivo = {
     title: 'Esito Definitivo Relativo la Sentenza',
     name: 'esito_definitivo',
     values: [
-        // {
-        //     value: '----'
-        // },
         {
             value: 'Accoglimento totale'
         },

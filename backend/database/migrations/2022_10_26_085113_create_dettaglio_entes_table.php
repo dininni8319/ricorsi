@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('codice_catastale');
             $table->string('tipologia_servizi');
             $table->string('tipologia_attivita');
-            $table->integer('aggio');
-            $table->integer('spese_postali');
+            $table->string('aggio');
+            $table->string('spese_postali');
             $table->string('oneri');
-            $table->integer('altri_diritti');
+            $table->string('altri_diritti');
             $table->string('cig');
             $table->unsignedBigInteger("ente_id");
             $table

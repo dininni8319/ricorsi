@@ -7,6 +7,7 @@ import { WrapperStyleComponent } from './style';
 import Searched from './Searched';
 import CardDetail from './CardDetail';
 import { perPage } from '../../Utilities/index';
+const DoneImg = require('../../../assets/icons/icon-done.png');
 
 const Homepage = () => {
     const [ricorsi, setRicorsi] = useState<ObjFormType[]>([]);
@@ -21,7 +22,6 @@ const Homepage = () => {
         itemsPerPage,
         ricorsi
     );
-
     const handlePageClick = (event: any) => {
         const newOffset = (event.selected * itemsPerPage) % ricorsi.length;
         setItemOffset(newOffset);
@@ -49,9 +49,12 @@ const Homepage = () => {
                         handlePageClick={handlePageClick}
                     />
                 </div>
+                <div className='flex justify-center'>
+                  {currentItems.length === 0 && !isLoading && <img src={DoneImg} alt="done image"  width='200px' height='200px'/>}
+                </div>
             </>
             <WrapperStyleComponent>
-                <>
+                <> 
                     {currentItems && !isLoading ? (
                         currentItems?.map((ricorso: any, id: number) => {
                             return (

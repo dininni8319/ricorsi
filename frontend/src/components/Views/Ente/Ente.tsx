@@ -8,6 +8,7 @@ import Searched from './Searched';
 import CardDetail from './CardDetail';
 import { perPage } from '../../Utilities/index';
 
+const DoneImg = require('../../../assets/icons/icon-done.png');
 const EntePage = () => {
     const [enti, setEnti] = useState<EnteType[]>([]);    
     
@@ -48,6 +49,9 @@ const EntePage = () => {
                         pageCount={pageCount}
                         handlePageClick={handlePageClick}
                     />
+                </div>
+                <div className='flex justify-center'>
+                  {currentItems.length === 0 && !isLoading && <img src={DoneImg} alt="done image"  width='200px' height='200px'/>}
                 </div>
             </>
             <WrapperStyleComponent>

@@ -8,6 +8,7 @@ import useHttp from '../../../Hooks/useHttp';
 import useSearch from '../../../Hooks/useSearch';
 import { perPage } from '../../Utilities/index';
 import { CartolinaType } from '../../interfaces/interfaces';
+const DoneImg = require('../../../assets/icons/icon-done.png');
 
 const CartolinePage = () => {
     const {
@@ -100,6 +101,9 @@ const CartolinePage = () => {
                     pageCount={pageCount}
                     handlePageClick={handlePageClick}
                 />
+                <div className='flex justify-center'>
+                  {currentItems.length === 0 && !isLoading && <img src={DoneImg} alt="done image"  width='200px' height='200px'/>}
+                </div>
             </>
             <WrapperStyleComponent>
                 <>
