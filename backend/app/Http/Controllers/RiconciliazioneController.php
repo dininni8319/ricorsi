@@ -66,7 +66,13 @@ class RiconciliazioneController extends Controller
         $riconciliazione = Riconciliazione::find($id);
        
         if ($id) {
-
+            
+            foreach ($formData as $key => $value) {
+                if (!$value) {
+                    unset($formData[$key]);
+                }  
+            }
+            
             // unset($formData->'riscossione_id');
             $riconciliazione->update($formData);
 

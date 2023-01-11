@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import { useContext } from 'react';
 import useInput from '../../../Hooks/useInput';
 import { defaultLottoData } from '../../UI/FormComponents/defaultData';
 import { RiconciliazioneFormData } from '../../UI/FormComponents/defaultProps';
@@ -6,11 +7,20 @@ import {
     selectMeseRendicondazione
 } from '../../UI/FormComponents/selectPropsTributi';
 import { Input, SelectInput, Form } from '../../UI/index';
+import useFetch from '../../../Hooks/useFetch';
+import { ConfigContext } from '../../../Contexts/Config';
 
 const UpdateRiconciliazione = () => {
     const { data, handleData } = useInput(defaultLottoData);
     const { slug } = useParams();
+    let {
+        api_urls: { backend }
+    } = useContext(ConfigContext);
 
+    let {
+        payload: { data: riconciliazione }
+    }: any = useFetch(`${backend}/api/cienneffe/detail_riconciliazione/${slug}`);
+    
     return (
         <div className="height-custom">
             <Form
@@ -20,7 +30,7 @@ const UpdateRiconciliazione = () => {
                 createPath="update_riconciliazione"
                 subMitBtn="Aggiorna"
                 data={data}
-                method={'POST'}
+                method={'PATCH'}
             >
                 <>
                     {RiconciliazioneFormData?.formArr.map((input, index) => {
@@ -29,6 +39,7 @@ const UpdateRiconciliazione = () => {
                                 handleData={handleData}
                                 key={index}
                                 {...input}
+                                value={riconciliazione ? riconciliazione[input?.name] : ''}
                             />
                         );
                     })}

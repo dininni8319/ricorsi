@@ -19,12 +19,9 @@ const UpdateLottiSpedizione = () => {
         api_urls: { backend }
     } = useContext(ConfigContext);
     
-    console.log(slug, backend);
     let {
         payload: { data: riscossione }
     }: any = useFetch(`${backend}/api/cienneffe/detail_riscossione/${slug}`);
-
-
 
     return (
         <div className="height-custom">

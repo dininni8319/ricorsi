@@ -89,7 +89,7 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get("/detail_riconciliazione/{id}", [RiconciliazioneController::class, "detailRiconciliazione"])->name("detailRiconciliazione");
     Route::get("/riconciliazione/find/{id}", [RiconciliazioneController::class, "getAllRiconciliazione"])->name("getAllRiconciliazione")->withoutMiddleware('throttle:api');;
     Route::post("/create_riconciliazione/{id}", [RiconciliazioneController::class, "creaRiconciliazione"])->name("crea.riconciliazione");
-    Route::post("/update_riconciliazione/{id}", [RiconciliazioneController::class, "updateRidicontazione"])->name("update.riconciliazione");
+    Route::patch("/update_riconciliazione/{id}", [RiconciliazioneController::class, "updateRidicontazione"])->name("update.riconciliazione");
     Route::delete("/riconciliazione/delete/{id}" , [RiconciliazioneController::class, "deleteRiconciliazione"])->name("delete.riconciliazione");
 
     //Ente
