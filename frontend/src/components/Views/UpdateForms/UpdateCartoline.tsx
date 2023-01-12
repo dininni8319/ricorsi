@@ -16,7 +16,7 @@ const UpdateCartoline = () => {
     let {
         payload: { data: cartolina }
     }: any = useFetch(`${backend}/api/cienneffe/detail_cartoline/${slug}`);
-    const { data, handleData } = useInput(defaultCartolineData, slug);
+    const { formData, handleData } = useInput(defaultCartolineData, slug);
     
     return (
         <div className="height-custom">
@@ -26,7 +26,7 @@ const UpdateCartoline = () => {
                 navPath="detail_cartoline"
                 createPath="update_cartolina"
                 subMitBtn="Aggiorna"
-                data={data}
+                data={formData}
                 method={'POST'}
             >
                 <>

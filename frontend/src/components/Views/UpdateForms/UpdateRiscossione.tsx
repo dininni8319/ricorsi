@@ -13,7 +13,7 @@ import { ConfigContext } from '../../../Contexts/Config';
 import useFetch from '../../../Hooks/useFetch';
 
 const UpdateLottiSpedizione = () => {
-    const { data, handleData } = useInput(defaultLottoData);
+    const { formData, handleData } = useInput(defaultLottoData);
     
     const { slug } = useParams();
     let {
@@ -32,7 +32,7 @@ const UpdateLottiSpedizione = () => {
                 navPath="detail_riscossione"
                 createPath="update_riscossione"
                 subMitBtn="Aggiorna"
-                data={data}
+                data={formData}
                 method={'POST'}
             >
                 <>

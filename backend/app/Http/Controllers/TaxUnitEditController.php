@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class TaxUnitEditController extends Controller
 {
 
-    protected $messageUnSuccess = 'Something went wrong!';
+    protected $messageUnSuccess = 'Qqualcosa è andato storto!';
     protected $messageSuccess = 'Success, this fase was ';
 
     // public function __construct()
@@ -19,6 +19,24 @@ class TaxUnitEditController extends Controller
     //     /* $this->middleware("auth"); */
     //     $this->middleware("auth.revisor");
     // }
+    protected function getFormFaseData($req) { 
+        return [
+            "contro_deduzioni_tax_unit" => $req->contro_deduzioni_tax_unit,
+            "contro_deduzioni_uff_legale" => $req->contro_deduzioni_uff_legale,
+            "presentato" => $req->presentato,
+            "data_presentazione" => $req->data_presentazione,
+            "data_convocazione" => $req->data_convocazione,
+            "data_deposito" => $req->data_deposito,
+            "sede" => $req->sede,
+            "esito" => $req->esito,
+            "esito_definitivo" => $req->esito_definitivo,
+            "data_deposito_sentenza"=>$req->data_deposito_sentenza,
+            "data_notifica_sentenza"=>$req->data_notifica_sentenza,
+            "tipologia_file" => $req->tipologia_file,
+            "motivazione" => $req->motivazione,
+            "spese" => $req->spese,
+        ];
+    }
 
     public function lastCreatedFase($id)
     {
@@ -41,17 +59,9 @@ class TaxUnitEditController extends Controller
         }     
     }
 
-    public function paginataxunit()
-    {
-        $fasi = Fasi::all();
-
-        return view("fasi.fasiPage", compact("fasi"));
-    }
-
     public function faseFormPageCreate($id)
     {
         $ricorsi = Ricorsi::orderBy("created_at", "desc")->get();
-
         $ricorso = Ricorsi::find($id);
 
         return view("fasi.faseFormPage", compact("id"));
@@ -74,7 +84,6 @@ class TaxUnitEditController extends Controller
                     'documents' =>  $fase->documents 
                 ], 200);
         } else {
-
             return response()->json([
                 'success' => false,
                 'message' => $this->messageUnSuccess,
@@ -82,6 +91,33 @@ class TaxUnitEditController extends Controller
         }
     }
 
+    public function updateFase(Request $request, $id)
+    {
+        $formData = $this->getFormFaseData($request);
+        
+        if($formData && $id){
+            foreach ($formData as $key => $value) {
+                if (!$value) {
+                    unset($formData[$key]);
+                }  
+            }
+            $fase = Fasi::find(intval($id));
+            $fase->update($formData);
+            
+                return response()->json([
+                    'success' => true,
+                    'message' => 'La fase è stata aggiornata!',
+                    'id' => $id,
+                    // 'data' => $data,
+                ], 200);
+            
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        }
+    }
     public function faseDelete($id)
     {
         if ($id) {
@@ -93,21 +129,13 @@ class TaxUnitEditController extends Controller
                  'message' => $this->messageUnSuccess,
               ], 404);
              } else {
-                
+    
                  return response()->json([
                     'success' => true,
                     'ricorsi' => $fase,
                     'message' => $this->messageSuccess,
                  ], 200);
-             }   
-            
+             }     
         }
-    }
-
-    public function taxUnitFormPage($id)
-    {
-        $fase = Fasi::find($id);
-
-        return view("fasi.faseUpDateForm", compact("fase"));
     }
 }

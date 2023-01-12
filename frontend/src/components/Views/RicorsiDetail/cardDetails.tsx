@@ -34,7 +34,7 @@ const CardDetails = ({ fase, currentId }: any) => {
             <div className="flex justify-between py-1">
                 <Link to={`/fase_detail/${fase.id}`}>Dettaglio Fase</Link>
                 {currentId === fase?.id && (
-                    <Link to={`/form_fase/${fase?.ricorsi_id}`}>
+                    <Link to={`/update_fase/${fase?.ricorsi_id}`}>
                         Aggiorna la Fase
                     </Link>
                 )}

@@ -21,7 +21,7 @@ const Form: React.FC<FormProps> = ({
     const [message, setMessage] = useState('');
     
     if (id && subMitBtn === 'Aggiorna') {
-       data.append("_method", 'PATCH')
+       data?.append("_method", 'PATCH')
     }
     
     let verb = method?.toLowerCase() || 'post';

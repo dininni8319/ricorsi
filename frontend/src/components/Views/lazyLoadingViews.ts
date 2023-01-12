@@ -13,7 +13,6 @@ export const DettaglioEnte = lazy(() => import('./FormViews/DettaglioEnte'));
 export const DettaglioEnteDetail = lazy(() => import('./DettaglioEnteDetail'));
 export const ResetPassword = lazy(() => import('./ResetPassword'));
 export const CartolinePage = lazy(() => import('./CartolinePage'));
-// export const ResetLinkView = lazy(() => import('./ResetLinkView'));
 export const LottiSpedizioneDetail = lazy(
     () => import('./LottiSpedizioneDetail')
 );
@@ -39,4 +38,7 @@ export const UpdateRiscossione = lazy(
 );
 export const UpdateRiconciliazione = lazy(
     () => import('./UpdateForms/UpdateRiconciliazione')
+);
+export const UpdateFase = lazy(
+    () => import('./UpdateForms/UpdateFase')
 );

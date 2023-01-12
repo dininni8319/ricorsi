@@ -21,7 +21,7 @@ const UpdateRicorso = () => {
     let {
         payload: { data: ricorso }
     }: any = useFetch(`${backend}/api/cienneffe/detail_ricorso/${slug}`);
-    const { data, handleData } = useInput(defaultRicorsiData, slug);
+    const { formData, handleData } = useInput(defaultRicorsiData, slug);
     
     return (
         <div className="height-custom">
@@ -31,7 +31,7 @@ const UpdateRicorso = () => {
                 createPath="update_ricorso"
                 navPath="ricorsi_detail"
                 subMitBtn="Aggiorna"
-                data={data}
+                data={formData}
                 method={'POST'}
             >
                 <>

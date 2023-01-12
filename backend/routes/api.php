@@ -54,8 +54,9 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get("/ricorsi/search={query}", [RicorsiController::class, "searchRicorso"])->name("search")->withoutMiddleware('throttle:api');
     
     //Fasi
-    Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate"])->name("fase.create")->withoutMiddleware('throttle:api');
     Route::get("/last_fase/{id}", [TaxUnitEditController::class, "lastCreatedFase"])->name("last.fase")->withoutMiddleware('throttle:api');
+    Route::post("/create_fase/{id}", [TaxUnitController::class,"faseCreate"])->name("fase.create")->withoutMiddleware('throttle:api');
+    Route::patch("/update_fase/{id}", [TaxUnitController::class, "updateFase"])->name("update.fase");
     Route::get("/current_fasis/{id}", [FaseController::class,"currentFasis"])->name("fase.current")->withoutMiddleware('throttle:api');
     Route::get("/detail_fase/{id}", [TaxUnitEditController::class,"detailFase"])->name("detail.fase")->withoutMiddleware('throttle:api');
     Route::delete("/fase/delete/{id}", [TaxUnitEditController::class, "faseDelete"])->name("fase.delete");

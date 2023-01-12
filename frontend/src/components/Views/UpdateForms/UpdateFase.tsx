@@ -1,49 +1,87 @@
 import { useContext } from 'react';
-import { selectPropsEsitoCartoline } from '../../UI/FormComponents/selectPropsTributi';
-import { defaultCartolineData } from '../../UI/FormComponents/defaultData';
-import { cartolineFormData } from '../../UI/FormComponents/defaultProps';
+import {
+    selectStatoFase,
+    selectEsitoSentenza,
+    selectEsitoDefinitivo,
+    selectTipologiaFile,
+    tipologiaFile,
+} from '../../UI/FormComponents/selectPropsTributi';
+import { defaultFasiData } from '../../UI/FormComponents/defaultData';
+import { fasiFormData } from '../../UI/FormComponents/defaultProps';
 import useInput from '../../../Hooks/useInput';
 import { Input, SelectInput, TextArea, Form } from '../../UI/index';
 import { useParams } from 'react-router';
 import useFetch from '../../../Hooks/useFetch';
 import { ConfigContext } from '../../../Contexts/Config';
 
-const UpdateCartoline = () => {
+const UpdateFase = () => {
     let { slug } = useParams();
     let {
         api_urls: { backend }
     } = useContext(ConfigContext);
-    let {
-        payload: { data: cartolina }
-    }: any = useFetch(`${backend}/api/cienneffe/detail_cartoline/${slug}`);
-    const { data, handleData } = useInput(defaultCartolineData, slug);
     
+    let { payload }: any = useFetch(`${backend}/api/cienneffe/last_fase/${slug}`);
+    // we are deep coping the object
+    let val = selectStatoFase.values.filter(
+        (val) => val.value >= payload?.lastFase?.fase
+        );
+    let newSelectStateFase = JSON.parse(JSON.stringify(selectStatoFase));
+    newSelectStateFase.values = [...val];
+        
+    let faseCur = Object.keys(val).length > 0 ? newSelectStateFase : selectStatoFase;
+    const { formData, handleData } = useInput(defaultFasiData, slug);
+     
     return (
         <div className="height-custom">
             <Form
                 id={slug}
-                title="Aggiorna la Cartolina"
-                navPath="detail_cartoline"
-                createPath="update_cartolina"
+                title="Aggiorna la Fase"
+                navPath="fase_detail"
+                createPath="update_fase"
                 subMitBtn="Aggiorna"
-                data={data}
+                data={formData}
                 method={'POST'}
             >
                 <>
-                    {cartolineFormData?.formArr.map((input, index) => {
-                        return (
-                            <Input
+                    <SelectInput
+                        selectProps={faseCur}
+                        handleData={handleData}
+                    />
+                     <div className="md:flex">
+                        <SelectInput
+                            selectProps={selectTipologiaFile}
+                            handleData={handleData}
+                        />
+                    </div>
+                    
+                    {fasiFormData?.formArr.map((input, index) => {
+                        return input.id === 0 ? (
+                            <TextArea
                                 handleData={handleData}
                                 key={index}
+                                value={payload?.lastFase ? payload?.lastFase[input?.name] : ''}
                                 {...input}
-                                value={cartolina ? cartolina[input?.name] : ''}
                             />
-                        );
+                            ) : 
+                            ( <Input
+                                handleData={handleData}
+                                key={index}
+                                value={payload?.lastFase ? payload?.lastFase[input?.name] : ''}
+                                {...input}
+                            />)
                     })}
 
                     <div className="md:flex">
                         <SelectInput
-                            selectProps={selectPropsEsitoCartoline}
+                            selectProps={tipologiaFile}
+                            handleData={handleData}
+                        />
+                        <SelectInput
+                            selectProps={selectEsitoSentenza}
+                            handleData={handleData}
+                        />
+                        <SelectInput
+                            selectProps={selectEsitoDefinitivo}
                             handleData={handleData}
                         />
                     </div>
@@ -53,4 +91,4 @@ const UpdateCartoline = () => {
     );
 };
 
-export default UpdateCartoline;
+export default UpdateFase;

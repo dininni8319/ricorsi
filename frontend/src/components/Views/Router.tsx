@@ -14,7 +14,7 @@ import {
     LottiSpedizione,
     LottiSpedizioneDetail,
     Login,
-    // Register,
+    Register,
     UpdateRicorso,
     UpdateRiscossione,
     RiscossionePage,
@@ -28,7 +28,7 @@ import {
     DettaglioEnte,
     DettaglioEnteDetail,
     UpdateCartolina,
-
+    UpdateFase
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -238,6 +238,16 @@ const Router = () => {
                 }
             />
              <Route
+                path="/update_fase/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <UpdateFase />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
+             <Route
                 path="/update_cartolina/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
@@ -307,15 +317,15 @@ const Router = () => {
                    <ResetLinkView />
                 </Suspense>
             } />
-
-            {/* <Route
+        
+            <Route
                 path="/register"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <Register />
                     </Suspense>
                 }
-            /> */}
+            /> 
         </Routes>
     );
 };

@@ -11,7 +11,7 @@ import useFetch from '../../../Hooks/useFetch';
 import { ConfigContext } from '../../../Contexts/Config';
 
 const UpdateRiconciliazione = () => {
-    const { data, handleData } = useInput(defaultLottoData);
+    const { formData, handleData } = useInput(defaultLottoData);
     const { slug } = useParams();
     let {
         api_urls: { backend }
@@ -29,7 +29,7 @@ const UpdateRiconciliazione = () => {
                 navPath="detail_riconciliazione"
                 createPath="update_riconciliazione"
                 subMitBtn="Aggiorna"
-                data={data}
+                data={formData}
                 method={'POST'}
             >
                 <>

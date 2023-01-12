@@ -136,12 +136,12 @@ const FasiDetail = () => {
                             Dettaglio Ricorso
                         </Link>
                         {currentId === faseDetail?.id && (
-                            <Link to={`/form_fase/${faseDetail?.ricorsi_id}`}>
+                            <Link to={`/update_fase/${faseDetail?.ricorsi_id}`}>
                                 Aggiorna la Fase
                             </Link>
                         )}
                         <>
-                        <button
+                            <button
                                 onClick={(event) => handleDelete(event)}
                                 className="text-red-600 outline-none cursor-pointer w-18 px-3 py-2 font-semibold"
                             >
