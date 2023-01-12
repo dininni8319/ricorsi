@@ -101,46 +101,46 @@ export const selectPropsEsitoCartoline = {
     name: 'esito_notifica',
     values: [
         {
-            value: 'Ricevuto-Destinatario'
+            value: 'ricevuto_destinatario'
         },
         {
-            value: 'Ricevuto-Familiare Convivente'
+            value: 'ricevuto_familiare_conveniente'
         },
         {
-            value: "Ricevuto-Addetto all'Immobile"
+            value: "ricevuto_addetto_alla_casa_ufficio_o_azienda"
         },
         {
-            value: 'Ricevuto-Portiere'
+            value: 'ricevuto_portiere_dello_stabile'
         },
         {
-            value: 'Ritirato'
+            value: 'ritirato'
         },
         {
-            value: 'Compiuta Giacenza'
+            value: 'compiuta_giacenza'
         },
         {
-            value: 'Rifiutato'
+            value: 'rifiutato'
         },
         {
-            value: 'Destinatario irreperibile'
+            value: 'destinatario_irreperibile'
         },
         {
-            value: 'Destinatario deceduto'
+            value: 'destinatario_deceduto'
         },
         {
-            value: 'Destinatario sconosciuto'
+            value: 'destinatario_sconosciuto'
         },
         {
-            value: 'Destinatario trasferito'
+            value: 'destinatario_trasferito'
         },
         {
-            value: 'Indirizzo inesatto'
+            value: 'indirizzo_inesatto'
         },
         {
-            value: 'Indirizzo insufficiente'
+            value: 'indirizzo_insufficiente'
         },
         {
-            value: 'Indirizzo inesistente'
+            value: 'indirizzo_inesistente'
         },
         {
             value: 'CAD'

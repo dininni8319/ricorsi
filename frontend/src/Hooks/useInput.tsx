@@ -6,9 +6,16 @@ export default function useInput(
 ) {
     let [ data, setData ] = useState(initialSate);
     const [ error, setError ] = useState('');
+
+    const formData = new FormData();
+    
+    for (let key in data) {
+        formData.append(key, data[key]); 
+    }
+    
     const handleUploadFiles = (files: any) =>  {
       const uploaded = [...files];
-  
+     
       setData((prevState) => ({...prevState, 'nome_file': uploaded}));
     }
 
@@ -25,9 +32,14 @@ export default function useInput(
             setError('');
             setData((prevState) => ({...prevState, [name]: val}));
         } else if (name === 'nome_file') {
-            const chosenFiles = Array.prototype.slice.call(e.target.files);
+            let files = e.target.files
+           
+            if (files.length > 1) {
+                handleUploadFiles(files);
+            } else {
+                setData((prevState) => ({...prevState, 'nome_file': files[0]}));
+            }
             
-            handleUploadFiles(chosenFiles);
         } else {
             setError('');
             setData((prevState) => ({...prevState, [name]: value }));
@@ -35,6 +47,7 @@ export default function useInput(
     };
     return {
         data,
+        formData,
         error,
         setError,
         handleData

@@ -91,9 +91,9 @@ class CartolineController extends Controller
         foreach ($esiti_obj as $value) {
             $lenghtValueArr = array_search($value, $esiti_obj);
             $folderName = '';
-
-            if ($value == $request->esito_notifica && $request->hasFile('nome_file')) {
-
+            // dump($value === strtolower($request->esito_notifica), 'testing the cartoline create');
+            if ($value == strtolower($request->esito_notifica) && $request->nome_file) {
+                
                 if ($lenghtValueArr <= 6) {
                     $folderName = 'OK';
                 } elseif ($lenghtValueArr == 14) {
@@ -101,7 +101,7 @@ class CartolineController extends Controller
                 } elseif ($lenghtValueArr > 6 || $lenghtValueArr < 14) {
                     $folderName = 'KO';
                 }
-
+                
                 $file = $request->nome_file;
                 $fileName = $file->getClientOriginalName();
                 $date = date('Ymd');
@@ -109,14 +109,14 @@ class CartolineController extends Controller
                 $path_file = "upload/".$date.'/'.$folderName.'/'.$fileName;  
             }  
         }
-
+        
         if ($id) {
             
             if(!$id){
                 return response()->json([
-                'success' => false,
-                'message' => $this->messageUnSuccess,
-            ], 404);
+                    'success' => false,
+                    'message' => $this->messageUnSuccess,
+                ], 404);
             } else {
                 $formatData = [
                     "data_notifica" => $request->data_notifica,

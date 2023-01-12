@@ -34,7 +34,8 @@ export let defaultCartolineData = {
     data_notifica: '',
     esito_notifica: '',
     chiave_pratica: '',
-    fase: ''
+    fase: '',
+    nome_file: null
 };
 
 export let defaultFasiData = {

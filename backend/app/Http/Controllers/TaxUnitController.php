@@ -191,10 +191,7 @@ class TaxUnitController extends Controller
                     'success' => false,
                     'message' => 'There is a problem with backend!',
                 ], 500);     
-            }
-            
-          
-                     
+            }    
                  }
              }
              return redirect("/detail_ricorso/" . $id)->with("message", 'La fase è stata aggiunta');

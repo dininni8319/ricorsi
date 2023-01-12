@@ -20,17 +20,8 @@ const Form: React.FC<FormProps> = ({
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('');
     
-    const formData = new FormData();
-    
     if (id && subMitBtn === 'Aggiorna') {
-       formData.append("_method", 'PATCH')
-    }
-
-    console.log(id, 'testing the form');
-    
-
-    for (let key in data) {
-        formData.append(key, data[key]); 
+       data.append("_method", 'PATCH')
     }
     
     let verb = method?.toLowerCase() || 'post';
@@ -43,7 +34,7 @@ const Form: React.FC<FormProps> = ({
           headers: {'Content-Type': 'multipart/form-data'},
         }
         
-        axios[verb as Methods](`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, formData, config)
+        axios[verb as Methods](`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, data, config)
             .then((data: any) => {
                                
                 if (data?.data.success) {
