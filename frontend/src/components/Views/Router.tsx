@@ -27,6 +27,8 @@ import {
     EnteDetail,
     DettaglioEnte,
     DettaglioEnteDetail,
+    UpdateCartolina,
+
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -85,16 +87,6 @@ const Router = () => {
             />
             <Route
                 path="/work_flow/"
-                element={
-                    <Suspense fallback={<Loader3 />}>
-                        <ProtectedRoute>
-                            <Cartoline />
-                        </ProtectedRoute>
-                    </Suspense>
-                }
-            />
-            <Route
-                path="/work_flow/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -245,7 +237,16 @@ const Router = () => {
                     </Suspense>
                 }
             />
-
+             <Route
+                path="/update_cartolina/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <UpdateCartolina />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
             <Route
                 path="/update_riscossione/:slug"
                 element={

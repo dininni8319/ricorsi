@@ -71,6 +71,7 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get("/detail_cartoline/{id}" , [CartolineController::class, "detailCartoline"])->name("detail.cartoline");
     Route::get("/cartolina/search={query}", [CartolineController::class, "searchCartolina"])->name("search.cartoline");
     Route::post("/create_cartolina/{id?}", [CartolineController::class, "createCartolina"])->name( "create.cartolina")->withoutMiddleware('throttle:api');
+    Route::patch("/update_cartolina/{id?}", [CartolineController::class, "upDateCartolina"])->name( "update.cartolina")->withoutMiddleware('throttle:api');
     Route::delete("/cartolina/delete/{id}", [CartolineController::class,"cartolinaDelete",])->name("delete.cartolina");
     Route::post('/import_cartolina', [CartolineController::class, "importCsv"])->name("import.cartolina");
     Route::get('/export_cartolina', [CartolineController::class, "exportExcel"])->name("export.cartolina");

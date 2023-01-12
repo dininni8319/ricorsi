@@ -23,8 +23,6 @@ const CartolineDetail = () => {
     );
 
     let { data: cartolina }: any = payload;
-
-    console.log(cartolina, 'test');
     
     const handleDelete = (e: any) => {
         e.preventDefault();
@@ -108,7 +106,7 @@ const CartolineDetail = () => {
             <section className="links-detail-page mt-5">
                 {cartolina && (
                     <div className="md:flex md:justify-between md:items-end py-2">
-                        <Link to={`/work_flow/${slug}`}>
+                        <Link to={`/update_cartolina/${slug}`}>
                             Aggiorna la Cartolina
                         </Link>
                         <>

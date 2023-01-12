@@ -40,7 +40,7 @@ const DetailsCard = ({ cartolina }: any) => {
             </ul>
 
             <div className="flex justify-between py-1">
-                <Link to={`/work_flow/${cartolina.id}`}>
+                <Link to={`/update_cartolina/${cartolina.id}`}>
                     Aggiorna cartolina
                 </Link>
                 <Link to={`/detail_cartoline/${cartolina.id}`}>

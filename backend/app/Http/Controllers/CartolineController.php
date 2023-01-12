@@ -109,7 +109,6 @@ class CartolineController extends Controller
                 $path_file = "upload/".$date.'/'.$folderName.'/'.$fileName;  
             }  
         }
-        
 
         if ($id) {
             
@@ -158,6 +157,34 @@ class CartolineController extends Controller
                 'id' => $cartolina->id,
             ], 200);
         }   
+    }
+
+    public function upDateCartolina(Request $request, $id)
+    {
+        $formData = $this->getFormData($request);
+        
+        if($formData && $id){
+            foreach ($formData as $key => $value) {
+                if (!$value) {
+                    unset($formData[$key]);
+                }  
+            }
+            $cartolina = Cartoline::find(intval($id));
+            $cartolina->update($formData);
+            
+                return response()->json([
+                    'success' => true,
+                    'message' => 'La cartolina è stata aggiornata!',
+                    'id' => $id,
+                    // 'data' => $data,
+                ], 200);
+            
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => $this->messageUnSuccess,
+            ], 404);
+        }
     }
 
     public function searchCartolina($query)

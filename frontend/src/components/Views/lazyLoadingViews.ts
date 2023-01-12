@@ -33,6 +33,7 @@ export const EnteForm = lazy(
 export const Login = lazy(() => import('./Login'));
 export const Register = lazy(() => import('./Register'));
 export const UpdateRicorso = lazy(() => import('./UpdateForms/UpdateRicorso'));
+export const UpdateCartolina = lazy(() => import('./UpdateForms/UpdateCartoline'));
 export const UpdateRiscossione = lazy(
     () => import('./UpdateForms/UpdateRiscossione')
 );

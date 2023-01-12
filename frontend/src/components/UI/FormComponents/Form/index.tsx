@@ -21,11 +21,13 @@ const Form: React.FC<FormProps> = ({
     const [message, setMessage] = useState('');
     
     const formData = new FormData();
-    console.log(id);
     
-    if (id) {
+    if (id && subMitBtn === 'Aggiorna') {
        formData.append("_method", 'PATCH')
     }
+
+    console.log(id, 'testing the form');
+    
 
     for (let key in data) {
         formData.append(key, data[key]); 
