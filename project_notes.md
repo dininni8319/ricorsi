@@ -70,7 +70,6 @@ Get all the fase by group
 #$dateOfDeposit = Fasi::all()->groupBy('data_deposito_sentenza'); 
 
 Indirizzo ip progetto ricorso
-#http://172.16.6.43/login
 
 #Commando per installare la libreria per importare/exportare file csv/excel
 composer require psr/simple-cache:^1.0 maatwebsite/excel
@@ -81,3 +80,7 @@ php artisan make:import CartolineImport --model=Cartoline
 Get a week before date in seconds, get a week in seconds, and the current date;
 #dd(strtotime('-1 week') , (60 * 60 * 24 * 7), strtotime(Carbon::now()));
 
+#Cron jobs
+* * * * * cd /var/www/taskreminder && php artisan schedule:run >> /dev/null 2>&1
+00 22 * * * cd /var/www/taskreminder && php artisan clean:pending-files
+00 23 * * * cd /var/www/taskreminder && php artisan cache:clear && php artisan config:cache && php artisan optimize:clear
