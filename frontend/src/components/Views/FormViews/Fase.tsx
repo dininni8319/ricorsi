@@ -25,7 +25,7 @@ const Fase = () => {
     );
 
     let val = selectStatoFase.values.filter(
-        (val) => val.value >= payload?.lastFase?.fase
+        (val) => val.value > payload?.lastFase?.fase
     );
     // we are deep coping the object
     let newSelectStateFase = JSON.parse(JSON.stringify(selectStatoFase));

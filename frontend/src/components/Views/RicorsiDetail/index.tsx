@@ -15,7 +15,6 @@ import {
     RemainderForm,
     ButtonDelete
 } from '../../UI/index';
-import { faseCurrent, funFormatDate } from '../../Utilities/index';
 import Details from './details';
 import CardDetails from './cardDetails';
 
@@ -54,7 +53,7 @@ const RicorsiDetail = () => {
         }
     );
 
-    let { id: currentId }: any = currentFase;
+    let { id: currentId, lastFase  }: any = currentFase;
 
     const [{ status, response }, makeRequest] = useApiRequest(
         `${baseURL}/api/cienneffe/ricorso/delete/${slug}`,
@@ -63,8 +62,8 @@ const RicorsiDetail = () => {
         }
     );
 
-    let { data: ricorso }: any = payload;
-
+    let { data: ricorso}: any = payload;
+    
     const handleDelete = (e: any, id?: number) => {
         e.preventDefault();
         makeRequest();
@@ -104,12 +103,12 @@ const RicorsiDetail = () => {
                                 {/* //you can use a fragment or a custom wrapper */}
                                 {ricorso && (
                                     <div className="flex justify-around items-end py-2">
-                                        <Link
+                                       {lastFase?.fase !== 4 && <Link
                                             to={`/form_fase/${ricorso?.id}`}
                                             className="primaryBtn"
                                         >
                                             Avvia una Fase
-                                        </Link>
+                                        </Link>}
                                         <Link
                                             to={`/update_ricorso/${ricorso?.id}`}
                                             className="mx-1"

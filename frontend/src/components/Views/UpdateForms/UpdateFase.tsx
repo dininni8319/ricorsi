@@ -23,7 +23,7 @@ const UpdateFase = () => {
     let { payload }: any = useFetch(`${backend}/api/cienneffe/last_fase/${slug}`);
     // we are deep coping the object
     let val = selectStatoFase.values.filter(
-        (val) => val.value >= payload?.lastFase?.fase
+        (val) => val.value > payload?.lastFase?.fase
         );
     let newSelectStateFase = JSON.parse(JSON.stringify(selectStatoFase));
     newSelectStateFase.values = [...val];

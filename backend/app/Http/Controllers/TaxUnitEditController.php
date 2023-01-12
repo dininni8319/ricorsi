@@ -94,22 +94,25 @@ class TaxUnitEditController extends Controller
     public function updateFase(Request $request, $id)
     {
         $formData = $this->getFormFaseData($request);
-        
+        $fase_req = intval($request->fase);
         if($formData && $id){
             foreach ($formData as $key => $value) {
                 if (!$value) {
                     unset($formData[$key]);
                 }  
             }
-            $fase = Fasi::find(intval($id));
+
+            //fase corrente
+            $fase = Fasi::where("ricorsi_id", intval($id))
+            ->where("fase", intval($fase_req))->get()[0];
             $fase->update($formData);
-            
-                return response()->json([
-                    'success' => true,
-                    'message' => 'La fase è stata aggiornata!',
-                    'id' => $id,
-                    // 'data' => $data,
-                ], 200);
+            // dd($fase->id);
+            return response()->json([
+                'success' => true,
+                'message' => 'La fase è stata aggiornata!',
+                'id' => $fase->id,
+                // 'data' => $fase,
+            ], 200);
             
         } else {
             return response()->json([

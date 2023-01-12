@@ -190,6 +190,7 @@ export const selectEsitoDefinitivo = {
 export const selectStatoFase = {
     title: 'Stato Fase',
     name: 'fase',
+    required: true,
     values: [
         {
             value: 1

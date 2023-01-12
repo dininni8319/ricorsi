@@ -27,12 +27,12 @@ const RemainderList = ({ tasks, setTasks }: { tasks: any; setTasks: any }) => {
 
     return (
         <div className="md:flex md:flex-wrap w-10/12">
-            {tasks?.map((el: any) => {
+            {tasks?.map((el: any, id: number) => {
                 return (
                     <RemainderListStyle>
                         <ul
                             className="bg-white shadow-lg p-4 m-2 text-sm"
-                            key={el.id}
+                            key={id}
                         >
                             <li>
                                 <span>Reminder at:</span>
