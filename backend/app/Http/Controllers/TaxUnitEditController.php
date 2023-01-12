@@ -102,7 +102,6 @@ class TaxUnitEditController extends Controller
                 }  
             }
 
-            
             //fase corrente
             $fase = Fasi::where("ricorsi_id", intval($id))
             ->where("fase", intval($fase_req))->get()[0];
