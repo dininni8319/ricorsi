@@ -20,7 +20,7 @@ const Login = () => {
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        fetch(`${backend}:8000/api/cienneffe/login`, {
+        fetch(`${backend}/api/cienneffe/login`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(data)
