@@ -84,3 +84,7 @@ Get a week before date in seconds, get a week in seconds, and the current date;
 * * * * * cd /var/www/taskreminder && php artisan schedule:run >> /dev/null 2>&1
 00 22 * * * cd /var/www/taskreminder && php artisan clean:pending-files
 00 23 * * * cd /var/www/taskreminder && php artisan cache:clear && php artisan config:cache && php artisan optimize:clear
+
+#before production run 
+#backend --> php artisan optimize  "or" php artisan optimize:clear
+#frontend ---> npm run build
