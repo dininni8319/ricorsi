@@ -39,7 +39,7 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'message' => $resposeMessage
-        ],200);  //success
+        ],201);  //success
     }
     
     public function login(Request $request, ResetPasswordAction $action) {

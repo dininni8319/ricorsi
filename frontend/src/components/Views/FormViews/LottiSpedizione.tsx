@@ -18,7 +18,7 @@ const LottoSpedizione = () => {
     const [currentEntities, setCurrentEntities] = useState<any>([]);
     const { api_urls: { backend } } = useContext(ConfigContext);
     const { ente_id } = data;
-    
+
     const selectedEntity = currentEntities?.filter((entity: EnteType) => entity.id === Number(ente_id))[0];
     
     const handleCurrentEntities = useCallback(({ enti }: { enti: EnteType[] }) => {

@@ -4,7 +4,7 @@ import logo from '../../../assets/icons/logo_inv2.png';
 import { faEnvelope, faLink } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import FontAwesomeComponent from './FontAwesomeComponent';
-import { useState, memo } from 'react';
+import { memo } from 'react';
 
 const Footer = () => {
     return (

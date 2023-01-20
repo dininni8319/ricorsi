@@ -9,6 +9,7 @@ import CardDetail from './CardDetail';
 import { perPage } from '../../Utilities/index';
 
 const DoneImg = require('../../../assets/icons/icon-done.png');
+
 const EntePage = () => {
     const [enti, setEnti] = useState<EnteType[]>([]);    
     

@@ -2,11 +2,10 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { ConfigProvider } from '../../../Contexts/Config';
 import Router from '../Router';
-import { useContext } from 'react';
-import { AuthProvider, AuthContext } from '../../../Contexts/Auth';
+import { AuthProvider } from '../../../Contexts/Auth';
 
 const App = () => {
-    const { user } = useContext(AuthContext);
+
 
     return (
         <ConfigProvider>
