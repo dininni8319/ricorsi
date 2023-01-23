@@ -17,10 +17,10 @@ const Login = () => {
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
     const { data, error, setError, handleData } = useInput(defaultLoginData);
-    // const [ loading, setLoading ] = useState(false)
+    const [ loading, setLoading ] = useState(false)
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // setLoading(true);
+        setLoading(true);
 
         fetch(`${backend}/api/cienneffe/login`, {
             method: 'POST',
@@ -29,14 +29,14 @@ const Login = () => {
         })
             .then((resp) => resp.json())
             .then((data) => {
-                if (data.success) {
+                if (data.token) {
                     login(
                         data.data.first_name,
                         data.data.last_name,
                         data.token,
                         data.data.id
                     );
-                    // setLoading(false);
+                    setLoading(false);
                     navigate('/');
                 } else {
                    setError(data.message)
@@ -77,9 +77,9 @@ const Login = () => {
                       type="submit" 
                       disabled={!data.email 
                         || !data.password 
-                        // || loading
+                        || loading
                       }
-                      >{/* !loading ? */ 'Entra' /* : <Spinner /> */} </ButtonStyle>
+                      >{!loading ? 'Entra' : <Spinner /> } </ButtonStyle>
                     <Link to="/send_email" className="pt-3 text-sm">
                         Hai dimenticato la password?
                     </Link>
