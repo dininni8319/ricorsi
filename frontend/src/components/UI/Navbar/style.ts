@@ -9,7 +9,7 @@ export const NavbarStyleComponent = styled.nav`
     z-index: 5;
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     min-height: 6vh;
     background-color: ${(props) => props.theme.transparent};
     z-index: 100;

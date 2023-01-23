@@ -22,3 +22,4 @@ export { default as ResetLink } from "./ResetLink";
 export { default as DocumentComponent } from "./DocumentComponent";
 export { default as NotificheTotali } from "./NotificheTotali";
 export { default as ExportCSV } from './ExportCSV';
+export { default as Spinner } from './Spinner';

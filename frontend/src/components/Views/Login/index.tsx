@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useInput from '../../../Hooks/useInput';
 import { UserType } from '../../interfaces/interfaces';
 import { useContext } from 'react';
@@ -6,7 +7,7 @@ import { ConfigContext } from '../../../Contexts/Config';
 import { AuthContext } from '../../../Contexts/Auth';
 import { LoginStyled, InputSection, ButtonStyle } from './style';
 import { Link } from 'react-router-dom';
-import { SideHeader } from '../../UI/index';
+import { SideHeader, Spinner } from '../../UI/index';
 import { defaultLoginData } from '../../UI/FormComponents/defaultData';
 
 const Login = () => {
@@ -16,9 +17,10 @@ const Login = () => {
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
     const { data, error, setError, handleData } = useInput(defaultLoginData);
-    
+    // const [ loading, setLoading ] = useState(false)
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // setLoading(true);
 
         fetch(`${backend}/api/cienneffe/login`, {
             method: 'POST',
@@ -34,6 +36,7 @@ const Login = () => {
                         data.token,
                         data.data.id
                     );
+                    // setLoading(false);
                     navigate('/');
                 } else {
                    setError(data.message)
@@ -46,7 +49,7 @@ const Login = () => {
             <SideHeader />
             <section className="row-form mt-12">
                 <InputSection className="mb-5 flex flex-col">
-                    <h1>Entra</h1>
+                    <h1 className='text-start'>Entra</h1>
                     <label htmlFor="userEmailLogin" className="mb-2">
                         Inserisci un Email
                     </label>
@@ -54,6 +57,7 @@ const Login = () => {
                         type="email"
                         id="userEmailLogin"
                         name="email"
+                        placeholder={'Email'}
                         onChange={handleData}
                     />
                 </InputSection>
@@ -65,13 +69,17 @@ const Login = () => {
                         type="password"
                         id="passwordLogin"
                         name="password"
+                        placeholder={'Password'}
                         onChange={handleData}
                     />
                       {error && <span className='text-red-600 py-1 text-sm'>{error}</span>}
                     <ButtonStyle 
                       type="submit" 
-                      disabled={!data.email || !data.password}
-                      >Entra</ButtonStyle>
+                      disabled={!data.email 
+                        || !data.password 
+                        // || loading
+                      }
+                      >{/* !loading ? */ 'Entra' /* : <Spinner /> */} </ButtonStyle>
                     <Link to="/send_email" className="pt-3 text-sm">
                         Hai dimenticato la password?
                     </Link>

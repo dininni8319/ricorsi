@@ -152,7 +152,7 @@ class CartolineController extends Controller
             
             return response()->json([
                 'success' => true,
-                'message' => 'La cartolina è stata aggiornata!',
+                'message' => 'La cartolina è stata creata!',
                 'cartolina' => $cartolina,
                 'id' => $cartolina->id,
             ], 200);

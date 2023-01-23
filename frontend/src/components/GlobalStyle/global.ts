@@ -40,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
     input, select, button {
         outline: none;
         cursor: pointer;
+        padding-left: 5px;
     }
 
 

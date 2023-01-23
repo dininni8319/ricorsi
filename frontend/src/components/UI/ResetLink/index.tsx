@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { Link } from 'react-router-dom';
 import { ConfigContext } from "../../../Contexts/Config";
 import {LoginStyled, ButtonStyle } from '../../Views/Login/style';
 import { SideHeader } from '../../UI/index';
@@ -46,7 +47,7 @@ const ResetLink = () => {
         <SideHeader />
         <section className="row-form p-5">
           <div className='w-6/12'>
-            <h2 className='h2 mb-3 fw-bold text-2xl'>Invia il Link</h2>
+            <h1 className='h2 mb-3 text-start'>Invia il Link</h1>
             <p className='mb-3 text-sm'>Inserisci la tua email e ti manderemo un link per il reset!</p>
             <div className="mb-3 col-md-8">
               <input
@@ -62,12 +63,15 @@ const ResetLink = () => {
             <div className="d-flex justify-content-center">
               <ButtonStyle
                 type="submit"
-                className="btn-grad px-5 fw-bold"
+                className="btn-grad px-5 fw-bold mb-3"
                 disabled={!formData.email}
               >
                 Invia il link
               </ButtonStyle>
             </div>
+            <Link to='/login' className='text-base'>
+                Vai al login!
+            </Link>
           </div>
         </section>
     </LoginStyled>
