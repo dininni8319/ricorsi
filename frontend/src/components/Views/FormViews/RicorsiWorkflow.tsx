@@ -21,7 +21,7 @@ const Workflow = () => {
     } = useContext(ConfigContext);
 
     let { payload }: any = useFetch(
-        `${backend}/api/cienneffe/detail_ricorso/${slug}`
+        `/api/detail_ricorso/${slug}`
     );
     const { data, handleData } = useInput(defaultRicorsiData, slug);
 
@@ -69,7 +69,6 @@ const Workflow = () => {
                     </div>
                 </>
             </Form>
-            {/* {errors && <span></span>} */}
         </div>
     );
 };

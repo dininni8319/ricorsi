@@ -32,7 +32,7 @@ use App\Http\Controllers\RiconciliazioneController;
     return $request->user();
 }); */
 
-Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($router){
+Route::group(['middleware' => 'CORS'], function ($router){
     //Public Routes
     Route::post('/register', [AuthController::class, 'register'])->name('register.user');
     Route::post('/login', [AuthController::class, 'login'])->name('login.user');

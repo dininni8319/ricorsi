@@ -48,7 +48,6 @@ const DettaglioEnte = () => {
                     </div>
                 </>
             </Form>
-            {/* {errors && <span></span>} */}
         </div>
     );
 };

@@ -12,7 +12,7 @@ const RemainderList = ({ tasks, setTasks }: { tasks: any; setTasks: any }) => {
     const handleDelete = (event: any, id: number) => {
         event.preventDefault();
 
-        fetch(`${baseURL}/api/cienneffe/task/delete/${id}}`, {
+        fetch(`/api/task/delete/${id}}`, {
             method: 'DELETE'
         })
             .then((response) => response.json())

@@ -16,7 +16,7 @@ const NotificheTotali = () => {
   } = useHttp(handleNotifiche);
 
   useEffect(() => {
-    fetchNotifiche({ url:`${backend}/api/cienneffe/notifiche_totali`});
+    fetchNotifiche({ url:`/api/notifiche_totali`});
   }, [fetchNotifiche]);
 
     return (

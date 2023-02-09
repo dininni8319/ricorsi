@@ -21,7 +21,7 @@ const LottiSpedizioneDetail = () => {
         api_urls: { backend }
     } = useContext(ConfigContext);
     let { payload, setData } = useFetch(
-        `${backend}/api/cienneffe/detail_riscossione/${slug}`,
+        `/api/detail_riscossione/${slug}`,
         { verb: 'get' }
     );
 
@@ -35,7 +35,7 @@ const LottiSpedizioneDetail = () => {
 
     useEffect(() => {
         fetchCurrentRiconcil({
-            url: `${backend}/api/cienneffe/riconciliazione/find/${slug}`
+            url: `/api/riconciliazione/find/${slug}`
         });
     }, [fetchCurrentRiconcil]);
 
@@ -44,7 +44,7 @@ const LottiSpedizioneDetail = () => {
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteLotto({
-            url: `${backend}/api/cienneffe/riconciliazione/delete/${slug}`,
+            url: `/api/riconciliazione/delete/${slug}`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });

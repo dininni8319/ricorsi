@@ -31,7 +31,7 @@ const LottoSpedizione = () => {
 
     useEffect(() => {
         fetchCurrentEntities({
-            url: `${backend}/api/cienneffe/ente/`
+            url: `/api/ente/`
         });
     }, [fetchCurrentEntities]);
 
@@ -85,8 +85,7 @@ const LottoSpedizione = () => {
                                 required
                             >
                                 { 
-                                    // { selectedEntity[0]? }
-                                      selectedEntity?.servizi?.map((servizio: ServizioType) => {
+                                    selectedEntity?.servizi?.map((servizio: ServizioType) => {
                                         return (
                                            <option value={servizio.id}>{servizio.tipologia_servizi}</option>           
                                         )

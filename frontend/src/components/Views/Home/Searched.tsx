@@ -34,7 +34,7 @@ const Searched = () => {
     useEffect(() => {
         if (searchedTerm.length > 3) {
             fetchSearched({
-                url: `${baseURL}/api/cienneffe/ricorsi/search=${searchedTerm}`
+                url: `/api/ricorsi/search=${searchedTerm}`
             });
         }
     }, [fetchSearched]);

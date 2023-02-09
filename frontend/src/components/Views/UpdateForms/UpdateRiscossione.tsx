@@ -22,7 +22,7 @@ const UpdateLottiSpedizione = () => {
     
     let {
         payload: { data: riscossione }
-    }: any = useFetch(`${backend}/api/cienneffe/detail_riscossione/${slug}`);
+    }: any = useFetch(`/api/detail_riscossione/${slug}`);
 
     return (
         <div className="height-custom">

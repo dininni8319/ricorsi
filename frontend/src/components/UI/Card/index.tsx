@@ -32,7 +32,7 @@ const Card = ({
         let filteredData = current?.filter((el: any) => el.id !== id);
         setCurrent(() => [...filteredData]);
         deleteCard({
-            url: `${baseURL}/api/cienneffe/${path}/${taxunit.id}`,
+            url: `/api/${path}/${taxunit.id}`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });

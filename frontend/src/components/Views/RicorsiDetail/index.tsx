@@ -26,7 +26,7 @@ const RicorsiDetail = () => {
     >([]);
 
     let { payload } = useFetch(
-        `${baseURL}/api/cienneffe/detail_ricorso/${slug}`,
+        `/api/detail_ricorso/${slug}`,
         { verb: 'get' }
     );
 
@@ -42,12 +42,12 @@ const RicorsiDetail = () => {
 
     useEffect(() => {
         fetchCurrentFasis({
-            url: `${baseURL}/api/cienneffe/current_fasis/${slug}`
+            url: `/api/current_fasis/${slug}`
         });
     }, [fetchCurrentFasis]);
 
     let { payload: currentFase } = useFetch(
-        `${baseURL}/api/cienneffe/last_fase/${currentFasis[0]?.ricorsi_id}`,
+        `/api/last_fase/${currentFasis[0]?.ricorsi_id}`,
         {
             verb: 'get'
         }
@@ -56,7 +56,7 @@ const RicorsiDetail = () => {
     let { id: currentId, lastFase  }: any = currentFase;
 
     const [{ status, response }, makeRequest] = useApiRequest(
-        `${baseURL}/api/cienneffe/ricorso/delete/${slug}`,
+        `/api/ricorso/delete/${slug}`,
         {
             verb: 'delete'
         }
@@ -100,7 +100,6 @@ const RicorsiDetail = () => {
                                 })}
                             </WrapperStyleComponent>
                             <section className="links-detail-page">
-                                {/* //you can use a fragment or a custom wrapper */}
                                 {ricorso && (
                                     <div className="flex justify-around items-end py-2">
                                        {lastFase?.fase !== 4 && <Link

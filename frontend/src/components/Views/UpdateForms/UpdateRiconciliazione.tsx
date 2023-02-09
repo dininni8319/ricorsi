@@ -19,7 +19,7 @@ const UpdateRiconciliazione = () => {
 
     let {
         payload: { data: riconciliazione }
-    }: any = useFetch(`${backend}/api/cienneffe/detail_riconciliazione/${slug}`);
+    }: any = useFetch(`/api/detail_riconciliazione/${slug}`);
     
     return (
         <div className="height-custom">

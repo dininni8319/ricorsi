@@ -12,7 +12,6 @@ const TextArea: React.FC<PropsTextArea> = ({
 
     return (
         <InputSection>
-            {/* <div className="input-wrapper"> */}
             <label htmlFor={name} className="font-bold input-label">
                 {label}
             </label>
@@ -23,7 +22,6 @@ const TextArea: React.FC<PropsTextArea> = ({
                 defaultValue={value}
             ></textarea>
             {/* // value={ricorso[newName as keyof object]} */}
-            {/* </div> */}
         </InputSection>
     );
 };

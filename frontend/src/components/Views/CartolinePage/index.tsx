@@ -52,12 +52,12 @@ const CartolinePage = () => {
     } = useSearch(setSearchedCartoline);
 
     useEffect(() => {
-        fetchCartoline({ url: `${backend}/api/cienneffe/cartoline` });
+        fetchCartoline({ url: `/api/cartoline` });
     }, [fetchCartoline]);
 
     useEffect(() => {
         if (searchedTerm.length > 3) {
-            fetch(`${backend}/api/cienneffe/cartolina/search=${searchedTerm}`)
+            fetch(`/api/cartolina/search=${searchedTerm}`)
                 .then((response) => response.json())
                 .then((data) => setSearchedCartoline(data?.cartoline))
                 .catch((error: unknown) => {

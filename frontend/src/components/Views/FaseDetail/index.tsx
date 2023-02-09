@@ -31,12 +31,12 @@ const FasiDetail = () => {
 
     useEffect(() => {
         fetchFaseDetail({
-            url: `${backend}/api/cienneffe/detail_fase/${slug}`
+            url: `/api/detail_fase/${slug}`
         });
     }, [fetchFaseDetail]);
 
     let { payload: currentFase } = useFetch(
-        `${backend}/api/cienneffe/last_fase/${faseDetail?.ricorsi_id}`,
+        `/api/last_fase/${faseDetail?.ricorsi_id}`,
         {
             verb: 'get'
         }
@@ -46,7 +46,7 @@ const FasiDetail = () => {
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteCard({
-            url: `${baseURL}/api/cienneffe/fase/delete/${slug}`,
+            url: `/api/fase/delete/${slug}`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });

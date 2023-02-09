@@ -21,7 +21,7 @@ export function AuthProvider(props) {
   };
 
   const logout = () => {
-    fetch(`${api_urls.backend}/api/logout`, {
+    fetch(`/api/logout`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${user.token}`,

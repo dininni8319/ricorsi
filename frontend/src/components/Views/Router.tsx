@@ -36,7 +36,7 @@ const Router = () => {
     return (
         <Routes>
             <Route
-                path="/ricorsi"
+                path=""
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -46,7 +46,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/ente"
+                path="/ente"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -56,7 +56,7 @@ const Router = () => {
                 }
             />
              <Route
-                path="/ricorsi/ricorsi"
+                path="/ricorsi"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -66,7 +66,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/ricorsi/:slug"
+                path="/ricorsi/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -76,7 +76,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/cartoline"
+                path="/cartoline"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -86,7 +86,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/work_flow/"
+                path="/work_flow/"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -96,7 +96,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/form_fase/:slug"
+                path="/form_fase/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -106,7 +106,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/ricorsi_detail/:slug"
+                path="/ricorsi_detail/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -116,7 +116,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/fase_detail/:slug"
+                path="/fase_detail/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -126,7 +126,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/detail_cartoline/:slug"
+                path="/detail_cartoline/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -136,7 +136,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/detail_ente/:slug"
+                path="/detail_ente/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -146,7 +146,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/detail_servizio/:slug"
+                path="/detail_servizio/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -157,7 +157,7 @@ const Router = () => {
             />
             
             <Route
-                path="/ricorsi/riscossione/"
+                path="/riscossione/"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -167,7 +167,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/form_riscossione/"
+                path="/form_riscossione/"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -177,7 +177,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/form_riscossione/:slug"
+                path="/form_riscossione/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -187,7 +187,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/form_ente/:slug"
+                path="/form_ente/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -198,7 +198,7 @@ const Router = () => {
             />
 
             <Route
-                path="/ricorsi/form_ente"
+                path="/form_ente"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -208,7 +208,7 @@ const Router = () => {
                 }
             />
              <Route
-                path="/ricorsi/form_dettaglio_ente/:slug"
+                path="/form_dettaglio_ente/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -218,7 +218,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/form_rendicondazione/:slug"
+                path="/form_rendicondazione/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -228,7 +228,7 @@ const Router = () => {
                 }
             />            
             <Route
-                path="/ricorsi/update_ricorso/:slug"
+                path="/update_ricorso/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -238,7 +238,7 @@ const Router = () => {
                 }
             />
              <Route
-                path="/ricorsi/update_fase/:slug"
+                path="/update_fase/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -248,7 +248,7 @@ const Router = () => {
                 }
             />
              <Route
-                path="/ricorsi/update_cartolina/:slug"
+                path="/update_cartolina/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -258,7 +258,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/update_riscossione/:slug"
+                path="/update_riscossione/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -269,7 +269,7 @@ const Router = () => {
             />
 
            <Route
-                path="/ricorsi/update_riconciliazione/:slug"
+                path="/update_riconciliazione/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -279,7 +279,7 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/detail_riscossione/:slug"
+                path="/detail_riscossione/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -289,7 +289,7 @@ const Router = () => {
                 }
             />
              <Route
-                path="/ricorsi/detail_riconciliazione/:slug"
+                path="/detail_riconciliazione/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <ProtectedRoute>
@@ -299,27 +299,27 @@ const Router = () => {
                 }
             />
             <Route
-                path="/ricorsi/login"
+                path="/login"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <Login />
                     </Suspense>
                 }
             />
-            <Route path="/ricorsi/reset/:token" element={
+            <Route path="/reset/:token" element={
                 <Suspense fallback={<Loader3 />}>
                    <ResetPassword />
                 </Suspense>
             } />
 
-            <Route path="/ricorsi/send_email" element={
+            <Route path="/send_email" element={
                 <Suspense fallback={<Loader3 />}>
                    <ResetLinkView />
                 </Suspense>
             } />
         
             <Route
-                path="/ricorsi/register"
+                path="/register"
                 element={
                     <Suspense fallback={<Loader3 />}>
                         <Register />

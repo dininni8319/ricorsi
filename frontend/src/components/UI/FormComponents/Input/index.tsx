@@ -21,7 +21,6 @@ const Input: React.FC<PropsInput> = (props) => {
     };
     return (
         <InputSection checkBox={type === 'checkbox' ? true : false}>
-            {/* <div className="input-wrapper"> */}
             <label htmlFor={name} className="font-bold input-label">
                 {label}
             </label>
@@ -36,7 +35,6 @@ const Input: React.FC<PropsInput> = (props) => {
                 focused={focused.toString()}
                 {...inputAttr}
             />
-            {/* </div> */}
             <span className="error-message">{errorMessage}</span>
         </InputSection>
     );

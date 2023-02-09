@@ -7,7 +7,7 @@ import { Frame } from '../UI';
 const ProtectedRoute = ({ children }: ChildrenProps) => {
     const { user }: any = useContext(AuthContext);
 
-    return user ? <Frame>{children}</Frame> : <Navigate to="/ricorsi/login" />;
+    return user ? <Frame>{children}</Frame> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;

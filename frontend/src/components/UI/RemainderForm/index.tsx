@@ -29,13 +29,13 @@ const RemainderForm = ({ slug }: { slug?: string }) => {
     } = useHttp(getRicorsoTasks);
 
     useEffect(() => {
-        fetchAllTasks({ url: `${baseURL}/api/cienneffe/tasks/${slug}` });
+        fetchAllTasks({ url: `/api/tasks/${slug}` });
     }, [fetchAllTasks, isOpen]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        fetch(`${baseURL}/api/cienneffe/taskrimender/${slug}}`, {
+        fetch(`/api/taskrimender/${slug}}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

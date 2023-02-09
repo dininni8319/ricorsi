@@ -25,7 +25,7 @@ const EnteDetail = () => {
     >([]);
     
     let { payload } = useFetch(
-        `${backend}/api/cienneffe/detail_ente/${slug}`,
+        `/api/detail_ente/${slug}`,
         { verb: 'get' }
     );
 
@@ -39,7 +39,7 @@ const EnteDetail = () => {
 
     useEffect(() => {
         fetchCurrentServices({
-            url: `${backend}/api/cienneffe/all/services/${slug}`
+            url: `/api/all/services/${slug}`
         });
     }, [fetchCurrentServices]);
 
@@ -47,7 +47,7 @@ const EnteDetail = () => {
         e.preventDefault();
         
         deleteCard({
-            url: `${backend}/api/cienneffe/delete/ente/${slug}`,
+            url: `/api/delete/ente/${slug}`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });

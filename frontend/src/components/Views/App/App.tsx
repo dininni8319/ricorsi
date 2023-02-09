@@ -5,8 +5,7 @@ import Router from '../Router';
 import { AuthProvider } from '../../../Contexts/Auth';
 
 const App = () => {
-
-
+    
     return (
         <ConfigProvider>
             <AuthProvider>

@@ -29,14 +29,14 @@ const DettaglioEnteDetail = () => {
 
     useEffect(() => {
         fetchServizioDetail({
-            url: `${backend}/api/cienneffe/detail_servizio/${slug}`
+            url: `/api/detail_servizio/${slug}`
         });
     }, [fetchServizioDetail]);
 
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteCard({
-            url: `${baseURL}/api/cienneffe/servizio/delete/${slug}`,
+            url: `/api/servizio/delete/${slug}`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });

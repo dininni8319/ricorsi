@@ -34,7 +34,7 @@ const Homepage = () => {
     } = useHttp(handleRicorsi);
 
     useEffect(() => {
-        fetchRicorsi({ url: `${baseURL}/api/cienneffe/ricorsi` });
+        fetchRicorsi({ url: `/api/ricorsi` });
     }, [fetchRicorsi]);
 
     return (

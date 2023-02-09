@@ -22,7 +22,7 @@ const Login = () => {
         e.preventDefault();
         setLoading(true);
 
-        fetch(`${backend}/api/cienneffe/login`, {
+        fetch(`/api/login`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(data)

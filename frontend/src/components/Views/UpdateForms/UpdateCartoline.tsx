@@ -15,7 +15,7 @@ const UpdateCartoline = () => {
     } = useContext(ConfigContext);
     let {
         payload: { data: cartolina }
-    }: any = useFetch(`${backend}/api/cienneffe/detail_cartoline/${slug}`);
+    }: any = useFetch(`/api/detail_cartoline/${slug}`);
     const { formData, handleData } = useInput(defaultCartolineData, slug);
     
     return (

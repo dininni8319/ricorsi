@@ -34,7 +34,7 @@ const Form: React.FC<FormProps> = ({
           headers: {'Content-Type': 'multipart/form-data'},
         }
         
-        axios[verb as Methods](`${baseURL}/api/cienneffe/${createPath}/${id ? id : ''}`, data, config)
+        axios[verb as Methods](`/api/${createPath}/${id ? id : ''}`, data, config)
             .then((data: any) => {
                                
                 if (data?.data.success) {
@@ -55,7 +55,6 @@ const Form: React.FC<FormProps> = ({
     return (
         <FormContainer onSubmit={handleSubmit}>
             <h1>{title}</h1>
-            {/* {errors && errorTag(errors?.message)} */}
             <section className="form-row">
                 {children}
                 <div className="flex justify-center items-center w-full">

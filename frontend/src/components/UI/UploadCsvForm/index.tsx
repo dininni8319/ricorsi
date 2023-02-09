@@ -17,7 +17,7 @@ const ImportCsv = () => {
         if (file) {
             formatData.append('csv_file', file);
             axios
-                .post(`${backend}/api/cienneffe/import_cartolina`, formatData)
+                .post(`/api/import_cartolina`, formatData)
                 .then((response) => response)
                 .then((data) => {
                     let message = data.data.message;

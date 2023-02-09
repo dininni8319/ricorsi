@@ -16,7 +16,7 @@ const ResetLink = () => {
   const handleSubmit = (event:any) => {
     event.preventDefault();
 
-    fetch(`${api_urls.backend}/api/cienneffe/forgot_password`, {
+    fetch(`/api/forgot_password`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",

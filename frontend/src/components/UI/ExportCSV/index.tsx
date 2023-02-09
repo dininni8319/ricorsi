@@ -11,7 +11,7 @@ const ExportCSV = () => {
           Esporta in formato CSV
         </h3>
         <div>
-          <a href={`${backend}/export_lotti`}>Esporta</a>
+          <a href={`/export_lotti`}>Esporta</a>
         </div>
     </ExportComponentStyle>
   )

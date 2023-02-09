@@ -19,7 +19,7 @@ const RiconciliazioneDetail = () => {
     } = useContext(ConfigContext);
     
     let { payload, setData } = useFetch(
-        `${backend}/api/cienneffe/detail_riconciliazione/${slug}`,
+        `/api/detail_riconciliazione/${slug}`,
         { verb: 'get' }
     );
 
@@ -28,7 +28,7 @@ const RiconciliazioneDetail = () => {
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteRiconciliazione({
-            url: `${backend}/api/cienneffe/riconciliazione/delete/${slug}/`,
+            url: `/api/riconciliazione/delete/${slug}/`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });

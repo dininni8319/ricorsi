@@ -36,7 +36,7 @@ const RiscossionePage = () => {
     };
     
     useEffect(() => {
-        fetch(`${baseURL}/api/cienneffe/riscossione`)
+        fetch(`/api/riscossione`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.data) {
@@ -50,7 +50,7 @@ const RiscossionePage = () => {
 
     useEffect(() => {
         if (searchedTerm.length > 3) {
-            fetch(`${baseURL}/api/cienneffe/riscossione/search=${searchedTerm}`)
+            fetch(`/api/riscossione/search=${searchedTerm}`)
                 .then((response) => response.json())
                 .then((data) => setSearchedRiscossione(data?.data))
                 .catch((error: unknown) => {

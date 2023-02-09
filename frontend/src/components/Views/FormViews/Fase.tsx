@@ -18,7 +18,7 @@ const Fase = () => {
     const { slug } = useParams();
     
     let { payload }: any = useFetch(
-        `${baseURL}/api/cienneffe/last_fase/${slug}`,
+        `/api/last_fase/${slug}`,
         {
             verb: 'get'
         }

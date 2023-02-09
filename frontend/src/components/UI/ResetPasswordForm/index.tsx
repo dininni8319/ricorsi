@@ -17,11 +17,10 @@ const PasswordResetForm = ({ token }: { token?: string}) => {
 
   const [ error, setError ] = useState('');
 
-  // Handler
   const handleSubmit = (e:any) => {
     e.preventDefault();
 
-    fetch(`${api_urls.backend}/api/cienneffe/reset`, {
+    fetch(`/api/reset`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",

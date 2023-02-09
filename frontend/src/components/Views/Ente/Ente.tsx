@@ -36,7 +36,7 @@ const EntePage = () => {
     } = useHttp(handleEnti);
 
     useEffect(() => {
-        fetchEnti({ url:`${baseURL}/api/cienneffe/ente` });
+        fetchEnti({ url:`/api/ente` });
     }, [fetchEnti]);
 
     return (

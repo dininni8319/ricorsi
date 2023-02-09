@@ -20,7 +20,7 @@ const UpdateRicorso = () => {
     } = useContext(ConfigContext);
     let {
         payload: { data: ricorso }
-    }: any = useFetch(`${backend}/api/cienneffe/detail_ricorso/${slug}`);
+    }: any = useFetch(`/api/detail_ricorso/${slug}`);
     const { formData, handleData } = useInput(defaultRicorsiData, slug);
     
     return (

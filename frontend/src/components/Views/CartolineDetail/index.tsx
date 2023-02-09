@@ -18,7 +18,7 @@ const CartolineDetail = () => {
     } = useContext(ConfigContext);
 
     let { payload } = useFetch(
-        `${backend}/api/cienneffe/detail_cartoline/${slug}`,
+        `/api/detail_cartoline/${slug}`,
         { verb: 'get' }
     );
 
@@ -27,7 +27,7 @@ const CartolineDetail = () => {
     const handleDelete = (e: any) => {
         e.preventDefault();
         deleteCartolina({
-            url: `${backend}/api/cienneffe/cartolina/delete/${slug}`,
+            url: `/api/cartolina/delete/${slug}`,
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });

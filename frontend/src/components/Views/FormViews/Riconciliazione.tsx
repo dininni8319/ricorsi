@@ -44,7 +44,6 @@ const RiconciliazioneForm = () => {
                     </div>
                 </>
             </Form>
-            {/* {errors && <span></span>} */}
         </div>
     );
 };

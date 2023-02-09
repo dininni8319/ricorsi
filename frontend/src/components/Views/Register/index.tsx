@@ -18,13 +18,12 @@ const Register = () => {
     const { user, login }: any = useContext(AuthContext);
 
     const { data, handleData } = useInput(defaultRegisterData);
-    // console.log(password.value, passwordConfirm.value);
 
     const SignUp = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (data.password === data.password_confirmation) {
-            fetch(`${backend}/api/cienneffe/register`, {
+            fetch(`/api/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -39,7 +38,7 @@ const Register = () => {
                     }
                 })
                 .then(() => {
-                    fetch(`${backend}/api/cienneffe/login`, {
+                    fetch(`/api/login`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
