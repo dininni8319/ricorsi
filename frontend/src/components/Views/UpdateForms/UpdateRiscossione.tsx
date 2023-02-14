@@ -51,6 +51,7 @@ const UpdateLottiSpedizione = () => {
                         <SelectInput
                             selectProps={selectEntrataTributo}
                             handleData={handleData}
+                            ricorso={riscossione}
                         />
                         <SelectInput
                             selectProps={selectTipologiaDocumenti}

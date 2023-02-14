@@ -13,7 +13,6 @@ const SelectInput = ({
     handleData: React.ChangeEventHandler<HTMLSelectElement>;
 }) => {
     let newName = selectProps?.name;
-    console.log();
 
     return (
         <Wrapper>
@@ -30,7 +29,7 @@ const SelectInput = ({
                 <option value="DEFAULT" disabled> 
                  ------
                 </option>
-                {selectProps?.values.map(({title, value }: any, index: number) => {
+                {selectProps?.values.map(({ title, value }: any, index: number) => {
                     
                     return (
                         <option
@@ -43,7 +42,7 @@ const SelectInput = ({
                         >
                             {selectProps?.name == 'fase'
                                 ? faseCurrent(value)
-                                : (title ? title:  value)}
+                                : (title ? title: value)}
                         </option>
                     );
                 })}

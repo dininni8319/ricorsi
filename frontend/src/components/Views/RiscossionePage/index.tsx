@@ -129,6 +129,7 @@ const RiscossionePage = () => {
                 <div className='md:flex w-full items-end justify-center'>
                     <NotificheTotali />
                     <ExportCSV />
+                    {/* <Chart /> */}
                 </div>
                 <div className='flex justify-center'>
                   {currentItems.length === 0 && <img src={DoneImg} alt="done image"  width='200px' height='200px'/>}
