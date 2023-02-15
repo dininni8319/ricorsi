@@ -61,6 +61,8 @@ export const DetailStyleComponent = styled.div`
     .links-detail-page {
         min-width: 30%;
         background-color: ${(props) => props.theme.colorWhite};
+        box-shadow: ${(props) => props.theme.boxShadow2};
+        border-radius: 5px;
         padding: 10px;
     }
 

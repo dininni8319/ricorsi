@@ -12,8 +12,11 @@ export const CardStyleComponent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: end;
-    box-shadow: ${(props) => props.theme.boxShadow};
-
+    box-shadow: ${(props) => props.theme.boxShadow2};
+    
+    .ul-style-custom {
+        padding: 5px;
+    }
     .ul-style-custom > li {
         display: flex;
         justify-content: space-between;

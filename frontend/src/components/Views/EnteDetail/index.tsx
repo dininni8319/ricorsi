@@ -51,7 +51,7 @@ const EnteDetail = () => {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });
-        navigate('/');
+        navigate('/ente');
     };
     const { sendRequest: deleteCard } = useHttp(handleDelete);
 
@@ -86,7 +86,6 @@ const EnteDetail = () => {
                                 })}
                             </WrapperStyleComponent>
                             <section className="links-detail-page">
-                                {/* //you can use a fragment or a custom wrapper */}
                                 {ente && (
                                     <div className="flex justify-around items-end py-2">
                                         <Link
@@ -96,7 +95,7 @@ const EnteDetail = () => {
                                             Crea un nuovo servizio
                                         </Link>
                                         <Link
-                                            to={`/form_ente/${ente?.id}`}
+                                            to={`/update_ente/${ente?.id}`}
                                             className="mx-1"
                                         >
                                             Aggiorna l'ente
@@ -107,7 +106,6 @@ const EnteDetail = () => {
                                     </div>
                                 )}
                             </section>
-                           
                         </section>
                     </>
                 </DetailPage>

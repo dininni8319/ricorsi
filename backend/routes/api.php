@@ -98,6 +98,7 @@ Route::group(['prefix' => 'cienneffe', 'middleware' => 'CORS'], function ($route
     Route::get('/ente/{id?}', [EnteController::class, 'index'])->name("ente");
     Route::get("/detail_ente/{id}", [EnteController::class,"detailEnte",])->name("detail.ente");
     Route::post("/ente_create/{id?}", [EnteController::class,"enteCreate",])->name("ente.create");
+    Route::patch("/update_ente/{id}", [EnteController::class, "updateEnte"]);
     Route::delete("/delete/ente/{id}", [EnteController::class,"deleteEnte",])->name("delete.ente");
 
     //Servizi 

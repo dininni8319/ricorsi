@@ -19,8 +19,8 @@ const DettaglioEnteDetail = () => {
     } = useContext(ConfigContext);
 
     const handleServizioDetail = useCallback(
-        ({ servizio }: { servizio: ServizioType }) => {
-            setServizioDetail(servizio);
+        ({ data }: { data: ServizioType }) => {
+            setServizioDetail(data);
         },
         []
     );
@@ -88,10 +88,12 @@ const DettaglioEnteDetail = () => {
             </>
               
             <section className="links-detail-page mt-5">
-                
                 <div className="md:flex md:justify-between md:items-end py-2">
                     <Link to={`/detail_ente/${servizioDetail?.ente_id}`}>
                         Dettaglio Ente
+                    </Link>
+                    <Link to={`/update_servizio/${servizioDetail?.id}`}>
+                        Aggiorna questo servizio
                     </Link>
                     
                     <button

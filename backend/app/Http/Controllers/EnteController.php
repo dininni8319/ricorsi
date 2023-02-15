@@ -17,8 +17,8 @@ class EnteController extends Controller
 
   protected $messageUnSuccess = 'Non ho trovato nessun ente';
   protected $messageSuccess = 'Successo, ho trovato ';
-  protected function getFormData($req) {
 
+  protected function getFormData($req) {
     return [
         "descrizione_comune" => $req->descrizione_comune,
         "provincia" => $req->provincia,
@@ -128,7 +128,7 @@ class EnteController extends Controller
     return response()->json([
       'success' => false,
       'message' => 'Qualcosa è andato storto!',
-  ], 404);
+    ], 404);
   }
 
   public function deleteEnte($id, RicorsoAction $action) {
@@ -142,6 +142,34 @@ class EnteController extends Controller
     return response()->json([
       'success' => false,
       'message' => 'Qualcosa è andato storto!',
-  ], 404);
+    ], 404);
+  }
+
+  public function updateEnte(Request $request, $id)
+  {
+    $formData = $this->getFormData($request);
+    
+    if($formData && $id){
+        foreach ($formData as $key => $value) {
+            if (!$value) {
+              unset($formData[$key]);
+            }  
+        }
+
+        $ente = Ente::find(intval($id));
+        $ente->update($formData);
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'L\'ente è stato aggiornato!',
+            'id' => $id,
+        ], 200);
+        
+    } else {
+        return response()->json([
+            'success' => false,
+            'message' => $this->messageUnSuccess,
+        ], 404);
+    }
   }
 }

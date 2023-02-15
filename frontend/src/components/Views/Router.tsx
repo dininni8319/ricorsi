@@ -28,7 +28,9 @@ import {
     DettaglioEnte,
     DettaglioEnteDetail,
     UpdateCartolina,
-    UpdateFase
+    UpdateFase,
+    UpdateEnte, 
+    UpdateServizio
 } from './lazyLoadingViews';
 import ProtectedRoute from '../Utilities/ProtectedRoutes';
 
@@ -279,6 +281,26 @@ const Router = () => {
                 }
             />
             <Route
+                path="/update_ente/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <UpdateEnte />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/update_servizio/:slug"
+                element={
+                    <Suspense fallback={<Loader3 />}>
+                        <ProtectedRoute>
+                            <UpdateServizio />
+                        </ProtectedRoute>
+                    </Suspense>
+                }
+            />
+            <Route      
                 path="/detail_riscossione/:slug"
                 element={
                     <Suspense fallback={<Loader3 />}>
@@ -311,13 +333,11 @@ const Router = () => {
                    <ResetPassword />
                 </Suspense>
             } />
-
             <Route path="/send_email" element={
                 <Suspense fallback={<Loader3 />}>
                    <ResetLinkView />
                 </Suspense>
             } />
-        
             <Route
                 path="/register"
                 element={

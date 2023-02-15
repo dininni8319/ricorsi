@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     * {
         font-family: 'Roboto', sans-serif;
     }
-    
+
     body {
         margin: 0;
         padding: 0;
@@ -42,7 +42,6 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
         padding-left: 5px;
     }
-
 
     input[type="file"]::-webkit-file-upload-button {
         background-color: #F1F2F6;
@@ -83,12 +82,12 @@ export const Theme = {
     colorWhite: 'white',
     blackColor: 'black',
     orangeColor: '#fc8414',
-    //we could usse this colour for the text, not in use at the moment
+    //We could usse this colour for the text, they are not in use at the moment!
     textGray: '#1C1C1C',
     disabledColor: 'rgb(255, 213, 128, 0.8)',
     boxShadow: 'box-shadow: 0 0 15px rgba(0, 0, 0, 0.4)',
     //that for the details pages
-    boxShadow2: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
+    boxShadow2: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
     borderRadius: '5px',
     fontFamily: '"Roboto", sans-serif'
 };

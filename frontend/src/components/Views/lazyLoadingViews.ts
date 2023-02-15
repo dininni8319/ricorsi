@@ -39,6 +39,16 @@ export const UpdateRiscossione = lazy(
 export const UpdateRiconciliazione = lazy(
     () => import('./UpdateForms/UpdateRiconciliazione')
 );
+
 export const UpdateFase = lazy(
     () => import('./UpdateForms/UpdateFase')
 );
+
+export const UpdateEnte = lazy(
+    () => import('./UpdateForms/UpdateEnte')
+);
+
+export const UpdateServizio = lazy(
+    () => import('./UpdateForms/UpdateServizio')
+);
+

@@ -31,7 +31,7 @@ const CardDetails = ({ servizio }: {servizio: ServizioType}) => {
             <div className="flex justify-between py-1">
                 <Link to={`/detail_servizio/${servizio.id}`}>Dettaglio servizio</Link>
                  
-                <Link to={`/form_dettaglio_ente/${servizio?.id}`}>
+                <Link to={`/update_servizio/${servizio?.id}`}>
                     Aggiorna questo servizio
                 </Link>
             </div>

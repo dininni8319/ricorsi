@@ -106,7 +106,7 @@ class ServiziController extends Controller
       
       return response()->json([
           'success' => true,
-          'servizio' => $servizio,
+          'data' => $servizio,
           'message' => 'Questi sono i servizi relativi all\'Ente'
       ], 200);
     }   

@@ -350,7 +350,7 @@ export const LottiSpedizioneFormData = {
             errorMessage: ''
         },
         {
-            label: 'Numberi degli Atti',
+            label: 'Numeri degli Atti',
             name: 'nr_atti',
             type: 'text',
             id: 1,

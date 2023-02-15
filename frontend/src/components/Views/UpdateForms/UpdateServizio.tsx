@@ -1,25 +1,38 @@
+import { useContext } from 'react';
 import { ServiziFormData } from '../../UI/FormComponents/defaultProps';
 import { defaultServizioData } from '../../UI/FormComponents/defaultData';
-import { selectTipologiaAttivita, selectTipologiaServizi } from '../../UI/FormComponents/selectPropsTributi';
+import
+    { 
+      selectTipologiaAttivita, 
+      selectTipologiaServizi     
+    } 
+from '../../UI/FormComponents/selectPropsTributi';
 import useInput from '../../../Hooks/useInput';
 import { Input, Form, SelectInput } from '../../UI/index';
 import { useParams } from 'react-router';
-import { memo } from "react";
+import useFetch from '../../../Hooks/useFetch';
+import { ConfigContext } from '../../../Contexts/Config';
 
-const DettaglioEnte = () => {
+const UpdateServizio = () => {
     let { slug } = useParams();
-
-    const { data, handleData } = useInput(defaultServizioData, slug);
-
+    let {
+        api_urls: { backend }
+    } = useContext(ConfigContext);
+    let {
+        payload: { data: servizio }
+    }: any = useFetch(`${backend}/api/cienneffe/detail_servizio/${slug}`);
+    const { formData, handleData } = useInput(defaultServizioData, slug);
+    
     return (
         <div className="height-custom">
             <Form
                 id={slug}
-                title="Avvia un nuovo servizio"
-                createPath={`servizio_create`}
+                title="Aggiorna il servizio"
                 navPath="detail_servizio"
-                subMitBtn="Invio"
-                data={data}
+                createPath="update_servizio"
+                subMitBtn="Aggiorna"
+                data={formData}
+                method={'POST'}
             >
                 <>
                     {ServiziFormData?.formArr.map((input, index) => {
@@ -28,15 +41,12 @@ const DettaglioEnte = () => {
                                 handleData={handleData}
                                 key={index}
                                 {...input}
-                                value={
-                                    slug &&
-                                    data &&
-                                    data[input.name as keyof object]
-                                }
+                                value={servizio ? servizio[input?.name] : ''}
                             />
                         );
                     })}
-                     <div className="md:flex">
+
+                    <div className="md:flex">
                         <SelectInput
                             selectProps={selectTipologiaAttivita}
                             handleData={handleData}
@@ -52,4 +62,4 @@ const DettaglioEnte = () => {
     );
 };
 
-export default memo(DettaglioEnte);
+export default UpdateServizio;
